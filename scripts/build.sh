@@ -13,5 +13,5 @@ then
   defaultRollupConfig=rollup.config.mjs
 fi
 
-npx tsc --skipLibCheck --emitDeclarationOnly "${args[@]}" &
+# npx tsc --skipLibCheck --emitDeclarationOnly "${args[@]}" &
 npx rollup -c "${defaultRollupConfig}" "${args[@]}"

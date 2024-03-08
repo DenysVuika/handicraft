@@ -59,6 +59,7 @@
     "pretty-quick": "2.0.1",
     "rollup": "^4.12.1",
     "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-typescript2": "^0.36.0",
     "ts-jest": "29.0.5",
     "typescript": "4.9.5"
   },

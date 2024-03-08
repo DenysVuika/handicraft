@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@craftjs/core": "workspace:*",
+    "@craftjs/utils": "workspace:*",
     "@craftjs/layers": "workspace:*",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
