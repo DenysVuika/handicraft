@@ -1,30 +1,29 @@
+import styled from '@emotion/styled';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
-import styled from 'styled-components';
-
-import Arrow from '../../../../public/icons/arrow.svg';
 
 const SidebarItemDiv = styled.div<{ visible?: boolean; height?: string }>`
+  display: flex;
+  flex-direction: column;
   height: ${(props) =>
-    props.visible && props.height && props.height !== 'full'
-      ? `${props.height}`
-      : 'auto'};
+    props.visible && props.height !== 'full' ? `${props.height}` : 'auto'};
   flex: ${(props) =>
-    props.visible && props.height && props.height === 'full' ? `1` : 'unset'};
+    props.visible && props.height === 'full' ? `1` : 'unset'};
   color: #545454;
 `;
 
 const Chevron = styled.a<{ visible: boolean }>`
-  transform: rotate(${(props) => (props.visible ? 180 : 0)}deg);
-  svg {
-    width: 8px;
-    height: 8px;
+  & > svg {
+    width: 16px;
+    height: 16px;
   }
 `;
 
 export type SidebarItemProps = {
   title: string;
   height?: string;
-  icon: string;
+  icon: any;
   visible?: boolean;
   onChange?: (bool: boolean) => void;
   children?: React.ReactNode;
@@ -33,10 +32,27 @@ export type SidebarItemProps = {
 const HeaderDiv = styled.div`
   color: #615c5c;
   height: 45px;
-  svg {
+  cursor: pointer;
+  border-bottom-width: 1px;
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  &:last-child {
+    border-bottom-width: 0;
+  }
+
+  & > svg {
     fill: #707070;
   }
 `;
+
+const Title = styled.div({
+  display: 'flex',
+  flex: '1 1 0%',
+  alignItems: 'center',
+});
 
 export const SidebarItem: React.FC<SidebarItemProps> = ({
   visible,
@@ -47,25 +63,35 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
   onChange,
 }) => {
   return (
-    <SidebarItemDiv visible={visible} height={height} className="flex flex-col">
+    <SidebarItemDiv visible={visible} height={height}>
       <HeaderDiv
         onClick={() => {
           if (onChange) onChange(!visible);
         }}
-        className={`cursor-pointer bg-white border-b last:border-b-0 flex items-center px-2 ${
-          visible ? 'shadow-sm' : ''
-        }`}
+        className={`app-bg-white ${visible ? 'app-shadow-sm' : ''}`}
       >
-        <div className="flex-1 flex items-center">
-          {React.createElement(icon, { className: 'w-4 h-4 mr-2' })}
-          <h2 className="text-xs uppercase">{title}</h2>
-        </div>
+        <Title>
+          {React.createElement(icon, {
+            style: { width: '1rem', height: '1rem', marginRight: '0.5rem' },
+          })}
+          <h2
+            style={{
+              fontSize: '0.75rem',
+              lineHeight: '1rem',
+              textTransform: 'uppercase',
+            }}
+          >
+            {title}
+          </h2>
+        </Title>
         <Chevron visible={visible}>
-          <Arrow />
+          {visible ? <ExpandLessIcon /> : <ExpandMoreIcon />}
         </Chevron>
       </HeaderDiv>
       {visible ? (
-        <div className="w-full flex-1 overflow-auto">{children}</div>
+        <div style={{ width: 'full', overflow: 'auto', flex: '1 1 0%' }}>
+          {children}
+        </div>
       ) : null}
     </SidebarItemDiv>
   );

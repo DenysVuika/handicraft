@@ -1,9 +1,9 @@
 import { useNode, useEditor } from '@craftjs/core';
+import styled from '@emotion/styled';
 import cx from 'classnames';
-import { debounce } from 'debounce';
+import debounce from 'debounce';
 import { Resizable } from 're-resizable';
 import React, { useRef, useEffect, useState, useCallback } from 'react';
-import styled from 'styled-components';
 
 import {
   isPercentage,
@@ -196,8 +196,8 @@ export const Resizer = ({ propKey, children, ...props }: any) => {
       }, {})}
       className={cx([
         {
-          'm-auto': isRootNode,
-          flex: true,
+          'app-m-auto': isRootNode,
+          'app-flex': true,
         },
       ])}
       ref={(ref) => {

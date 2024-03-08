@@ -1,7 +1,6 @@
 import { UserComponent, useNode } from '@craftjs/core';
+import styled from '@emotion/styled';
 import cx from 'classnames';
-import React from 'react';
-import styled from 'styled-components';
 
 import { ButtonSettings } from './ButtonSettings';
 
@@ -14,6 +13,7 @@ type ButtonProps = {
   margin?: any[];
   text?: string;
   textComponent?: any;
+  options?: 'primary' | 'secondary';
 };
 
 const StyledButton = styled.button<ButtonProps>`
@@ -28,23 +28,30 @@ const StyledButton = styled.button<ButtonProps>`
       : 'transparent'};
   margin: ${({ margin }) =>
     `${margin[0]}px ${margin[1]}px ${margin[2]}px ${margin[3]}px`};
+  border-radius: 0.25rem;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 `;
 
-export const Button: UserComponent<ButtonProps> = (props: any) => {
+export const Button: UserComponent<ButtonProps> = (props: ButtonProps) => {
   const {
     connectors: { connect },
   } = useNode((node) => ({
     selected: node.events.selected,
   }));
 
-  const { text, textComponent, color, ...otherProps } = props;
+  const { text, options, textComponent, color, ...otherProps } = props;
+  console.log(options);
+
   return (
     <StyledButton
       ref={connect}
       className={cx([
-        'rounded w-full px-4 py-2',
         {
-          'shadow-lg': props.buttonStyle === 'full',
+          'app-shadow-lg': props.buttonStyle === 'full',
         },
       ])}
       {...otherProps}
@@ -66,6 +73,7 @@ Button.craft = {
       ...Text.craft.props,
       textAlign: 'center',
     },
+    options: 'primary',
   },
   related: {
     toolbar: ButtonSettings,

@@ -1,12 +1,12 @@
 import { useNode, useEditor } from '@craftjs/core';
 import { ROOT_NODE } from '@craftjs/utils';
+import styled from '@emotion/styled';
+import ArrowUpIcon from '@mui/icons-material/ArrowUpward';
+import DeleteIcon from '@mui/icons-material/DeleteForever';
+import MoveIcon from '@mui/icons-material/DragIndicator';
+import Tooltip from '@mui/material/Tooltip';
 import React, { useEffect, useRef, useCallback } from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
-
-import ArrowUp from '../../public/icons/arrow-up.svg';
-import Delete from '../../public/icons/delete.svg';
-import Move from '../../public/icons/move.svg';
 
 const IndicatorDiv = styled.div`
   height: 30px;
@@ -36,7 +36,7 @@ const Btn = styled.a`
 export const RenderNode = ({ render }) => {
   const { id } = useNode();
   const { actions, query, isActive } = useEditor((_, query) => ({
-    isActive: query.getEvent('selected').contains(id),
+    isActive: query.getEvent('selected')?.contains(id),
   }));
 
   const {
@@ -103,39 +103,61 @@ export const RenderNode = ({ render }) => {
         ? ReactDOM.createPortal(
             <IndicatorDiv
               ref={currentRef}
-              className="px-2 py-2 text-white bg-primary fixed flex items-center"
+              className="app-text-white app-bg-primary"
               style={{
+                padding: '0.5rem',
+                position: 'fixed',
+                display: 'flex',
+                alignItems: 'center',
                 left: getPos(dom).left,
                 top: getPos(dom).top,
                 zIndex: 9999,
               }}
             >
-              <h2 className="flex-1 mr-4">{name}</h2>
+              <h2
+                style={{
+                  flex: '1 1 0%',
+                  margin: '0 1rem 0 0',
+                  fontSize: 'inherit',
+                  fontFamily: 'inherit',
+                }}
+              >
+                {name}
+              </h2>
               {moveable ? (
-                <Btn className="mr-2 cursor-move" ref={drag}>
-                  <Move />
-                </Btn>
+                <Tooltip title="Move node">
+                  <Btn
+                    style={{ marginRight: '0.5rem', cursor: 'move' }}
+                    ref={drag}
+                  >
+                    <MoveIcon />
+                  </Btn>
+                </Tooltip>
               ) : null}
               {id !== ROOT_NODE && (
-                <Btn
-                  className="mr-2 cursor-pointer"
-                  onClick={() => {
-                    actions.selectNode(parent);
-                  }}
-                >
-                  <ArrowUp />
-                </Btn>
+                <Tooltip title="Select parent node">
+                  <Btn
+                    style={{ marginRight: '0.5rem', cursor: 'pointer' }}
+                    onClick={() => {
+                      actions.selectNode(parent);
+                    }}
+                  >
+                    <ArrowUpIcon />
+                  </Btn>
+                </Tooltip>
               )}
               {deletable ? (
-                <Btn
-                  className="cursor-pointer"
-                  onMouseDown={(e: React.MouseEvent) => {
-                    e.stopPropagation();
-                    actions.delete(id);
-                  }}
-                >
-                  <Delete />
-                </Btn>
+                <Tooltip title="Delete node">
+                  <Btn
+                    style={{ cursor: 'pointer' }}
+                    onMouseDown={(e: React.MouseEvent) => {
+                      e.stopPropagation();
+                      actions.delete(id);
+                    }}
+                  >
+                    <DeleteIcon />
+                  </Btn>
+                </Tooltip>
               ) : null}
             </IndicatorDiv>,
             document.querySelector('.page-container')

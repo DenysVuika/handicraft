@@ -1,11 +1,8 @@
-import React from 'react';
-
-import { ToolbarSection, ToolbarItem } from '../../editor';
-import { ToolbarRadio } from '../../editor/Toolbar/ToolbarRadio';
+import { ToolbarSection, ToolbarItem, ToolbarRadio } from '../../editor';
 
 export const ContainerSettings = () => {
   return (
-    <React.Fragment>
+    <>
       <ToolbarSection
         title="Dimensions"
         props={['width', 'height']}
@@ -21,19 +18,25 @@ export const ContainerSettings = () => {
         props={['background', 'color']}
         summary={({ background, color }: any) => {
           return (
-            <div className="flex flex-row-reverse">
+            <div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
               <div
                 style={{
                   background:
                     background && `rgba(${Object.values(background)})`,
+                  width: '1.5rem',
+                  height: '1.5rem',
+                  textAlign: 'center',
+                  display: 'flex',
+                  alignItems: 'center',
                 }}
-                className="shadow-md flex-end w-6 h-6 text-center flex items-center rounded-full bg-black"
+                className="app-shadow-md app-rounded-full"
               >
                 <p
                   style={{
                     color: color && `rgba(${Object.values(color)})`,
+                    width: '100%',
+                    textAlign: 'center',
                   }}
-                  className="text-white w-full text-center"
                 >
                   T
                 </p>
@@ -120,6 +123,6 @@ export const ContainerSettings = () => {
           <ToolbarRadio value="flex-end" label="Flex end" />
         </ToolbarItem>
       </ToolbarSection>
-    </React.Fragment>
+    </>
   );
 };

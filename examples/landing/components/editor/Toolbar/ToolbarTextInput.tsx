@@ -1,20 +1,18 @@
-import { TextField, makeStyles, InputAdornment } from '@material-ui/core';
-import React, { useEffect } from 'react';
+import InputAdornment from '@mui/material/InputAdornment';
+import TextField from '@mui/material/TextField';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { ChromePicker } from 'react-color';
 
-const useStyles = makeStyles({
-  root: {
-    padding: 0,
-    width: '100%',
-    // background:"#efeff1",
-    borderRadius: '100px',
-    border: 'none',
-    margin: 0,
-    marginTop: 7,
-    position: 'relative',
-  },
-  input: {
+const inputStyles = {
+  padding: 0,
+  width: '100%',
+  borderRadius: '100px',
+  border: 'none',
+  margin: 0,
+  position: 'relative',
+
+  '& > .MuiInputBase-input': {
     background: '#efeff1',
     borderRadius: '100px',
     fontSize: '12px',
@@ -22,18 +20,12 @@ const useStyles = makeStyles({
     paddingBottom: '8px',
     paddingTop: '8px',
     margin: 0,
-  }, // a style rule
-  // notchedOutline: {
-  //   borderColor:'transparent',
-  //   borderRadius: "100px"
-  // }
-});
-
-const useLabelStyles = makeStyles({
-  root: {
-    color: 'rgb(128,128,128)',
   },
-  formControl: {
+};
+
+const inputLabelStyles = {
+  color: 'rgb(128,128,128)',
+  '&.MuiFormLabel-root': {
     fontSize: '18px',
     borderRadius: '100px',
     paddingLeft: '0px',
@@ -41,8 +33,8 @@ const useLabelStyles = makeStyles({
     marginBottom: '3px',
     position: 'relative',
     left: '-12px',
-  }, // a style rule
-});
+  },
+};
 
 export type ToolbarTextInputProps = {
   prefix?: string;
@@ -51,6 +43,7 @@ export type ToolbarTextInputProps = {
   onChange?: (value: any) => void;
   value?: any;
 };
+
 export const ToolbarTextInput = ({
   onChange,
   value,
@@ -61,8 +54,7 @@ export const ToolbarTextInput = ({
 }: ToolbarTextInputProps) => {
   const [internalValue, setInternalValue] = useState(value);
   const [active, setActive] = useState(false);
-  const classes = useStyles({});
-  const labelClasses = useLabelStyles({});
+
   useEffect(() => {
     let val = value;
     if (type === 'color' || type === 'bg')
@@ -79,15 +71,22 @@ export const ToolbarTextInput = ({
     >
       {(type === 'color' || type === 'bg') && active ? (
         <div
-          className="absolute"
           style={{
+            position: 'absolute',
             zIndex: 99999,
             top: 'calc(100% + 10px)',
             left: '-5%',
           }}
         >
           <div
-            className="fixed top-0 left-0 w-full h-full cursor-pointer"
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              cursor: 'pointer',
+            }}
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
@@ -117,7 +116,7 @@ export const ToolbarTextInput = ({
         margin="dense"
         variant="filled"
         InputProps={{
-          classes,
+          sx: { ...inputStyles },
           disableUnderline: true,
           startAdornment: ['color', 'bg'].includes(type) ? (
             <InputAdornment
@@ -129,19 +128,22 @@ export const ToolbarTextInput = ({
               }}
             >
               <div
-                className="w-2 h-2 inline-block rounded-full relative"
+                className="app-rounded-full"
                 style={{
                   left: '15px',
                   background: internalValue,
+                  position: 'relative',
+                  display: 'inline-block',
+                  width: '0.5rem',
+                  height: '0.5rem',
+                  cursor: 'pointer',
                 }}
               />
             </InputAdornment>
           ) : null,
         }}
         InputLabelProps={{
-          classes: {
-            ...labelClasses,
-          },
+          sx: { ...inputLabelStyles },
           shrink: true,
         }}
         {...props}
