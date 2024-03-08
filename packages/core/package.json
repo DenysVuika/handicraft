@@ -22,7 +22,7 @@
   "types": "./lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DenysVuika/handicraft"
+    "url": "git+https://github.com/DenysVuika/handicraft.git"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development ../../scripts/build.sh",
