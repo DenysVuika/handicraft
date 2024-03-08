@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@craftjs/utils": "^0.2.1",
-    "debounce": "^1.2.0",
+    "debounce": "^2.0.0",
     "lodash": "^4.17.21",
     "tiny-invariant": "^1.0.6"
   },

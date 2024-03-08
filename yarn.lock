@@ -2593,7 +2593,7 @@ __metadata:
     "@craftjs/utils": ^0.2.1
     "@types/lodash": ^4.14.195
     "@types/react": 18.0.27
-    debounce: ^1.2.0
+    debounce: ^2.0.0
     lodash: ^4.17.21
     react: 18.2.0
     tiny-invariant: ^1.0.6
@@ -9341,13 +9341,6 @@ clsx@latest:
   version: 1.11.7
   resolution: "dayjs@npm:1.11.7"
   checksum: 5003a7c1dd9ed51385beb658231c3548700b82d3548c0cfbe549d85f2d08e90e972510282b7506941452c58d32136d6362f009c77ca55381a09c704e9f177ebb
-  languageName: node
-  linkType: hard
-
-"debounce@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "debounce@npm:1.2.0"
-  checksum: e39cb593ae26344921f5a2681b40b703bdd22bc43b179f0e7515176c790997932b3a0ee6ea9864f384c6ac58cecc08158fb102c3632d5d88ab621f8230ee39ff
   languageName: node
   linkType: hard
 
