@@ -19,7 +19,7 @@
   "homepage": "https://github.com/DenysVuika/handicraft",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
-  "types": "./lib/index.d.ts",
+  "types": "./dist/cjs/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DenysVuika/handicraft.git"
