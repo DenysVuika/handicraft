@@ -1,7 +1,7 @@
 {
   "npmClient": "yarn",
   "private": true,
-  "author": "Prev Wong <prevwong@gmail.com>",
+  "author": "Denys Vuika <denys.vuika@gmail.com>",
   "scripts": {
     "dev": "./scripts/dev.sh",
     "dev:site": "lerna run start --scope site",
@@ -73,10 +73,10 @@
       "examples/*"
     ]
   },
-  "license": "MIT",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/prevwong/craft.js.git"
+    "url": "git+https://github.com/DenysVuika/handicraft.git"
   },
   "lint-staged": {
     "packages/**/*.{js,jsx,ts,tsx}": [
