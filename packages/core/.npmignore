@@ -1,5 +1,8 @@
 .rollup.cache
 
+!dist
+!lib
+
 src
 rollup.config.js
 tsconfig.json

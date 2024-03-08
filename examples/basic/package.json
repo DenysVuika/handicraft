@@ -19,7 +19,7 @@
     "start": "next dev -p 3002",
     "build": "next build",
     "export": "next export",
-    "clean": "rimraf lib .next out dist"
+    "clean": "npx rimraf lib .next out dist"
   },
   "devDependencies": {
     "cross-env": "6.0.3"
