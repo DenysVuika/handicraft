@@ -1,9 +1,7 @@
 import path from 'path';
 
-// import babel from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
-// import typescript from '@rollup/plugin-typescript';
 // import del from 'rollup-plugin-delete';
 import typescript from 'rollup-plugin-typescript2';
 
@@ -45,29 +43,7 @@ export default {
   plugins: [
     // del({ targets: 'dist/*' }),
     resolve(),
-    typescript({
-      // declarationDir: 'dist',
-    }),
-    // babel({
-    //   babelHelpers: 'bundled',
-    //   extensions: ['.ts'],
-    //   presets: [
-    //     ['@babel/preset-typescript'],
-    //     [
-    //       '@babel/preset-env',
-    //       {
-    //         modules: false,
-    //         targets: {
-    //           browsers: ['>0.25%, not dead'],
-    //         },
-    //       },
-    //     ],
-    //   ],
-    //   plugins: [
-    //     '@babel/proposal-class-properties',
-    //     '@babel/proposal-object-rest-spread',
-    //   ],
-    // }),
+    typescript(),
     shouldMinify &&
       terser({
         output: { comments: 'some' },
