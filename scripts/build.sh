@@ -7,10 +7,10 @@ then
 fi
 
 
-defaultRollupConfig=../../rollup.config.js
-if [ -f ./rollup.config.js ]
+defaultRollupConfig=../../rollup.config.mjs
+if [ -f ./rollup.config.mjs ]
 then
-  defaultRollupConfig=rollup.config.js
+  defaultRollupConfig=rollup.config.mjs
 fi
 
 npx tsc --skipLibCheck --emitDeclarationOnly "${args[@]}" &

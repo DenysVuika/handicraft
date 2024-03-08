@@ -7,6 +7,7 @@ import typescript from '@rollup/plugin-typescript';
 
 const shouldMinify = process.env.NODE_ENV === 'production';
 const bundle = ['tslib'];
+const external = ['react', 'react-dom', 'styled-components'];
 
 export default {
   input: './src/index.ts',
@@ -14,18 +15,24 @@ export default {
     {
       file: 'dist/esm/index.js',
       format: 'esm',
+      interop: 'compat',
       globals: {
         react: 'React',
         'react-dom': 'ReactDOM',
+        'styled-components': 'styled',
       },
     },
     {
       file: 'dist/cjs/index.js',
       format: 'cjs',
+      interop: 'compat',
     },
   ],
   external: (id) => {
-    return !id.startsWith('.') && !path.isAbsolute(id) && !bundle.includes(id);
+    return (
+      external.includes(id) ||
+      (!id.startsWith('.') && !path.isAbsolute(id) && !bundle.includes(id))
+    );
   },
   plugins: [
     resolve(),

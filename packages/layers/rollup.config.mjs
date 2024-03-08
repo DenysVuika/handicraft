@@ -1,6 +1,6 @@
 import image from '@svgr/rollup';
 
-import config from '../../rollup.config';
+import config from '../../rollup.config.mjs';
 
 export default {
   ...config,
