@@ -2,7 +2,6 @@ import path from 'path';
 
 import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
-// import del from 'rollup-plugin-delete';
 import typescript from 'rollup-plugin-typescript2';
 
 const shouldMinify = process.env.NODE_ENV === 'production';
@@ -41,7 +40,6 @@ export default {
     );
   },
   plugins: [
-    // del({ targets: 'dist/*' }),
     resolve(),
     typescript(),
     shouldMinify &&

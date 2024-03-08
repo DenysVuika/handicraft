@@ -22,6 +22,6 @@
     "clean": "npx rimraf lib .next out dist"
   },
   "devDependencies": {
-    "cross-env": "6.0.3"
+    "cross-env": "^7.0.3"
   }
 }
