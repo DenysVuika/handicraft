@@ -6,7 +6,7 @@
     "start": "next dev -p 3001",
     "build": "next build",
     "export": "next export",
-    "clean": "rimraf lib .next out dist"
+    "clean": "npx rimraf lib .next out dist"
   },
   "dependencies": {
     "@craftjs/core": "workspace:*",

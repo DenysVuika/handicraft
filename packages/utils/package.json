@@ -11,7 +11,7 @@
     "start": "cross-env NODE_ENV=development ../../scripts/build.sh",
     "build": "cross-env NODE_ENV=production ../../scripts/build.sh",
     "dev:yalc": "../../scripts/yalc.sh",
-    "clean": "rimraf lib dist"
+    "clean": "npx rimraf lib dist"
   },
   "dependencies": {
     "immer": "^9.0.6",

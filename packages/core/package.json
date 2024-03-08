@@ -22,13 +22,13 @@
   "types": "./lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/DenysVuika/handicraft"
+    "url": "git+https://github.com/DenysVuika/handicraft.git"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development ../../scripts/build.sh",
     "build": "cross-env NODE_ENV=production ../../scripts/build.sh",
     "dev:yalc": "../../scripts/yalc.sh",
-    "clean": "rimraf lib dist"
+    "clean": "npx rimraf lib dist .rollup.cache"
   },
   "bugs": {
     "url": "https://github.com/DenysVuika/handicraft/issues"
