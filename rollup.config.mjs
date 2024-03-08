@@ -4,6 +4,7 @@ import babel from '@rollup/plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
+import del from 'rollup-plugin-delete';
 
 const shouldMinify = process.env.NODE_ENV === 'production';
 const bundle = ['tslib'];
@@ -35,6 +36,7 @@ export default {
     );
   },
   plugins: [
+    del({ targets: 'dist/*' }),
     resolve(),
     typescript({
       declaration: false,
