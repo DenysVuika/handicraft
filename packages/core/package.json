@@ -10,20 +10,19 @@
     "html-builder",
     "builder",
     "editor",
-    "draft-js",
     "framework",
     "wysiwyg",
     "html"
   ],
-  "author": "Prev Wong <prevwong@gmail.com>",
-  "homepage": "https://github.com/prevwong/craft.js/",
-  "license": "MIT",
+  "author": "Denys Vuika <denys.vuika@gmail.com>",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/DenysVuika/handicraft",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/prevwong/craft.js/"
+    "url": "https://github.com/DenysVuika/handicraft"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development ../../scripts/build.sh",
@@ -32,7 +31,7 @@
     "clean": "rimraf lib dist"
   },
   "bugs": {
-    "url": "https://github.com/prevwong/craft.js/issues"
+    "url": "https://github.com/DenysVuika/handicraft/issues"
   },
   "dependencies": {
     "@craftjs/utils": "^0.2.1",
