@@ -13,7 +13,6 @@ type ButtonProps = {
   margin?: any[];
   text?: string;
   textComponent?: any;
-  options?: 'primary' | 'secondary';
 };
 
 const StyledButton = styled.button<ButtonProps>`
@@ -43,8 +42,7 @@ export const Button: UserComponent<ButtonProps> = (props: ButtonProps) => {
     selected: node.events.selected,
   }));
 
-  const { text, options, textComponent, color, ...otherProps } = props;
-  console.log(options);
+  const { text, textComponent, color, ...otherProps } = props;
 
   return (
     <StyledButton
@@ -73,7 +71,6 @@ Button.craft = {
       ...Text.craft.props,
       textAlign: 'center',
     },
-    options: 'primary',
   },
   related: {
     toolbar: ButtonSettings,
