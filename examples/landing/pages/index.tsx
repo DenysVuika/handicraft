@@ -1,8 +1,6 @@
 import { Editor, Frame, Element } from '@craftjs/core';
-import { createMuiTheme } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/core/styles';
-import { NextSeo } from 'next-seo';
-import React from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import { Viewport, RenderNode } from '../components/editor';
 import { Container, Text } from '../components/selectors';
@@ -12,31 +10,17 @@ import { Custom2, Custom2VideoDrop } from '../components/selectors/Custom2';
 import { Custom3, Custom3BtnDrop } from '../components/selectors/Custom3';
 import { Video } from '../components/selectors/Video';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
-    fontFamily: [
-      'acumin-pro',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-    ].join(','),
+    fontFamily: ['Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'].join(','),
   },
 });
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className="h-full h-screen">
-        <NextSeo
-          title="Craft.js"
-          description="A React framework for building drag-n-drop page editors."
-          canonical="https://craft.js.org/"
-          twitter={{
-            site: 'craft.js.org',
-            cardType: 'summary_large_image',
-          }}
-        />
+      <CssBaseline />
+      <div style={{ height: '100vh' }}>
         <Editor
           resolver={{
             Container,

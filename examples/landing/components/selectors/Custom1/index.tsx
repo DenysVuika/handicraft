@@ -1,5 +1,4 @@
 import { Element, useNode } from '@craftjs/core';
-import React from 'react';
 
 import { Button } from '../Button';
 import { Container } from '../Container';
@@ -9,7 +8,12 @@ export const OnlyButtons = ({ children, ...props }) => {
     connectors: { connect },
   } = useNode();
   return (
-    <div title="only-buttons" ref={connect} className="w-full mt-5" {...props}>
+    <div
+      title="only-buttons"
+      ref={connect}
+      style={{ width: '100%', marginTop: '1.25rem' }}
+      {...props}
+    >
       {children}
     </div>
   );
@@ -24,7 +28,15 @@ OnlyButtons.craft = {
 export const Custom1 = (props: any) => {
   return (
     <Container {...props}>
-      <h2 className="text-lg px-10 py-5 text-white">
+      <h2
+        style={{
+          paddingLeft: '2.5rem',
+          paddingRight: '2.5rem',
+          paddingTop: '1.25rem',
+          paddingBottom: '1.25rem',
+        }}
+        className="app-text-lg app-text-white"
+      >
         I'm a component that only accepts
         <br /> buttons.
       </h2>

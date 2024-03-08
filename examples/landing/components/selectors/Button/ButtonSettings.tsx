@@ -1,29 +1,33 @@
-import React from 'react';
-
 import { ToolbarSection, ToolbarItem } from '../../editor';
-import { ToolbarRadio } from '../../editor/Toolbar/ToolbarRadio';
+import { ToolbarRadio } from '../../editor/Toolbar';
 
 export const ButtonSettings = () => {
   return (
-    <React.Fragment>
+    <>
       <ToolbarSection
         title="Colors"
         props={['background', 'color']}
         summary={({ background, color }: any) => {
           return (
-            <div className="flex flex-row-reverse">
+            <div style={{ display: 'flex', flexDirection: 'row-reverse' }}>
               <div
                 style={{
                   background:
                     background && `rgba(${Object.values(background)})`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                  width: '1.5rem',
+                  height: '1.5rem',
                 }}
-                className="shadow-md flex-end w-6 h-6 text-center flex items-center rounded-full bg-black"
+                className="app-shadow-md app-rounded-full"
               >
                 <p
                   style={{
                     color: color && `rgba(${Object.values(color)})`,
+                    width: '100%',
+                    textAlign: 'center',
                   }}
-                  className="text-white w-full text-center"
                 >
                   T
                 </p>
@@ -60,6 +64,6 @@ export const ButtonSettings = () => {
           <ToolbarRadio value="outline" label="Outline" />
         </ToolbarItem>
       </ToolbarSection>
-    </React.Fragment>
+    </>
   );
 };

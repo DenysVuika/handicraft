@@ -42,21 +42,51 @@ export const Viewport: React.FC<{ children?: React.ReactNode }> = ({
   return (
     <div className="viewport">
       <div
-        className={cx(['flex h-full overflow-hidden flex-row w-full fixed'])}
+        style={{
+          display: 'flex',
+          height: '100%',
+          overflow: 'hidden',
+          flexDirection: 'row',
+          width: '100%',
+          position: 'fixed',
+        }}
       >
         <Toolbox />
-        <div className="page-container flex flex-1 h-full flex-col">
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            flex: '1 1 0%',
+            height: '100%',
+          }}
+          className="page-container"
+        >
           <Header />
           <div
+            style={{
+              flex: '1 1 0%',
+              height: '100%',
+              width: '100%',
+              overflow: 'auto',
+              paddingBottom: '2rem',
+            }}
             className={cx([
-              'craftjs-renderer flex-1 h-full w-full transition pb-8 overflow-auto',
+              'craftjs-renderer transition',
               {
-                'bg-renderer-gray': enabled,
+                'app-bg-renderer-gray': enabled,
               },
             ])}
             ref={(ref) => connectors.select(connectors.hover(ref, null), null)}
           >
-            <div className="relative flex-col flex items-center pt-8">
+            <div
+              style={{
+                position: 'relative',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                paddingTop: '2rem',
+              }}
+            >
               {children}
             </div>
           </div>

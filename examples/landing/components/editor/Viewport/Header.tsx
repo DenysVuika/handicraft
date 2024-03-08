@@ -1,22 +1,20 @@
 import { useEditor } from '@craftjs/core';
-import { Tooltip } from '@material-ui/core';
+import styled from '@emotion/styled';
+import EditIcon from '@mui/icons-material/Edit';
+import RedoIcon from '@mui/icons-material/Redo';
+import UndoIcon from '@mui/icons-material/Undo';
+import PreviewIcon from '@mui/icons-material/Visibility';
+import Tooltip from '@mui/material/Tooltip';
 import cx from 'classnames';
-import React from 'react';
-import styled from 'styled-components';
-
-import Checkmark from '../../../public/icons/check.svg';
-import Customize from '../../../public/icons/customize.svg';
-import RedoSvg from '../../../public/icons/toolbox/redo.svg';
-import UndoSvg from '../../../public/icons/toolbox/undo.svg';
 
 const HeaderDiv = styled.div`
-  width: 100%;
   height: 45px;
   z-index: 99999;
   position: relative;
   padding: 0px 10px;
   background: #d4d4d4;
   display: flex;
+  width: '100%';
 `;
 
 const Btn = styled.a`
@@ -26,6 +24,7 @@ const Btn = styled.a`
   border-radius: 3px;
   color: #fff;
   font-size: 13px;
+  cursor: pointer;
   svg {
     margin-right: 6px;
     width: 12px;
@@ -51,6 +50,15 @@ const Item = styled.a<{ disabled?: boolean }>`
   `}
 `;
 
+const HeaderContent = styled.div({
+  alignItems: 'center',
+  display: 'flex',
+  width: '100%',
+  paddingLeft: '1rem',
+  paddingRight: '1rem',
+  justifyContent: 'flex-end',
+});
+
 export const Header = () => {
   const { enabled, canUndo, canRedo, actions } = useEditor((state, query) => ({
     enabled: state.options.enabled,
@@ -59,40 +67,40 @@ export const Header = () => {
   }));
 
   return (
-    <HeaderDiv className="header text-white transition w-full">
-      <div className="items-center flex w-full px-4 justify-end">
+    <HeaderDiv className="header app-text-white transition">
+      <HeaderContent>
         {enabled && (
-          <div className="flex-1 flex">
+          <div style={{ display: 'flex', flex: '1 1 0%' }}>
             <Tooltip title="Undo" placement="bottom">
               <Item disabled={!canUndo} onClick={() => actions.history.undo()}>
-                <UndoSvg />
+                <UndoIcon />
               </Item>
             </Tooltip>
             <Tooltip title="Redo" placement="bottom">
               <Item disabled={!canRedo} onClick={() => actions.history.redo()}>
-                <RedoSvg />
+                <RedoIcon />
               </Item>
             </Tooltip>
           </div>
         )}
-        <div className="flex">
+        <div style={{ display: 'flex' }}>
           <Btn
             className={cx([
-              'transition cursor-pointer',
+              'transition',
               {
-                'bg-green-400': enabled,
-                'bg-primary': !enabled,
+                'app-bg-green-400': enabled,
+                'app-bg-primary': !enabled,
               },
             ])}
             onClick={() => {
               actions.setOptions((options) => (options.enabled = !enabled));
             }}
           >
-            {enabled ? <Checkmark /> : <Customize />}
-            {enabled ? 'Finish Editing' : 'Edit'}
+            {enabled ? <PreviewIcon /> : <EditIcon />}
+            {enabled ? 'Preview' : 'Edit'}
           </Btn>
         </div>
-      </div>
+      </HeaderContent>
     </HeaderDiv>
   );
 };

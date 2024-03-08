@@ -1,65 +1,19 @@
 import { useNode } from '@craftjs/core';
-import { Grid, Slider, RadioGroup } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import styled from '@emotion/styled';
+import Grid from '@mui/material/Grid';
+import RadioGroup from '@mui/material/RadioGroup';
+import Slider from '@mui/material/Slider';
 import React from 'react';
 
 import { ToolbarDropdown } from './ToolbarDropdown';
 import { ToolbarTextInput } from './ToolbarTextInput';
 
-const iOSBoxShadow =
-  '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.13),0 0 0 1px rgba(0,0,0,0.02)';
-
-const SliderStyled = withStyles({
-  root: {
-    color: '#3880ff',
-    height: 2,
-    padding: '5px 0',
-    width: '100%',
-  },
-  thumb: {
-    height: 14,
-    width: 14,
-    backgroundColor: '#fff',
-    boxShadow: iOSBoxShadow,
-    marginTop: -7,
-    marginLeft: -7,
-    '&:focus,&:hover,&$active': {
-      boxShadow:
-        '0 3px 1px rgba(0,0,0,0.1),0 4px 8px rgba(0,0,0,0.3),0 0 0 1px rgba(0,0,0,0.02)',
-      // Reset on touch devices, it doesn't add specificity
-      '@media (hover: none)': {
-        boxShadow: iOSBoxShadow,
-      },
-    },
-  },
-  active: {},
-  valueLabel: {
-    left: 'calc(-50% + 11px)',
-    top: -22,
-    '& *': {
-      background: 'transparent',
-      color: '#000',
-    },
-  },
-  track: {
-    height: 2,
-  },
-  rail: {
-    height: 2,
-    opacity: 0.5,
-    backgroundColor: '#bfbfbf',
-  },
-  mark: {
-    backgroundColor: '#bfbfbf',
-    height: 8,
-    width: 1,
-    marginTop: -3,
-  },
-  markActive: {
-    opacity: 1,
-    backgroundColor: 'currentColor',
-  },
-})(Slider);
+const Title = styled.h4({
+  margin: 0,
+  fontSize: '0.875rem',
+  lineHeight: '1.25rem',
+  color: 'rgba(128, 128, 128, 1)',
+});
 
 export type ToolbarItemProps = {
   prefix?: string;
@@ -89,7 +43,7 @@ export const ToolbarItem = ({
 
   return (
     <Grid item xs={full ? 12 : 6}>
-      <div className="mb-2">
+      <div style={{ marginBottom: '0.5rem' }}>
         {['text', 'color', 'bg', 'number'].includes(type) ? (
           <ToolbarTextInput
             {...props}
@@ -107,11 +61,11 @@ export const ToolbarItem = ({
           />
         ) : type === 'slider' ? (
           <>
-            {props.label ? (
-              <h4 className="text-sm text-light-gray-2">{props.label}</h4>
-            ) : null}
-            <SliderStyled
+            {props.label ? <Title>{props.label}</Title> : null}
+            <Slider
+              size="small"
               value={parseInt(value) || 0}
+              valueLabelDisplay="auto"
               onChange={
                 ((_, value: number) => {
                   setProp((props: any) => {
@@ -129,9 +83,7 @@ export const ToolbarItem = ({
           </>
         ) : type === 'radio' ? (
           <>
-            {props.label ? (
-              <h4 className="text-sm text-light-gray-2">{props.label}</h4>
-            ) : null}
+            {props.label ? <Title>{props.label}</Title> : null}
             <RadioGroup
               value={value || 0}
               onChange={(e) => {
@@ -146,6 +98,7 @@ export const ToolbarItem = ({
           </>
         ) : type === 'select' ? (
           <ToolbarDropdown
+            title={props.label}
             value={value || ''}
             onChange={(value) =>
               setProp(

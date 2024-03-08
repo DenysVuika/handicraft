@@ -1,12 +1,10 @@
-import React from 'react';
-
 import { capitalize, weightDescription } from '../../../utils/text';
 import { ToolbarSection, ToolbarItem } from '../../editor';
-import { ToolbarRadio } from '../../editor/Toolbar/ToolbarRadio';
+import { ToolbarRadio } from '../../editor/Toolbar';
 
 export const TextSettings = () => {
   return (
-    <React.Fragment>
+    <>
       <ToolbarSection
         title="Typography"
         props={['fontSize', 'fontWeight', 'textAlign']}
@@ -52,13 +50,13 @@ export const TextSettings = () => {
         props={['color', 'shadow']}
         summary={({ color, shadow }: any) => {
           return (
-            <div className="fletext-right">
+            <div>
               <p
                 style={{
                   color: color && `rgba(${Object.values(color)})`,
                   textShadow: `0px 0px 2px rgba(0, 0, 0, ${shadow / 100})`,
+                  textAlign: 'right',
                 }}
-                className="text-white text-right"
               >
                 T
               </p>
@@ -74,6 +72,6 @@ export const TextSettings = () => {
           label="Shadow"
         />
       </ToolbarSection>
-    </React.Fragment>
+    </>
   );
 };

@@ -1,5 +1,4 @@
 import { Element, useNode } from '@craftjs/core';
-import React from 'react';
 
 import { Container } from '../Container';
 import { Video } from '../Video';
@@ -9,7 +8,10 @@ export const Custom2VideoDrop = ({ children }) => {
     connectors: { connect },
   } = useNode();
   return (
-    <div ref={connect} className="flex-1 ml-5 h-full">
+    <div
+      ref={connect}
+      style={{ flex: '1 1 0%', marginLeft: '1.25rem', height: '100%' }}
+    >
       {children}
     </div>
   );
@@ -26,9 +28,9 @@ Custom2VideoDrop.craft = {
 };
 export const Custom2 = (props: any) => {
   return (
-    <Container {...props} className="overflow-hidden">
-      <div className="w-24">
-        <h2 className="text-xs text-white">
+    <Container {...props} style={{ overflow: 'hidden' }}>
+      <div style={{ width: '6rem' }}>
+        <h2 className="app-text-xs app-text-white">
           You can only drop
           <br />
           one video here.
