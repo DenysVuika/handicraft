@@ -1,17 +1,11 @@
-<div align="center" style={{d}}>
-<h1>@craftjs/layers</h1>
+# @craftjs/layers
 
-<a href="https://www.npmjs.com/package/@craftjs/layers">
-  <img src="https://img.shields.io/npm/v/@craftjs/layers?color=%232680eb&label=NPM&logo=npm&logoColor=%232680eb&style=for-the-badge">
-</a><img alt="NPM" src="https://img.shields.io/npm/l/@craftjs/layers?color=%23000&style=for-the-badge">
-</div>
+A Photoshop-like layers panel for your page editor.
 
 <div align="center" style={{d}}>
     <img src="https://user-images.githubusercontent.com/16416929/71734439-f2aada00-2e86-11ea-9d5f-c782ccbc8e54.gif"/>
 </div>
-<p align="center">
-  <strong>A Photoshop-like layers panel for your page editor.</strong>
-</p>
+
 <p align="center">
   <strong>
     <a href="https://craft.js.org/docs/additional/layers">Documentation</a>
