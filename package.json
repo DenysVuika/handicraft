@@ -17,7 +17,8 @@
     "test": "jest",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "publish": "run-s build lint test && lerna publish from-git --yes"
+    "bump": "lerna version --no-push --no-git-tag-version --force-publish",
+    "publish": "run-s build lint test && lerna publish from-git --no-private --no-push"
   },
   "devDependencies": {
     "@babel/cli": "7.20.7",
