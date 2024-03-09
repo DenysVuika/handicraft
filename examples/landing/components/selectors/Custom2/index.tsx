@@ -5,7 +5,7 @@ import { Video } from '../Video';
 
 export const Custom2VideoDrop = ({ children }) => {
   const {
-    connectors: { connect },
+    connectors: { connect }
   } = useNode();
   return (
     <div
@@ -23,8 +23,8 @@ Custom2VideoDrop.craft = {
         nodes.every((node) => node.data.type === Video) &&
         helper(self.id).decendants().length === 0
       );
-    },
-  },
+    }
+  }
 };
 export const Custom2 = (props: any) => {
   return (
@@ -45,5 +45,5 @@ export const Custom2 = (props: any) => {
 
 Custom2.craft = {
   ...Container.craft,
-  displayName: 'Custom 2',
+  displayName: 'Custom 2'
 };

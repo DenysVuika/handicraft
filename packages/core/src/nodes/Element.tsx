@@ -12,12 +12,12 @@ export const defaultElementProps = {
   is: 'div',
   canvas: false,
   custom: {},
-  hidden: false,
+  hidden: false
 };
 
 export const elementPropToNodeData = {
   is: 'type',
-  canvas: 'isCanvas',
+  canvas: 'isCanvas'
 };
 
 export type ElementProps<T extends React.ElementType> = {
@@ -35,15 +35,15 @@ export function Element<T extends React.ElementType>({
 }: ElementProps<T>) {
   const { is } = {
     ...defaultElementProps,
-    ...elementProps,
+    ...elementProps
   };
 
   const { query, actions } = useInternalEditor();
   const { node, inNodeContext } = useInternalNode((node) => ({
     node: {
       id: node.id,
-      data: node.data,
-    },
+      data: node.data
+    }
   }));
 
   const [linkedNodeId, setLinkedNodeId] = useState<NodeId | null>(null);

@@ -68,7 +68,7 @@ export class ConnectorRegistry {
       },
       remove: () => {
         return this.remove(id);
-      },
+      }
     });
 
     if (this.isEnabled) {

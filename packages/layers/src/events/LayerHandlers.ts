@@ -11,7 +11,7 @@ export class LayerHandlers extends DerivedCoreEventHandlers<{
     currentCanvasHovered: Node;
   } = {
     indicator: null,
-    currentCanvasHovered: null,
+    currentCanvasHovered: null
   };
 
   getLayer(id: NodeId) {
@@ -24,7 +24,7 @@ export class LayerHandlers extends DerivedCoreEventHandlers<{
     return {
       layer: (el: HTMLElement, layerId: NodeId) => {
         layerStore.actions.setDOM(layerId, {
-          dom: el,
+          dom: el
         });
 
         const cleanupParentConnectors = this.inherit((connectors) => {
@@ -73,9 +73,9 @@ export class LayerHandlers extends DerivedCoreEventHandlers<{
                       ...indicator.placement,
                       index: 0,
                       where: 'before',
-                      parent: currentCanvasHovered,
+                      parent: currentCanvasHovered
                     },
-                    onCanvas: true,
+                    onCanvas: true
                   };
                   return;
                 }
@@ -86,9 +86,9 @@ export class LayerHandlers extends DerivedCoreEventHandlers<{
                     currentNode: editorStore.query.node(currNode).get(),
                     index: currentCanvasHovered.data.nodes.length,
                     where: 'after',
-                    parent: currentCanvasHovered,
+                    parent: currentCanvasHovered
                   },
-                  onCanvas: true,
+                  onCanvas: true
                 };
 
                 layerStore.actions.setIndicator(LayerHandlers.events.indicator);
@@ -122,7 +122,7 @@ export class LayerHandlers extends DerivedCoreEventHandlers<{
 
             if (indicatorInfo) {
               const {
-                placement: { parent },
+                placement: { parent }
               } = indicatorInfo;
               const parentHeadingInfo = this.getLayer(
                 parent.id
@@ -161,7 +161,7 @@ export class LayerHandlers extends DerivedCoreEventHandlers<{
 
               LayerHandlers.events.indicator = {
                 ...indicatorInfo,
-                onCanvas: false,
+                onCanvas: false
               };
 
               layerStore.actions.setIndicator(LayerHandlers.events.indicator);
@@ -178,7 +178,7 @@ export class LayerHandlers extends DerivedCoreEventHandlers<{
       },
       layerHeader: (el: HTMLElement, layerId: NodeId) => {
         layerStore.actions.setDOM(layerId, {
-          headingDom: el,
+          headingDom: el
         });
       },
       drag: (el: HTMLElement, layerId: NodeId) => {
@@ -219,7 +219,7 @@ export class LayerHandlers extends DerivedCoreEventHandlers<{
           unbindDragStart();
           unbindDragEnd();
         };
-      },
+      }
     };
   }
 }

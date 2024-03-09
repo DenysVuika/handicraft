@@ -8,14 +8,8 @@ import { useInternalNode } from '../nodes/useInternalNode';
  * @param collect - Collector function to consume values from the corresponding Node's state
  */
 export function useNode<S = null>(collect?: (node: Node) => S) {
-  const {
-    id,
-    related,
-    actions,
-    inNodeContext,
-    connectors,
-    ...collected
-  } = useInternalNode(collect);
+  const { id, related, actions, inNodeContext, connectors, ...collected } =
+    useInternalNode(collect);
 
   return {
     ...collected,
@@ -27,11 +21,11 @@ export function useNode<S = null>(collect?: (node: Node) => S) {
       throttleRate?: number
     ) => {
       deprecationWarning('useNode().setProp()', {
-        suggest: 'useNode().actions.setProp()',
+        suggest: 'useNode().actions.setProp()'
       });
       return actions.setProp(cb, throttleRate);
     },
     inNodeContext,
-    connectors,
+    connectors
   };
 }

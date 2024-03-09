@@ -3,7 +3,7 @@ import {
   documentWithVariousNodes,
   primaryButton,
   rootNode,
-  secondaryButton,
+  secondaryButton
 } from '../../tests/fixtures';
 import { serializeNode } from '../../utils/serializeNode';
 import { NodeHelpers } from '../NodeHelpers';
@@ -11,7 +11,7 @@ import { NodeHelpers } from '../NodeHelpers';
 let helper;
 
 jest.mock('../../utils/serializeNode', () => ({
-  serializeNode: jest.fn(),
+  serializeNode: jest.fn()
 }));
 
 describe('NodeHelpers', () => {
@@ -89,7 +89,7 @@ describe('NodeHelpers', () => {
             documentWithVariousNodes.nodes['parent-of-linked-node'].data
               .linkedNodes || {}
           ),
-          ...documentWithVariousNodes.nodes['linked-node'].data.nodes,
+          ...documentWithVariousNodes.nodes['linked-node'].data.nodes
         ]);
       });
     });
@@ -102,7 +102,7 @@ describe('NodeHelpers', () => {
           )
         ).toStrictEqual([
           ...documentWithVariousNodes.nodes['canvas-node-reject-outgoing-dnd']
-            .data.nodes,
+            .data.nodes
         ]);
       });
     });
@@ -130,7 +130,7 @@ describe('NodeHelpers', () => {
     it('should return parent node id', () => {
       expect(helper(secondaryButton.id).ancestors(true)).toStrictEqual([
         card.id,
-        rootNode.id,
+        rootNode.id
       ]);
     });
   });
@@ -200,7 +200,7 @@ describe('NodeHelpers', () => {
       testHelper = jest.fn().mockImplementation(function (...args) {
         return {
           ...helper(...args),
-          descendants: testDescendants,
+          descendants: testDescendants
         };
       });
 

@@ -7,31 +7,31 @@ import { RenderNodeToElement } from '../RenderNode';
 
 let nodeContext = {
   id: 1,
-  connectors: { connect: identity, drag: identity },
+  connectors: { connect: identity, drag: identity }
 };
 
 let node: Partial<NodeData> = {};
 let onRender = jest.fn();
 
 jest.mock('../../editor/useInternalEditor', () => ({
-  useInternalEditor: () => ({ onRender }),
+  useInternalEditor: () => ({ onRender })
 }));
 
 jest.mock('../../nodes/useInternalNode', () => ({
   useInternalNode: () => ({
     ...node,
-    ...nodeContext,
-  }),
+    ...nodeContext
+  })
 }));
 jest.mock('../../nodes/Canvas', () => ({
-  Canvas: () => null,
+  Canvas: () => null
 }));
 jest.mock('../../nodes/NodeElement', () => ({
-  NodeElement: () => null,
+  NodeElement: () => null
 }));
 
 jest.mock('../SimpleElement', () => ({
-  SimpleElement: () => null,
+  SimpleElement: () => null
 }));
 
 describe('<RenderNode />', () => {

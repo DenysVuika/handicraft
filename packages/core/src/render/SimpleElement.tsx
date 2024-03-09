@@ -4,7 +4,7 @@ import { useNode } from '../hooks/useNode';
 
 export const SimpleElement = ({ render }: any) => {
   const {
-    connectors: { connect, drag },
+    connectors: { connect, drag }
   } = useNode();
 
   return typeof render.type === 'string'

@@ -36,13 +36,13 @@ const defaultProps = {
   shadow: 0,
   radius: 0,
   width: '100%',
-  height: 'auto',
+  height: 'auto'
 };
 
 export const Container = (props: Partial<ContainerProps>) => {
   props = {
     ...defaultProps,
-    ...props,
+    ...props
   };
   const {
     flexDirection,
@@ -55,7 +55,7 @@ export const Container = (props: Partial<ContainerProps>) => {
     margin,
     shadow,
     radius,
-    children,
+    children
   } = props;
   return (
     <Resizer
@@ -73,7 +73,7 @@ export const Container = (props: Partial<ContainerProps>) => {
             ? 'none'
             : `0px 3px 100px ${shadow}px rgba(0, 0, 0, 0.13)`,
         borderRadius: `${radius}px`,
-        flex: fillSpace === 'yes' ? 1 : 'unset',
+        flex: fillSpace === 'yes' ? 1 : 'unset'
       }}
     >
       {children}
@@ -85,9 +85,9 @@ Container.craft = {
   displayName: 'Container',
   props: defaultProps,
   rules: {
-    canDrag: () => true,
+    canDrag: () => true
   },
   related: {
-    toolbar: ContainerSettings,
-  },
+    toolbar: ContainerSettings
+  }
 };

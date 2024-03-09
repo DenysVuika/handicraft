@@ -18,7 +18,7 @@ export const ButtonSettings = () => {
                   alignItems: 'center',
                   textAlign: 'center',
                   width: '1.5rem',
-                  height: '1.5rem',
+                  height: '1.5rem'
                 }}
                 className="app-shadow-md app-rounded-full"
               >
@@ -26,7 +26,7 @@ export const ButtonSettings = () => {
                   style={{
                     color: color && `rgba(${Object.values(color)})`,
                     width: '100%',
-                    textAlign: 'center',
+                    textAlign: 'center'
                   }}
                 >
                   T

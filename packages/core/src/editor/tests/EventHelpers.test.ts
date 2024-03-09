@@ -7,8 +7,8 @@ const selectedNodeIds = ['node-a', 'node-b', 'node-c'];
 const state = {
   events: {
     selected: new Set(selectedNodeIds),
-    hovered: new Set(),
-  },
+    hovered: new Set()
+  }
 };
 
 describe('EventHelpers', () => {

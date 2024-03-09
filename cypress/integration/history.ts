@@ -95,7 +95,7 @@ describe('Test History', () => {
 
     cy.getByTestId('card-top-text-1').as('card-top-text-1');
     cy.get('@text').dragAndDrop('@card-top-text-1', {
-      position: 'below',
+      position: 'below'
     });
 
     // ... so we can verify that the remaining redo gets overwritten correctly
@@ -148,10 +148,10 @@ describe('Test History', () => {
       'toolbox-button',
       'toolbox-text',
       'toolbox-container',
-      'toolbox-card',
+      'toolbox-card'
     ].forEach((testId) => {
       cy.getByTestId(testId).dragAndDrop('@root', {
-        position: 'inside',
+        position: 'inside'
       });
     });
 

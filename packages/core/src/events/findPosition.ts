@@ -9,7 +9,7 @@ export default function findPosition(
   let result: DropPosition = {
     parent,
     index: 0,
-    where: 'before',
+    where: 'before'
   };
 
   let leftLimit = 0,

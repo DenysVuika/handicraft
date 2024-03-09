@@ -12,7 +12,7 @@ export const HISTORY_ACTIONS = {
   THROTTLE: 'HISTORY_THROTTLE',
   IGNORE: 'HISTORY_IGNORE',
   MERGE: 'HISTORY_MERGE',
-  CLEAR: 'HISTORY_CLEAR',
+  CLEAR: 'HISTORY_CLEAR'
 };
 
 export class History {
@@ -29,7 +29,7 @@ export class History {
     this.timeline[this.pointer] = {
       patches,
       inversePatches,
-      timestamp: Date.now(),
+      timestamp: Date.now()
     };
   }
 
@@ -46,7 +46,7 @@ export class History {
       const {
         patches: currPatches,
         inversePatches: currInversePatches,
-        timestamp,
+        timestamp
       } = this.timeline[this.pointer];
 
       const now = new Date();
@@ -56,7 +56,7 @@ export class History {
         this.timeline[this.pointer] = {
           timestamp,
           patches: [...currPatches, ...patches],
-          inversePatches: [...inversePatches, ...currInversePatches],
+          inversePatches: [...inversePatches, ...currInversePatches]
         };
         return;
       }
@@ -74,13 +74,13 @@ export class History {
       const {
         patches: currPatches,
         inversePatches: currInversePatches,
-        timestamp,
+        timestamp
       } = this.timeline[this.pointer];
 
       this.timeline[this.pointer] = {
         timestamp,
         patches: [...currPatches, ...patches],
-        inversePatches: [...inversePatches, ...currInversePatches],
+        inversePatches: [...inversePatches, ...currInversePatches]
       };
       return;
     }

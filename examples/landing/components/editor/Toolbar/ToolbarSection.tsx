@@ -2,7 +2,7 @@ import { useNode } from '@craftjs/core';
 import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import MuiAccordionSummary, {
-  AccordionSummaryProps,
+  AccordionSummaryProps
 } from '@mui/material/AccordionSummary';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
@@ -16,18 +16,18 @@ const Accordion = styled((props: AccordionProps) => (
   background: 'transparent',
   boxShadow: 'none',
   '&:before': {
-    backgroundColor: 'rgba(0, 0, 0, 0.05)',
+    backgroundColor: 'rgba(0, 0, 0, 0.05)'
   },
   '&.Mui-expanded': {
     margin: '0 0',
     minHeight: '40px',
     '&:before': {
-      opacity: '1',
+      opacity: '1'
     },
     '& + .MuiAccordion-root:before': {
-      display: 'block',
-    },
-  },
+      display: 'block'
+    }
+  }
 }));
 
 const AccordionSummary = styled((props: AccordionSummaryProps) => (
@@ -37,8 +37,8 @@ const AccordionSummary = styled((props: AccordionSummaryProps) => (
   padding: 0,
   display: 'flex',
   '& .MuiAccordionSummary-content': {
-    margin: '0px',
-  },
+    margin: '0px'
+  }
 }));
 
 export const ToolbarSection = ({ title, props, summary, children }: any) => {
@@ -48,7 +48,7 @@ export const ToolbarSection = ({ title, props, summary, children }: any) => {
       props.reduce((res: any, key: any) => {
         res[key] = node.data.props[key] || null;
         return res;
-      }, {}),
+      }, {})
   }));
   return (
     <Accordion>
@@ -57,7 +57,7 @@ export const ToolbarSection = ({ title, props, summary, children }: any) => {
           style={{
             paddingLeft: '1.5rem',
             paddingRight: '1.5rem',
-            width: '100%',
+            width: '100%'
           }}
         >
           <Grid container direction="row" alignItems="center" spacing={3}>

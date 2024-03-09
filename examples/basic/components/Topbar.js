@@ -10,7 +10,7 @@ import {
   DialogContent,
   DialogActions,
   TextField,
-  Snackbar,
+  Snackbar
 } from '@material-ui/core';
 import copy from 'copy-to-clipboard';
 import lz from 'lzutf8';
@@ -21,7 +21,7 @@ export const Topbar = () => {
     (state, query) => ({
       enabled: state.options.enabled,
       canUndo: state.options.enabled && query.history.canUndo(),
-      canRedo: state.options.enabled && query.history.canRedo(),
+      canRedo: state.options.enabled && query.history.canRedo()
     })
   );
 
@@ -135,7 +135,7 @@ export const Topbar = () => {
             autoHideDuration={1000}
             anchorOrigin={{
               vertical: 'bottom',
-              horizontal: 'center',
+              horizontal: 'center'
             }}
             open={!!snackbarMessage}
             onClose={() => setSnackbarMessage(null)}

@@ -20,8 +20,8 @@ export function parseNodeFromJSX(
     {
       data: {
         type: actualType,
-        props: { ...element.props },
-      },
+        props: { ...element.props }
+      }
     },
     (node) => {
       if (normalize) {

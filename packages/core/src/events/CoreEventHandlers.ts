@@ -21,7 +21,7 @@ export class CoreEventHandlers<O = {}> extends EventHandlers<
         el: HTMLElement,
         UserElement: React.ReactElement | (() => NodeTree | React.ReactElement),
         options?: Partial<CreateHandlerOptions>
-      ) => {},
+      ) => {}
     };
   }
 }

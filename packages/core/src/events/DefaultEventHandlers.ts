@@ -103,9 +103,8 @@ export class DefaultEventHandlers<O = {}> extends CoreEventHandlers<
           const selectedElementIds = query.getEvent('selected').all();
 
           const isMultiSelect = this.options.isMultiSelectEnabled(e);
-          const isNodeAlreadySelected = this.currentSelectedElementIds.includes(
-            id
-          );
+          const isNodeAlreadySelected =
+            this.currentSelectedElementIds.includes(id);
 
           let newSelectedElementIds = [...selectedElementIds];
 
@@ -212,9 +211,8 @@ export class DefaultEventHandlers<O = {}> extends CoreEventHandlers<
             let selectedElementIds = query.getEvent('selected').all();
 
             const isMultiSelect = this.options.isMultiSelectEnabled(e);
-            const isNodeAlreadySelected = this.currentSelectedElementIds.includes(
-              id
-            );
+            const isNodeAlreadySelected =
+              this.currentSelectedElementIds.includes(id);
 
             if (!isNodeAlreadySelected) {
               if (isMultiSelect) {
@@ -239,7 +237,7 @@ export class DefaultEventHandlers<O = {}> extends CoreEventHandlers<
 
             this.dragTarget = {
               type: 'existing',
-              nodes: selectedElementIds,
+              nodes: selectedElementIds
             };
 
             this.positioner = new Positioner(
@@ -307,7 +305,7 @@ export class DefaultEventHandlers<O = {}> extends CoreEventHandlers<
             );
             this.dragTarget = {
               type: 'new',
-              tree,
+              tree
             };
 
             this.positioner = new Positioner(
@@ -344,7 +342,7 @@ export class DefaultEventHandlers<O = {}> extends CoreEventHandlers<
           unbindDragStart();
           unbindDragEnd();
         };
-      },
+      }
     };
   }
 

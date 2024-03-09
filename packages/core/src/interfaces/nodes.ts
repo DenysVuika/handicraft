@@ -106,16 +106,15 @@ type NodeObjSelector = Node | Node[];
 export enum NodeSelectorType {
   Any,
   Id,
-  Obj,
+  Obj
 }
 
-export type NodeSelector<
-  T extends NodeSelectorType = NodeSelectorType.Any
-> = T extends NodeSelectorType.Id
-  ? NodeIdSelector
-  : T extends NodeSelectorType.Obj
-  ? NodeObjSelector
-  : NodeIdSelector | NodeObjSelector;
+export type NodeSelector<T extends NodeSelectorType = NodeSelectorType.Any> =
+  T extends NodeSelectorType.Id
+    ? NodeIdSelector
+    : T extends NodeSelectorType.Obj
+      ? NodeObjSelector
+      : NodeIdSelector | NodeObjSelector;
 
 export type NodeSelectorWrapper = {
   node: Node;

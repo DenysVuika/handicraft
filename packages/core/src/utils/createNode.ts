@@ -7,7 +7,7 @@ import {
   Element,
   Canvas,
   elementPropToNodeData,
-  deprecateCanvasComponent,
+  deprecateCanvasComponent
 } from '../nodes';
 import { NodeProvider } from '../nodes/NodeContext';
 
@@ -35,29 +35,29 @@ export function createNode(
       hidden: false,
       nodes: [],
       linkedNodes: {},
-      ...newNode.data,
+      ...newNode.data
     },
     info: {},
     related: {},
     events: {
       selected: false,
       dragged: false,
-      hovered: false,
+      hovered: false
     },
     rules: {
       canDrag: () => true,
       canDrop: () => true,
       canMoveIn: () => true,
-      canMoveOut: () => true,
+      canMoveOut: () => true
     },
-    dom: null,
+    dom: null
   };
 
   // @ts-ignore
   if (node.data.type === Element || node.data.type === Canvas) {
     const mergedProps = {
       ...defaultElementProps,
-      ...node.data.props,
+      ...node.data.props
     };
 
     node.data.props = Object.keys(node.data.props).reduce((props, key) => {
@@ -99,12 +99,12 @@ export function createNode(
 
     node.data.props = {
       ...(userComponentConfig.props || userComponentConfig.defaultProps || {}),
-      ...node.data.props,
+      ...node.data.props
     };
 
     node.data.custom = {
       ...(userComponentConfig.custom || {}),
-      ...node.data.custom,
+      ...node.data.custom
     };
 
     if (
@@ -125,7 +125,7 @@ export function createNode(
     if (userComponentConfig.related) {
       const relatedNodeContext = {
         id: node.id,
-        related: true,
+        related: true
       };
 
       Object.keys(userComponentConfig.related).forEach((comp) => {

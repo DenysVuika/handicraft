@@ -9,7 +9,7 @@ import {
   isPercentage,
   pxToPercent,
   percentToPx,
-  getElementDimensions,
+  getElementDimensions
 } from '../../utils/numToMeasurement';
 
 const Indicators = styled.div<{ bound?: 'row' | 'column' }>`
@@ -91,13 +91,13 @@ export const Resizer = ({ propKey, children, ...props }: any) => {
     nodeHeight,
     parent,
     active,
-    inNodeContext,
+    inNodeContext
   } = useNode((node) => ({
     parent: node.data.parent,
     active: node.events.selected,
     nodeWidth: node.data.props[propKey.width],
     nodeHeight: node.data.props[propKey.height],
-    fillSpace: node.data.props.fillSpace,
+    fillSpace: node.data.props.fillSpace
   }));
 
   const { isRootNode, parentDirection } = useEditor((state, query) => {
@@ -106,7 +106,7 @@ export const Resizer = ({ propKey, children, ...props }: any) => {
         parent &&
         state.nodes[parent] &&
         state.nodes[parent].data.props.flexDirection,
-      isRootNode: query.node(id).isRoot(),
+      isRootNode: query.node(id).isRoot()
     };
   });
 
@@ -122,7 +122,7 @@ export const Resizer = ({ propKey, children, ...props }: any) => {
    */
   const [internalDimensions, setInternalDimensions] = useState({
     width: nodeWidth,
-    height: nodeHeight,
+    height: nodeHeight
   });
 
   const updateInternalDimensionsInPx = useCallback(() => {
@@ -141,7 +141,7 @@ export const Resizer = ({ propKey, children, ...props }: any) => {
 
     setInternalDimensions({
       width,
-      height,
+      height
     });
   }, []);
 
@@ -149,7 +149,7 @@ export const Resizer = ({ propKey, children, ...props }: any) => {
     const { width: nodeWidth, height: nodeHeight } = nodeDimensions.current;
     setInternalDimensions({
       width: nodeWidth,
-      height: nodeHeight,
+      height: nodeHeight
     });
   }, []);
 
@@ -162,7 +162,7 @@ export const Resizer = ({ propKey, children, ...props }: any) => {
 
     return {
       width: currentWidth + parseInt(width),
-      height: currentHeight + parseInt(height),
+      height: currentHeight + parseInt(height)
     };
   };
 
@@ -189,7 +189,7 @@ export const Resizer = ({ propKey, children, ...props }: any) => {
         'topLeft',
         'topRight',
         'bottomLeft',
-        'bottomRight',
+        'bottomRight'
       ].reduce((acc: any, key) => {
         acc[key] = active && inNodeContext;
         return acc;
@@ -197,8 +197,8 @@ export const Resizer = ({ propKey, children, ...props }: any) => {
       className={cx([
         {
           'app-m-auto': isRootNode,
-          'app-flex': true,
-        },
+          'app-flex': true
+        }
       ])}
       ref={(ref) => {
         if (ref) {
@@ -215,7 +215,7 @@ export const Resizer = ({ propKey, children, ...props }: any) => {
         if (!dom) return;
         editingDimensions.current = {
           width: dom.getBoundingClientRect().width,
-          height: dom.getBoundingClientRect().height,
+          height: dom.getBoundingClientRect().height
         };
         isResizing.current = true;
       }}

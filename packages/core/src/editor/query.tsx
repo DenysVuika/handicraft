@@ -4,7 +4,7 @@ import {
   getDOMInfo,
   deprecationWarning,
   DEPRECATED_ROOT_NODE,
-  ROOT_NODE,
+  ROOT_NODE
 } from '@craftjs/utils';
 import React from 'react';
 import invariant from 'tiny-invariant';
@@ -25,7 +25,7 @@ import {
   NodeTree,
   SerializedNodes,
   SerializedNode,
-  FreshNode,
+  FreshNode
 } from '../interfaces';
 import { createNode } from '../utils/createNode';
 import { deserializeNode } from '../utils/deserializeNode';
@@ -71,7 +71,7 @@ export function QueryMethods(state: EditorState) {
             if (dom) {
               const info: NodeInfo = {
                 id,
-                ...getDOMInfo(dom),
+                ...getDOMInfo(dom)
               };
 
               result.push(info);
@@ -93,9 +93,9 @@ export function QueryMethods(state: EditorState) {
       const output: Indicator = {
         placement: {
           ...dropAction,
-          currentNode,
+          currentNode
         },
-        error: null,
+        error: null
       };
 
       const sourceNodes = getNodesFromSelector(state.nodes, source);
@@ -142,7 +142,7 @@ export function QueryMethods(state: EditorState) {
     getSerializedNodes(): SerializedNodes {
       const nodePairs = Object.keys(state.nodes).map((id: NodeId) => [
         id,
-        this.node(id).toSerializedNode(),
+        this.node(id).toSerializedNode()
       ]);
       return fromEntries(nodePairs);
     },
@@ -187,7 +187,7 @@ export function QueryMethods(state: EditorState) {
         }
 
         return mergeTrees(node, childrenNodes);
-      },
+      }
     }),
 
     parseSerializedNode: (serializedNode: SerializedNode) => ({
@@ -199,17 +199,17 @@ export function QueryMethods(state: EditorState) {
 
         if (id) {
           deprecationWarning(`query.parseSerializedNode(...).toNode(id)`, {
-            suggest: `query.parseSerializedNode(...).toNode(node => node.id = id)`,
+            suggest: `query.parseSerializedNode(...).toNode(node => node.id = id)`
           });
         }
 
         return _()
           .parseFreshNode({
             ...(id ? { id } : {}),
-            data,
+            data
           })
           .toNode(!id && normalize);
-      },
+      }
     }),
 
     parseFreshNode: (node: FreshNode) => ({
@@ -228,12 +228,12 @@ export function QueryMethods(state: EditorState) {
             normalize(node);
           }
         });
-      },
+      }
     }),
 
     createNode(reactElement: React.ReactElement, extras?: any) {
       deprecationWarning(`query.createNode(${reactElement})`, {
-        suggest: `query.parseReactElement(${reactElement}).toNodeTree()`,
+        suggest: `query.parseReactElement(${reactElement}).toNodeTree()`
       });
 
       const tree = this.parseReactElement(reactElement).toNodeTree();
@@ -251,7 +251,7 @@ export function QueryMethods(state: EditorState) {
       if (extras.data) {
         node.data = {
           ...node.data,
-          ...extras.data,
+          ...extras.data
         };
       }
 
@@ -260,6 +260,6 @@ export function QueryMethods(state: EditorState) {
 
     getState() {
       return state;
-    },
+    }
   };
 }

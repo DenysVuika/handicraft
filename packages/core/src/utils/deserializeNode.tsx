@@ -8,7 +8,7 @@ import {
   NodeData,
   SerializedNode,
   ReducedComp,
-  ReduceCompType,
+  ReduceCompType
 } from '../interfaces';
 import { Resolver } from '../interfaces';
 import { Canvas } from '../nodes/Canvas';
@@ -21,8 +21,8 @@ const restoreType = (type: ReduceCompType, resolver: Resolver) =>
       ? Canvas
       : resolver[type.resolvedName]
     : typeof type === 'string'
-    ? type
-    : null;
+      ? type
+      : null;
 
 export const deserializeComp = (
   data: ReducedComp,
@@ -62,13 +62,13 @@ export const deserializeComp = (
 
   const jsx = {
     ...React.createElement(main, {
-      ...props,
-    }),
+      ...props
+    })
   };
 
   return {
     ...jsx,
-    name: resolveComponent(resolver, jsx.type),
+    name: resolveComponent(resolver, jsx.type)
   };
 };
 
@@ -91,10 +91,10 @@ export const deserializeNode = (
     ).replace('%availableComponents%', Object.keys(resolver).join(', '))
   );
 
-  const { type, name, props } = (deserializeComp(
+  const { type, name, props } = deserializeComp(
     data,
     resolver
-  ) as unknown) as NodeData;
+  ) as unknown as NodeData;
 
   const { parent, custom, displayName, isCanvas, nodes, hidden } = nodeData;
 
@@ -110,6 +110,6 @@ export const deserializeNode = (
     hidden: !!hidden,
     parent,
     linkedNodes: linkedNodes || {},
-    nodes: nodes || [],
+    nodes: nodes || []
   };
 };

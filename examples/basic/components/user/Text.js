@@ -7,10 +7,10 @@ export const Text = ({ text, fontSize, textAlign, ...props }) => {
   const {
     connectors: { connect, drag },
     selected,
-    actions: { setProp },
+    actions: { setProp }
   } = useNode((state) => ({
     selected: state.events.selected,
-    dragged: state.events.dragged,
+    dragged: state.events.dragged
   }));
 
   const [editable, setEditable] = useState(false);
@@ -49,10 +49,10 @@ export const Text = ({ text, fontSize, textAlign, ...props }) => {
 const TextSettings = () => {
   const {
     actions: { setProp },
-    fontSize,
+    fontSize
   } = useNode((node) => ({
     text: node.data.props.text,
-    fontSize: node.data.props.fontSize,
+    fontSize: node.data.props.fontSize
   }));
 
   return (
@@ -75,12 +75,12 @@ const TextSettings = () => {
 
 export const TextDefaultProps = {
   text: 'Hi',
-  fontSize: 20,
+  fontSize: 20
 };
 
 Text.craft = {
   props: TextDefaultProps,
   related: {
-    settings: TextSettings,
-  },
+    settings: TextSettings
+  }
 };

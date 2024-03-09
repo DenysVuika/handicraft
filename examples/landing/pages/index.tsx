@@ -12,8 +12,8 @@ import { Video } from '../components/selectors/Video';
 
 const theme = createTheme({
   typography: {
-    fontFamily: ['Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'].join(','),
-  },
+    fontFamily: ['Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'].join(',')
+  }
 });
 
 function App() {
@@ -32,7 +32,7 @@ function App() {
             Custom3BtnDrop,
             OnlyButtons,
             Button,
-            Video,
+            Video
           }}
           enabled={false}
           onRender={RenderNode}
@@ -105,7 +105,7 @@ function App() {
                       r: 76,
                       g: 78,
                       b: 78,
-                      a: 0,
+                      a: 0
                     }}
                     is={Container}
                     flexDirection="row"
@@ -121,7 +121,7 @@ function App() {
                         r: 0,
                         g: 0,
                         b: 0,
-                        a: 0,
+                        a: 0
                       }}
                       is={Container}
                       alignItems="center"
@@ -140,7 +140,7 @@ function App() {
                           r: 76,
                           g: 78,
                           b: 78,
-                          a: 1,
+                          a: 1
                         }}
                         shadow={25}
                         width="90%"
@@ -157,7 +157,7 @@ function App() {
                             r: 76,
                             g: 78,
                             b: 78,
-                            a: 1,
+                            a: 1
                           }}
                           shadow={50}
                           width="80%"
@@ -174,7 +174,7 @@ function App() {
                               r: 76,
                               g: 78,
                               b: 78,
-                              a: 1,
+                              a: 1
                             }}
                             shadow={50}
                             width="60%"
@@ -191,7 +191,7 @@ function App() {
                         r: 0,
                         g: 0,
                         b: 0,
-                        a: 0,
+                        a: 0
                       }}
                       is={Container}
                       padding={['0', '0', '0', '20']}
@@ -206,7 +206,7 @@ function App() {
                           r: '255',
                           g: '255',
                           b: '255',
-                          a: '1',
+                          a: '1'
                         }}
                         margin={['0', '0', '18', '0']}
                         fontSize="20"
@@ -217,7 +217,7 @@ function App() {
                           r: '255',
                           g: '255',
                           b: '255',
-                          a: '0.8',
+                          a: '0.8'
                         }}
                         fontSize="14"
                         fontWeight="400"
@@ -233,7 +233,7 @@ function App() {
                     r: 234,
                     g: 245,
                     b: 245,
-                    a: 1,
+                    a: 1
                   }}
                   flexDirection="column"
                   width="100%"
@@ -248,7 +248,7 @@ function App() {
                       r: 76,
                       g: 78,
                       b: 78,
-                      a: 0,
+                      a: 0
                     }}
                     is={Container}
                     flexDirection="column"
@@ -262,7 +262,7 @@ function App() {
                         r: '46',
                         g: '47',
                         b: '47',
-                        a: '1',
+                        a: '1'
                       }}
                       fontSize="23"
                       text="Programmatic drag &amp; drop"
@@ -279,7 +279,7 @@ function App() {
                       r: 76,
                       g: 78,
                       b: 78,
-                      a: 0,
+                      a: 0
                     }}
                     is={Container}
                     flexDirection="row"
@@ -294,7 +294,7 @@ function App() {
                         r: 0,
                         g: 0,
                         b: 0,
-                        a: 0,
+                        a: 0
                       }}
                       is={Container}
                       padding={['0', '20', '0', '0']}
@@ -307,7 +307,7 @@ function App() {
                           r: 119,
                           g: 219,
                           b: 165,
-                          a: 1,
+                          a: 1
                         }}
                         height="auto"
                         width="100%"
@@ -322,7 +322,7 @@ function App() {
                         r: 0,
                         g: 0,
                         b: 0,
-                        a: 0,
+                        a: 0
                       }}
                       is={Container}
                       padding={['0', '0', '0', '20']}
@@ -335,7 +335,7 @@ function App() {
                           r: 108,
                           g: 126,
                           b: 131,
-                          a: 1,
+                          a: 1
                         }}
                         height="125px"
                         width="100%"
@@ -350,7 +350,7 @@ function App() {
                           r: 134,
                           g: 187,
                           b: 201,
-                          a: 1,
+                          a: 1
                         }}
                         height="auto"
                         width="100%"

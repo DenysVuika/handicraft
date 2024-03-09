@@ -19,14 +19,14 @@ export const SidebarDiv = styled.div<{ enabled: boolean }>`
 const SidebarContent = styled.div({
   display: 'flex',
   flexDirection: 'column',
-  height: '100%',
+  height: '100%'
 });
 
 export const Sidebar = () => {
   const [layersVisible, setLayerVisible] = useState(true);
   const [toolbarVisible, setToolbarVisible] = useState(true);
   const { enabled } = useEditor((state) => ({
-    enabled: state.options.enabled,
+    enabled: state.options.enabled
   }));
 
   return (

@@ -11,7 +11,7 @@ export const RenderEditorIndicator = () => {
     (state) => ({
       indicator: state.indicator,
       indicatorOptions: state.options.indicator,
-      enabled: state.options.enabled,
+      enabled: state.options.enabled
     })
   );
 
@@ -46,8 +46,8 @@ export const RenderEditorIndicator = () => {
       backgroundColor: indicator.error
         ? indicatorOptions.error
         : indicatorOptions.success,
-      transition: indicatorOptions.transition || '0.2s ease-in',
+      transition: indicatorOptions.transition || '0.2s ease-in'
     },
-    parentDom: indicator.placement.parent.dom,
+    parentDom: indicator.placement.parent.dom
   });
 };

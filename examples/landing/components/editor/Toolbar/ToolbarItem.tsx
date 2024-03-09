@@ -12,7 +12,7 @@ const Title = styled.h4({
   margin: 0,
   fontSize: '0.875rem',
   lineHeight: '1.25rem',
-  color: 'rgba(128, 128, 128, 1)',
+  color: 'rgba(128, 128, 128, 1)'
 });
 
 export type ToolbarItemProps = {
@@ -35,9 +35,9 @@ export const ToolbarItem = ({
 }: ToolbarItemProps) => {
   const {
     actions: { setProp },
-    propValue,
+    propValue
   } = useNode((node) => ({
-    propValue: node.data.props[propKey],
+    propValue: node.data.props[propKey]
   }));
   const value = Array.isArray(propValue) ? propValue[index] : propValue;
 

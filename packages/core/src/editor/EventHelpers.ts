@@ -28,6 +28,6 @@ export function EventHelpers(state: EditorState, eventType: NodeEventTypes) {
     },
     raw() {
       return event;
-    },
+    }
   };
 }

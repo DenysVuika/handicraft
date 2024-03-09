@@ -6,7 +6,7 @@ import { createNode } from '../../utils/createNode';
 import {
   createTestState,
   createTestNodes,
-  expectEditorState,
+  expectEditorState
 } from '../../utils/testHelpers';
 import { ActionMethods } from '../actions';
 
@@ -23,12 +23,12 @@ describe('actions.add', () => {
     rootNode = {
       id: 'node-root',
       data: {
-        type: 'div',
-      },
+        type: 'div'
+      }
     };
 
     state = createTestState({
-      nodes: rootNode,
+      nodes: rootNode
     });
   });
   it('should throw if we give a parentId that doesnt exist', () => {
@@ -38,8 +38,8 @@ describe('actions.add', () => {
           createNode({
             id: 'node-test',
             data: {
-              type: 'span',
-            },
+              type: 'span'
+            }
           })
         )
       )
@@ -56,8 +56,8 @@ describe('actions.add', () => {
     const node = createNode({
       id: 'node-btn',
       data: {
-        type: 'button',
-      },
+        type: 'button'
+      }
     });
 
     const newState = Actions(state)((actions) =>
@@ -69,7 +69,7 @@ describe('actions.add', () => {
     expectEditorState(
       newState,
       createTestState({
-        nodes: rootNode,
+        nodes: rootNode
       })
     );
   });
@@ -77,15 +77,15 @@ describe('actions.add', () => {
     const primaryButton = createNode({
       id: 'primary-button',
       data: {
-        type: 'button',
-      },
+        type: 'button'
+      }
     });
 
     const secondaryButton = createNode({
       id: 'secondary-button',
       data: {
-        type: 'button',
-      },
+        type: 'button'
+      }
     });
 
     const newState = Actions(state)((actions) =>
@@ -97,7 +97,7 @@ describe('actions.add', () => {
     expectEditorState(
       newState,
       createTestState({
-        nodes: rootNode,
+        nodes: rootNode
       })
     );
   });
@@ -110,27 +110,27 @@ describe('actions.addNodeTree', () => {
     rootNode = {
       id: 'node-root',
       data: {
-        type: 'div',
-      },
+        type: 'div'
+      }
     };
 
     state = createTestState({
-      nodes: rootNode,
+      nodes: rootNode
     });
   });
 
   it('should be able to add a single node at 0', () => {
     const node = createNode({
       data: {
-        type: 'button',
-      },
+        type: 'button'
+      }
     });
 
     const newState = Actions(state)((actions) =>
       actions.addNodeTree(
         {
           rootNodeId: node.id,
-          nodes: { [node.id]: node },
+          nodes: { [node.id]: node }
         },
         rootNode.id
       )
@@ -141,7 +141,7 @@ describe('actions.addNodeTree', () => {
     expectEditorState(
       newState,
       createTestState({
-        nodes: rootNode,
+        nodes: rootNode
       })
     );
   });
@@ -154,18 +154,18 @@ describe('actions.addNodeTree', () => {
           {
             id: 'card-child',
             data: {
-              type: 'h1',
-            },
-          },
-        ],
-      },
+              type: 'h1'
+            }
+          }
+        ]
+      }
     };
 
     const newState = Actions(state)((actions) =>
       actions.addNodeTree(
         {
           rootNodeId: 'card',
-          nodes: createTestNodes(card),
+          nodes: createTestNodes(card)
         },
         rootNode.id
       )
@@ -176,7 +176,7 @@ describe('actions.addNodeTree', () => {
     expectEditorState(
       newState,
       createTestState({
-        nodes: rootNode,
+        nodes: rootNode
       })
     );
   });
@@ -189,12 +189,12 @@ describe('actions.delete', () => {
     rootNode = {
       id: 'node-root',
       data: {
-        type: 'div',
-      },
+        type: 'div'
+      }
     };
 
     state = createTestState({
-      nodes: rootNode,
+      nodes: rootNode
     });
   });
 
@@ -212,17 +212,17 @@ describe('actions.delete', () => {
     const node = {
       id: 'node-test',
       data: {
-        type: 'button',
-      },
+        type: 'button'
+      }
     };
     const state = createTestState({
       nodes: {
         ...rootNode,
         data: {
           ...rootNode.data,
-          nodes: [node],
-        },
-      },
+          nodes: [node]
+        }
+      }
     });
 
     const newState = Actions(state)((actions) => actions.delete(node.id));
@@ -230,7 +230,7 @@ describe('actions.delete', () => {
     expectEditorState(
       newState,
       createTestState({
-        nodes: rootNode,
+        nodes: rootNode
       })
     );
   });
@@ -243,11 +243,11 @@ describe('actions.delete', () => {
           {
             id: 'card-child',
             data: {
-              type: 'h1',
-            },
-          },
-        ],
-      },
+              type: 'h1'
+            }
+          }
+        ]
+      }
     };
 
     const state = createTestState({
@@ -255,9 +255,9 @@ describe('actions.delete', () => {
         ...rootNode,
         data: {
           ...rootNode.data,
-          nodes: [card],
-        },
-      },
+          nodes: [card]
+        }
+      }
     });
 
     const newState = Actions(state)((actions) => actions.delete(card.id));
@@ -265,7 +265,7 @@ describe('actions.delete', () => {
     expectEditorState(
       newState,
       createTestState({
-        nodes: rootNode,
+        nodes: rootNode
       })
     );
   });
@@ -281,19 +281,19 @@ describe('actions.clearEvents', () => {
           {
             id: 'node-b',
             data: {
-              type: 'span',
-            },
-          },
-        ],
-      },
+              type: 'span'
+            }
+          }
+        ]
+      }
     };
 
     const state = createTestState({
       nodes,
       events: {
         selected: new Set(['node-a']),
-        hovered: new Set(['node-b']),
-      },
+        hovered: new Set(['node-b'])
+      }
     });
 
     const newState = Actions(state)((actions) => actions.clearEvents());
@@ -301,7 +301,7 @@ describe('actions.clearEvents', () => {
     expectEditorState(
       newState,
       createTestState({
-        nodes,
+        nodes
       })
     );
   });
@@ -317,11 +317,11 @@ describe('actions.replaceNodes', () => {
           {
             id: 'node-btn',
             data: {
-              type: 'button',
-            },
-          },
-        ],
-      },
+              type: 'button'
+            }
+          }
+        ]
+      }
     };
 
     const newState = Actions(createTestState())((actions) =>
@@ -343,15 +343,15 @@ describe('actions.reset', () => {
             header: {
               id: 'node-header',
               data: {
-                type: 'section',
-              },
-            },
-          },
-        },
+                type: 'section'
+              }
+            }
+          }
+        }
       },
       events: {
-        selected: new Set(['node-header']),
-      },
+        selected: new Set(['node-header'])
+      }
     });
 
     const newState = Actions(state)((actions) => actions.reset());
@@ -370,8 +370,8 @@ describe('actions.deserialize', () => {
           {
             id: 'btn',
             data: {
-              type: 'button',
-            },
+              type: 'button'
+            }
           },
           {
             id: 'container',
@@ -381,18 +381,18 @@ describe('actions.deserialize', () => {
                 header: {
                   id: 'header',
                   data: {
-                    type: 'div',
-                  },
-                },
-              },
-            },
-          },
-        ],
-      },
+                    type: 'div'
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
     };
 
     const serialized = mapValues(createTestNodes(nodes), ({ data }) => ({
-      ...data,
+      ...data
     }));
 
     const newState = Actions(createTestState())((actions) =>
@@ -402,7 +402,7 @@ describe('actions.deserialize', () => {
     expectEditorState(
       newState,
       createTestState({
-        nodes,
+        nodes
       })
     );
   });
@@ -421,8 +421,8 @@ describe('actions.move', () => {
             {
               id: 'node-a',
               data: {
-                type: 'button',
-              },
+                type: 'button'
+              }
             },
             {
               id: 'node-b',
@@ -433,15 +433,15 @@ describe('actions.move', () => {
                   {
                     id: 'node-c',
                     data: {
-                      type: 'button',
-                    },
-                  },
-                ],
-              },
-            },
-          ],
-        },
-      },
+                      type: 'button'
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
     });
   });
   it('should be able to move node', () => {
@@ -461,25 +461,25 @@ describe('actions.move', () => {
               {
                 id: 'node-a',
                 data: {
-                  type: 'button',
-                },
+                  type: 'button'
+                }
               },
               {
                 id: 'node-b',
                 data: {
                   type: 'div',
-                  isCanvas: true,
-                },
+                  isCanvas: true
+                }
               },
               {
                 id: 'node-c',
                 data: {
-                  type: 'button',
-                },
-              },
-            ],
-          },
-        },
+                  type: 'button'
+                }
+              }
+            ]
+          }
+        }
       })
     );
   });
@@ -499,8 +499,8 @@ describe('actions.setOptions', () => {
       createTestState({
         options: {
           ...state.options,
-          enabled: false,
-        },
+          enabled: false
+        }
       })
     );
   });
@@ -512,15 +512,15 @@ describe('actions.setNodeEvent', () => {
     nodeA = {
       id: 'node-a',
       data: {
-        type: 'button',
-      },
+        type: 'button'
+      }
     };
 
     nodeB = {
       id: 'node-b',
       data: {
-        type: 'button',
-      },
+        type: 'button'
+      }
     };
 
     state = createTestState({
@@ -528,9 +528,9 @@ describe('actions.setNodeEvent', () => {
         id: 'root',
         data: {
           type: 'div',
-          nodes: [nodeA, nodeB],
-        },
-      },
+          nodes: [nodeA, nodeB]
+        }
+      }
     });
   });
 
@@ -540,10 +540,10 @@ describe('actions.setNodeEvent', () => {
     );
 
     nodeA.events = {
-      selected: true,
+      selected: true
     };
     nodeB.events = {
-      selected: true,
+      selected: true
     };
     expectEditorState(
       newState,
@@ -552,12 +552,12 @@ describe('actions.setNodeEvent', () => {
           id: 'root',
           data: {
             type: 'div',
-            nodes: [nodeA, nodeB],
-          },
+            nodes: [nodeA, nodeB]
+          }
         },
         events: {
-          selected: new Set(['node-a', 'node-b']),
-        },
+          selected: new Set(['node-a', 'node-b'])
+        }
       })
     );
   });
@@ -571,9 +571,9 @@ describe('actions.setProp', () => {
       data: {
         type: 'button',
         props: {
-          color: '#fff',
-        },
-      },
+          color: '#fff'
+        }
+      }
     };
 
     state = createTestState({
@@ -581,9 +581,9 @@ describe('actions.setProp', () => {
         id: 'root',
         data: {
           type: 'div',
-          nodes: [nodeA],
-        },
-      },
+          nodes: [nodeA]
+        }
+      }
     });
   });
 
@@ -601,9 +601,9 @@ describe('actions.setProp', () => {
           id: 'root',
           data: {
             type: 'div',
-            nodes: [nodeA],
-          },
-        },
+            nodes: [nodeA]
+          }
+        }
       })
     );
   });
@@ -618,10 +618,10 @@ describe('actions.setCustom', () => {
         type: 'button',
         custom: {
           css: {
-            color: '#fff',
-          },
-        },
-      },
+            color: '#fff'
+          }
+        }
+      }
     };
 
     state = createTestState({
@@ -629,9 +629,9 @@ describe('actions.setCustom', () => {
         id: 'root',
         data: {
           type: 'div',
-          nodes: [nodeA],
-        },
-      },
+          nodes: [nodeA]
+        }
+      }
     });
   });
 
@@ -649,9 +649,9 @@ describe('actions.setCustom', () => {
           id: 'root',
           data: {
             type: 'div',
-            nodes: [nodeA],
-          },
-        },
+            nodes: [nodeA]
+          }
+        }
       })
     );
   });
@@ -663,8 +663,8 @@ describe('actions.setHidden', () => {
     nodeA = {
       id: 'node-a',
       data: {
-        type: 'button',
-      },
+        type: 'button'
+      }
     };
 
     state = createTestState({
@@ -672,9 +672,9 @@ describe('actions.setHidden', () => {
         id: 'root',
         data: {
           type: 'div',
-          nodes: [nodeA],
-        },
-      },
+          nodes: [nodeA]
+        }
+      }
     });
   });
 
@@ -692,9 +692,9 @@ describe('actions.setHidden', () => {
           id: 'root',
           data: {
             type: 'div',
-            nodes: [nodeA],
-          },
-        },
+            nodes: [nodeA]
+          }
+        }
       })
     );
   });
@@ -706,8 +706,8 @@ describe('actions.setDOM', () => {
     nodeA = {
       id: 'node-a',
       data: {
-        type: 'button',
-      },
+        type: 'button'
+      }
     };
 
     state = createTestState({
@@ -715,9 +715,9 @@ describe('actions.setDOM', () => {
         id: 'root',
         data: {
           type: 'div',
-          nodes: [nodeA],
-        },
-      },
+          nodes: [nodeA]
+        }
+      }
     });
   });
 
@@ -735,9 +735,9 @@ describe('actions.setDOM', () => {
           id: 'root',
           data: {
             type: 'div',
-            nodes: [nodeA],
-          },
-        },
+            nodes: [nodeA]
+          }
+        }
       })
     );
   });
@@ -749,9 +749,9 @@ describe('actions.setIndicator', () => {
     nodeA = {
       id: 'node-a',
       data: {
-        type: 'button',
+        type: 'button'
       },
-      dom: document.createElement('button'),
+      dom: document.createElement('button')
     };
 
     root = {
@@ -759,12 +759,12 @@ describe('actions.setIndicator', () => {
       dom: document.createElement('div'),
       data: {
         type: 'div',
-        nodes: [nodeA],
-      },
+        nodes: [nodeA]
+      }
     };
 
     state = createTestState({
-      nodes: root,
+      nodes: root
     });
   });
 
@@ -774,8 +774,8 @@ describe('actions.setIndicator', () => {
         currentNode: nodeA,
         parent: root,
         index: 0,
-        where: 'after',
-      },
+        where: 'after'
+      }
     };
 
     const newState = Actions(state)((actions) =>
@@ -786,7 +786,7 @@ describe('actions.setIndicator', () => {
       newState,
       createTestState({
         nodes: root,
-        indicator,
+        indicator
       })
     );
   });
@@ -800,12 +800,12 @@ describe('actions.setState', () => {
       dom: document.createElement('div'),
       data: {
         type: 'div',
-        nodes: [],
-      },
+        nodes: []
+      }
     };
 
     state = createTestState({
-      nodes: root,
+      nodes: root
     });
   });
   it('should be able to manipulate state', () => {
@@ -822,8 +822,8 @@ describe('actions.setState', () => {
       createTestState({
         nodes: {
           ...root,
-          dom: newDOM,
-        },
+          dom: newDOM
+        }
       })
     );
   });
@@ -841,8 +841,8 @@ describe('actions.setState', () => {
       createTestState({
         nodes: {
           ...root,
-          dom: newDOM,
-        },
+          dom: newDOM
+        }
       })
     );
   });

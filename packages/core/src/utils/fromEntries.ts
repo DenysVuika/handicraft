@@ -5,7 +5,7 @@ export const fromEntries = (pairs) => {
   return pairs.reduce(
     (accum, [id, value]) => ({
       ...accum,
-      [id]: value,
+      [id]: value
     }),
     {}
   );

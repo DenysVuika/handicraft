@@ -8,7 +8,7 @@ import {
   ERROR_DELETE_TOP_LEVEL_NODE,
   CallbacksFor,
   Delete,
-  ERROR_NOT_IN_RESOLVER,
+  ERROR_NOT_IN_RESOLVER
 } from '@craftjs/utils';
 import invariant from 'tiny-invariant';
 
@@ -25,7 +25,7 @@ import {
   NodeTree,
   SerializedNodes,
   NodeSelector,
-  NodeSelectorType,
+  NodeSelectorType
 } from '../interfaces';
 import { fromEntries } from '../utils/fromEntries';
 import { getNodesFromSelector } from '../utils/getNodesFromSelector';
@@ -66,8 +66,8 @@ const Methods = (
         ...node,
         data: {
           ...node.data,
-          parent: parentId,
-        },
+          parent: parentId
+        }
       };
 
       if (node.data.nodes.length > 0) {
@@ -185,7 +185,7 @@ const Methods = (
       let nodes = [nodeToAdd];
       if (Array.isArray(nodeToAdd)) {
         deprecationWarning('actions.add(node: Node[])', {
-          suggest: 'actions.add(node: Node)',
+          suggest: 'actions.add(node: Node)'
         });
         nodes = nodeToAdd;
       }
@@ -193,9 +193,9 @@ const Methods = (
         addNodeTreeToParent(
           {
             nodes: {
-              [node.id]: node,
+              [node.id]: node
             },
-            rootNodeId: node.id,
+            rootNodeId: node.id
           },
           parentId,
           { type: 'child', index }
@@ -221,7 +221,7 @@ const Methods = (
     delete(selector: NodeSelector<NodeSelectorType.Id>) {
       const targets = getNodesFromSelector(state.nodes, selector, {
         existOnly: true,
-        idOnly: true,
+        idOnly: true
       });
 
       targets.forEach(({ node }) => {
@@ -248,7 +248,7 @@ const Methods = (
           nodeId,
           query
             .parseSerializedNode(dehydratedNodes[id])
-            .toNode((node) => (node.id = nodeId)),
+            .toNode((node) => (node.id = nodeId))
         ];
       });
 
@@ -263,7 +263,7 @@ const Methods = (
      */
     move(selector: NodeSelector, newParentId: NodeId, index: number) {
       const targets = getNodesFromSelector(state.nodes, selector, {
-        existOnly: true,
+        existOnly: true
       });
 
       const newParent = state.nodes[newParentId];
@@ -358,7 +358,7 @@ const Methods = (
 
       const targets = getNodesFromSelector(state.nodes, nodeIdSelector, {
         idOnly: true,
-        existOnly: true,
+        existOnly: true
       });
 
       const nodeIds: Set<NodeId> = new Set(targets.map(({ node }) => node.id));
@@ -379,7 +379,7 @@ const Methods = (
     ) {
       const targets = getNodesFromSelector(state.nodes, selector, {
         idOnly: true,
-        existOnly: true,
+        existOnly: true
       });
 
       targets.forEach(({ node }) => cb(state.nodes[node.id].data.custom));
@@ -430,7 +430,7 @@ const Methods = (
     ) {
       const targets = getNodesFromSelector(state.nodes, selector, {
         idOnly: true,
-        existOnly: true,
+        existOnly: true
       });
 
       targets.forEach(({ node }) => cb(state.nodes[node.id].data.props));
@@ -440,7 +440,7 @@ const Methods = (
       if (nodeIdSelector) {
         const targets = getNodesFromSelector(state.nodes, nodeIdSelector, {
           idOnly: true,
-          existOnly: true,
+          existOnly: true
         });
 
         this.setNodeEvent(
@@ -452,7 +452,7 @@ const Methods = (
       }
 
       this.setNodeEvent('hovered', null);
-    },
+    }
   };
 };
 
@@ -474,6 +474,6 @@ export const ActionMethods = (
 
       // We pass the other actions as the second parameter, so that devs could still make use of the predefined actions
       cb(state, actions);
-    },
+    }
   };
 };

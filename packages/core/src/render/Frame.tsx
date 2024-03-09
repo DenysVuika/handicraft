@@ -13,7 +13,7 @@ export type FrameProps = {
 const RenderRootNode = () => {
   const { timestamp } = useInternalEditor((state) => ({
     timestamp:
-      state.nodes[ROOT_NODE] && state.nodes[ROOT_NODE]._hydrationTimestamp,
+      state.nodes[ROOT_NODE] && state.nodes[ROOT_NODE]._hydrationTimestamp
   }));
 
   if (!timestamp) {
@@ -29,19 +29,19 @@ const RenderRootNode = () => {
 export const Frame: React.FC<React.PropsWithChildren<FrameProps>> = ({
   children,
   json,
-  data,
+  data
 }) => {
   const { actions, query } = useInternalEditor();
 
   if (!!json) {
     deprecationWarning('<Frame json={...} />', {
-      suggest: '<Frame data={...} />',
+      suggest: '<Frame data={...} />'
     });
   }
 
   const initialState = useRef({
     initialChildren: children,
-    initialData: data || json,
+    initialData: data || json
   });
 
   const isInitialChildrenLoadedRef = useRef(false);

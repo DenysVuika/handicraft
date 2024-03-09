@@ -93,7 +93,7 @@ export const Editor: React.FC<React.PropsWithChildren<Partial<Options>>> = ({
   useEffect(() => {
     context.subscribe(
       (_) => ({
-        json: context.query.serialize(),
+        json: context.query.serialize()
       }),
       () => {
         context.query.getOptions().onNodesChange(context.query);

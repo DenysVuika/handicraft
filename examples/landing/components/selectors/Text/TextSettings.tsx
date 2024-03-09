@@ -55,7 +55,7 @@ export const TextSettings = () => {
                 style={{
                   color: color && `rgba(${Object.values(color)})`,
                   textShadow: `0px 0px 2px rgba(0, 0, 0, ${shadow / 100})`,
-                  textAlign: 'right',
+                  textAlign: 'right'
                 }}
               >
                 T

@@ -10,7 +10,7 @@ jest.mock('../createNode', () => ({
   __esModule: true,
   createNode: jest
     .fn()
-    .mockImplementation((...args) => mockedCreateNode(...args)),
+    .mockImplementation((...args) => mockedCreateNode(...args))
 }));
 
 describe('parseNodeFromJSX', () => {
@@ -25,8 +25,8 @@ describe('parseNodeFromJSX', () => {
         {
           data: {
             type: 'a',
-            props,
-          },
+            props
+          }
         },
         expect.any(Function)
       );
@@ -38,8 +38,8 @@ describe('parseNodeFromJSX', () => {
         {
           data: {
             type: Component,
-            props,
-          },
+            props
+          }
         },
         expect.any(Function)
       );
@@ -51,8 +51,8 @@ describe('parseNodeFromJSX', () => {
         {
           data: {
             type: Fragment,
-            props: { children: 'div' },
-          },
+            props: { children: 'div' }
+          }
         },
         expect.any(Function)
       );
@@ -65,8 +65,8 @@ describe('parseNodeFromJSX', () => {
         {
           data: {
             type: Fragment,
-            props: { children: text },
-          },
+            props: { children: text }
+          }
         },
         expect.any(Function)
       );

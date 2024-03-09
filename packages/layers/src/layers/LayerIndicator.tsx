@@ -8,10 +8,10 @@ export type Placeholder = {
 
 export const LayerIndicator: React.FC<Placeholder> = ({
   placeholder,
-  suggestedStyles,
+  suggestedStyles
 }) => {
   const { indicator } = useEditor((state) => ({
-    indicator: state.options.indicator,
+    indicator: state.options.indicator
   }));
 
   return (
@@ -24,7 +24,7 @@ export const LayerIndicator: React.FC<Placeholder> = ({
         borderStyle: 'solid',
         borderWidth: '1px',
         zIndex: '99999',
-        ...suggestedStyles,
+        ...suggestedStyles
       }}
     ></div>
   );

@@ -11,7 +11,7 @@ export * from './ToolbarRadio';
 const Label = styled.h2({
   fontSize: 'inherit',
   fontWeight: 'inherit',
-  paddingBottom: '0.25rem',
+  paddingBottom: '0.25rem'
 });
 
 export const Toolbar = () => {
@@ -21,7 +21,7 @@ export const Toolbar = () => {
     return {
       active: currentlySelectedNodeId,
       related:
-        currentlySelectedNodeId && state.nodes[currentlySelectedNodeId].related,
+        currentlySelectedNodeId && state.nodes[currentlySelectedNodeId].related
     };
   });
 
@@ -30,7 +30,7 @@ export const Toolbar = () => {
       style={{
         paddingTop: '0.25rem',
         paddingBottom: '0.25rem',
-        height: '100%',
+        height: '100%'
       }}
     >
       {active && related.toolbar && React.createElement(related.toolbar)}
@@ -48,7 +48,7 @@ export const Toolbar = () => {
             alignItems: 'center',
             height: '100%',
             justifyContent: 'center',
-            textAlign: 'center',
+            textAlign: 'center'
           }}
         >
           <Label style={{ paddingBottom: '0.25rem' }}>

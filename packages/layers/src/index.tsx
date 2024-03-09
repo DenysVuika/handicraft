@@ -8,7 +8,7 @@ export {
   useLayer,
   DefaultLayer,
   DefaultLayerHeader,
-  EditableLayerName,
+  EditableLayerName
 } from './layers';
 
 export const Layers: React.FC<Partial<LayerOptions>> = ({ ...options }) => {

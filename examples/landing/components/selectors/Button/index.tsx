@@ -37,9 +37,9 @@ const StyledButton = styled.button<ButtonProps>`
 
 export const Button: UserComponent<ButtonProps> = (props: ButtonProps) => {
   const {
-    connectors: { connect },
+    connectors: { connect }
   } = useNode((node) => ({
-    selected: node.events.selected,
+    selected: node.events.selected
   }));
 
   const { text, textComponent, color, ...otherProps } = props;
@@ -49,8 +49,8 @@ export const Button: UserComponent<ButtonProps> = (props: ButtonProps) => {
       ref={connect}
       className={cx([
         {
-          'app-shadow-lg': props.buttonStyle === 'full',
-        },
+          'app-shadow-lg': props.buttonStyle === 'full'
+        }
       ])}
       {...otherProps}
     >
@@ -69,10 +69,10 @@ Button.craft = {
     margin: ['5', '0', '5', '0'],
     textComponent: {
       ...Text.craft.props,
-      textAlign: 'center',
-    },
+      textAlign: 'center'
+    }
   },
   related: {
-    toolbar: ButtonSettings,
-  },
+    toolbar: ButtonSettings
+  }
 };

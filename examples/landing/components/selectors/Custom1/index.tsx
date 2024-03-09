@@ -5,7 +5,7 @@ import { Container } from '../Container';
 
 export const OnlyButtons = ({ children, ...props }) => {
   const {
-    connectors: { connect },
+    connectors: { connect }
   } = useNode();
   return (
     <div
@@ -21,8 +21,8 @@ export const OnlyButtons = ({ children, ...props }) => {
 
 OnlyButtons.craft = {
   rules: {
-    canMoveIn: (nodes) => nodes.every((node) => node.data.type === Button),
-  },
+    canMoveIn: (nodes) => nodes.every((node) => node.data.type === Button)
+  }
 };
 
 export const Custom1 = (props: any) => {
@@ -33,7 +33,7 @@ export const Custom1 = (props: any) => {
           paddingLeft: '2.5rem',
           paddingRight: '2.5rem',
           paddingTop: '1.25rem',
-          paddingBottom: '1.25rem',
+          paddingBottom: '1.25rem'
         }}
         className="app-text-lg app-text-white"
       >
@@ -53,5 +53,5 @@ export const Custom1 = (props: any) => {
 
 Custom1.craft = {
   ...Container.craft,
-  displayName: 'Custom 1',
+  displayName: 'Custom 1'
 };

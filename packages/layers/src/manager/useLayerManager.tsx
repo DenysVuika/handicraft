@@ -12,7 +12,7 @@ export function useLayerManager<C>(collector?: (state: LayerState) => C) {
   return useMemo(
     () => ({
       store,
-      ...collected,
+      ...collected
     }),
     [store, collected]
   );

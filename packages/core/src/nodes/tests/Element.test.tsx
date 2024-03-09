@@ -9,12 +9,12 @@ let existingLinkedNode;
 let newLinkedNode = createTestNode('newLinkedNode');
 
 let toNodeTree = jest.fn().mockImplementation(() => ({
-  rootNodeId: newLinkedNode.id,
+  rootNodeId: newLinkedNode.id
 }));
 
 let addLinkedNodeFromTree = jest.fn();
 let parseReactElement = jest.fn().mockImplementation(() => ({
-  toNodeTree,
+  toNodeTree
 }));
 
 jest.mock('../../editor/useInternalEditor', () => ({
@@ -22,9 +22,9 @@ jest.mock('../../editor/useInternalEditor', () => ({
     actions: {
       history: {
         ignore: jest.fn().mockImplementation(() => ({
-          addLinkedNodeFromTree,
-        })),
-      },
+          addLinkedNodeFromTree
+        }))
+      }
     },
     query: {
       parseReactElement,
@@ -32,23 +32,23 @@ jest.mock('../../editor/useInternalEditor', () => ({
         get() {
           if (id === 'parent-node') return parentNode;
           else return existingLinkedNode;
-        },
-      })),
-    },
-  }),
+        }
+      }))
+    }
+  })
 }));
 
 jest.mock('../useInternalNode', () => ({
   useInternalNode: () => ({
     node: parentNode,
-    inNodeContext: true,
-  }),
+    inNodeContext: true
+  })
 }));
 
 const NodeElementTest = jest.fn().mockImplementation(() => null);
 
 jest.mock('../NodeElement', () => ({
-  NodeElement: jest.fn().mockImplementation((props) => NodeElementTest(props)),
+  NodeElement: jest.fn().mockImplementation((props) => NodeElementTest(props))
 }));
 
 describe('<Element />', () => {
@@ -67,7 +67,7 @@ describe('<Element />', () => {
 
     beforeEach(() => {
       elementProps = {
-        color: '#fff',
+        color: '#fff'
       };
 
       children = <h1>Child</h1>;
@@ -88,7 +88,7 @@ describe('<Element />', () => {
     });
     it('should render a new linked Node', () => {
       expect(NodeElementTest).toHaveBeenCalledWith({
-        id: newLinkedNode.id,
+        id: newLinkedNode.id
       });
     });
   });
@@ -99,21 +99,21 @@ describe('<Element />', () => {
         type: 'div',
         props: {
           background: '#000',
-          color: '#fff',
-        },
+          color: '#fff'
+        }
       });
 
       parentNode = createTestNode('parent-node', {
         linkedNodes: {
-          test: existingLinkedNode.id,
-        },
+          test: existingLinkedNode.id
+        }
       });
 
       render(<Element id="test" color="#000" />);
     });
     it('should render existing Node', () => {
       expect(NodeElementTest).toHaveBeenCalledWith({
-        id: existingLinkedNode.id,
+        id: existingLinkedNode.id
       });
     });
   });

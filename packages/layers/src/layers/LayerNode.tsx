@@ -8,7 +8,7 @@ import { useLayerManager } from '../manager/useLayerManager';
 
 export const LayerNode: React.FC = () => {
   const { id, depth, children, expanded } = useLayer((layer) => ({
-    expanded: layer.expanded,
+    expanded: layer.expanded
   }));
 
   const { data, shouldBeExpanded } = useEditor((state, query) => {
@@ -18,17 +18,17 @@ export const LayerNode: React.FC = () => {
     return {
       data: state.nodes[id] && state.nodes[id].data,
       shouldBeExpanded:
-        selected && query.node(selected).ancestors(true).includes(id),
+        selected && query.node(selected).ancestors(true).includes(id)
     };
   });
 
   const {
     actions: { registerLayer, toggleLayer },
     renderLayer,
-    expandRootOnLoad,
+    expandRootOnLoad
   } = useLayerManager((state) => ({
     renderLayer: state.options.renderLayer,
-    expandRootOnLoad: state.options.expandRootOnLoad,
+    expandRootOnLoad: state.options.expandRootOnLoad
   }));
 
   const [isRegistered, setRegistered] = useState(false);

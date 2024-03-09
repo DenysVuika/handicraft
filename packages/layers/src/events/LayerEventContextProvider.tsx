@@ -14,7 +14,7 @@ export const LayerEventContextProvider = ({ children }) => {
   const handler = useMemo(
     () =>
       coreEventHandler.derive(LayerHandlers, {
-        layerStore,
+        layerStore
       }),
     [coreEventHandler, layerStore]
   );

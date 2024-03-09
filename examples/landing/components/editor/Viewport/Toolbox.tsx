@@ -17,11 +17,11 @@ const ToolboxDiv = styled.div<{ enabled: boolean }>(
     transition: '0.4s cubic-bezier(0.19, 1, 0.22, 1)',
     height: '100%',
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'column'
   },
   (props) => ({
     width: !props.enabled ? '0' : '3rem',
-    opacity: !props.enabled ? '0' : '',
+    opacity: !props.enabled ? '0' : ''
   })
 );
 
@@ -33,11 +33,11 @@ const ToolboxItem = styled.a<{ move?: boolean }>(
     '& > svg': {
       width: '22px',
       height: '22px',
-      fill: '#707070',
-    },
+      fill: '#707070'
+    }
   },
   (props) => ({
-    cursor: props.move ? 'move' : 'pointer',
+    cursor: props.move ? 'move' : 'pointer'
   })
 );
 
@@ -46,15 +46,15 @@ const ToolboxContent = styled.div({
   flex: '1 1 0%',
   flexDirection: 'column',
   alignItems: 'center',
-  paddingTop: '0.75rem',
+  paddingTop: '0.75rem'
 });
 
 export const Toolbox = () => {
   const {
     enabled,
-    connectors: { create },
+    connectors: { create }
   } = useEditor((state) => ({
-    enabled: state.options.enabled,
+    enabled: state.options.enabled
   }));
 
   return (

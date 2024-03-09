@@ -10,21 +10,21 @@ export const createTestNode = (id, data = {}, config: any = {}) => {
       isCanvas: false,
       nodes: [],
       linkedNodes: {},
-      ...data,
+      ...data
     },
     related: {},
     events: {
       selected: false,
       dragged: false,
       hovered: false,
-      ...(config.events || {}),
+      ...(config.events || {})
     },
     rules: {
       canMoveIn: () => true,
       canMoveOut: () => true,
       canDrag: () => true,
       canDrop: () => true,
-      ...(config.rules || {}),
-    },
+      ...(config.rules || {})
+    }
   };
 };
