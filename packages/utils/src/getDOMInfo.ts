@@ -1,14 +1,6 @@
 export const getDOMInfo = (el: HTMLElement) => {
-  const {
-    x,
-    y,
-    top,
-    left,
-    bottom,
-    right,
-    width,
-    height,
-  } = el.getBoundingClientRect() as DOMRect;
+  const { x, y, top, left, bottom, right, width, height } =
+    el.getBoundingClientRect() as DOMRect;
 
   const style = window.getComputedStyle(el);
 
@@ -16,14 +8,14 @@ export const getDOMInfo = (el: HTMLElement) => {
     left: parseInt(style.marginLeft),
     right: parseInt(style.marginRight),
     bottom: parseInt(style.marginBottom),
-    top: parseInt(style.marginTop),
+    top: parseInt(style.marginTop)
   };
 
   const padding = {
     left: parseInt(style.paddingLeft),
     right: parseInt(style.paddingRight),
     bottom: parseInt(style.paddingBottom),
-    top: parseInt(style.paddingTop),
+    top: parseInt(style.paddingTop)
   };
 
   const styleInFlow = (parent: HTMLElement) => {
@@ -89,6 +81,6 @@ export const getDOMInfo = (el: HTMLElement) => {
     outerHeight: Math.round(height + margin.top + margin.bottom),
     margin,
     padding,
-    inFlow: el.parentElement && !!styleInFlow(el.parentElement),
+    inFlow: el.parentElement && !!styleInFlow(el.parentElement)
   };
 };

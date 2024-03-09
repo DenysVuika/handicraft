@@ -3,7 +3,7 @@ import {
   Box,
   Typography,
   Grid,
-  Button as MaterialButton,
+  Button as MaterialButton
 } from '@material-ui/core';
 import React from 'react';
 

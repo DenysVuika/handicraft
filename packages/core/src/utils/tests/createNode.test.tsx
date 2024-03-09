@@ -14,7 +14,7 @@ const expectNode = (node, testData) => {
       : testData.props || {},
     custom: isUserComponent ? type.craft.custom : {},
     name: typeof type === 'string' ? type : type.name,
-    displayName: typeof type === 'string' ? type : type.name,
+    displayName: typeof type === 'string' ? type : type.name
   });
 
   expect(node.data).toEqual(match.data);
@@ -44,11 +44,11 @@ describe('createNode', () => {
       const data: FreshNode['data'] = {
         type: 'a',
         parent: null,
-        props,
+        props
       };
 
       const node = createNode({
-        data,
+        data
       });
 
       expectNode(node, data);
@@ -58,12 +58,12 @@ describe('createNode', () => {
 
       const { data } = createNode(
         {
-          data: { type: 'button', props },
+          data: { type: 'button', props }
         },
         (node) => {
           node.data.props = {
             ...node.data.props,
-            ...extraData.props,
+            ...extraData.props
           };
         }
       );
@@ -72,8 +72,8 @@ describe('createNode', () => {
         type: 'button',
         props: {
           ...props,
-          ...extraData.props,
-        },
+          ...extraData.props
+        }
       });
     });
     describe('When type=Element', () => {
@@ -85,9 +85,9 @@ describe('createNode', () => {
             props: {
               is: 'a',
               href: 'craft.js.org',
-              style: { color: '#fff' },
-            },
-          },
+              style: { color: '#fff' }
+            }
+          }
         };
         const node = createNode(testNode);
 
@@ -96,7 +96,7 @@ describe('createNode', () => {
         expectNode(node, {
           type,
           props,
-          parent: 'ROOT',
+          parent: 'ROOT'
         });
       });
     });
@@ -111,18 +111,18 @@ describe('createNode', () => {
         Component.craft = {
           custom: {
             css: {
-              background: '#fff',
-            },
+              background: '#fff'
+            }
           },
           rules: {
-            canMoveIn: () => false,
+            canMoveIn: () => false
           },
           props: {
-            text: '#000',
+            text: '#000'
           },
           related: {
-            settings: () => {},
-          },
+            settings: () => {}
+          }
         };
       });
 
@@ -130,11 +130,11 @@ describe('createNode', () => {
         const data = {
           type: Component,
           parent: null,
-          props: {},
+          props: {}
         };
 
         const node = createNode({
-          data,
+          data
         });
 
         expectNode(node, data);

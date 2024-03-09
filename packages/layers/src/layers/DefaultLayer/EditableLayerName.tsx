@@ -12,7 +12,7 @@ export const EditableLayerName = () => {
       state.nodes[id] && state.nodes[id].data.custom.displayName
         ? state.nodes[id].data.custom.displayName
         : state.nodes[id].data.displayName,
-    hidden: state.nodes[id] && state.nodes[id].data.hidden,
+    hidden: state.nodes[id] && state.nodes[id].data.hidden
   }));
 
   const [editingName, setEditingName] = useState(false);

@@ -13,7 +13,7 @@ describe('useEditor', () => {
     setNodeEvent: 'setNodeEvent',
     replaceNodes: 'replaceNodes',
     reset: 'reset',
-    ...otherActions,
+    ...otherActions
   };
   const query = { another: 'query' };
   const state = {
@@ -21,7 +21,7 @@ describe('useEditor', () => {
     connectors: 'one',
     actions,
     query,
-    store: {},
+    store: {}
   };
   let collect;
   let editor;
@@ -41,11 +41,11 @@ describe('useEditor', () => {
       expect.objectContaining({
         actions: {
           ...otherActions,
-          history: expect.any(Object),
+          history: expect.any(Object)
         },
         connectors: state.connectors,
         query,
-        aRandomValue: state.aRandomValue,
+        aRandomValue: state.aRandomValue
       })
     );
   });

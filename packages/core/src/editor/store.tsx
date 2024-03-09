@@ -1,7 +1,7 @@
 import {
   useMethods,
   SubscriberAndCallbacksFor,
-  PatchListener,
+  PatchListener
 } from '@craftjs/utils';
 
 import { ActionMethods } from './actions';
@@ -15,7 +15,7 @@ export const editorInitialState: EditorState = {
   events: {
     dragged: new Set<NodeId>(),
     selected: new Set<NodeId>(),
-    hovered: new Set<NodeId>(),
+    hovered: new Set<NodeId>()
   },
   indicator: null,
   options: {
@@ -26,16 +26,16 @@ export const editorInitialState: EditorState = {
     enabled: true,
     indicator: {
       error: 'red',
-      success: 'rgb(98, 196, 98)',
+      success: 'rgb(98, 196, 98)'
     },
     handlers: (store) =>
       new DefaultEventHandlers({
         store,
         removeHoverOnMouseleave: false,
-        isMultiSelectEnabled: (e: MouseEvent) => !!e.metaKey,
+        isMultiSelectEnabled: (e: MouseEvent) => !!e.metaKey
       }),
-    normalizeNodes: () => {},
-  },
+    normalizeNodes: () => {}
+  }
 };
 
 export const ActionMethodsWithConfig = {
@@ -46,7 +46,7 @@ export const ActionMethodsWithConfig = {
     'selectNode',
     'clearEvents',
     'setOptions',
-    'setIndicator',
+    'setIndicator'
   ] as const,
   normalizeHistory: (state: EditorState) => {
     /**
@@ -80,7 +80,7 @@ export const ActionMethodsWithConfig = {
         }
       });
     });
-  },
+  }
 };
 
 export type EditorStore = SubscriberAndCallbacksFor<
@@ -103,8 +103,8 @@ export const useEditorStore = (
       ...editorInitialState,
       options: {
         ...editorInitialState.options,
-        ...options,
-      },
+        ...options
+      }
     },
     QueryMethods,
     patchListener

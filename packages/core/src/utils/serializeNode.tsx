@@ -42,7 +42,7 @@ export const serializeComp = (
   return {
     type: reduceType(type, resolver),
     isCanvas: !!isCanvas,
-    props,
+    props
   };
 };
 
@@ -56,6 +56,6 @@ export const serializeNode = (
 
   return {
     ...reducedComp,
-    ...nodeData,
+    ...nodeData
   };
 };

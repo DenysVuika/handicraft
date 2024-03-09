@@ -4,7 +4,7 @@ import {
   QueryCallbacksFor,
   wrapConnectorHooks,
   EventHandlerConnectors,
-  ERROR_USE_EDITOR_OUTSIDE_OF_EDITOR_CONTEXT,
+  ERROR_USE_EDITOR_OUTSIDE_OF_EDITOR_CONTEXT
 } from '@craftjs/utils';
 import { useContext, useEffect, useMemo } from 'react';
 import invariant from 'tiny-invariant';
@@ -62,6 +62,6 @@ export function useInternalEditor<C>(
     ...collected,
     connectors,
     inContext: !!store,
-    store,
+    store
   };
 }

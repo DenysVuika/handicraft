@@ -11,12 +11,12 @@ module.exports = {
     '^.+\\.(ts|tsx|js|jsx)$': [
       'ts-jest',
       {
-        tsconfig: 'tsconfig.jest.json',
-      },
-    ],
+        tsconfig: 'tsconfig.jest.json'
+      }
+    ]
   },
   transformIgnorePatterns: [`/node_modules/(?!${esModules})`],
   moduleNameMapper: {
-    '^nanoid(/(.*)|$)': 'nanoid$1',
-  },
+    '^nanoid(/(.*)|$)': 'nanoid$1'
+  }
 };

@@ -10,7 +10,7 @@ import {
   Node,
   NodeId,
   NodeInfo,
-  NodeSelectorWrapper,
+  NodeSelectorWrapper
 } from '../interfaces';
 import { getNodesFromSelector } from '../utils/getNodesFromSelector';
 
@@ -35,7 +35,10 @@ export class Positioner {
 
   private onScrollListener: (e: Event) => void;
 
-  constructor(readonly store: EditorStore, readonly dragTarget: DragTarget) {
+  constructor(
+    readonly store: EditorStore,
+    readonly dragTarget: DragTarget
+  ) {
     this.currentDropTargetId = null;
     this.currentDropTargetCanvasAncestorId = null;
 
@@ -159,7 +162,7 @@ export class Positioner {
       if (dom) {
         result.push({
           id,
-          ...getDOMInfo(dom),
+          ...getDOMInfo(dom)
         });
       }
 
@@ -271,9 +274,9 @@ export class Positioner {
     this.currentIndicator = {
       placement: {
         ...position,
-        currentNode,
+        currentNode
       },
-      error,
+      error
     };
 
     return this.currentIndicator;

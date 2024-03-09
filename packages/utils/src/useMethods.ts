@@ -3,7 +3,7 @@ import produce, {
   Patch,
   produceWithPatches,
   enableMapSet,
-  enablePatches,
+  enablePatches
 } from 'immer';
 import isEqualWith from 'lodash/isEqualWith';
 import { useMemo, useEffect, useRef, useCallback } from 'react';
@@ -25,54 +25,47 @@ export type SubscriberAndCallbacksFor<
   history: History;
 };
 
-export type StateFor<M extends MethodsOrOptions> = M extends MethodsOrOptions<
-  infer S,
-  any
->
-  ? S
-  : never;
+export type StateFor<M extends MethodsOrOptions> =
+  M extends MethodsOrOptions<infer S, any> ? S : never;
 
-export type CallbacksFor<
-  M extends MethodsOrOptions
-> = M extends MethodsOrOptions<any, infer R>
-  ? {
-      [T in ActionUnion<R>['type']]: (
-        ...payload: ActionByType<ActionUnion<R>, T>['payload']
-      ) => void;
-    } & {
-      history: {
-        undo: () => void;
-        redo: () => void;
-        clear: () => void;
-        throttle: (
-          rate?: number
-        ) => Delete<
-          {
-            [T in ActionUnion<R>['type']]: (
-              ...payload: ActionByType<ActionUnion<R>, T>['payload']
-            ) => void;
-          },
-          M extends Options ? M['ignoreHistoryForActions'][number] : never
-        >;
-        merge: () => Delete<
-          {
-            [T in ActionUnion<R>['type']]: (
-              ...payload: ActionByType<ActionUnion<R>, T>['payload']
-            ) => void;
-          },
-          M extends Options ? M['ignoreHistoryForActions'][number] : never
-        >;
-        ignore: () => Delete<
-          {
-            [T in ActionUnion<R>['type']]: (
-              ...payload: ActionByType<ActionUnion<R>, T>['payload']
-            ) => void;
-          },
-          M extends Options ? M['ignoreHistoryForActions'][number] : never
-        >;
-      };
-    }
-  : {};
+export type CallbacksFor<M extends MethodsOrOptions> =
+  M extends MethodsOrOptions<any, infer R>
+    ? {
+        [T in ActionUnion<R>['type']]: (
+          ...payload: ActionByType<ActionUnion<R>, T>['payload']
+        ) => void;
+      } & {
+        history: {
+          undo: () => void;
+          redo: () => void;
+          clear: () => void;
+          throttle: (rate?: number) => Delete<
+            {
+              [T in ActionUnion<R>['type']]: (
+                ...payload: ActionByType<ActionUnion<R>, T>['payload']
+              ) => void;
+            },
+            M extends Options ? M['ignoreHistoryForActions'][number] : never
+          >;
+          merge: () => Delete<
+            {
+              [T in ActionUnion<R>['type']]: (
+                ...payload: ActionByType<ActionUnion<R>, T>['payload']
+              ) => void;
+            },
+            M extends Options ? M['ignoreHistoryForActions'][number] : never
+          >;
+          ignore: () => Delete<
+            {
+              [T in ActionUnion<R>['type']]: (
+                ...payload: ActionByType<ActionUnion<R>, T>['payload']
+              ) => void;
+            },
+            M extends Options ? M['ignoreHistoryForActions'][number] : never
+          >;
+        };
+      }
+    : {};
 
 export type Methods<S = any, R extends MethodRecordBase<S> = any, Q = any> = (
   state: S,
@@ -117,22 +110,19 @@ export type QueryMethods<
   O = any,
   R extends MethodRecordBase<S> = any
 > = (state?: S, options?: O) => R;
-export type QueryCallbacksFor<M extends QueryMethods> = M extends QueryMethods<
-  any,
-  any,
-  infer R
->
-  ? {
-      [T in ActionUnion<R>['type']]: (
-        ...payload: ActionByType<ActionUnion<R>, T>['payload']
-      ) => ReturnType<R[T]>;
-    } & {
-      history: {
-        canUndo: () => boolean;
-        canRedo: () => boolean;
-      };
-    }
-  : {};
+export type QueryCallbacksFor<M extends QueryMethods> =
+  M extends QueryMethods<any, any, infer R>
+    ? {
+        [T in ActionUnion<R>['type']]: (
+          ...payload: ActionByType<ActionUnion<R>, T>['payload']
+        ) => ReturnType<R[T]>;
+      } & {
+        history: {
+          canUndo: () => boolean;
+          canRedo: () => boolean;
+        };
+      }
+    : {};
 
 export type PatchListenerAction<M extends MethodsOrOptions> = {
   type: keyof CallbacksFor<M>;
@@ -202,7 +192,8 @@ export function useMethods<
     methodsFactory = methodsOrOptions;
   } else {
     methodsFactory = methodsOrOptions.methods;
-    ignoreHistoryForActionsRef.current = methodsOrOptions.ignoreHistoryForActions as any;
+    ignoreHistoryForActionsRef.current =
+      methodsOrOptions.ignoreHistoryForActions as any;
     normalizeHistoryRef.current = methodsOrOptions.normalizeHistory;
   }
 
@@ -234,7 +225,7 @@ export function useMethods<
             case HISTORY_ACTIONS.CLEAR: {
               history.clear();
               return {
-                ...draft,
+                ...draft
               };
             }
 
@@ -285,7 +276,7 @@ export function useMethods<
           HISTORY_ACTIONS.UNDO,
           HISTORY_ACTIONS.REDO,
           HISTORY_ACTIONS.IGNORE,
-          HISTORY_ACTIONS.CLEAR,
+          HISTORY_ACTIONS.CLEAR
         ].includes(action.type as any)
       ) {
         if (action.type === HISTORY_ACTIONS.THROTTLE) {
@@ -342,17 +333,17 @@ export function useMethods<
       history: {
         undo() {
           return dispatch({
-            type: HISTORY_ACTIONS.UNDO,
+            type: HISTORY_ACTIONS.UNDO
           });
         },
         redo() {
           return dispatch({
-            type: HISTORY_ACTIONS.REDO,
+            type: HISTORY_ACTIONS.REDO
           });
         },
         clear: () => {
           return dispatch({
-            type: HISTORY_ACTIONS.CLEAR,
+            type: HISTORY_ACTIONS.CLEAR
           });
         },
         throttle: (rate) => {
@@ -365,11 +356,11 @@ export function useMethods<
                     type: HISTORY_ACTIONS.THROTTLE,
                     payload: [type, ...payload],
                     config: {
-                      rate: rate,
-                    },
+                      rate: rate
+                    }
                   });
                 return accum;
-              }, {} as any),
+              }, {} as any)
           };
         },
         ignore: () => {
@@ -380,10 +371,10 @@ export function useMethods<
                 accum[type] = (...payload) =>
                   dispatch({
                     type: HISTORY_ACTIONS.IGNORE,
-                    payload: [type, ...payload],
+                    payload: [type, ...payload]
                   });
                 return accum;
-              }, {} as any),
+              }, {} as any)
           };
         },
         merge: () => {
@@ -394,13 +385,13 @@ export function useMethods<
                 accum[type] = (...payload) =>
                   dispatch({
                     type: HISTORY_ACTIONS.MERGE,
-                    payload: [type, ...payload],
+                    payload: [type, ...payload]
                   });
                 return accum;
-              }, {} as any),
+              }, {} as any)
           };
-        },
-      },
+        }
+      }
     };
   }, [dispatch, methodsFactory]);
 
@@ -411,7 +402,7 @@ export function useMethods<
         watcher.subscribe(collector, cb, collectOnCreate),
       actions,
       query,
-      history,
+      history
     }),
     [actions, query, watcher, getState, history]
   ) as any;
@@ -422,21 +413,24 @@ export function createQuery<Q extends QueryMethods>(
   getState,
   history: History
 ) {
-  const queries = Object.keys(queryMethods()).reduce((accum, key) => {
-    return {
-      ...accum,
-      [key]: (...args: any) => {
-        return queryMethods(getState())[key](...args);
-      },
-    };
-  }, {} as QueryCallbacksFor<typeof queryMethods>);
+  const queries = Object.keys(queryMethods()).reduce(
+    (accum, key) => {
+      return {
+        ...accum,
+        [key]: (...args: any) => {
+          return queryMethods(getState())[key](...args);
+        }
+      };
+    },
+    {} as QueryCallbacksFor<typeof queryMethods>
+  );
 
   return {
     ...queries,
     history: {
       canUndo: () => history.canUndo(),
-      canRedo: () => history.canRedo(),
-    },
+      canRedo: () => history.canRedo()
+    }
   };
 }
 

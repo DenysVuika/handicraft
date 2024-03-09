@@ -15,7 +15,7 @@ export const RenderLayerIndicator: React.FC<any> = ({ children }) => {
     if (indicator) {
       const {
         placement: { where, parent, currentNode },
-        error,
+        error
       } = indicator;
       const layerId = currentNode ? currentNode.id : parent.id;
 
@@ -24,9 +24,8 @@ export const RenderLayerIndicator: React.FC<any> = ({ children }) => {
 
       if (indicator.onCanvas && layers[parent.id].dom != null) {
         const parentPos = layers[parent.id].dom.getBoundingClientRect();
-        const parentHeadingPos = layers[
-          parent.id
-        ].headingDom.getBoundingClientRect();
+        const parentHeadingPos =
+          layers[parent.id].headingDom.getBoundingClientRect();
         return {
           top: parentHeadingPos.top,
           left: parentPos.left,
@@ -34,7 +33,7 @@ export const RenderLayerIndicator: React.FC<any> = ({ children }) => {
           height: parentHeadingPos.height,
           background: 'transparent',
           borderWidth: '1px',
-          borderColor: color,
+          borderColor: color
         };
       } else {
         if (!layers[layerId]) return;
@@ -53,7 +52,7 @@ export const RenderLayerIndicator: React.FC<any> = ({ children }) => {
           width: pos.width + pos.left - headingPos.left,
           height: 2,
           borderWidth: 0,
-          background: color,
+          background: color
         };
       }
     }
@@ -63,7 +62,7 @@ export const RenderLayerIndicator: React.FC<any> = ({ children }) => {
     <div>
       {events.indicator
         ? React.createElement(RenderIndicator, {
-            style: indicatorPosition,
+            style: indicatorPosition
           })
         : null}
       {children}

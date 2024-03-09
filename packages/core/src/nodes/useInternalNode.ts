@@ -1,6 +1,6 @@
 import {
   wrapConnectorHooks,
-  ERROR_USE_NODE_OUTSIDE_OF_EDITOR_CONTEXT,
+  ERROR_USE_NODE_OUTSIDE_OF_EDITOR_CONTEXT
 } from '@craftjs/utils';
 import { useMemo, useContext } from 'react';
 import invariant from 'tiny-invariant';
@@ -29,7 +29,7 @@ export function useInternalNode<S = null>(collect?: (node: Node) => S) {
     () =>
       wrapConnectorHooks({
         connect: (dom: HTMLElement) => editorConnectors.connect(dom, id),
-        drag: (dom: HTMLElement) => editorConnectors.drag(dom, id),
+        drag: (dom: HTMLElement) => editorConnectors.drag(dom, id)
       }),
     [editorConnectors, id]
   );
@@ -50,7 +50,7 @@ export function useInternalNode<S = null>(collect?: (node: Node) => S) {
           EditorActions.setCustom(id, cb);
         }
       },
-      setHidden: (bool: boolean) => EditorActions.setHidden(id, bool),
+      setHidden: (bool: boolean) => EditorActions.setHidden(id, bool)
     };
   }, [EditorActions, id]);
 
@@ -60,6 +60,6 @@ export function useInternalNode<S = null>(collect?: (node: Node) => S) {
     related,
     inNodeContext: !!context,
     actions,
-    connectors,
+    connectors
   };
 }

@@ -42,7 +42,7 @@ export type ConnectorsUsage<H extends EventHandlers> = {
 
 export enum EventHandlerUpdates {
   HandlerDisabled,
-  HandlerEnabled,
+  HandlerEnabled
 }
 
 export type ConnectorToRegister = {

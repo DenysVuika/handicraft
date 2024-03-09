@@ -98,10 +98,10 @@ export const DefaultLayerHeader: React.FC = () => {
     expanded,
     children,
     connectors: { drag, layerHeader },
-    actions: { toggleLayer },
+    actions: { toggleLayer }
   } = useLayer((layer) => {
     return {
-      expanded: layer.expanded,
+      expanded: layer.expanded
     };
   });
 
@@ -112,7 +112,7 @@ export const DefaultLayerHeader: React.FC = () => {
     return {
       hidden: state.nodes[id] && state.nodes[id].data.hidden,
       selected,
-      topLevel: query.node(id).isTopLevelCanvas(),
+      topLevel: query.node(id).isTopLevelCanvas()
     };
   });
 

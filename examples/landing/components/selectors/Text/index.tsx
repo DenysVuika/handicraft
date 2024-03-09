@@ -20,14 +20,14 @@ export const Text = ({
   color,
   shadow,
   text,
-  margin,
+  margin
 }: Partial<TextProps>) => {
   const {
     connectors: { connect },
-    setProp,
+    setProp
   } = useNode();
   const { enabled } = useEditor((state) => ({
-    enabled: state.options.enabled,
+    enabled: state.options.enabled
   }));
   return (
     <ContentEditable
@@ -45,7 +45,7 @@ export const Text = ({
         fontSize: `${fontSize}px`,
         textShadow: `0px 0px 2px rgba(0,0,0,${(shadow || 0) / 100})`,
         fontWeight,
-        textAlign,
+        textAlign
       }}
     />
   );
@@ -60,9 +60,9 @@ Text.craft = {
     color: { r: 92, g: 90, b: 90, a: 1 },
     margin: [0, 0, 0, 0],
     shadow: 0,
-    text: 'Text',
+    text: 'Text'
   },
   related: {
-    toolbar: TextSettings,
-  },
+    toolbar: TextSettings
+  }
 };

@@ -12,7 +12,7 @@ export const RenderIndicator: React.FC<any> = ({ style, parentDom }) => {
         borderWidth: '1px',
         borderColor: 'transparent',
         zIndex: 99999,
-        ...style,
+        ...style
       }}
     ></div>
   );

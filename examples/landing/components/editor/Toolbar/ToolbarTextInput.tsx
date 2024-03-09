@@ -19,8 +19,8 @@ const inputStyles = {
     paddingLeft: '28px',
     paddingBottom: '8px',
     paddingTop: '8px',
-    margin: 0,
-  },
+    margin: 0
+  }
 };
 
 const inputLabelStyles = {
@@ -32,8 +32,8 @@ const inputLabelStyles = {
     paddingTop: '3px',
     marginBottom: '3px',
     position: 'relative',
-    left: '-12px',
-  },
+    left: '-12px'
+  }
 };
 
 export type ToolbarTextInputProps = {
@@ -75,7 +75,7 @@ export const ToolbarTextInput = ({
             position: 'absolute',
             zIndex: 99999,
             top: 'calc(100% + 10px)',
-            left: '-5%',
+            left: '-5%'
           }}
         >
           <div
@@ -85,7 +85,7 @@ export const ToolbarTextInput = ({
               left: 0,
               width: '100%',
               height: '100%',
-              cursor: 'pointer',
+              cursor: 'pointer'
             }}
             onClick={(e) => {
               e.preventDefault();
@@ -124,7 +124,7 @@ export const ToolbarTextInput = ({
               style={{
                 position: 'absolute',
                 marginTop: '2px',
-                marginRight: '8px',
+                marginRight: '8px'
               }}
             >
               <div
@@ -136,15 +136,15 @@ export const ToolbarTextInput = ({
                   display: 'inline-block',
                   width: '0.5rem',
                   height: '0.5rem',
-                  cursor: 'pointer',
+                  cursor: 'pointer'
                 }}
               />
             </InputAdornment>
-          ) : null,
+          ) : null
         }}
         InputLabelProps={{
           sx: { ...inputLabelStyles },
-          shrink: true,
+          shrink: true
         }}
         {...props}
       />

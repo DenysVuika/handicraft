@@ -5,7 +5,7 @@ import {
   card,
   primaryButton,
   secondaryButton,
-  documentWithCardState,
+  documentWithCardState
 } from '../../tests/fixtures';
 import { QueryMethods } from '../query';
 
@@ -15,16 +15,16 @@ let mockedParsedNodeFromJsx = jest.fn().mockImplementation(() => null);
 let mockedDeserializeNode = jest.fn().mockImplementation(() => null);
 
 jest.mock('../../utils/resolveComponent', () => ({
-  resolveComponent: (...args) => mockedResolveComponent(...args),
+  resolveComponent: (...args) => mockedResolveComponent(...args)
 }));
 jest.mock('../../utils/createNode', () => ({
-  createNode: (...args) => mockedCreateNode(...args),
+  createNode: (...args) => mockedCreateNode(...args)
 }));
 jest.mock('../../utils/parseNodeFromJSX', () => ({
-  parseNodeFromJSX: (...args) => mockedParsedNodeFromJsx(...args),
+  parseNodeFromJSX: (...args) => mockedParsedNodeFromJsx(...args)
 }));
 jest.mock('../../utils/deserializeNode', () => ({
-  deserializeNode: (...args) => mockedDeserializeNode(...args),
+  deserializeNode: (...args) => mockedDeserializeNode(...args)
 }));
 
 describe('query', () => {
@@ -49,7 +49,7 @@ describe('query', () => {
         linkedNodes: {},
         name: null,
         displayName: 'h2',
-        hidden: false,
+        hidden: false
       };
 
       beforeEach(() => {
@@ -72,7 +72,7 @@ describe('query', () => {
       it('should call parseNodeFromJSX', () => {
         expect(mockedCreateNode).toHaveBeenCalledWith(
           {
-            data,
+            data
           },
           expect.any(Function)
         );
@@ -83,15 +83,15 @@ describe('query', () => {
   describe('parseFreshNode', () => {
     describe('toNode', () => {
       let data = {
-        type: 'h1',
+        type: 'h1'
       };
 
       beforeEach(() => {
         query
           .parseFreshNode({
             data: {
-              type: 'h1',
-            },
+              type: 'h1'
+            }
           })
           .toNode();
       });
@@ -99,7 +99,7 @@ describe('query', () => {
       it('should call createNode', () => {
         expect(mockedCreateNode).toHaveBeenCalledWith(
           {
-            data,
+            data
           },
           expect.any(Function)
         );
@@ -147,7 +147,7 @@ describe('query', () => {
         it('should have replied with the right payload', () => {
           expect(tree).toEqual({
             rootNodeId: rootNode.id,
-            nodes: { [rootNode.id]: rootNode },
+            nodes: { [rootNode.id]: rootNode }
           });
         });
       });
@@ -176,7 +176,7 @@ describe('query', () => {
         it('should have replied with the right payload', () => {
           expect(tree).toEqual({
             rootNodeId: rootNode.id,
-            nodes: documentWithCardState.nodes,
+            nodes: documentWithCardState.nodes
           });
         });
       });

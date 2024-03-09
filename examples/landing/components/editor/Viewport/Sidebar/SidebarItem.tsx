@@ -51,7 +51,7 @@ const HeaderDiv = styled.div`
 const Title = styled.div({
   display: 'flex',
   flex: '1 1 0%',
-  alignItems: 'center',
+  alignItems: 'center'
 });
 
 export const SidebarItem: React.FC<SidebarItemProps> = ({
@@ -60,7 +60,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
   title,
   children,
   height,
-  onChange,
+  onChange
 }) => {
   return (
     <SidebarItemDiv visible={visible} height={height}>
@@ -72,13 +72,13 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
       >
         <Title>
           {React.createElement(icon, {
-            style: { width: '1rem', height: '1rem', marginRight: '0.5rem' },
+            style: { width: '1rem', height: '1rem', marginRight: '0.5rem' }
           })}
           <h2
             style={{
               fontSize: '0.75rem',
               lineHeight: '1rem',
-              textTransform: 'uppercase',
+              textTransform: 'uppercase'
             }}
           >
             {title}

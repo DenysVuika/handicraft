@@ -37,7 +37,7 @@ Cypress.Commands.add(
     indicator: 'error' | 'success',
     indicatorColors: Record<'error' | 'success', string> = {
       error: 'red',
-      success: 'rgb(98, 196, 98)',
+      success: 'rgb(98, 196, 98)'
     }
   ) => {
     // in some cases rendering the indicator is slower than cypress, so we have to add a short wait
@@ -105,37 +105,37 @@ export const getCoordinatesFromPos = (
     case 'right': {
       return {
         x: left + width,
-        y: top + height / 2,
+        y: top + height / 2
       };
     }
     case 'left': {
       return {
         x: left,
-        y: top + height / 2,
+        y: top + height / 2
       };
     }
     case 'above': {
       return {
         x: left + width / 2,
-        y: top,
+        y: top
       };
     }
     case 'below': {
       return {
         x: left + width / 2,
-        y: top + height,
+        y: top + height
       };
     }
     case 'inside': {
       return {
         x: left + 10,
-        y: top + 10,
+        y: top + 10
       };
     }
     default: {
       return {
         x: 0,
-        y: 0,
+        y: 0
       };
     }
   }
@@ -152,7 +152,7 @@ export const getCoordinatesFromPos = (
 Cypress.Commands.add(
   'dragAndDrop',
   {
-    prevSubject: true,
+    prevSubject: true
   },
   (subject, target, opts: Partial<DropOptions> = { position: 'right' }) => {
     cy.get(subject).dragOver(target, opts);
@@ -176,11 +176,11 @@ Cypress.Commands.add(
 Cypress.Commands.add(
   'dragOver',
   {
-    prevSubject: true,
+    prevSubject: true
   },
   (subject, target, opts: Partial<DropOptions> = { position: 'right' }) => {
     const { position } = {
-      ...opts,
+      ...opts
     };
 
     cy.get(target).as('target');
@@ -195,7 +195,7 @@ Cypress.Commands.add(
         .trigger('mousedown', { force: true })
         .trigger('dragstart', {
           force: true,
-          dataTransfer,
+          dataTransfer
         });
 
       if (position === 'inside') {
@@ -203,14 +203,14 @@ Cypress.Commands.add(
           clientX: Math.floor(x),
           clientY: Math.floor(y),
           dataTransfer,
-          force: true,
+          force: true
         });
       } else {
         cy.get('@parent').trigger('dragover', {
           clientX: Math.floor(x),
           clientY: Math.floor(y),
           dataTransfer,
-          force: true,
+          force: true
         });
       }
     });
@@ -221,7 +221,7 @@ Cypress.Commands.add(
  * Use this command to drop a component that has previously been dragged with the command `dragOver`
  *
  * If you just want to drag and drop a component use the `dragAndDrop` command instead.
- *  
+ *
  * @example ```
  *  cy.get('source').dragOver('target');
  *  cy.get('source').drop();
@@ -231,7 +231,7 @@ Cypress.Commands.add(
 Cypress.Commands.add(
   'drop',
   {
-    prevSubject: true,
+    prevSubject: true
   },
   (subject) => {
     cy.get(subject).trigger('dragend', { force: true });

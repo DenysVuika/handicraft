@@ -56,14 +56,14 @@ const HeaderContent = styled.div({
   width: '100%',
   paddingLeft: '1rem',
   paddingRight: '1rem',
-  justifyContent: 'flex-end',
+  justifyContent: 'flex-end'
 });
 
 export const Header = () => {
   const { enabled, canUndo, canRedo, actions } = useEditor((state, query) => ({
     enabled: state.options.enabled,
     canUndo: query.history.canUndo(),
-    canRedo: query.history.canRedo(),
+    canRedo: query.history.canRedo()
   }));
 
   return (
@@ -89,8 +89,8 @@ export const Header = () => {
               'transition',
               {
                 'app-bg-green-400': enabled,
-                'app-bg-primary': !enabled,
-              },
+                'app-bg-primary': !enabled
+              }
             ])}
             onClick={() => {
               actions.setOptions((options) => (options.enabled = !enabled));

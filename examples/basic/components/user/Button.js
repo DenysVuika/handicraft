@@ -5,13 +5,13 @@ import {
   FormLabel,
   RadioGroup,
   Radio,
-  FormControlLabel,
+  FormControlLabel
 } from '@material-ui/core';
 import React from 'react';
 
 export const Button = ({ size, variant, color, text, ...props }) => {
   const {
-    connectors: { connect, drag },
+    connectors: { connect, drag }
   } = useNode();
   return (
     <MaterialButton
@@ -30,9 +30,9 @@ export const Button = ({ size, variant, color, text, ...props }) => {
 export const ButtonSettings = () => {
   const {
     actions: { setProp },
-    props,
+    props
   } = useNode((node) => ({
-    props: node.data.props,
+    props: node.data.props
   }));
 
   return (
@@ -114,12 +114,12 @@ export const ButtonDefaultProps = {
   size: 'small',
   variant: 'contained',
   color: 'primary',
-  text: 'Click me',
+  text: 'Click me'
 };
 
 Button.craft = {
   props: ButtonDefaultProps,
   related: {
-    settings: ButtonSettings,
-  },
+    settings: ButtonSettings
+  }
 };

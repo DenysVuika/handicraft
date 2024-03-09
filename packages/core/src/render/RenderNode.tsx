@@ -8,15 +8,15 @@ import { useInternalNode } from '../nodes/useInternalNode';
 type RenderNodeToElementType = {
   render?: React.ReactElement;
 };
-export const RenderNodeToElement: React.FC<React.PropsWithChildren<
-  RenderNodeToElementType
->> = ({ render }) => {
+export const RenderNodeToElement: React.FC<
+  React.PropsWithChildren<RenderNodeToElementType>
+> = ({ render }) => {
   const { hidden } = useInternalNode((node) => ({
-    hidden: node.data.hidden,
+    hidden: node.data.hidden
   }));
 
   const { onRender } = useInternalEditor((state) => ({
-    onRender: state.options.onRender,
+    onRender: state.options.onRender
   }));
 
   // don't display the node since it's hidden

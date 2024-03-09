@@ -13,7 +13,7 @@ export function isEventBlockedByDescendant<K extends keyof HTMLElementEventMap>(
   if (!e.craft) {
     e.craft = {
       stopPropagation: () => {},
-      blockedEvents: {},
+      blockedEvents: {}
     };
   }
 

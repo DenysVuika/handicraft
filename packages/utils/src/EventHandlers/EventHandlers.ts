@@ -6,7 +6,7 @@ import {
   CraftDOMEvent,
   Connector,
   ConnectorsUsage,
-  RegisteredConnector,
+  RegisteredConnector
 } from './interfaces';
 import { isEventBlockedByDescendant } from './isEventBlockedByDescendant';
 
@@ -98,10 +98,8 @@ export abstract class EventHandlers<O extends Record<string, any> = {}> {
     const activeConnectorIds: Set<string> = new Set();
 
     let canRegisterConnectors = false;
-    const connectorsToRegister: Map<
-      string,
-      () => RegisteredConnector
-    > = new Map();
+    const connectorsToRegister: Map<string, () => RegisteredConnector> =
+      new Map();
 
     const connectors = Object.entries(handlers).reduce<
       Record<string, Connector>
@@ -114,7 +112,7 @@ export abstract class EventHandlers<O extends Record<string, any> = {}> {
               required,
               name,
               options,
-              connector: handler,
+              connector: handler
             });
 
             activeConnectorIds.add(connector.id);
@@ -137,7 +135,7 @@ export abstract class EventHandlers<O extends Record<string, any> = {}> {
           }
 
           return el;
-        },
+        }
       }),
       {}
     ) as any;
@@ -157,7 +155,7 @@ export abstract class EventHandlers<O extends Record<string, any> = {}> {
         activeConnectorIds.forEach((connectorId) =>
           this.registry.remove(connectorId)
         );
-      },
+      }
     };
   }
 
@@ -192,7 +190,7 @@ export abstract class EventHandlers<O extends Record<string, any> = {}> {
 
           connectorsToCleanup.push(cleanup);
         };
-      },
+      }
     });
 
     cb(proxiedHandlers as any);

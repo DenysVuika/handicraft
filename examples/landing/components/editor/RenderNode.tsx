@@ -36,7 +36,7 @@ const Btn = styled.a`
 export const RenderNode = ({ render }) => {
   const { id } = useNode();
   const { actions, query, isActive } = useEditor((_, query) => ({
-    isActive: query.getEvent('selected')?.contains(id),
+    isActive: query.getEvent('selected')?.contains(id)
   }));
 
   const {
@@ -46,7 +46,7 @@ export const RenderNode = ({ render }) => {
     moveable,
     deletable,
     connectors: { drag },
-    parent,
+    parent
   } = useNode((node) => ({
     isHover: node.events.hovered,
     dom: node.dom,
@@ -54,7 +54,7 @@ export const RenderNode = ({ render }) => {
     moveable: query.node(node.id).isDraggable(),
     deletable: query.node(node.id).isDeletable(),
     parent: node.data.parent,
-    props: node.data.props,
+    props: node.data.props
   }));
 
   const currentRef = useRef<HTMLDivElement>();
@@ -72,7 +72,7 @@ export const RenderNode = ({ render }) => {
       : { top: 0, left: 0, bottom: 0 };
     return {
       top: `${top > 0 ? top : bottom}px`,
-      left: `${left}px`,
+      left: `${left}px`
     };
   }, []);
 
@@ -111,7 +111,7 @@ export const RenderNode = ({ render }) => {
                 alignItems: 'center',
                 left: getPos(dom).left,
                 top: getPos(dom).top,
-                zIndex: 9999,
+                zIndex: 9999
               }}
             >
               <h2
@@ -119,7 +119,7 @@ export const RenderNode = ({ render }) => {
                   flex: '1 1 0%',
                   margin: '0 1rem 0 0',
                   fontSize: 'inherit',
-                  fontFamily: 'inherit',
+                  fontFamily: 'inherit'
                 }}
               >
                 {name}

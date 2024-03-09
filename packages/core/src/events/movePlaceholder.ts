@@ -44,6 +44,6 @@ export default function movePlaceholder(
     top: `${t}px`,
     left: `${l}px`,
     width: `${w}px`,
-    height: `${h}px`,
+    height: `${h}px`
   };
 }

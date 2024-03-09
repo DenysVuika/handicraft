@@ -20,7 +20,7 @@ describe('Frame', () => {
     cy.getByTestId('frame-button')
       .should('have.attr', 'draggable', 'true')
       .dragAndDrop('@card-bottom', {
-        position: 'inside',
+        position: 'inside'
       });
     // CardBottom now should have 2 elements
     cy.get('@card-bottom').children().should('have.length', 2);
@@ -36,7 +36,7 @@ describe('Frame', () => {
     cy.getByTestId('frame-text')
       .should('have.attr', 'draggable', 'true')
       .dragAndDrop('@card-top-text-1', {
-        position: 'below',
+        position: 'below'
       });
     cy.get('@card-top').children().should('have.length', 3);
 
@@ -49,7 +49,7 @@ describe('Frame', () => {
       .children()
       .should('have.length', 1);
     cy.getByTestId('frame-card').dragAndDrop('@frame-container', {
-      position: 'inside',
+      position: 'inside'
     });
     cy.get('@frame-container').children().should('have.length', 2);
     cy.get('@root-container').children().should('have.length', 1);
@@ -137,7 +137,7 @@ describe('Frame', () => {
       'frame-button',
       'frame-text',
       'frame-container-text',
-      'frame-container',
+      'frame-container'
     ].forEach((testId) => {
       cy.getByTestId(testId).click();
       cy.contains('Delete').should('not.exist');

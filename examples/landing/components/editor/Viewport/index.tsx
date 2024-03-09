@@ -7,14 +7,14 @@ import { Sidebar } from './Sidebar';
 import { Toolbox } from './Toolbox';
 
 export const Viewport: React.FC<{ children?: React.ReactNode }> = ({
-  children,
+  children
 }) => {
   const {
     enabled,
     connectors,
-    actions: { setOptions },
+    actions: { setOptions }
   } = useEditor((state) => ({
-    enabled: state.options.enabled,
+    enabled: state.options.enabled
   }));
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export const Viewport: React.FC<{ children?: React.ReactNode }> = ({
       // Notify doc site
       window.parent.postMessage(
         {
-          LANDING_PAGE_LOADED: true,
+          LANDING_PAGE_LOADED: true
         },
         '*'
       );
@@ -48,7 +48,7 @@ export const Viewport: React.FC<{ children?: React.ReactNode }> = ({
           overflow: 'hidden',
           flexDirection: 'row',
           width: '100%',
-          position: 'fixed',
+          position: 'fixed'
         }}
       >
         <Toolbox />
@@ -57,7 +57,7 @@ export const Viewport: React.FC<{ children?: React.ReactNode }> = ({
             display: 'flex',
             flexDirection: 'column',
             flex: '1 1 0%',
-            height: '100%',
+            height: '100%'
           }}
           className="page-container"
         >
@@ -68,13 +68,13 @@ export const Viewport: React.FC<{ children?: React.ReactNode }> = ({
               height: '100%',
               width: '100%',
               overflow: 'auto',
-              paddingBottom: '2rem',
+              paddingBottom: '2rem'
             }}
             className={cx([
               'craftjs-renderer transition',
               {
-                'app-bg-renderer-gray': enabled,
-              },
+                'app-bg-renderer-gray': enabled
+              }
             ])}
             ref={(ref) => connectors.select(connectors.hover(ref, null), null)}
           >
@@ -84,7 +84,7 @@ export const Viewport: React.FC<{ children?: React.ReactNode }> = ({
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
-                paddingTop: '2rem',
+                paddingTop: '2rem'
               }}
             >
               {children}

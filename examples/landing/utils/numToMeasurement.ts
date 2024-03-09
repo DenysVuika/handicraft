@@ -27,6 +27,6 @@ export const getElementDimensions = (element: HTMLElement) => {
 
   return {
     width,
-    height,
+    height
   };
 };

@@ -1,7 +1,7 @@
 import {
   createTestDerivedHandlers,
   createTestHandlers,
-  triggerMouseEvent,
+  triggerMouseEvent
 } from './fixtures';
 
 import { EventHandlers } from '../EventHandlers';

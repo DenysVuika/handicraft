@@ -4,7 +4,7 @@ import { useMemo } from 'react';
 import {
   useInternalEditor,
   EditorCollector,
-  useInternalEditorReturnType,
+  useInternalEditorReturnType
 } from '../editor/useInternalEditor';
 
 type PrivateActions =
@@ -82,8 +82,8 @@ export function useEditor<S>(collect?: any): useEditorReturnType<S> {
         ignore: (...args) =>
           getPublicActions(EditorActions.history.ignore(...args)),
         throttle: (...args) =>
-          getPublicActions(EditorActions.history.throttle(...args)),
-      },
+          getPublicActions(EditorActions.history.throttle(...args))
+      }
     };
   }, [EditorActions]);
 
@@ -92,6 +92,6 @@ export function useEditor<S>(collect?: any): useEditorReturnType<S> {
     actions,
     query,
     store,
-    ...(collected as any),
+    ...(collected as any)
   };
 }

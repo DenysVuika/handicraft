@@ -13,8 +13,8 @@ import { Text } from '../components/user/Text';
 const useStyles = makeStyles(() => ({
   root: {
     padding: 0,
-    background: 'rgb(252, 253, 253)',
-  },
+    background: 'rgb(252, 253, 253)'
+  }
 }));
 export default function App() {
   const classes = useStyles();
@@ -31,7 +31,7 @@ export default function App() {
           Text,
           Container,
           CardTop,
-          CardBottom,
+          CardBottom
         }}
       >
         <Topbar />

@@ -17,15 +17,15 @@ const getTestNode = (parentNode) => {
     ...restParentNode,
     events: {
       ...validParentNode.events,
-      ...events,
+      ...events
     },
-    dom: parentNode.dom || validParentNode.dom,
+    dom: parentNode.dom || validParentNode.dom
   };
 
   return {
     node: parentNode,
     childNodes,
-    linkedNodes,
+    linkedNodes
   };
 };
 
@@ -60,7 +60,7 @@ export const createTestNodes = (rootNode): Nodes => {
         const {
           node: childNode,
           childNodes: grandChildNodes,
-          linkedNodes: grandChildLinkedNodes,
+          linkedNodes: grandChildLinkedNodes
         } = getTestNode(childTestNode);
         childNode.data.parent = parentNode.id;
         nodes[childNode.id] = childNode;
@@ -70,8 +70,8 @@ export const createTestNodes = (rootNode): Nodes => {
           data: {
             ...childNode.data,
             nodes: grandChildNodes || [],
-            linkedNodes: grandChildLinkedNodes || {},
-          },
+            linkedNodes: grandChildLinkedNodes || {}
+          }
         });
       });
     }
@@ -81,7 +81,7 @@ export const createTestNodes = (rootNode): Nodes => {
         const {
           node: childNode,
           childNodes: grandChildNodes,
-          linkedNodes: grandChildLinkedNodes,
+          linkedNodes: grandChildLinkedNodes
         } = getTestNode(linkedNodes[linkedId]);
         parentNode.data.linkedNodes[linkedId] = childNode.id;
 
@@ -92,8 +92,8 @@ export const createTestNodes = (rootNode): Nodes => {
           data: {
             ...childNode.data,
             nodes: grandChildNodes || [],
-            linkedNodes: grandChildLinkedNodes || {},
-          },
+            linkedNodes: grandChildLinkedNodes || {}
+          }
         });
       });
     }
@@ -113,7 +113,7 @@ export const createTestState = (state = {} as any) => {
     nodes: rootNode ? createTestNodes(rootNode) : {},
     events: {
       ...editorInitialState.events,
-      ...(events || {}),
-    },
+      ...(events || {})
+    }
   };
 };

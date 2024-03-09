@@ -16,7 +16,7 @@ export const createTestHandlers = () => {
     'hover',
     'drag',
     'drop',
-    'create',
+    'create'
   ].reduce((accum, key) => {
     const cleanup = jest.fn();
     const init = jest.fn().mockImplementation(() => {
@@ -29,8 +29,8 @@ export const createTestHandlers = () => {
         mousedown: jest.fn().mockImplementation((e) => {
           e.craft.stopPropagation();
         }),
-        mouseover: jest.fn(),
-      },
+        mouseover: jest.fn()
+      }
     };
 
     return accum;
@@ -66,7 +66,7 @@ export const createTestHandlers = () => {
 
   return {
     instance,
-    handlers: testHandlers,
+    handlers: testHandlers
   };
 };
 
@@ -81,8 +81,8 @@ export const createTestDerivedHandlers = (core: any) => {
       cleanup,
       events: {
         mousedown: jest.fn(),
-        mouseover: jest.fn(),
-      },
+        mouseover: jest.fn()
+      }
     };
 
     return accum;
@@ -125,6 +125,6 @@ export const createTestDerivedHandlers = (core: any) => {
 
   return {
     instance,
-    handlers: testHandlers,
+    handlers: testHandlers
   };
 };

@@ -6,7 +6,7 @@ import React from 'react';
 
 export const Container = ({ background, padding, children, ...props }) => {
   const {
-    connectors: { connect, drag },
+    connectors: { connect, drag }
   } = useNode();
   return (
     <Paper
@@ -23,10 +23,10 @@ export const ContainerSettings = () => {
   const {
     background,
     padding,
-    actions: { setProp },
+    actions: { setProp }
   } = useNode((node) => ({
     background: node.data.props.background,
-    padding: node.data.props.padding,
+    padding: node.data.props.padding
   }));
 
   return (
@@ -56,12 +56,12 @@ export const ContainerSettings = () => {
 
 export const ContainerDefaultProps = {
   background: '#ffffff',
-  padding: 3,
+  padding: 3
 };
 
 Container.craft = {
   props: ContainerDefaultProps,
   related: {
-    settings: ContainerSettings,
-  },
+    settings: ContainerSettings
+  }
 };

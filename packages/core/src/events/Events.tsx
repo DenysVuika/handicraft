@@ -12,9 +12,10 @@ type EventsProps = {
 export const Events: React.FC<EventsProps> = ({ children }) => {
   const store = useContext(EditorContext);
 
-  const handler = useMemo(() => store.query.getOptions().handlers(store), [
-    store,
-  ]);
+  const handler = useMemo(
+    () => store.query.getOptions().handlers(store),
+    [store]
+  );
 
   if (!handler) {
     return null;

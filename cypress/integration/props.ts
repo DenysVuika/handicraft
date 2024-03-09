@@ -84,14 +84,14 @@ describe('Props / SettingsPanel', () => {
         componentName: 'Card',
         testId: 'frame-card',
         initialBackgroundColor: 'rgb(255, 255, 255)',
-        initialPadding: '3px',
+        initialPadding: '3px'
       },
       {
         componentName: 'Container',
         testId: 'frame-container',
         initialBackgroundColor: 'rgb(153, 153, 153)',
-        initialPadding: '6px',
-      },
+        initialPadding: '6px'
+      }
     ].forEach(
       ({ testId, initialBackgroundColor, initialPadding, componentName }) => {
         // we click left to not accidentally click the text inside the container/card
@@ -158,7 +158,7 @@ describe('Props / SettingsPanel', () => {
       'frame-container',
       'frame-card',
       'card-top',
-      'card-bottom',
+      'card-bottom'
     ].forEach((testId) => {
       // ... we select the element ...
       cy.getByTestId(testId).click();

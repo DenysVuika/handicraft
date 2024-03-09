@@ -22,7 +22,7 @@ describe('EventHandlers', () => {
         drag: expect.any(Function),
         drop: expect.any(Function),
         create: expect.any(Function),
-        connect: expect.any(Function),
+        connect: expect.any(Function)
       });
     });
     describe('attaching a connector', () => {

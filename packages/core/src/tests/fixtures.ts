@@ -8,31 +8,31 @@ export const rootNode = createTestNode('ROOT', {
   displayName: 'Document',
   type: 'Document',
   isCanvas: true,
-  nodes: [],
+  nodes: []
 });
 
 export const leafNode = createTestNode('node-L1eGyOJ4m', {
   props: { childrenString: 'Header 1' },
   name: 'Text',
-  displayName: 'Text',
+  displayName: 'Text'
 });
 
 export const primaryButton = createTestNode('node-primary-button', {
   props: { childrenString: 'Button one' },
   name: 'Button',
-  displayName: 'Button',
+  displayName: 'Button'
 });
 
 export const secondaryButton = createTestNode('node-secondary-button', {
   props: { childrenString: 'Button two' },
   name: 'Button',
-  displayName: 'Button',
+  displayName: 'Button'
 });
 
 export const card = createTestNode('node-card', {
   name: 'Card',
   displayName: 'Button',
-  isCanvas: true,
+  isCanvas: true
 });
 
 /**
@@ -44,20 +44,20 @@ export const emptyState = {
     dragged: null,
     selected: null,
     hovered: null,
-    indicator: null,
+    indicator: null
   },
   options: {
     resolver: {
-      Document: 'Document',
-    },
-  },
+      Document: 'Document'
+    }
+  }
 };
 
 export const documentState = {
   ...emptyState,
   nodes: {
-    [rootNode.id]: rootNode,
-  },
+    [rootNode.id]: rootNode
+  }
 };
 
 export const documentWithLeafState = {
@@ -65,13 +65,13 @@ export const documentWithLeafState = {
   nodes: {
     [rootNode.id]: {
       ...rootNode,
-      data: { ...rootNode.data, nodes: [leafNode.id] },
+      data: { ...rootNode.data, nodes: [leafNode.id] }
     },
     [leafNode.id]: {
       ...leafNode,
-      data: { ...leafNode.data, parent: rootNode.id },
-    },
-  },
+      data: { ...leafNode.data, parent: rootNode.id }
+    }
+  }
 };
 
 export const documentWithButtonsState = {
@@ -81,18 +81,18 @@ export const documentWithButtonsState = {
       ...rootNode,
       data: {
         ...rootNode.data,
-        nodes: [primaryButton.id, secondaryButton.id],
-      },
+        nodes: [primaryButton.id, secondaryButton.id]
+      }
     },
     [primaryButton.id]: {
       ...primaryButton,
-      data: { ...primaryButton.data, parent: rootNode.id },
+      data: { ...primaryButton.data, parent: rootNode.id }
     },
     [secondaryButton.id]: {
       ...secondaryButton,
-      data: { ...secondaryButton.data, parent: rootNode.id },
-    },
-  },
+      data: { ...secondaryButton.data, parent: rootNode.id }
+    }
+  }
 };
 
 export const documentWithCardState = {
@@ -100,25 +100,25 @@ export const documentWithCardState = {
   nodes: {
     [rootNode.id]: {
       ...rootNode,
-      data: { ...rootNode.data, nodes: [card.id] },
+      data: { ...rootNode.data, nodes: [card.id] }
     },
     [card.id]: {
       ...card,
       data: {
         ...card.data,
         nodes: [primaryButton.id, secondaryButton.id],
-        parent: rootNode.id,
-      },
+        parent: rootNode.id
+      }
     },
     [primaryButton.id]: {
       ...primaryButton,
-      data: { ...primaryButton.data, parent: card.id },
+      data: { ...primaryButton.data, parent: card.id }
     },
     [secondaryButton.id]: {
       ...secondaryButton,
-      data: { ...secondaryButton.data, parent: card.id },
-    },
-  },
+      data: { ...secondaryButton.data, parent: card.id }
+    }
+  }
 };
 
 // TODO: Find a better way to create test child nodes
@@ -131,19 +131,19 @@ export const documentWithVariousNodes = {
       nodes: [
         'node-reject-dnd',
         'canvas-node-incoming-dnd',
-        'canvas-node-reject-outgoing-dnd',
-      ],
+        'canvas-node-reject-outgoing-dnd'
+      ]
     }),
     'node-reject-dnd': createTestNode(
       'node-reject-dnd',
       {
         nodes: ['non-immediate-canvas-child'],
-        parent: 'canvas-node',
+        parent: 'canvas-node'
       },
       {
         rules: {
-          canDrag: () => false,
-        },
+          canDrag: () => false
+        }
       }
     ),
     'canvas-node-reject-incoming-dnd': createTestNode(
@@ -151,12 +151,12 @@ export const documentWithVariousNodes = {
       {
         nodes: [],
         parent: 'canvas-node',
-        isCanvas: true,
+        isCanvas: true
       },
       {
         rules: {
-          canMoveIn: () => false,
-        },
+          canMoveIn: () => false
+        }
       }
     ),
     'canvas-node-reject-outgoing-dnd': createTestNode(
@@ -164,35 +164,35 @@ export const documentWithVariousNodes = {
       {
         nodes: ['fixed-child-node', 'parent-of-linked-node'],
         parent: 'canvas-node',
-        isCanvas: true,
+        isCanvas: true
       },
       {
         rules: {
-          canMoveOut: () => false,
-        },
+          canMoveOut: () => false
+        }
       }
     ),
     'non-immediate-canvas-child': createTestNode('non-immediate-canvas-child', {
-      parent: 'node-reject-dnd',
+      parent: 'node-reject-dnd'
     }),
     'fixed-child-node': createTestNode('fixed-child-node', {
-      parent: 'canvas-node-reject-outgoing-dnd',
+      parent: 'canvas-node-reject-outgoing-dnd'
     }),
     'parent-of-linked-node': createTestNode('parent-of-linked-node', {
       isCanvas: true,
       parent: 'canvas-node-reject-outgoing-dnd',
       linkedNodes: {
-        test: 'linked-node',
-      },
+        test: 'linked-node'
+      }
     }),
     'linked-node': createTestNode('linked-node', {
       isCanvas: true,
       parent: 'parent-of-linked-node',
-      nodes: ['linked-node-child-canvas'],
+      nodes: ['linked-node-child-canvas']
     }),
     'linked-node-child-canvas': createTestNode('linked-node-child-canvas', {
       isCanvas: true,
-      parent: 'linked-node',
-    }),
-  },
+      parent: 'linked-node'
+    })
+  }
 };

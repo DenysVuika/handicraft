@@ -5,13 +5,13 @@ import { Button } from './Button';
 import {
   Container,
   ContainerSettings,
-  ContainerDefaultProps,
+  ContainerDefaultProps
 } from './Container';
 import { Text } from './Text';
 
 export const CardTop = ({ children, ...props }) => {
   const {
-    connectors: { connect },
+    connectors: { connect }
   } = useNode();
   return (
     <div
@@ -24,7 +24,7 @@ export const CardTop = ({ children, ...props }) => {
         borderBottom: '1px solid #eee',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'flex-start',
+        alignItems: 'flex-start'
       }}
     >
       {children}
@@ -35,13 +35,13 @@ export const CardTop = ({ children, ...props }) => {
 CardTop.craft = {
   rules: {
     canMoveIn: (incomingNodes) =>
-      incomingNodes.every((incomingNode) => incomingNode.data.type === Text),
-  },
+      incomingNodes.every((incomingNode) => incomingNode.data.type === Text)
+  }
 };
 
 export const CardBottom = ({ children, ...props }) => {
   const {
-    connectors: { connect },
+    connectors: { connect }
   } = useNode();
   return (
     <div {...props} style={{ padding: '10px 0' }} ref={connect}>
@@ -53,8 +53,8 @@ export const CardBottom = ({ children, ...props }) => {
 CardBottom.craft = {
   rules: {
     canMoveIn: (incomingNodes) =>
-      incomingNodes.every((incomingNode) => incomingNode.data.type === Button),
-  },
+      incomingNodes.every((incomingNode) => incomingNode.data.type === Button)
+  }
 };
 
 export const Card = ({ background, padding = 20, ...props }) => {
@@ -82,6 +82,6 @@ export const Card = ({ background, padding = 20, ...props }) => {
 Card.craft = {
   props: ContainerDefaultProps,
   related: {
-    settings: ContainerSettings,
-  },
+    settings: ContainerSettings
+  }
 };

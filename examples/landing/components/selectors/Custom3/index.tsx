@@ -5,7 +5,7 @@ import { Container } from '../Container';
 
 export const Custom3BtnDrop = ({ children }) => {
   const {
-    connectors: { connect },
+    connectors: { connect }
   } = useNode();
   return (
     <div ref={connect} style={{ width: '100%', height: '100%' }}>
@@ -18,7 +18,7 @@ Custom3BtnDrop.craft = {
   rules: {
     canMoveOut: (outgoingNodes, self, helpers) => {
       const {
-        data: { nodes },
+        data: { nodes }
       } = self;
       const btnNodes = nodes.filter(
         (id) => helpers(id).get().data.type === Button
@@ -33,8 +33,8 @@ Custom3BtnDrop.craft = {
       }
 
       return false;
-    },
-  },
+    }
+  }
 };
 export const Custom3 = (props: any) => {
   return (
@@ -56,5 +56,5 @@ export const Custom3 = (props: any) => {
 
 Custom3.craft = {
   ...Container.craft,
-  displayName: 'Custom 3',
+  displayName: 'Custom 3'
 };

@@ -7,7 +7,7 @@ import { Frame } from '../Frame';
 jest.mock('tiny-invariant');
 jest.mock('../../editor/useInternalEditor');
 jest.mock('../../nodes/NodeElement', () => ({
-  NodeElement: () => null,
+  NodeElement: () => null
 }));
 
 const mockEditor = useInternalEditor as jest.Mock<any>;
@@ -25,9 +25,9 @@ describe('<Frame />', () => {
       history: {
         ignore: jest.fn().mockImplementation(() => ({
           addNodeTree,
-          deserialize,
-        })),
-      },
+          deserialize
+        }))
+      }
     };
     query = { createNode: jest.fn(), parseTreeFromReactNode: jest.fn() };
     mockEditor.mockImplementation(() => ({ actions, query }));

@@ -12,7 +12,7 @@ export const DefaultRender = () => {
       type: node.data.type,
       props: node.data.props,
       nodes: node.data.nodes,
-      hydrationTimestamp: node._hydrationTimestamp,
+      hydrationTimestamp: node._hydrationTimestamp
     })
   );
 

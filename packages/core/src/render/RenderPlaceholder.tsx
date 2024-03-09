@@ -8,11 +8,11 @@ export type Placeholder = {
   suggestedStyles: any;
 };
 
-export const RenderPlaceholder: React.FC<React.PropsWithChildren<
-  Placeholder
->> = ({ placeholder, suggestedStyles }) => {
+export const RenderPlaceholder: React.FC<
+  React.PropsWithChildren<Placeholder>
+> = ({ placeholder, suggestedStyles }) => {
   const { indicator } = useEditor((state) => ({
-    indicator: state.options.indicator,
+    indicator: state.options.indicator
   }));
 
   return (
@@ -25,7 +25,7 @@ export const RenderPlaceholder: React.FC<React.PropsWithChildren<
         borderStyle: 'solid',
         borderWidth: '1px',
         zIndex: '99999',
-        ...suggestedStyles,
+        ...suggestedStyles
       }}
     ></div>
   );

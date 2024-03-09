@@ -22,7 +22,7 @@ describe('Toolbox', () => {
 
       // we drag the button from the toolbox over the button inside the CardBottom
       cy.get('@toolbox-button').dragOver('@target-button', {
-        position: 'right',
+        position: 'right'
       });
 
       // the success DropIndicator should be visible
@@ -39,7 +39,7 @@ describe('Toolbox', () => {
 
       // we now drop a button to the left of the target button
       cy.get('@toolbox-button').dragAndDrop('@target-button', {
-        position: 'left',
+        position: 'left'
       });
 
       // there should be three components now
@@ -82,7 +82,7 @@ describe('Toolbox', () => {
 
       // let's first drop next to the "Click me" button
       cy.get('@toolbox-button').dragAndDrop('@target-button', {
-        position: 'right',
+        position: 'right'
       });
 
       // there should now be two buttons
@@ -94,7 +94,7 @@ describe('Toolbox', () => {
       cy.getByTestId('frame-text').as('target-text');
 
       cy.get('@toolbox-button').dragAndDrop('@target-text', {
-        position: 'below',
+        position: 'below'
       });
 
       // there should now be three buttons
@@ -110,7 +110,7 @@ describe('Toolbox', () => {
 
       // we drop inside the container
       cy.get('@toolbox-button').dragAndDrop('@frame-container', {
-        position: 'inside',
+        position: 'inside'
       });
 
       // there now should be two elements inside the container
@@ -134,7 +134,7 @@ describe('Toolbox', () => {
 
       // this time we test if it's possible to drop between elements by dropping above the second element
       cy.get('@toolbox-text').dragAndDrop('@target-text', {
-        position: 'above',
+        position: 'above'
       });
 
       // we now should have 3 elements
@@ -154,7 +154,7 @@ describe('Toolbox', () => {
 
       // we drag the Text from the toolbox over the CardBottom component
       cy.get('@toolbox-text').dragOver('@card-bottom', {
-        position: 'inside',
+        position: 'inside'
       });
 
       // the error indicator should be visible (in the button test, we tested for existence which in our case is the same as being visible)
@@ -177,7 +177,7 @@ describe('Toolbox', () => {
 
       for (let count = 0; count < numberOfElements; count++) {
         cy.get('@toolbox-text').dragAndDrop('@root-container', {
-          position: 'inside',
+          position: 'inside'
         });
         // we add the wait (for 1ms) here, otherwise cypress tries to bulk run the drag and drop and seems to freeze
         cy.wait(1);
@@ -201,12 +201,12 @@ describe('Toolbox', () => {
       [
         {
           cardPosition: 'top',
-          expectedChildren: 2,
+          expectedChildren: 2
         },
         {
           cardPosition: 'bottom',
-          expectedChildren: 1,
-        },
+          expectedChildren: 1
+        }
       ].forEach(({ cardPosition, expectedChildren }) => {
         // like in the other tests we first verify the number of children
         cy.get(`@card-${cardPosition}`)
@@ -214,7 +214,7 @@ describe('Toolbox', () => {
           .should('have.length', expectedChildren);
         // then drag the container over the CardTop or CardBottom component
         cy.get('@toolbox-container').dragOver(`@card-${cardPosition}`, {
-          position: 'inside',
+          position: 'inside'
         });
         // we expect the error drop indicator to exist
         cy.getDropIndicator('error').should('exist');
@@ -233,7 +233,7 @@ describe('Toolbox', () => {
 
       // the first container will be dropped under root
       cy.get('@toolbox-container').dragAndDrop('@root-container', {
-        position: 'inside',
+        position: 'inside'
       });
 
       // the first container we dropped, is the first container under root
@@ -244,7 +244,7 @@ describe('Toolbox', () => {
 
       // we drop the second container inside the first container
       cy.get('@toolbox-container').dragAndDrop('@first-container', {
-        position: 'inside',
+        position: 'inside'
       });
 
       cy.get('@first-container')
@@ -254,7 +254,7 @@ describe('Toolbox', () => {
 
       // and the third container is dropped inside the second container
       cy.get('@toolbox-container').dragAndDrop('@second-container', {
-        position: 'inside',
+        position: 'inside'
       });
 
       // we now verify that we dropped correctly
@@ -275,12 +275,12 @@ describe('Toolbox', () => {
       [
         {
           cardPosition: 'top',
-          expectedChildren: 2,
+          expectedChildren: 2
         },
         {
           cardPosition: 'bottom',
-          expectedChildren: 1,
-        },
+          expectedChildren: 1
+        }
       ].forEach(({ cardPosition, expectedChildren }) => {
         // like in the other tests we first verify the number of children
         cy.get(`@card-${cardPosition}`)
@@ -288,7 +288,7 @@ describe('Toolbox', () => {
           .should('have.length', expectedChildren);
         // then drag the Card over the CardTop or CardBottom component
         cy.get('@toolbox-card').dragOver(`@card-${cardPosition}`, {
-          position: 'inside',
+          position: 'inside'
         });
         // we expect the error drop indicator to exist
         cy.getDropIndicator('error').should('exist');
@@ -303,7 +303,7 @@ describe('Toolbox', () => {
     it('should be possible to drop the Card in root as the last element', () => {
       cy.get('@root-container').children().should('have.length', 4);
       cy.get('@toolbox-card').dragAndDrop('@frame-container', {
-        position: 'below',
+        position: 'below'
       });
       cy.get('@root-container').children().should('have.length', 5);
 
@@ -332,7 +332,7 @@ describe('Toolbox', () => {
           .should('not.have.attr', 'draggable');
         // it should not be possible to drag the elements.
         cy.get('@toolbox-component').dragAndDrop('@root-container', {
-          position: 'inside',
+          position: 'inside'
         });
         cy.get('@root-container').children().should('have.length', 4);
       });

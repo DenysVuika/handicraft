@@ -14,7 +14,7 @@ export const getNodesFromSelector = (
   const mergedConfig = {
     existOnly: false,
     idOnly: false,
-    ...(config || {}),
+    ...(config || {})
   };
 
   const nodeSelectors = items
@@ -23,7 +23,7 @@ export const getNodesFromSelector = (
       if (typeof item === 'string') {
         return {
           node: nodes[item],
-          exists: !!nodes[item],
+          exists: !!nodes[item]
         };
       }
 
@@ -31,13 +31,13 @@ export const getNodesFromSelector = (
         const node = item as Node;
         return {
           node,
-          exists: !!nodes[node.id],
+          exists: !!nodes[node.id]
         };
       }
 
       return {
         node: null,
-        exists: false,
+        exists: false
       };
     });
 
