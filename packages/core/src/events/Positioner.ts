@@ -1,5 +1,3 @@
-import { getDOMInfo } from '@craftjs/utils';
-
 import findPosition from './findPosition';
 
 import { ROOT_NODE } from '../constants';
@@ -13,7 +11,7 @@ import {
   NodeInfo,
   NodeSelectorWrapper
 } from '../interfaces';
-import { getNodesFromSelector } from '../utils/getNodesFromSelector';
+import { getNodesFromSelector, getDOMInfo } from '../utils';
 
 /**
  * Positioner is responsible for computing the drop Indicator during a sequence of drag-n-drop events

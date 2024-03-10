@@ -1,5 +1,4 @@
 export * from './useMethods';
-export * from './getDOMInfo';
 export * from './useCollector';
 export * from './EventHandlers';
 export * from './RenderIndicator';

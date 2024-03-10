@@ -2,6 +2,7 @@ export * from './createNode';
 export * from './deprecate';
 export * from './deserializeNode';
 export * from './fromEntries';
+export * from './getDOMInfo';
 export * from './getNodesFromSelector';
 export * from './isObject';
 export * from './mapChildrenToNodes';

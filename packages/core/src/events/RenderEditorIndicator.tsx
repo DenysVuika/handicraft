@@ -1,10 +1,11 @@
-import { RenderIndicator, getDOMInfo } from '@craftjs/utils';
+import { RenderIndicator } from '@craftjs/utils';
 import React, { useEffect } from 'react';
 
 import { useEventHandler } from './EventContext';
 import movePlaceholder from './movePlaceholder';
 
 import { useInternalEditor } from '../editor/useInternalEditor';
+import { getDOMInfo } from '../utils';
 
 export const RenderEditorIndicator = () => {
   const { indicator, indicatorOptions, enabled } = useInternalEditor(
