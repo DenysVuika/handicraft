@@ -450,7 +450,7 @@ But hold up, how do we even create a Node inside a User Component?  Remember the
 // components/user/Card.js
 import {useNode, Element} from "@craftjs/core";
 
-export const Card = (({bg, padding})) => {
+export const Card = ({bg, padding}) => {
   return (
     <Container background={background} padding={padding}>
       <Element id="text" canvas> // Canvas Node of type div
@@ -648,7 +648,7 @@ export const Text = ({text, fontSize}) => {
     >
       <ContentEditable
         disabled={!editable}
-       ...
+        /*...*/
       />
     </div>
   )
@@ -714,7 +714,8 @@ export const Text = ({text, fontSize}) => {
     isActive: node.events.selected
   }));
 
-  ...
+  // ...
+  
   return (
     <div {/*...*/}>
       <ContentEditable {/*...*/} />
@@ -754,6 +755,7 @@ Text.craft = {
 ```
 
 Before we move on to the Settings Panel, let's quickly do the same for the other User Components:
+
 ```jsx
 // components/user/Button.js
 import {Button as MaterialButton, Grid, FormControl, FormLabel, RadioGroup,Radio, FormControlLabel} from "@material-ui/core";
@@ -836,11 +838,12 @@ Container.craft = {
   }
 }
 ```
+
 ```jsx
 // components/user/Card.js
-import {ContainerSettings} from "./Container";
+import { ContainerSettings } from "./Container";
 
-export const Card({ background, padding = 20 }) { /*...*/ }
+export const Card = ({ background, padding = 20 }) => { /*...*/ }
 
 Card.craft = {
   related: {
@@ -851,6 +854,7 @@ Card.craft = {
 ```
 
 #### Setting default props
+
 Setting default props is not strictly necessary. However, it is helpful if we wish to access the component's props via its corresponding `Node`, like what we did in the `settings` related component above.
 
 For instance, if a Text component is rendered as `<Text text="Hi" />`, we would get a null value when we try to retrieve the `fontSize` prop via its `Node`. An easy way to solve this is to explicity define each User Component's `props`:

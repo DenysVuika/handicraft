@@ -215,7 +215,7 @@ const Methods = (
 
     /**
      * Delete a Node
-     * @param id
+     * @param selector
      */
     delete(selector: NodeSelector<NodeSelectorType.Id>) {
       const targets = getNodesFromSelector(state.nodes, selector, {
@@ -256,7 +256,7 @@ const Methods = (
 
     /**
      * Move a target Node to a new Parent at a given index
-     * @param targetId
+     * @param selector
      * @param newParentId
      * @param index
      */
@@ -333,7 +333,7 @@ const Methods = (
     /**
      * Set editor options via a callback function
      *
-     * @param cb: function used to set the options.
+     * @param cb function used to set the options.
      */
     setOptions(cb: (options: Partial<EditorOptions>) => void) {
       cb(state.options);
@@ -369,7 +369,7 @@ const Methods = (
 
     /**
      * Set custom values to a Node
-     * @param id
+     * @param selector
      * @param cb
      */
     setCustom<T extends NodeId>(
@@ -420,7 +420,7 @@ const Methods = (
 
     /**
      * Update the props of a Node
-     * @param id
+     * @param selector
      * @param cb
      */
     setProp(

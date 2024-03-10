@@ -29,7 +29,7 @@ Add any other context about the problem here.
 ### Your environment
 
 | Software         | Version(s) |
-| ---------------- | ---------- |
+|------------------|------------|
 | craft.js         |
 | React            |
 | TypeScript       |
