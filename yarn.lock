@@ -2304,7 +2304,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@craftjs/core@workspace:packages/core"
   dependencies:
-    "@craftjs/utils": ^0.2.1
     "@types/lodash": ^4.14.195
     "@types/react": 18.0.27
     debounce: ^2.0.0
@@ -2324,7 +2323,6 @@ __metadata:
   resolution: "@craftjs/layers@workspace:packages/layers"
   dependencies:
     "@babel/core": 7.7.4
-    "@craftjs/utils": ^0.2.1
     "@svgr/rollup": 6.5.1
     react-contenteditable: ^3.3.3
     styled-components: 4.2.1
@@ -2332,21 +2330,6 @@ __metadata:
     "@craftjs/core": ">=0.2.0"
     react: ^16.8.0 || ^17 || ^18
     styled-components: ">= 4"
-  languageName: unknown
-  linkType: soft
-
-"@craftjs/utils@^0.2.1, @craftjs/utils@workspace:*, @craftjs/utils@workspace:packages/utils":
-  version: 0.0.0-use.local
-  resolution: "@craftjs/utils@workspace:packages/utils"
-  dependencies:
-    "@types/react": 18.0.27
-    immer: ^9.0.6
-    lodash: ^4.17.21
-    nanoid: ^3.1.23
-    shallowequal: ^1.1.0
-    tiny-invariant: ^1.0.6
-  peerDependencies:
-    react: ^16.8.0 || ^17 || ^18
   languageName: unknown
   linkType: soft
 
@@ -10893,7 +10876,6 @@ clsx@latest:
   dependencies:
     "@craftjs/core": "workspace:*"
     "@craftjs/layers": "workspace:*"
-    "@craftjs/utils": "workspace:*"
     "@emotion/react": ^11.11.3
     "@emotion/styled": ^11.11.0
     "@mui/icons-material": ^5.15.10

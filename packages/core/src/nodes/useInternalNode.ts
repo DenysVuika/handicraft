@@ -5,7 +5,7 @@ import { NodeContext } from './NodeContext';
 
 import { ERROR_USE_NODE_OUTSIDE_OF_EDITOR_CONTEXT } from '../constants';
 import { useInternalEditor } from '../editor/useInternalEditor';
-import { wrapConnectorHooks } from '../events';
+import { wrapConnectorHooks } from '../events/EventHandlers/wrapConnectorHooks';
 import { Node } from '../interfaces';
 
 export function useInternalNode<S = null>(collect?: (node: Node) => S) {
