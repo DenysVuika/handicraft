@@ -7,6 +7,8 @@ export * from './isObject';
 export * from './mapChildrenToNodes';
 export * from './mergeTrees';
 export * from './parseNodeFromJSX';
+export * from './platform';
 export * from './removeNodeFromEvents';
 export * from './resolveComponent';
 export * from './serializeNode';
+export * from './utilityTypes';

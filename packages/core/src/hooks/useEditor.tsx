@@ -1,4 +1,3 @@
-import { Overwrite, Delete, OverwriteFnReturnType } from '@craftjs/utils';
 import { useMemo } from 'react';
 
 import {
@@ -6,6 +5,7 @@ import {
   EditorCollector,
   useInternalEditorReturnType
 } from '../editor/useInternalEditor';
+import { Overwrite, Delete, OverwriteFnReturnType } from '../utils';
 
 type PrivateActions =
   | 'addLinkedNodeFromTree'

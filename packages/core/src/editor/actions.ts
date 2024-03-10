@@ -1,4 +1,4 @@
-import { QueryCallbacksFor, CallbacksFor, Delete } from '@craftjs/utils';
+import { QueryCallbacksFor, CallbacksFor } from '@craftjs/utils';
 import invariant from 'tiny-invariant';
 
 import { QueryMethods } from './query';
@@ -28,7 +28,8 @@ import {
   deprecationWarning,
   fromEntries,
   getNodesFromSelector,
-  removeNodeFromEvents
+  removeNodeFromEvents,
+  Delete
 } from '../utils';
 
 const Methods = (
