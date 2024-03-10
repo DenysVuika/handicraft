@@ -1,6 +1,6 @@
-import { ERROR_INVALID_NODEID } from '@craftjs/utils';
 import invariant from 'tiny-invariant';
 
+import { ERROR_INVALID_NODEID } from '../constants';
 import { Nodes, Node, NodeSelectorWrapper, NodeSelector } from '../interfaces';
 
 type config = { existOnly: boolean; idOnly: boolean };

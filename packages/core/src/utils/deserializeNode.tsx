@@ -1,16 +1,16 @@
-import { ERROR_DESERIALIZE_COMPONENT_NOT_IN_RESOLVER } from '@craftjs/utils';
 import React from 'react';
 import invariant from 'tiny-invariant';
 
 import { resolveComponent } from './resolveComponent';
 
+import { ERROR_DESERIALIZE_COMPONENT_NOT_IN_RESOLVER } from '../constants';
 import {
   NodeData,
   SerializedNode,
   ReducedComp,
-  ReduceCompType
+  ReduceCompType,
+  Resolver
 } from '../interfaces';
-import { Resolver } from '../interfaces';
 import { Canvas } from '../nodes/Canvas';
 
 type DeserialisedType = JSX.Element & { name: string };

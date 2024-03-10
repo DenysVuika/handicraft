@@ -3,8 +3,7 @@ import {
   useCollectorReturnType,
   QueryCallbacksFor,
   wrapConnectorHooks,
-  EventHandlerConnectors,
-  ERROR_USE_EDITOR_OUTSIDE_OF_EDITOR_CONTEXT
+  EventHandlerConnectors
 } from '@craftjs/utils';
 import { useContext, useEffect, useMemo } from 'react';
 import invariant from 'tiny-invariant';
@@ -13,8 +12,8 @@ import { EditorContext } from './EditorContext';
 import { QueryMethods } from './query';
 import { EditorStore } from './store';
 
-import { CoreEventHandlers } from '../events/CoreEventHandlers';
-import { useEventHandler } from '../events/EventContext';
+import { ERROR_USE_EDITOR_OUTSIDE_OF_EDITOR_CONTEXT } from '../constants';
+import { CoreEventHandlers, useEventHandler } from '../events';
 import { EditorState } from '../interfaces';
 
 export type EditorCollector<C> = (
