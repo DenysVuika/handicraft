@@ -1,9 +1,7 @@
 import {
   deprecationWarning,
   ERROR_INVALID_NODEID,
-  DEPRECATED_ROOT_NODE,
   QueryCallbacksFor,
-  ERROR_NOPARENT,
   ERROR_DELETE_TOP_LEVEL_NODE,
   CallbacksFor,
   Delete,
@@ -13,7 +11,7 @@ import invariant from 'tiny-invariant';
 
 import { QueryMethods } from './query';
 
-import { ROOT_NODE } from '../constants';
+import { ROOT_NODE, DEPRECATED_ROOT_NODE, ERROR_NOPARENT } from '../constants';
 import {
   EditorState,
   Indicator,

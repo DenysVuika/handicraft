@@ -1,6 +1,5 @@
 import {
   ERROR_CANNOT_DRAG,
-  ERROR_DUPLICATE_NODEID,
   ERROR_INVALID_NODE_ID,
   ERROR_MOVE_INCOMING_PARENT,
   ERROR_MOVE_NONCANVAS_CHILD,
@@ -12,7 +11,7 @@ import {
 } from '@craftjs/utils';
 import invariant from 'tiny-invariant';
 
-import { ROOT_NODE } from '../constants';
+import { ROOT_NODE, ERROR_DUPLICATE_NODEID } from '../constants';
 import { EditorState, NodeId, NodeSelector } from '../interfaces';
 import { deprecationWarning } from '../utils';
 import { getNodesFromSelector } from '../utils/getNodesFromSelector';

@@ -1,9 +1,3 @@
-export const DEPRECATED_ROOT_NODE = 'canvas-ROOT';
-
-// TODO: Use a better way to store/display error messages
-export const ERROR_NOPARENT = 'Parent id cannot be ommited';
-export const ERROR_DUPLICATE_NODEID =
-  'Attempting to add a node with duplicated id';
 export const ERROR_INVALID_NODEID =
   'Node does not exist, it may have been removed';
 export const ERROR_TOP_LEVEL_ELEMENT_NO_ID =
