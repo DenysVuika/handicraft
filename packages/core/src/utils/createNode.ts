@@ -1,4 +1,3 @@
-import { getRandomId as getRandomNodeId } from '@craftjs/utils';
 import React from 'react';
 
 import { Node, FreshNode, UserComponentConfig } from '../interfaces';
@@ -10,6 +9,7 @@ import {
   deprecateCanvasComponent
 } from '../nodes';
 import { NodeProvider } from '../nodes/NodeContext';
+import { getRandomId as getRandomNodeId } from '../utils';
 
 const getNodeTypeName = (type: string | { name: string }) =>
   typeof type == 'string' ? type : type.name;

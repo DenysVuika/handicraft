@@ -5,6 +5,5 @@ export * from './hooks';
 export * from './editor';
 export * from './events';
 export * from './utils/testHelpers';
-export { serializeNode } from './utils/serializeNode';
 export * from './constants';
 export * from './utils';
