@@ -1,3 +1,4 @@
+import React from 'react';
 import invariant from 'tiny-invariant';
 
 import { ERROR_NOT_IN_RESOLVER } from '../constants';

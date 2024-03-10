@@ -33,7 +33,7 @@ export class Positioner {
   private dragError: string | null;
   private draggedNodes: NodeSelectorWrapper[];
 
-  private onScrollListener: (e: Event) => void;
+  private readonly onScrollListener: (e: Event) => void;
 
   constructor(
     readonly store: EditorStore,

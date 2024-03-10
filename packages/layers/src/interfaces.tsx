@@ -1,4 +1,5 @@
 import { NodeId, Indicator } from '@craftjs/core';
+import React from 'react';
 
 export type Layer = {
   id: NodeId;

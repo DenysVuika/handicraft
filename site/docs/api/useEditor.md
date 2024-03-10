@@ -82,6 +82,7 @@ const { connectors, actions, query, ...collected } = useEditor(collector);
 ## Examples
 
 ### Collecting state information
+
 ```tsx
 import {useEditor} from "@craftjs/core";
 
@@ -99,6 +100,7 @@ const Example = () => {
 ```
 
 ### Updating props
+
 ```tsx
 import {useEditor} from "@craftjs/core";
 
@@ -122,6 +124,7 @@ const Example = () => {
 ```
 
 ### Creating new Nodes
+
 ```tsx
 import {useEditor} from "@craftjs/core";
 
@@ -160,6 +163,7 @@ const Example = () => {
 ```
 
 ### Hiding and Deleting a Node
+
 ```jsx
 const Example = () => {
   const {selectedNodeId, actions} = useEditor((state) => ({
@@ -329,51 +333,4 @@ const Example = () => {
     </div>
   )
 }
-```
-
-
-## Legacy API
-For Class Components, use `connectEditor` instead.
-
-<Badge type="hoc" title={false} />
-
-
-### Parameters
-<API items={[
-  ["collector", "(node: Node) => Collected", "A function that collects relevant state information from the corresponding Node. The component will re-render when the values returned by this function changes."]
-]} /> 
-
-### Injected Props
-<API items={[
-  ["...useEditor(collector)", "Object", "Identical return values as the useEditor() hook above"]
-]} /> 
-
-
-### Example
-```jsx
-import { connectEditor } from "@craftjs/core";
-
-class SidebarInner extends React.Component {
-  render() {
-    const { actions, query, enabled, currentSelectedNodeId } = this.props;
-    return (
-      <div>
-        <input type="checkbox" value={enabled} onChange={
-          e => actions.setOptions(options => options.enabled = !enabled)
-        } />
-        <button 
-          onClick={() => {
-            console.log(query.serialize())
-          }}
-        >
-            Serialize JSON to console
-        </button>
-      </div>
-    )
-  }
-}
-
-export const Sidebar = connectEditor((state) => ({
-  currentSelectedNodeId: state.events.selected
-}))(SidebarInner);
 ```

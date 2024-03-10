@@ -4,7 +4,7 @@ import { useInternalEditor } from '../../editor/useInternalEditor';
 import { useEditor } from '../useEditor';
 
 jest.mock('../../editor/useInternalEditor');
-const internalEditorMock = useInternalEditor as jest.Mock<any>;
+const internalEditorMock = useInternalEditor as jest.Mock;
 
 describe('useEditor', () => {
   const otherActions = { one: 'one' };
