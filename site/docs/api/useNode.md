@@ -73,8 +73,8 @@ const Example = () => {
 ```
 
 ### Connectors
-Connectors must receive a HTML element which can be obtained via an element's `ref`.
 
+Connectors must receive an HTML element which can be obtained via an element's `ref`.
 
 Typically, you would want to chain the `connect` and `drag` connectors to the root element of your component. This way, users would be able to drag anywhere within the DOM to move the component.
 ```jsx
@@ -126,6 +126,7 @@ const Example = () => {
 ```
 
 ### Usage within child components
+
 Since User Components are contextually bounded by the `Node` they are being managed by, `useNode` can be used anywhere **within** the component tree.
 
 In the previous example, we didn't actually need to forward refs from `CustomDragHandler` since it's bounded by the same `Node` as its parent. Instead, we can just use the connectors from `useNode` directly.
@@ -177,48 +178,4 @@ const Example = ({enabled, text}) => {
     </div>
   )
 }
-```
-
-
-## Legacy API
-For Class Components, use `connectNode` instead.
-
-<Badge type="hoc" title={false} />
-
-
-### Parameters
-<API items={[
-  ["collector", "(node: Node) => Collected", "A function that collects relevant state information from the corresponding Node. The component will re-render when the values returned by this function change."]
-]} /> 
-
-### Injected Props
-<API items={[
-  ["...useNode(collector)", "Object", "Identical return values as the useNode() hook above"]
-]} /> 
-
-
-### Example
-```jsx
-
-import {connectNode} from "@craftjs/core";
-class ButtonInner extends React.Component {
-  render() {
-    const { connectors: {connect, drag}, isHovered, ...compProps } = this.props;
-    const { text, color  } = compProps;
-
-    return (
-      <button ref={ ref => connect(drag(ref))} style={{margin: "5px", backgroundColor: color}} >
-        {text}
-        {
-          isHovered ? "I'm being hovered" : null
-        }
-      </button>
-    );
-  }
-};
-
-export const Button = connectNode((node) => ({
-  isHovered: node.events.hovered
-}))(ButtonInner);
-
 ```

@@ -4,9 +4,9 @@ const Item = ({ item }) => {
   const title = item[0];
   const type = item.length > 1 && typeof item[1] == 'string' && item[1];
   const description =
-    item.length == 3
+    item.length === 3
       ? typeof item[2] == 'string' && item[2]
-      : item.length == 4 && typeof item[3] == 'string' && item[3];
+      : item.length === 4 && typeof item[3] == 'string' && item[3];
   const children =
     item.length > 1 &&
     Array.isArray(item[item.length - 1]) &&

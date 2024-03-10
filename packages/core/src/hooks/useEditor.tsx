@@ -60,9 +60,13 @@ export type useEditorReturnType<S = null> = Overwrite<
 
 /**
  * A Hook that that provides methods and information related to the entire editor state.
- * @param collector Collector function to consume values from the editor's state
  */
 export function useEditor(): useEditorReturnType;
+
+/**
+ * A Hook that that provides methods and information related to the entire editor state.
+ * @param collect Collector function to consume values from the editor's state
+ */
 export function useEditor<S>(
   collect: EditorCollector<S>
 ): useEditorReturnType<S>;

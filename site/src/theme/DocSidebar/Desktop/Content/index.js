@@ -3,46 +3,11 @@ import clsx from 'clsx';
 import { ThemeClassNames } from '@docusaurus/theme-common';
 import {
   useAnnouncementBar,
-  useScrollPosition,
+  useScrollPosition
 } from '@docusaurus/theme-common/internal';
 import { translate } from '@docusaurus/Translate';
 import DocSidebarItems from '@theme/DocSidebarItems';
 import styles from './styles.module.css';
-
-const Carbonads = () => {
-  const domRef = React.useRef(null);
-
-  React.useEffect(() => {
-    const { current: dom } = domRef;
-
-    if (!dom) {
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.setAttribute('type', 'text/javascript');
-    script.setAttribute('async', 'true');
-
-    script.setAttribute(
-      'src',
-      '//cdn.carbonads.com/carbon.js?serve=CWYDVK7J&placement=rekajsorg'
-    );
-    script.setAttribute('id', '_carbonads_js');
-
-    dom.appendChild(script);
-
-    return () => {
-      const ad = dom.querySelector('#carbonads');
-      if (ad) {
-        dom.removeChild(ad);
-      }
-
-      dom.removeChild(script);
-    };
-  }, []);
-
-  return <div id="carbonads-container" ref={domRef} />;
-};
 
 function useShowAnnouncementBar() {
   const { isActive } = useAnnouncementBar();
@@ -65,7 +30,7 @@ export default function DocSidebarDesktopContent({ path, sidebar, className }) {
       aria-label={translate({
         id: 'theme.docs.sidebar.navAriaLabel',
         message: 'Docs sidebar',
-        description: 'The ARIA label for the sidebar navigation',
+        description: 'The ARIA label for the sidebar navigation'
       })}
       className={clsx(
         'menu thin-scrollbar',
@@ -74,7 +39,6 @@ export default function DocSidebarDesktopContent({ path, sidebar, className }) {
         className
       )}
     >
-      <Carbonads />
       <ul className={clsx(ThemeClassNames.docs.docSidebarMenu, 'menu__list')}>
         <DocSidebarItems items={sidebar} activePath={path} level={1} />
       </ul>

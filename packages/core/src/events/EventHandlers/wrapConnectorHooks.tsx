@@ -15,10 +15,7 @@ function setRef(ref: any, node: any) {
   }
 }
 
-export function cloneWithRef(
-  element: any,
-  newRef: any
-): React.ReactElement<any> {
+export function cloneWithRef(element: any, newRef: any): ReactElement {
   const previousRef = element.ref;
   invariant(
     typeof previousRef !== 'string',
@@ -42,7 +39,7 @@ export function cloneWithRef(
   }
 }
 
-function throwIfCompositeComponentElement(element: React.ReactElement<any>) {
+function throwIfCompositeComponentElement(element: ReactElement) {
   if (typeof element.type === 'string') {
     return;
   }
@@ -79,7 +76,7 @@ export function wrapHookToRecognizeElement(
 // Wrap all our connectors so that would additionally accept React.ReactElement
 export function wrapConnectorHooks<H extends ConnectorsRecord>(
   connectors: H
-): ChainableConnectors<H, React.ReactElement | HTMLElement> {
+): ChainableConnectors<H, ReactElement | HTMLElement> {
   return Object.keys(connectors).reduce((accum, key) => {
     accum[key] = wrapHookToRecognizeElement((...args) => {
       // @ts-ignore

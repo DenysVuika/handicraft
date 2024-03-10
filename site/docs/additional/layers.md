@@ -24,7 +24,7 @@ export default function App() {
   return (
     <div style={{margin: "0 auto", width: "800px"}}>
       <Typography variant="h5" align="center">A super simple page editor</Typography>
-      <Editor resolver={...}>
+      <Editor resolver={/*...*/}>
         <Layers />
       </Editor>
     </div>

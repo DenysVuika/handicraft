@@ -10,7 +10,7 @@ jest.mock('../../nodes/NodeElement', () => ({
   NodeElement: () => null
 }));
 
-const mockEditor = useInternalEditor as jest.Mock<any>;
+const mockEditor = useInternalEditor as jest.Mock;
 
 describe('<Frame />', () => {
   const data = {};
