@@ -1,20 +1,20 @@
-import {
-  deprecationWarning,
-  ERROR_CANNOT_DRAG,
-  ERROR_DUPLICATE_NODEID,
-  ERROR_INVALID_NODE_ID,
-  ERROR_MOVE_INCOMING_PARENT,
-  ERROR_MOVE_NONCANVAS_CHILD,
-  ERROR_MOVE_OUTGOING_PARENT,
-  ERROR_MOVE_TO_DESCENDANT,
-  ERROR_MOVE_TO_NONCANVAS_PARENT,
-  ERROR_MOVE_TOP_LEVEL_NODE,
-  ERROR_MOVE_CANNOT_DROP,
-  ROOT_NODE
-} from '@craftjs/utils';
 import invariant from 'tiny-invariant';
 
+import {
+  ROOT_NODE,
+  ERROR_DUPLICATE_NODEID,
+  ERROR_MOVE_CANNOT_DROP,
+  ERROR_MOVE_INCOMING_PARENT,
+  ERROR_MOVE_OUTGOING_PARENT,
+  ERROR_MOVE_NONCANVAS_CHILD,
+  ERROR_MOVE_TO_NONCANVAS_PARENT,
+  ERROR_MOVE_TOP_LEVEL_NODE,
+  ERROR_MOVE_TO_DESCENDANT,
+  ERROR_CANNOT_DRAG,
+  ERROR_INVALID_NODE_ID
+} from '../constants';
 import { EditorState, NodeId, NodeSelector } from '../interfaces';
+import { deprecationWarning } from '../utils/deprecate';
 import { getNodesFromSelector } from '../utils/getNodesFromSelector';
 import { serializeNode } from '../utils/serializeNode';
 

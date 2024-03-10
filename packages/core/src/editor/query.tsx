@@ -1,24 +1,21 @@
-import {
-  QueryCallbacksFor,
-  ERROR_NOT_IN_RESOLVER,
-  getDOMInfo,
-  deprecationWarning,
-  DEPRECATED_ROOT_NODE,
-  ROOT_NODE
-} from '@craftjs/utils';
 import React from 'react';
 import invariant from 'tiny-invariant';
 
 import { EventHelpers } from './EventHelpers';
 import { NodeHelpers } from './NodeHelpers';
 
+import {
+  ROOT_NODE,
+  DEPRECATED_ROOT_NODE,
+  ERROR_NOT_IN_RESOLVER
+} from '../constants';
 import findPosition from '../events/findPosition';
 import {
   NodeId,
   EditorState,
   Indicator,
   Node,
-  Options,
+  EditorOptions,
   NodeEventTypes,
   NodeInfo,
   NodeSelector,
@@ -28,18 +25,21 @@ import {
   FreshNode
 } from '../interfaces';
 import { createNode } from '../utils/createNode';
+import { deprecationWarning } from '../utils/deprecate';
 import { deserializeNode } from '../utils/deserializeNode';
 import { fromEntries } from '../utils/fromEntries';
+import { getDOMInfo } from '../utils/getDOMInfo';
 import { getNodesFromSelector } from '../utils/getNodesFromSelector';
 import { mergeTrees } from '../utils/mergeTrees';
 import { parseNodeFromJSX } from '../utils/parseNodeFromJSX';
 import { resolveComponent } from '../utils/resolveComponent';
+import { QueryCallbacksFor } from '../utils/useMethods';
 
-export function QueryMethods(state: EditorState) {
+export function EditorQueryMethods(state: EditorState) {
   const options = state && state.options;
 
-  const _: () => QueryCallbacksFor<typeof QueryMethods> = () =>
-    QueryMethods(state) as any;
+  const _: () => QueryCallbacksFor<typeof EditorQueryMethods> = () =>
+    EditorQueryMethods(state) as any;
 
   return {
     /**
@@ -120,7 +120,7 @@ export function QueryMethods(state: EditorState) {
     /**
      * Get the current Editor options
      */
-    getOptions(): Options {
+    getOptions(): EditorOptions {
       return options;
     },
 

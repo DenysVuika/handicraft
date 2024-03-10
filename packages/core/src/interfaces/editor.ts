@@ -1,21 +1,23 @@
-import { QueryCallbacksFor, Delete, PatchListenerAction } from '@craftjs/utils';
+import React from 'react';
 
 import { Placement } from './events';
 import { Nodes, NodeEventTypes, NodeId, Node } from './nodes';
 
-import { QueryMethods } from '../editor/query';
+import { EditorQueryMethods } from '../editor/query';
 import { EditorStore, ActionMethodsWithConfig } from '../editor/store';
 import { useInternalEditorReturnType } from '../editor/useInternalEditor';
 import { CoreEventHandlers } from '../events';
+import { PatchListenerAction, QueryCallbacksFor } from '../utils/useMethods';
+import { Delete } from '../utils/utilityTypes';
 
-export type Options = {
+export type EditorOptions = {
   onRender: React.ComponentType<{ render: React.ReactElement }>;
   onBeforeMoveEnd: (
     targetNode: Node,
     newParentNode: Node,
     existingParentNode: Node
   ) => void;
-  onNodesChange: (query: QueryCallbacksFor<typeof QueryMethods>) => void;
+  onNodesChange: (query: QueryCallbacksFor<typeof EditorQueryMethods>) => void;
   resolver: Resolver;
   enabled: boolean;
   indicator: Partial<{
@@ -32,7 +34,7 @@ export type Options = {
       PatchListenerAction<typeof ActionMethodsWithConfig>,
       'patches'
     >,
-    query: QueryCallbacksFor<typeof QueryMethods>
+    query: QueryCallbacksFor<typeof EditorQueryMethods>
   ) => void;
 };
 
@@ -48,7 +50,7 @@ export type EditorEvents = Record<NodeEventTypes, Set<NodeId>>;
 export type EditorState = {
   nodes: Nodes;
   events: EditorEvents;
-  options: Options;
+  options: EditorOptions;
   indicator: Indicator;
 };
 

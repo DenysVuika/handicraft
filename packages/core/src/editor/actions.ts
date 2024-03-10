@@ -1,39 +1,38 @@
-import {
-  deprecationWarning,
-  ERROR_INVALID_NODEID,
-  ROOT_NODE,
-  DEPRECATED_ROOT_NODE,
-  QueryCallbacksFor,
-  ERROR_NOPARENT,
-  ERROR_DELETE_TOP_LEVEL_NODE,
-  CallbacksFor,
-  Delete,
-  ERROR_NOT_IN_RESOLVER
-} from '@craftjs/utils';
 import invariant from 'tiny-invariant';
 
-import { QueryMethods } from './query';
+import { EditorQueryMethods } from './query';
 
+import {
+  ROOT_NODE,
+  DEPRECATED_ROOT_NODE,
+  ERROR_NOPARENT,
+  ERROR_INVALID_NODEID,
+  ERROR_NOT_IN_RESOLVER,
+  ERROR_DELETE_TOP_LEVEL_NODE
+} from '../constants';
 import {
   EditorState,
   Indicator,
   NodeId,
   Node,
   Nodes,
-  Options,
+  EditorOptions,
   NodeEventTypes,
   NodeTree,
   SerializedNodes,
   NodeSelector,
   NodeSelectorType
 } from '../interfaces';
+import { deprecationWarning } from '../utils/deprecate';
 import { fromEntries } from '../utils/fromEntries';
 import { getNodesFromSelector } from '../utils/getNodesFromSelector';
 import { removeNodeFromEvents } from '../utils/removeNodeFromEvents';
+import { CallbacksFor, QueryCallbacksFor } from '../utils/useMethods';
+import { Delete } from '../utils/utilityTypes';
 
 const Methods = (
   state: EditorState,
-  query: QueryCallbacksFor<typeof QueryMethods>
+  query: QueryCallbacksFor<typeof EditorQueryMethods>
 ) => {
   /** Helper functions */
   const addNodeTreeToParent = (
@@ -336,7 +335,7 @@ const Methods = (
      *
      * @param cb: function used to set the options.
      */
-    setOptions(cb: (options: Partial<Options>) => void) {
+    setOptions(cb: (options: Partial<EditorOptions>) => void) {
       cb(state.options);
     },
 
@@ -458,7 +457,7 @@ const Methods = (
 
 export const ActionMethods = (
   state: EditorState,
-  query: QueryCallbacksFor<typeof QueryMethods>
+  query: QueryCallbacksFor<typeof EditorQueryMethods>
 ) => {
   return {
     ...Methods(state, query),

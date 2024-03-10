@@ -1,25 +1,22 @@
-import {
-  useCollector,
-  useCollectorReturnType,
-  QueryCallbacksFor,
-  wrapConnectorHooks,
-  EventHandlerConnectors,
-  ERROR_USE_EDITOR_OUTSIDE_OF_EDITOR_CONTEXT
-} from '@craftjs/utils';
-import { useContext, useEffect, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import invariant from 'tiny-invariant';
 
 import { EditorContext } from './EditorContext';
-import { QueryMethods } from './query';
+import { EditorQueryMethods } from './query';
 import { EditorStore } from './store';
 
+import { ERROR_USE_EDITOR_OUTSIDE_OF_EDITOR_CONTEXT } from '../constants';
 import { CoreEventHandlers } from '../events/CoreEventHandlers';
 import { useEventHandler } from '../events/EventContext';
+import { EventHandlerConnectors } from '../events/EventHandlers/interfaces';
+import { wrapConnectorHooks } from '../events/EventHandlers/wrapConnectorHooks';
 import { EditorState } from '../interfaces';
+import { useCollector, useCollectorReturnType } from '../utils/useCollector';
+import { QueryCallbacksFor } from '../utils/useMethods';
 
 export type EditorCollector<C> = (
   state: EditorState,
-  query: QueryCallbacksFor<typeof QueryMethods>
+  query: QueryCallbacksFor<typeof EditorQueryMethods>
 ) => C;
 
 export type useInternalEditorReturnType<C = null> = useCollectorReturnType<

@@ -50,7 +50,7 @@ const { connectors, actions, query, ...collected } = useEditor(collector);
         ["throttle", "(throttleRate: number = 500) => ActionMethods", "Run an action while throttling its changes recorded to the history. This is useful if you need to group the changes made by a certain action as a single history record"],
       ]]
     ]],
-    ["query", "QueryMethods", [
+    ["query", "EditorQueryMethods", [
       ["getSerializedNodes", "() => SerializedNodes", "Return the current Nodes into a simpler form safe for storage"],
       ["serialize", "() => String", "Return getSerializedNodes() in JSON"],
       ["getOptions", "() => Object", "Get the options specified in the &lt;Editor /&gt; component"],

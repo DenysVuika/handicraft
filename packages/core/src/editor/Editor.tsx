@@ -1,20 +1,20 @@
-import { ERROR_RESOLVER_NOT_AN_OBJECT, HISTORY_ACTIONS } from '@craftjs/utils';
 import React, { useEffect, useRef } from 'react';
 import invariant from 'tiny-invariant';
 
 import { EditorContext } from './EditorContext';
 import { useEditorStore } from './store';
 
+import { ERROR_RESOLVER_NOT_AN_OBJECT } from '../constants';
 import { Events } from '../events';
-import { Options } from '../interfaces';
+import { EditorOptions } from '../interfaces';
+import { HISTORY_ACTIONS } from '../utils/History';
 
 /**
  * A React Component that provides the Editor context
  */
-export const Editor: React.FC<React.PropsWithChildren<Partial<Options>>> = ({
-  children,
-  ...options
-}) => {
+export const Editor: React.FC<
+  React.PropsWithChildren<Partial<EditorOptions>>
+> = ({ children, ...options }) => {
   // we do not want to warn the user if no resolver was supplied
   if (options.resolver !== undefined) {
     invariant(

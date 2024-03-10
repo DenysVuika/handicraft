@@ -1,14 +1,18 @@
+import { ActionMethods } from './actions';
+import { EditorQueryMethods } from './query';
+
+import { DefaultEventHandlers } from '../events';
+import {
+  EditorState,
+  EditorOptions,
+  NodeEventTypes,
+  NodeId
+} from '../interfaces';
 import {
   useMethods,
   SubscriberAndCallbacksFor,
   PatchListener
-} from '@craftjs/utils';
-
-import { ActionMethods } from './actions';
-import { QueryMethods } from './query';
-
-import { DefaultEventHandlers } from '../events';
-import { EditorState, Options, NodeEventTypes, NodeId } from '../interfaces';
+} from '../utils/useMethods';
 
 export const editorInitialState: EditorState = {
   nodes: {},
@@ -85,15 +89,15 @@ export const ActionMethodsWithConfig = {
 
 export type EditorStore = SubscriberAndCallbacksFor<
   typeof ActionMethodsWithConfig,
-  typeof QueryMethods
+  typeof EditorQueryMethods
 >;
 
 export const useEditorStore = (
-  options: Partial<Options>,
+  options: Partial<EditorOptions>,
   patchListener: PatchListener<
     EditorState,
     typeof ActionMethodsWithConfig,
-    typeof QueryMethods
+    typeof EditorQueryMethods
   >
 ): EditorStore => {
   // TODO: fix type
@@ -106,7 +110,7 @@ export const useEditorStore = (
         ...options
       }
     },
-    QueryMethods,
+    EditorQueryMethods,
     patchListener
   ) as EditorStore;
 };
