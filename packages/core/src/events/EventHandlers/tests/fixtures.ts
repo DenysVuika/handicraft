@@ -7,7 +7,7 @@ export function triggerMouseEvent(node, eventType) {
   node.dispatchEvent(clickEvent);
 }
 
-export const createTestHandlers = () => {
+export const createTestHandlers = (): any => {
   jest.clearAllMocks();
 
   const testHandlers = [
@@ -70,7 +70,7 @@ export const createTestHandlers = () => {
   };
 };
 
-export const createTestDerivedHandlers = (core: any) => {
+export const createTestDerivedHandlers = (core: any): any => {
   jest.clearAllMocks();
 
   const testHandlers = ['connect', 'drag'].reduce((accum, key) => {
