@@ -1,4 +1,3 @@
-import { QueryCallbacksFor, CallbacksFor } from '@craftjs/utils';
 import invariant from 'tiny-invariant';
 
 import { QueryMethods } from './query';
@@ -24,6 +23,7 @@ import {
   NodeSelector,
   NodeSelectorType
 } from '../interfaces';
+import { QueryCallbacksFor, CallbacksFor } from '../utils';
 import {
   deprecationWarning,
   fromEntries,

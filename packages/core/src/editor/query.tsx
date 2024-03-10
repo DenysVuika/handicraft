@@ -1,4 +1,3 @@
-import { QueryCallbacksFor } from '@craftjs/utils';
 import React from 'react';
 import invariant from 'tiny-invariant';
 
@@ -25,6 +24,7 @@ import {
   SerializedNode,
   FreshNode
 } from '../interfaces';
+import { QueryCallbacksFor } from '../utils';
 import {
   deprecationWarning,
   createNode,

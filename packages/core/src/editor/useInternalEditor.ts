@@ -1,8 +1,3 @@
-import {
-  useCollector,
-  useCollectorReturnType,
-  QueryCallbacksFor
-} from '@craftjs/utils';
 import React, { useContext, useEffect, useMemo } from 'react';
 import invariant from 'tiny-invariant';
 
@@ -18,6 +13,11 @@ import {
   wrapConnectorHooks
 } from '../events';
 import { EditorState } from '../interfaces';
+import {
+  useCollector,
+  useCollectorReturnType,
+  QueryCallbacksFor
+} from '../utils';
 
 export type EditorCollector<C> = (
   state: EditorState,

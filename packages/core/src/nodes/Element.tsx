@@ -1,4 +1,3 @@
-import { useEffectOnce } from '@craftjs/utils';
 import React, { useState } from 'react';
 import invariant from 'tiny-invariant';
 
@@ -8,6 +7,7 @@ import { useInternalNode } from './useInternalNode';
 import { ERROR_TOP_LEVEL_ELEMENT_NO_ID } from '../constants';
 import { useInternalEditor } from '../editor/useInternalEditor';
 import { NodeId } from '../interfaces';
+import { useEffectOnce } from '../utils';
 
 export const defaultElementProps = {
   is: 'div',

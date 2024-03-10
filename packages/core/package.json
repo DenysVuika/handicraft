@@ -34,7 +34,6 @@
     "url": "https://github.com/DenysVuika/handicraft/issues"
   },
   "dependencies": {
-    "@craftjs/utils": "^0.2.1",
     "debounce": "^2.0.0",
     "immer": "^9.0.6",
     "lodash": "^4.17.21",

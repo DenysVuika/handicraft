@@ -1,4 +1,3 @@
-import { HISTORY_ACTIONS } from '@craftjs/utils';
 import React, { useEffect, useRef } from 'react';
 import invariant from 'tiny-invariant';
 
@@ -8,6 +7,7 @@ import { useEditorStore } from './store';
 import { ERROR_RESOLVER_NOT_AN_OBJECT } from '../constants';
 import { Events } from '../events';
 import { Options } from '../interfaces';
+import { HISTORY_ACTIONS } from '../utils';
 
 /**
  * A React Component that provides the Editor context

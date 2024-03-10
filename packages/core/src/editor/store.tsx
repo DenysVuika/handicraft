@@ -1,14 +1,9 @@
-import {
-  useMethods,
-  SubscriberAndCallbacksFor,
-  PatchListener
-} from '@craftjs/utils';
-
 import { ActionMethods } from './actions';
 import { QueryMethods } from './query';
 
 import { DefaultEventHandlers } from '../events';
 import { EditorState, Options, NodeEventTypes, NodeId } from '../interfaces';
+import { useMethods, SubscriberAndCallbacksFor, PatchListener } from '../utils';
 
 export const editorInitialState: EditorState = {
   nodes: {},

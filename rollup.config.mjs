@@ -6,13 +6,7 @@ import typescript from 'rollup-plugin-typescript2';
 
 const shouldMinify = process.env.NODE_ENV === 'production';
 const bundle = ['tslib'];
-const external = [
-  'react',
-  'react-dom',
-  'styled-components',
-  '@craftjs/utils',
-  '@craftjs/core',
-];
+const external = ['react', 'react-dom', 'styled-components', '@craftjs/core'];
 
 export default {
   input: './src/index.ts',
@@ -24,14 +18,14 @@ export default {
       globals: {
         react: 'React',
         'react-dom': 'ReactDOM',
-        'styled-components': 'styled',
-      },
+        'styled-components': 'styled'
+      }
     },
     {
       file: 'dist/cjs/index.js',
       format: 'cjs',
-      interop: 'compat',
-    },
+      interop: 'compat'
+    }
   ],
   external: (id) => {
     return (
@@ -48,13 +42,13 @@ export default {
         compress: {
           keep_infinity: true,
           pure_getters: true,
-          passes: 10,
+          passes: 10
         },
         ecma: 5,
         warnings: true,
         mangle: {
-          reserved: ['Canvas'],
-        },
-      }),
-  ],
+          reserved: ['Canvas']
+        }
+      })
+  ]
 };
