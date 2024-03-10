@@ -1,5 +1,4 @@
 import {
-  deprecationWarning,
   ERROR_CANNOT_DRAG,
   ERROR_DUPLICATE_NODEID,
   ERROR_INVALID_NODE_ID,
@@ -15,6 +14,7 @@ import invariant from 'tiny-invariant';
 
 import { ROOT_NODE } from '../constants';
 import { EditorState, NodeId, NodeSelector } from '../interfaces';
+import { deprecationWarning } from '../utils';
 import { getNodesFromSelector } from '../utils/getNodesFromSelector';
 import { serializeNode } from '../utils/serializeNode';
 

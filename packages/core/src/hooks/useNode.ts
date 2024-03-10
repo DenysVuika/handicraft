@@ -1,7 +1,6 @@
-import { deprecationWarning } from '@craftjs/utils';
-
 import { Node } from '../interfaces';
 import { useInternalNode } from '../nodes/useInternalNode';
+import { deprecationWarning } from '../utils';
 
 /**
  * A Hook to that provides methods and state information related to the corresponding Node that manages the current component.
