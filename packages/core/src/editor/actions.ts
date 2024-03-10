@@ -16,21 +16,19 @@ import {
   NodeId,
   Node,
   Nodes,
-  Options,
+  EditorOptions,
   NodeEventTypes,
   NodeTree,
   SerializedNodes,
   NodeSelector,
   NodeSelectorType
 } from '../interfaces';
-import { QueryCallbacksFor, CallbacksFor } from '../utils';
-import {
-  deprecationWarning,
-  fromEntries,
-  getNodesFromSelector,
-  removeNodeFromEvents,
-  Delete
-} from '../utils';
+import { deprecationWarning } from '../utils/deprecate';
+import { fromEntries } from '../utils/fromEntries';
+import { getNodesFromSelector } from '../utils/getNodesFromSelector';
+import { removeNodeFromEvents } from '../utils/removeNodeFromEvents';
+import { CallbacksFor, QueryCallbacksFor } from '../utils/useMethods';
+import { Delete } from '../utils/utilityTypes';
 
 const Methods = (
   state: EditorState,
@@ -337,7 +335,7 @@ const Methods = (
      *
      * @param cb: function used to set the options.
      */
-    setOptions(cb: (options: Partial<Options>) => void) {
+    setOptions(cb: (options: Partial<EditorOptions>) => void) {
       cb(state.options);
     },
 

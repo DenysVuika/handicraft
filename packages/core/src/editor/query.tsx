@@ -15,7 +15,7 @@ import {
   EditorState,
   Indicator,
   Node,
-  Options,
+  EditorOptions,
   NodeEventTypes,
   NodeInfo,
   NodeSelector,
@@ -24,18 +24,16 @@ import {
   SerializedNode,
   FreshNode
 } from '../interfaces';
-import { QueryCallbacksFor } from '../utils';
-import {
-  deprecationWarning,
-  createNode,
-  deserializeNode,
-  fromEntries,
-  getNodesFromSelector,
-  mergeTrees,
-  parseNodeFromJSX,
-  resolveComponent,
-  getDOMInfo
-} from '../utils';
+import { createNode } from '../utils/createNode';
+import { deprecationWarning } from '../utils/deprecate';
+import { deserializeNode } from '../utils/deserializeNode';
+import { fromEntries } from '../utils/fromEntries';
+import { getDOMInfo } from '../utils/getDOMInfo';
+import { getNodesFromSelector } from '../utils/getNodesFromSelector';
+import { mergeTrees } from '../utils/mergeTrees';
+import { parseNodeFromJSX } from '../utils/parseNodeFromJSX';
+import { resolveComponent } from '../utils/resolveComponent';
+import { QueryCallbacksFor } from '../utils/useMethods';
 
 export function QueryMethods(state: EditorState) {
   const options = state && state.options;
@@ -122,7 +120,7 @@ export function QueryMethods(state: EditorState) {
     /**
      * Get the current Editor options
      */
-    getOptions(): Options {
+    getOptions(): EditorOptions {
       return options;
     },
 

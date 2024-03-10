@@ -4,7 +4,7 @@ import { ROOT_NODE } from '../constants';
 import { useInternalEditor } from '../editor/useInternalEditor';
 import { SerializedNodes } from '../interfaces';
 import { NodeElement } from '../nodes/NodeElement';
-import { deprecationWarning } from '../utils';
+import { deprecationWarning } from '../utils/deprecate';
 
 export type FrameProps = {
   json?: string;

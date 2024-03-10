@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Placement } from './events';
 import { Nodes, NodeEventTypes, NodeId, Node } from './nodes';
 
@@ -5,9 +7,10 @@ import { QueryMethods } from '../editor/query';
 import { EditorStore, ActionMethodsWithConfig } from '../editor/store';
 import { useInternalEditorReturnType } from '../editor/useInternalEditor';
 import { CoreEventHandlers } from '../events';
-import { QueryCallbacksFor, Delete, PatchListenerAction } from '../utils';
+import { PatchListenerAction, QueryCallbacksFor } from '../utils/useMethods';
+import { Delete } from '../utils/utilityTypes';
 
-export type Options = {
+export type EditorOptions = {
   onRender: React.ComponentType<{ render: React.ReactElement }>;
   onBeforeMoveEnd: (
     targetNode: Node,
@@ -47,7 +50,7 @@ export type EditorEvents = Record<NodeEventTypes, Set<NodeId>>;
 export type EditorState = {
   nodes: Nodes;
   events: EditorEvents;
-  options: Options;
+  options: EditorOptions;
   indicator: Indicator;
 };
 

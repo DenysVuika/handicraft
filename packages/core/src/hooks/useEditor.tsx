@@ -5,7 +5,11 @@ import {
   EditorCollector,
   useInternalEditorReturnType
 } from '../editor/useInternalEditor';
-import { Overwrite, Delete, OverwriteFnReturnType } from '../utils';
+import {
+  Delete,
+  Overwrite,
+  OverwriteFnReturnType
+} from '../utils/utilityTypes';
 
 type PrivateActions =
   | 'addLinkedNodeFromTree'

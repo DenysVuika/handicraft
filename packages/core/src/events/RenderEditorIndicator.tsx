@@ -5,7 +5,7 @@ import { RenderIndicator } from './RenderIndicator';
 import movePlaceholder from './movePlaceholder';
 
 import { useInternalEditor } from '../editor/useInternalEditor';
-import { getDOMInfo } from '../utils';
+import { getDOMInfo } from '../utils/getDOMInfo';
 
 export const RenderEditorIndicator = () => {
   const { indicator, indicatorOptions, enabled } = useInternalEditor(

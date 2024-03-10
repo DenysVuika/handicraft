@@ -14,11 +14,9 @@ import {
   ERROR_INVALID_NODE_ID
 } from '../constants';
 import { EditorState, NodeId, NodeSelector } from '../interfaces';
-import {
-  deprecationWarning,
-  getNodesFromSelector,
-  serializeNode
-} from '../utils';
+import { deprecationWarning } from '../utils/deprecate';
+import { getNodesFromSelector } from '../utils/getNodesFromSelector';
+import { serializeNode } from '../utils/serializeNode';
 
 export function NodeHelpers(state: EditorState, id: NodeId) {
   invariant(typeof id == 'string', ERROR_INVALID_NODE_ID);

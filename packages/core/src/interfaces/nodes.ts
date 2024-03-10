@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { QueryMethods } from '../editor/query';
-import { QueryCallbacksFor } from '../utils';
+import { QueryCallbacksFor } from '../utils/useMethods';
 
 export type UserComponentConfig<T> = {
   displayName: string;

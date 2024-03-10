@@ -7,7 +7,7 @@ import { useInternalNode } from './useInternalNode';
 import { ERROR_TOP_LEVEL_ELEMENT_NO_ID } from '../constants';
 import { useInternalEditor } from '../editor/useInternalEditor';
 import { NodeId } from '../interfaces';
-import { useEffectOnce } from '../utils';
+import { useEffectOnce } from '../utils/useEffectOnce';
 
 export const defaultElementProps = {
   is: 'div',

@@ -11,11 +11,8 @@ import { useEventHandler } from '../events/EventContext';
 import { EventHandlerConnectors } from '../events/EventHandlers/interfaces';
 import { wrapConnectorHooks } from '../events/EventHandlers/wrapConnectorHooks';
 import { EditorState } from '../interfaces';
-import {
-  useCollector,
-  useCollectorReturnType,
-  QueryCallbacksFor
-} from '../utils';
+import { useCollector, useCollectorReturnType } from '../utils/useCollector';
+import { QueryCallbacksFor } from '../utils/useMethods';
 
 export type EditorCollector<C> = (
   state: EditorState,

@@ -2,8 +2,17 @@ import { ActionMethods } from './actions';
 import { QueryMethods } from './query';
 
 import { DefaultEventHandlers } from '../events';
-import { EditorState, Options, NodeEventTypes, NodeId } from '../interfaces';
-import { useMethods, SubscriberAndCallbacksFor, PatchListener } from '../utils';
+import {
+  EditorState,
+  EditorOptions,
+  NodeEventTypes,
+  NodeId
+} from '../interfaces';
+import {
+  useMethods,
+  SubscriberAndCallbacksFor,
+  PatchListener
+} from '../utils/useMethods';
 
 export const editorInitialState: EditorState = {
   nodes: {},
@@ -84,7 +93,7 @@ export type EditorStore = SubscriberAndCallbacksFor<
 >;
 
 export const useEditorStore = (
-  options: Partial<Options>,
+  options: Partial<EditorOptions>,
   patchListener: PatchListener<
     EditorState,
     typeof ActionMethodsWithConfig,

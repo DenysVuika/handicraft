@@ -11,7 +11,8 @@ import {
   NodeInfo,
   NodeSelectorWrapper
 } from '../interfaces';
-import { getNodesFromSelector, getDOMInfo } from '../utils';
+import { getDOMInfo } from '../utils/getDOMInfo';
+import { getNodesFromSelector } from '../utils/getNodesFromSelector';
 
 /**
  * Positioner is responsible for computing the drop Indicator during a sequence of drag-n-drop events
