@@ -11,7 +11,7 @@ const HeaderDiv = styled.div`
   height: 45px;
   z-index: 99999;
   position: relative;
-  padding: 0px 10px;
+  padding: 0 10px;
   background: #d4d4d4;
   display: flex;
   width: '100%';
