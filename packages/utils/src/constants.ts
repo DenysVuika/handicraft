@@ -1,4 +1,3 @@
-export const ROOT_NODE = 'ROOT';
 export const DEPRECATED_ROOT_NODE = 'canvas-ROOT';
 
 // TODO: Use a better way to store/display error messages
@@ -34,8 +33,8 @@ export const ERROR_INVALID_NODE_ID = 'Invalid parameter Node Id specified';
 export const ERROR_DELETE_TOP_LEVEL_NODE =
   'Attempting to delete a top-level Node';
 
-export const ERROR_RESOLVER_NOT_AN_OBJECT = `Resolver in <Editor /> has to be an object. For (de)serialization Craft.js needs a list of all the User Components. 
-    
+export const ERROR_RESOLVER_NOT_AN_OBJECT = `Resolver in <Editor /> has to be an object. For (de)serialization Craft.js needs a list of all the User Components.
+
 More info: https://craft.js.org/r/docs/api/editor#props`;
 
 export const ERROR_DESERIALIZE_COMPONENT_NOT_IN_RESOLVER = `An Error occurred while deserializing components: Cannot find component <%displayName% /> in resolver map. Please check your resolver in <Editor />
@@ -44,10 +43,10 @@ Available components in resolver: %availableComponents%
 
 More info: https://craft.js.org/r/docs/api/editor#props`;
 
-export const ERROR_USE_EDITOR_OUTSIDE_OF_EDITOR_CONTEXT = `You can only use useEditor in the context of <Editor />. 
+export const ERROR_USE_EDITOR_OUTSIDE_OF_EDITOR_CONTEXT = `You can only use useEditor in the context of <Editor />.
 
 Please only use useEditor in components that are children of the <Editor /> component.`;
 
-export const ERROR_USE_NODE_OUTSIDE_OF_EDITOR_CONTEXT = `You can only use useNode in the context of <Editor />. 
+export const ERROR_USE_NODE_OUTSIDE_OF_EDITOR_CONTEXT = `You can only use useNode in the context of <Editor />.
 
 Please only use useNode in components that are children of the <Editor /> component.`;

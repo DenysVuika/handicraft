@@ -9,11 +9,11 @@ import {
   ERROR_MOVE_TO_DESCENDANT,
   ERROR_MOVE_TO_NONCANVAS_PARENT,
   ERROR_MOVE_TOP_LEVEL_NODE,
-  ERROR_MOVE_CANNOT_DROP,
-  ROOT_NODE
+  ERROR_MOVE_CANNOT_DROP
 } from '@craftjs/utils';
 import invariant from 'tiny-invariant';
 
+import { ROOT_NODE } from '../constants';
 import { EditorState, NodeId, NodeSelector } from '../interfaces';
 import { getNodesFromSelector } from '../utils/getNodesFromSelector';
 import { serializeNode } from '../utils/serializeNode';

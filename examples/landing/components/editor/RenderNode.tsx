@@ -1,5 +1,4 @@
-import { useNode, useEditor } from '@craftjs/core';
-import { ROOT_NODE } from '@craftjs/utils';
+import { useNode, useEditor, ROOT_NODE } from '@craftjs/core';
 import styled from '@emotion/styled';
 import ArrowUpIcon from '@mui/icons-material/ArrowUpward';
 import DeleteIcon from '@mui/icons-material/DeleteForever';

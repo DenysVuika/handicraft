@@ -1,7 +1,8 @@
-import { getDOMInfo, ROOT_NODE } from '@craftjs/utils';
+import { getDOMInfo } from '@craftjs/utils';
 
 import findPosition from './findPosition';
 
+import { ROOT_NODE } from '../constants';
 import { EditorStore } from '../editor/store';
 import {
   DragTarget,

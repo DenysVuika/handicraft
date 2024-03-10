@@ -3,8 +3,7 @@ import {
   ERROR_NOT_IN_RESOLVER,
   getDOMInfo,
   deprecationWarning,
-  DEPRECATED_ROOT_NODE,
-  ROOT_NODE
+  DEPRECATED_ROOT_NODE
 } from '@craftjs/utils';
 import React from 'react';
 import invariant from 'tiny-invariant';
@@ -12,6 +11,7 @@ import invariant from 'tiny-invariant';
 import { EventHelpers } from './EventHelpers';
 import { NodeHelpers } from './NodeHelpers';
 
+import { ROOT_NODE } from '../constants';
 import findPosition from '../events/findPosition';
 import {
   NodeId,
