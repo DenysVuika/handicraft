@@ -1,12 +1,12 @@
 #!/bin/bash
 
-defaultRollupConfig=../../rollup.config.js
-if [ -f ./rollup.config.js ]; then
-  defaultRollupConfig=rollup.config.js
+defaultRollupConfig=../../rollup.config.mjs
+if [ -f ./rollup.config.mjs ]; then
+  defaultRollupConfig=rollup.config.mjs
 fi
 
 command="
-  npx tsc --skipLibCheck --emitDeclarationOnly &
+#  npx tsc --skipLibCheck --emitDeclarationOnly &
   npx rollup -c ${defaultRollupConfig};
   yalc push
 "
