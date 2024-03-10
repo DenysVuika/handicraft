@@ -1,11 +1,9 @@
 import {
   useCollector,
   useCollectorReturnType,
-  QueryCallbacksFor,
-  wrapConnectorHooks,
-  EventHandlerConnectors
+  QueryCallbacksFor
 } from '@craftjs/utils';
-import { useContext, useEffect, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import invariant from 'tiny-invariant';
 
 import { EditorContext } from './EditorContext';
@@ -13,7 +11,12 @@ import { QueryMethods } from './query';
 import { EditorStore } from './store';
 
 import { ERROR_USE_EDITOR_OUTSIDE_OF_EDITOR_CONTEXT } from '../constants';
-import { CoreEventHandlers, useEventHandler } from '../events';
+import {
+  CoreEventHandlers,
+  EventHandlerConnectors,
+  useEventHandler,
+  wrapConnectorHooks
+} from '../events';
 import { EditorState } from '../interfaces';
 
 export type EditorCollector<C> = (

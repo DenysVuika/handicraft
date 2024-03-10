@@ -1,4 +1,4 @@
-import { QueryCallbacksFor, getDOMInfo } from '@craftjs/utils';
+import { QueryCallbacksFor } from '@craftjs/utils';
 import React from 'react';
 import invariant from 'tiny-invariant';
 
@@ -33,7 +33,8 @@ import {
   getNodesFromSelector,
   mergeTrees,
   parseNodeFromJSX,
-  resolveComponent
+  resolveComponent,
+  getDOMInfo
 } from '../utils';
 
 export function QueryMethods(state: EditorState) {

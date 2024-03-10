@@ -4,6 +4,7 @@ export * from './deserializeNode';
 export * from './fromEntries';
 export * from './getDOMInfo';
 export * from './getNodesFromSelector';
+export * from './getRandomId';
 export * from './isObject';
 export * from './mapChildrenToNodes';
 export * from './mergeTrees';

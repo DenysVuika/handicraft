@@ -1,4 +1,4 @@
-import { DerivedEventHandlers, EventHandlers } from '@craftjs/utils';
+import { DerivedEventHandlers, EventHandlers } from './EventHandlers';
 
 import { EditorStore } from '../editor/store';
 import { NodeId, NodeTree } from '../interfaces/nodes';
