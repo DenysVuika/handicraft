@@ -9,7 +9,7 @@ import {
   deprecateCanvasComponent
 } from '../nodes';
 import { NodeProvider } from '../nodes/NodeContext';
-import { getRandomId as getRandomNodeId } from '../utils';
+import { getRandomId as getRandomNodeId } from '../utils/getRandomId';
 
 const getNodeTypeName = (type: string | { name: string }) =>
   typeof type == 'string' ? type : type.name;

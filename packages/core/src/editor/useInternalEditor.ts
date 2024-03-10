@@ -6,7 +6,8 @@ import { QueryMethods } from './query';
 import { EditorStore } from './store';
 
 import { ERROR_USE_EDITOR_OUTSIDE_OF_EDITOR_CONTEXT } from '../constants';
-import { CoreEventHandlers, useEventHandler } from '../events';
+import { CoreEventHandlers } from '../events/CoreEventHandlers';
+import { useEventHandler } from '../events/EventContext';
 import { EventHandlerConnectors } from '../events/EventHandlers/interfaces';
 import { wrapConnectorHooks } from '../events/EventHandlers/wrapConnectorHooks';
 import { EditorState } from '../interfaces';
