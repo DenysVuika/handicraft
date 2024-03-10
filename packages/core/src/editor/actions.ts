@@ -1,6 +1,6 @@
 import invariant from 'tiny-invariant';
 
-import { QueryMethods } from './query';
+import { EditorQueryMethods } from './query';
 
 import {
   ROOT_NODE,
@@ -32,7 +32,7 @@ import { Delete } from '../utils/utilityTypes';
 
 const Methods = (
   state: EditorState,
-  query: QueryCallbacksFor<typeof QueryMethods>
+  query: QueryCallbacksFor<typeof EditorQueryMethods>
 ) => {
   /** Helper functions */
   const addNodeTreeToParent = (
@@ -457,7 +457,7 @@ const Methods = (
 
 export const ActionMethods = (
   state: EditorState,
-  query: QueryCallbacksFor<typeof QueryMethods>
+  query: QueryCallbacksFor<typeof EditorQueryMethods>
 ) => {
   return {
     ...Methods(state, query),

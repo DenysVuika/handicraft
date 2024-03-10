@@ -3,7 +3,7 @@ import React from 'react';
 import { Placement } from './events';
 import { Nodes, NodeEventTypes, NodeId, Node } from './nodes';
 
-import { QueryMethods } from '../editor/query';
+import { EditorQueryMethods } from '../editor/query';
 import { EditorStore, ActionMethodsWithConfig } from '../editor/store';
 import { useInternalEditorReturnType } from '../editor/useInternalEditor';
 import { CoreEventHandlers } from '../events';
@@ -17,7 +17,7 @@ export type EditorOptions = {
     newParentNode: Node,
     existingParentNode: Node
   ) => void;
-  onNodesChange: (query: QueryCallbacksFor<typeof QueryMethods>) => void;
+  onNodesChange: (query: QueryCallbacksFor<typeof EditorQueryMethods>) => void;
   resolver: Resolver;
   enabled: boolean;
   indicator: Partial<{
@@ -34,7 +34,7 @@ export type EditorOptions = {
       PatchListenerAction<typeof ActionMethodsWithConfig>,
       'patches'
     >,
-    query: QueryCallbacksFor<typeof QueryMethods>
+    query: QueryCallbacksFor<typeof EditorQueryMethods>
   ) => void;
 };
 

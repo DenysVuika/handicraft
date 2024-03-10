@@ -35,11 +35,11 @@ import { parseNodeFromJSX } from '../utils/parseNodeFromJSX';
 import { resolveComponent } from '../utils/resolveComponent';
 import { QueryCallbacksFor } from '../utils/useMethods';
 
-export function QueryMethods(state: EditorState) {
+export function EditorQueryMethods(state: EditorState) {
   const options = state && state.options;
 
-  const _: () => QueryCallbacksFor<typeof QueryMethods> = () =>
-    QueryMethods(state) as any;
+  const _: () => QueryCallbacksFor<typeof EditorQueryMethods> = () =>
+    EditorQueryMethods(state) as any;
 
   return {
     /**

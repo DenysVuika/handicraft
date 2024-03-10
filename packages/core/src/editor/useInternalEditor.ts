@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useMemo } from 'react';
 import invariant from 'tiny-invariant';
 
 import { EditorContext } from './EditorContext';
-import { QueryMethods } from './query';
+import { EditorQueryMethods } from './query';
 import { EditorStore } from './store';
 
 import { ERROR_USE_EDITOR_OUTSIDE_OF_EDITOR_CONTEXT } from '../constants';
@@ -16,7 +16,7 @@ import { QueryCallbacksFor } from '../utils/useMethods';
 
 export type EditorCollector<C> = (
   state: EditorState,
-  query: QueryCallbacksFor<typeof QueryMethods>
+  query: QueryCallbacksFor<typeof EditorQueryMethods>
 ) => C;
 
 export type useInternalEditorReturnType<C = null> = useCollectorReturnType<

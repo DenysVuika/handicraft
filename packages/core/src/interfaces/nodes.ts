@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { QueryMethods } from '../editor/query';
+import { EditorQueryMethods } from '../editor/query';
 import { QueryCallbacksFor } from '../utils/useMethods';
 
 export type UserComponentConfig<T> = {
@@ -35,7 +35,9 @@ export type Node = {
   _hydrationTimestamp: number;
 };
 
-export type NodeHelpersType = QueryCallbacksFor<typeof QueryMethods>['node'];
+export type NodeHelpersType = QueryCallbacksFor<
+  typeof EditorQueryMethods
+>['node'];
 export type NodeRules = {
   canDrag(node: Node, helpers: NodeHelpersType): boolean;
   canDrop(dropTarget: Node, self: Node, helpers: NodeHelpersType): boolean;

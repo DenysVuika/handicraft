@@ -26,3 +26,4 @@ export * from './utils/testHelpers';
 export * from './utils/utilityTypes';
 export * from './utils/useCollector';
 export * from './utils/useEffectOnce';
+export * from './utils/useMethods';

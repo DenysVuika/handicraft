@@ -7,7 +7,7 @@ import {
   secondaryButton,
   documentWithCardState
 } from '../../tests/fixtures';
-import { QueryMethods } from '../query';
+import { EditorQueryMethods } from '../query';
 
 let mockedResolveComponent = jest.fn().mockImplementation(() => null);
 let mockedCreateNode = jest.fn().mockImplementation(() => null);
@@ -34,7 +34,7 @@ describe('query', () => {
 
   beforeEach(() => {
     state = { options: { resolver } };
-    query = QueryMethods(state);
+    query = EditorQueryMethods(state);
   });
 
   describe('parseSerializedNode', () => {

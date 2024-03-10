@@ -1,5 +1,5 @@
 import { ActionMethods } from './actions';
-import { QueryMethods } from './query';
+import { EditorQueryMethods } from './query';
 
 import { DefaultEventHandlers } from '../events';
 import {
@@ -89,7 +89,7 @@ export const ActionMethodsWithConfig = {
 
 export type EditorStore = SubscriberAndCallbacksFor<
   typeof ActionMethodsWithConfig,
-  typeof QueryMethods
+  typeof EditorQueryMethods
 >;
 
 export const useEditorStore = (
@@ -97,7 +97,7 @@ export const useEditorStore = (
   patchListener: PatchListener<
     EditorState,
     typeof ActionMethodsWithConfig,
-    typeof QueryMethods
+    typeof EditorQueryMethods
   >
 ): EditorStore => {
   // TODO: fix type
@@ -110,7 +110,7 @@ export const useEditorStore = (
         ...options
       }
     },
-    QueryMethods,
+    EditorQueryMethods,
     patchListener
   ) as EditorStore;
 };
