@@ -258,7 +258,7 @@ export default function App() {
 ```
 
 
-<Image img="tutorial/interface.png" />
+<Image img="tutorial/interface.png"></Image>
 
 
 
@@ -389,9 +389,9 @@ Let's break this down a little:
 
 We can also specify additional configuration to our component via the `craft` prop. Let's define drag-n-drop rules for our Text Component:
 ```jsx
-export const Text = () => {...}
+export const Text = () => {/*...*/}
 Text.craft = {
-  ...
+  // ...
   rules: {
     canDrag: (node) => node.data.props.text != "Drag"
   }
@@ -436,9 +436,9 @@ export const Card = ({background, padding = 0}) => {
   )
 }
 ```
-At this point, you could refresh the page and you would be able to drag stuff around.
+At this point, you could refresh the page, and you would be able to drag stuff around.
 
-<Image img="tutorial/dnd.gif" />
+<Image img="tutorial/dnd.gif"></Image>
 
 #### Defining Droppable regions
 
@@ -531,24 +531,21 @@ export const Card = ({background, padding = 20}) => {
 
 Remember that every User Component must be added to our resolver, so let's add CardTop and CardBottom:
 ```jsx
-...
 export default function App() {
   return (
-    ...
         <Editor
           resolver={{Card, Button, Text, CardTop, CardBottom}}
         > 
-         ...
         </Editor>
-     ...
   );
 }
 ```
 
-<Image img="tutorial/droppable-regions.gif" />
+<Image img="tutorial/droppable-regions.gif"></Image>
 
 
 ### Implementing the Toolbox
+
 Let's go back to our Toolbox component and modify it so that dragging those buttons into the editor will create new instances of the user components they represent. Just as `useNode` provides methods and information related to a specific `Node`, `useEditor` specifies methods and information related to the entire editor's state.
 
 The `useEditor` also provides `connectors`; the one we are interested in right now is `create` which attaches a drag handler to the  DOM specified in its first argument and creates the element specified in its second arguement.
@@ -595,6 +592,7 @@ Notice for our Container component, we wrapped it with the `<Element canvas />` 
 Now, you can drag and drop the Buttons, and they will actually create new instances of our User Components.
 
 ### Making the components editable
+
 Up until this point, we have a page editor where our users can move elements around. But, we are missing one important thing - enabling our users to edit the components' props.
 
 The `useNode` hook provides us with the method `setProp` which can be used to manipulate a component's props. Let's implement a content editable for our Text Component:
@@ -657,7 +655,7 @@ export const Text = ({text, fontSize}) => {
 }
 ```
 
-<Image img="tutorial/text-edit.gif" />
+<Image img="tutorial/text-edit.gif"></Image>
 
 This should give you an idea of the possibilities of implementing powerful visual editing features like what you'd see in most modern page editors.
 
@@ -675,8 +673,8 @@ export const Text= ({text, fontSize, textAlign}) => {
   ...
 
   return (
-    <div {...}>
-      <ContentEditable {...} />
+    <div {/*...*/}>
+      <ContentEditable {/*...*/} />
       {
         hasSelectedNode && (
           <FormControl className="text-additional-settings" size="small">
@@ -699,12 +697,12 @@ export const Text= ({text, fontSize, textAlign}) => {
 }
 ```
 
-<Image img="tutorial/text-edit-others.gif" />
+<Image img="tutorial/text-edit-others.gif"></Image>
 
 
 We can agree that it does not look all that good since it obstructs the user experience. Wouldn't it be better if the entire `.text-additional-settings` Grid is relocated to the Settings Panel that we created earlier?
 
-The question is, how will the Settings Panel be able render the `.text-additional-settings`  when our Text component is selected? 
+The question is, how will the Settings Panel be able to render the `.text-additional-settings`  when our Text component is selected? 
 
 This is where Related Components become useful. Essentially, a Related Component shares the same `Node` context as our actual User component; it can make use of the `useNode` hook. Additionally, a Related Component is registered to a component's `Node`, which means we can access and render this component anywhere within the editor. 
 
@@ -718,8 +716,8 @@ export const Text = ({text, fontSize}) => {
 
   ...
   return (
-    <div {...}>
-      <ContentEditable {...} />
+    <div {/*...*/}>
+      <ContentEditable {/*...*/} />
     </div>
   )
 }
@@ -748,10 +746,10 @@ const TextSettings = () => {
 }
 
 Text.craft = {
-  ...
+  // ...
   related: {
     settings: TextSettings
-  }  
+  }
 }
 ```
 
@@ -809,7 +807,7 @@ Button.craft = {
 import {FormControl, FormLabel, Slider} from "@material-ui/core";
 import ColorPicker from 'material-ui-color-picker'
 
-export const Container = () => {...}
+export const Container = () => {/*...*/}
 
 export const ContainerSettings = () => {
   const { background, padding, actions: {setProp} } = useNode(node => ({
@@ -842,7 +840,7 @@ Container.craft = {
 // components/user/Card.js
 import {ContainerSettings} from "./Container";
 
-export const Card({background, padding = 20}) { ... }
+export const Card({ background, padding = 20 }) { /*...*/ }
 
 Card.craft = {
   related: {
@@ -987,7 +985,7 @@ Also, it's important to note that not all nodes are deletable - if we try to del
 // components/SettingsPanel.js
 
 export const SettingsPanel = () => {
-  const { actions, selected } } = useEditor((state, query) => {
+  const { actions, selected } = useEditor((state, query) => {
     const [currentNodeId] = state.events.selected;
     let selected;
 
@@ -1030,6 +1028,7 @@ export const SettingsPanel = () => {
 <Image img="tutorial/settings-panel.gif" />
 
 ### Topbar
+
 This is the last part of the editor that we have to take care of and then we're done! 
 
 First, we can get the editor's `enabled` state by passing in a collector function just like what we did before. Then, we can use the `setOptions` action to toggle the `enabled` state.
@@ -1074,12 +1073,13 @@ export const Topbar = () => {
 };
 ```
 
-<Image img="tutorial/topbar.gif" />
+<Image img="tutorial/topbar.gif"></Image>
 
 > We'll explore how to compress the JSON output and have the editor load from the serialised JSON in the [Save and Load](./save-load.md) guide.
 
 
 ## You made it 🎉
+
 We've made it to the end! Not too bad right? Hopefully, you're able to see the simplicity of building a fully working page editor with Craft.js.
 
 We do not need to worry about implementing the drag-n-drop system but rather simply focus on writing rules and attaching connectors to the desired elements.
