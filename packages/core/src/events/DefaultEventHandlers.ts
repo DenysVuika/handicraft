@@ -6,7 +6,7 @@ import { Positioner } from './Positioner';
 import { createShadow } from './createShadow';
 
 import { Indicator, NodeId, DragTarget, NodeTree } from '../interfaces';
-import { isChromium, isLinux } from '../utils';
+import { isChromium, isLinux } from '../utils/platform';
 
 export type DefaultEventHandlersOptions = {
   isMultiSelectEnabled: (e: MouseEvent) => boolean;
