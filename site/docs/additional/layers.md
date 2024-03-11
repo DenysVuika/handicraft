@@ -12,13 +12,13 @@ A Photoshop-like layers panel for your page editor.
 ## Usage
 
 ```bash
-yarn add @craftjs/layers
+yarn add @webstencils/layers
 ```
 
 ```jsx
 import React from "react";
-import {Editor} from "@craftjs/core"
-import {Layers} from "@craftjs/layers"
+import {Editor} from "@webstencils/core";
+import {Layers} from "@webstencils/layers";
 
 export default function App() {
   return (
@@ -34,8 +34,11 @@ export default function App() {
 
 
 ## Types
+
 ### Layer
+
 #### Properties
+
 <API items={[
   ["id", "NodeId", "A randomly generated unique id"],
   ["depth", "number", "A depth of the current Layer"],
@@ -46,27 +49,29 @@ export default function App() {
   ]],
   ["dom", "HTMLElement", "The DOM of the current layer including its header and children. This is defined by the `connectLayer` connector"],
   ["headingDom", "HTMLElement", "The DOM of the current Layer's heading. This is defined by the `connectLayerHeader` connector"]
-]} /> 
-
-
+]} />
 
 ## Reference
+
 ### `<Layers />`
+
 #### Props
+
 <API items={[
   ["expandRootOnLoad?", "boolean", "Optional. If enabled, the Root Node will be expanded by default"],
   ["renderLayer?", "React.ReactElement", "Optional. Specify the component to render each layer"],
 ]} /> 
 
 ### `useLayer`
+
 #### Parameters
+
 <API items={[
   ["collector", "(layer: Layer) => Collected", "A function that collects relevant state information from the corresponding `Layer`. The component will re-render when the values returned by this function changes."]
 ]} /> 
 
-
-
 #### Returns
+
 <API items={[
   [null, "Object", [
     ["connectors", "Object", [
@@ -80,8 +85,8 @@ export default function App() {
   ]]
 ]} /> 
 
-
 ## Default components
+
 The following components are available for you to extend if you wish to design your own component to render the layers (which can be specified in the `renderLayer` prop).
 
 - `<DefaultLayer />` 
@@ -102,7 +107,7 @@ const App = () => {
   return (
     <Editor>
       <Frame>
-        ...
+        {/*...*/}
       </Frame>
       <Layers 
         renderLayer={Layer}

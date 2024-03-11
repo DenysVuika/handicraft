@@ -52,7 +52,7 @@ const { connectors, setProp, ...collected } = useNode(collector);
 ### Collecting state information
 ```tsx
 import cx from "classnames";
-import {useNode} from "@craftjs/core";
+import {useNode} from "@webstencils/core";
 
 const Example = () => {
   const { isHovered, amIBeingDragged } = useNode((node) => ({

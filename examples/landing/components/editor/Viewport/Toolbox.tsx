@@ -1,10 +1,10 @@
-import { Element, useEditor } from '@craftjs/core';
 import styled from '@emotion/styled';
 import ContainerIcon from '@mui/icons-material/RectangleOutlined';
 import SmartButtonIcon from '@mui/icons-material/SmartButton';
 import TextFieldsIcon from '@mui/icons-material/TextFields';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import Tooltip from '@mui/material/Tooltip';
+import { Element, useEditor } from '@webstencils/core';
 import React from 'react';
 
 import { Button } from '../../selectors/Button';

@@ -1,4 +1,4 @@
-import { Element, useNode } from '@craftjs/core';
+import { Element, useNode } from '@webstencils/core';
 
 import { Container } from '../Container';
 import { Video } from '../Video';

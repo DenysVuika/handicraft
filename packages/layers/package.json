@@ -1,5 +1,5 @@
 {
-  "name": "@craftjs/layers",
+  "name": "@webstencils/layers",
   "description": "A Photoshop-like layers panel for your page editor",
   "keywords": [
     "wysiwyg",
@@ -11,7 +11,7 @@
     "web-builder",
     "react"
   ],
-  "version": "0.2.2",
+  "version": "0.1.0",
   "author": "Denys Vuika <denys.vuika@gmail.com>",
   "license": "Apache-2.0",
   "main": "./dist/cjs/index.js",
@@ -24,12 +24,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/prevwong/craft.js/"
+    "url": "https://github.com/webstencils/core/"
   },
   "bugs": {
-    "url": "https://github.com/prevwong/craft.js/issues"
+    "url": "https://github.com/webstencils/core/issues"
   },
-  "homepage": "https://github.com/prevwong/craft.js/",
+  "homepage": "https://github.com/webstencils/core/",
   "dependencies": {
     "react-contenteditable": "^3.3.3"
   },
@@ -39,7 +39,7 @@
     "styled-components": "4.2.1"
   },
   "peerDependencies": {
-    "@craftjs/core": ">=0.2.0",
+    "@webstencils/core": ">=0.1.0",
     "react": "^16.8.0 || ^17 || ^18",
     "styled-components": ">= 4"
   }

@@ -14,24 +14,25 @@ Methods that helps describe a specified `Node`.
 You can access the NodeHelpers via the `node` query method in the `useEditor` hook.
 
 ```jsx
-import {useEditor} from "@craftjs/core";
+import { useEditor } from "@webstencils/core";
 
 const TextComponent = () => {
   const { id } = useNode();
   const { query: {node} } = useEditor();
-  const isRoot = node(id).Root(),
-        isDraggable = node(id).Draggable();
-  ...
+  const isRoot = node(id).Root();
+  const isDraggable = node(id).Draggable();
+  // ...
 }
 ```
+
 ### User Component rules
 
 NodeHelpers can also be accessed via the last parameter of each User Component rules.
 
 ```jsx
 const MyComp = () => {
+};
 
-}
 MyComp.craft = { 
   rules: {
     canDrag: (node: Node, helper: NodeHelpers) => {

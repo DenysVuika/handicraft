@@ -1,9 +1,9 @@
-import { useNode, useEditor, ROOT_NODE } from '@craftjs/core';
 import styled from '@emotion/styled';
 import ArrowUpIcon from '@mui/icons-material/ArrowUpward';
 import DeleteIcon from '@mui/icons-material/DeleteForever';
 import MoveIcon from '@mui/icons-material/DragIndicator';
 import Tooltip from '@mui/material/Tooltip';
+import { useNode, useEditor, ROOT_NODE } from '@webstencils/core';
 import React, { useEffect, useRef, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 

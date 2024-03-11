@@ -8,6 +8,7 @@ import {Image} from "@site/src/components";
 This guide extends upon the [Basic Tutorial](/docs/guides/basic-tutorial)
 
 ## Overview
+
 Previously, we saw how we could serialize the entire state of `Nodes` in our editor into JSON. Of course, you probably will not want to store the JSON in your server or database, for obvious reasons. Instead, you should first employ a text compression technique of your choice to compress the serialized JSON Nodes.
 
 In this guide, we'll be mainly modifying the previous tutorial's Topbar component. We'll add 2 new features
@@ -15,16 +16,19 @@ In this guide, we'll be mainly modifying the previous tutorial's Topbar componen
 - Load the editor state from a compressed output of serialized Nodes.
 
 We'll be using 2 external libraries - `lzutf8` (for compression) and `copy-to-clipboard` (you know)
+
 ```bash
 yarn add lzutf8 copy-to-clipboard
 ```
 
 ## Copy compressed output 
+
 We'll use `lzutf8` to compress our serialised JSON Nodes, and additionally transform it into base64.
+
 ```jsx {24-36}
 import React, { useState } from "react";
 import { Box, FormControlLabel, Switch, Grid, Button as MaterialButton, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField, Snackbar } from "@material-ui/core";
-import { useEditor } from "@craftjs/core";
+import { useEditor } from "@webstencils/core";
 import lz from "lzutf8";
 import copy from 'copy-to-clipboard';
 
@@ -75,6 +79,7 @@ const [snackbarMessage, setSnackbarMessage] = useState();
 When you click on the button now, it should copy the compressed base64 string to the clipboard.
 
 ## Load state
+
 Now let's implement the Load State button in our Topbar component. We will display a Dialog box when the button is clicked, and our users will be able to paste the compressed base64 string there. 
 
 Then, we will need to work in reverse to obtain the original JSON provided by our editor. Finally, we'll call the `deserialize` action which will result in the editor replacing all the current Nodes in the editor with the deserialized output.
@@ -82,7 +87,7 @@ Then, we will need to work in reverse to obtain the original JSON provided by ou
 ```jsx {12-14,40-83}
 import React, { useState } from "react";
 import { Box, FormControlLabel, Switch, Grid, Button as MaterialButton, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField, Snackbar } from "@material-ui/core";
-import { useEditor } from "@craftjs/core";
+import { useEditor } from "@webstencils/core";
 import lz from "lzutf8";
 import copy from 'copy-to-clipboard';
 
@@ -179,6 +184,7 @@ export const Topbar = () => {
 
 
 ### Load JSON on page load
+
 Of course, what if we wanted our editor to load a serialized output on page load? For this, we will need to take a step back and revisit the `<Frame />` component which we encountered when we first set up Craft.js. 
 
 By default, it constructs the editor state based on what was initially rendered in its `children`. But, we could also specifiy the serialized JSON nodes to its `json` prop which would cause it to load the state from the JSON string instead. 
@@ -193,7 +199,7 @@ import {Button} from '../components/user/Button';
 import {Card, CardBottom, CardTop} from '../components/user/Card';
 import {Text} from '../components/user/Text';
 import {SettingsPanel} from '../components/SettingsPanel';
-import {Editor, Frame, Element} from "@craftjs/core";
+import {Editor, Frame, Element} from "@webstencils/core";
 import { Topbar } from '../components/Topbar';
 
 

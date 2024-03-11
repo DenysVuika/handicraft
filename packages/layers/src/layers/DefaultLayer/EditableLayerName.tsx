@@ -1,4 +1,4 @@
-import { useEditor } from '@craftjs/core';
+import { useEditor } from '@webstencils/core';
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import ContentEditable from 'react-contenteditable';
 

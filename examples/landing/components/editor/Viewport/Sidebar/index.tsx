@@ -1,8 +1,8 @@
-import { useEditor } from '@craftjs/core';
-import { Layers } from '@craftjs/layers';
 import styled from '@emotion/styled';
 import LayersIcon from '@mui/icons-material/Layers';
 import TuneIcon from '@mui/icons-material/Tune';
+import { useEditor } from '@webstencils/core';
+import { Layers } from '@webstencils/layers';
 import React, { useState } from 'react';
 
 import { SidebarItem } from './SidebarItem';

@@ -17,16 +17,18 @@ In this tutorial, we'll be designing a simple page editor. It's recommended that
 ## Installation
 
 ```bash
-yarn add @craftjs/core
+yarn add @webstencils/core
 ```
 
 or with npm:
+
 ```bash
-npm install --save @craftjs/core
+npm install --save @webstencils/core
 ```
 
 
 ## Designing a user interface
+
 With Craft.js you decide how your editor should look and function. So, let's build a user interface for our page editor. We'll add the page editor functionalities later.
 
 
@@ -263,6 +265,7 @@ export default function App() {
 
 
 ## Implementing Craft.js
+
 Up to this point, we have made a user interface for our page editor. Now, let's get it to work!
 
 ### Setup
@@ -282,7 +285,7 @@ import { Button } from '../components/user/Button';
 import { Card } from '../components/user/Card';
 import { Text } from '../components/user/Text';
 
-import {Editor, Frame, Element} from "@craftjs/core";
+import {Editor, Frame, Element} from "@webstencils/core";
 
 export default function App() {
   return (
@@ -370,7 +373,7 @@ The first thing we will need to do is to let Craft.js to manage the DOM of our c
 // components/user/Text.js
 import React from "react";
 import { Typography } from "@material-ui/core";
-import { useNode } from "@craftjs/core";
+import { useNode } from "@webstencils/core";
 
 export const Text = ({text}) => {
   const { connectors: {connect, drag} } = useNode();
@@ -448,7 +451,7 @@ But hold up, how do we even create a Node inside a User Component?  Remember the
 
 ```jsx {2,7,10,11,13}
 // components/user/Card.js
-import {useNode, Element} from "@craftjs/core";
+import {useNode, Element} from "@webstencils/core";
 
 export const Card = ({bg, padding}) => {
   return (
@@ -476,7 +479,7 @@ Hence, we can specify and create a new User Component and define rules via the `
 import React  from "react";
 import Text from "./Text";
 import Button from "./Button";
-import { Element, useNode } from "@craftjs/core";
+import { Element, useNode } from "@webstencils/core";
 
 import { Container }  from "./Container";
 
@@ -554,7 +557,7 @@ The `useEditor` also provides `connectors`; the one we are interested in right n
 // components/Toolbox.js
 import React from "react";
 import { Box, Typography, Grid, Button as MaterialButton } from "@material-ui/core";
-import { Element, useEditor } from "@craftjs/core";
+import { Element, useEditor } from "@webstencils/core";
 import { Container } from "./user/Container";
 import { Card } from "./user/Card";
 import { Button } from "./user/Button";
@@ -936,7 +939,7 @@ Now, let's replace the placeholder text fields in our Settings Panel with the `s
 // components/SettingsPanel.js
 
 import { Box, Chip, Grid, Typography, Button as MaterialButton } from "@material-ui/core";
-import { useEditor } from "@craftjs/core";
+import { useEditor } from "@webstencils/core";
 
 export const SettingsPanel = () => {
   const { selected } = useEditor((state) => {
@@ -1043,7 +1046,7 @@ Lastly, the `useEditor` hook also provides `query` methods which provide informa
 // components/Topbar.js
 import React from "react";
 import { Box, FormControlLabel, Switch, Grid, Button as MaterialButton } from "@material-ui/core";
-import { useEditor } from "@craftjs/core";
+import { useEditor } from "@webstencils/core";
 
 export const Topbar = () => {
   const { actions, query, enabled } = useEditor((state) => ({

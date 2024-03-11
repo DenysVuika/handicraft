@@ -8,11 +8,11 @@
 module.exports = {
   docs: {
     Migrating: ['migrating/migrating-0.1.x'],
-    Introduction: ['overview', 'acknowledgements', 'sponsor'],
+    Introduction: ['overview', 'acknowledgements'],
     'Core Concepts': [
       'concepts/nodes',
       'concepts/user-components',
-      'concepts/editor',
+      'concepts/editor'
     ],
     Guides: ['guides/basic-tutorial', 'guides/save-load-state'],
     'API Reference': [
@@ -25,8 +25,8 @@ module.exports = {
       'api/element',
       'api/useEditor',
       'api/useNode',
-      'api/helpers',
+      'api/helpers'
     ],
-    'Additional Packages': ['additional/layers'],
-  },
+    'Additional Packages': ['additional/layers']
+  }
 };

@@ -6,9 +6,9 @@
     "allowJs": true,
     "esModuleInterop": true,
     "paths": {
-      "@craftjs/core": ["packages/core/src/index"],
-      "@craftjs/*": ["packages/core/src/*"],
-      "@craftjs/layers": ["packages/layers/src/index"]
+      "@webstencils/core": ["packages/core/src/index"],
+      "@webstencils/*": ["packages/core/src/*"],
+      "@webstencils/layers": ["packages/layers/src/index"]
     }
   },
   "exclude": ["**/node_modules/**", "cypress"]

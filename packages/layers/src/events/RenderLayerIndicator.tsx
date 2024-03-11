@@ -1,4 +1,4 @@
-import { useEditor, RenderIndicator } from '@craftjs/core';
+import { useEditor, RenderIndicator } from '@webstencils/core';
 import React, { useMemo } from 'react';
 
 import { useLayerManager } from '../manager/useLayerManager';
