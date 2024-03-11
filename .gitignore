@@ -22,3 +22,5 @@ cypress/screenshots/*
 !.yarn/sdks
 !.yarn/versions
 .pnp.*
+
+book
