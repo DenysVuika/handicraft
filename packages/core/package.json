@@ -1,5 +1,5 @@
 {
-  "name": "@craftjs/core",
+  "name": "@webstencils/core",
   "version": "0.2.5",
   "description": "A React Framework for building extensible drag and drop page editors",
   "keywords": [

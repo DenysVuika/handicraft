@@ -1,5 +1,5 @@
 {
-  "name": "@craftjs/layers",
+  "name": "@webstencils/layers",
   "description": "A Photoshop-like layers panel for your page editor",
   "keywords": [
     "wysiwyg",
