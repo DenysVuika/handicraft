@@ -2,15 +2,15 @@
 
 # Introduction
 
-- [Overview](./chapter_1.md)
-- [Acknowledgements]()
-- [Sponsor]()
+- [Overview](./overview.md)
+- [Acknowledgements](./acknowledgements.md)
+- [Sponsor](./sponsor.md)
 
 # Core Concepts
 
-- [Nodes]()
-- [User Components]()
-- [Interacting with the Editor]()
+- [Nodes](./concepts/nodes.md)
+- [User Components](./concepts/user-components.md)
+- [Interacting with the Editor](./concepts/editor.md)
 
 # Guides
 
