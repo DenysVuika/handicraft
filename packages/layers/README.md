@@ -2,21 +2,10 @@
 
 A Photoshop-like layers panel for your page editor.
 
-<div align="center" style={{d}}>
-    <img src="https://user-images.githubusercontent.com/16416929/71734439-f2aada00-2e86-11ea-9d5f-c782ccbc8e54.gif"/>
-</div>
+![Demo](./docs/71734439-f2aada00-2e86-11ea-9d5f-c782ccbc8e54.gif)
 
-<p align="center">
-  <strong>
-    <a href="https://craft.js.org/docs/additional/layers">Documentation</a>
-  </strong>
-</p>
-
-<p align="center">
-  <strong>
-    <a href="https://craft.js.org">Craft.js</a>
-  </strong>
-</p>
+- [Documentation](https://craft.js.org/docs/additional/layers)
+- [Craft.js](https://craft.js.org)
 
 ## Usage
 

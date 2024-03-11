@@ -265,6 +265,7 @@ export default function App() {
 
 
 ## Implementing Craft.js
+
 Up to this point, we have made a user interface for our page editor. Now, let's get it to work!
 
 ### Setup

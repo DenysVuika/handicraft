@@ -201,7 +201,7 @@ const Example = () => {
         <button onClick={() => selectedNodeId && setTargetId(selectedNodeId)}>Set selected Node as target</button>
       </div>
       {
-        sourceId && targeId ? (
+        sourceId && targeId && (
           <button onClick={() => {
             try {
               // .canDropInParent will throw an error message if the conditions failed
@@ -285,7 +285,7 @@ const Example = () => {
         <button onClick={() => selectedNodeId && setTargetId(selectedNodeId)}>Set selected Node as target</button>
       </div>
       {
-        sourceId && targeId ? (
+        sourceId && targeId && (
           <button onClick={() => {
             setScreenClick(true);
           }}>

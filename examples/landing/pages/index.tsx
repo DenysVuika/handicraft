@@ -69,7 +69,7 @@ function App() {
                     <Text
                       fontSize="23"
                       fontWeight="400"
-                      text="Craft.js is a React framework for building powerful &amp; feature-rich drag-n-drop page editors."
+                      text="WebStencils is a React framework for building powerful &amp; feature-rich drag-n-drop page editors."
                     ></Text>
                   </Element>
                   <Element
@@ -83,7 +83,7 @@ function App() {
                     <Text
                       fontSize="14"
                       fontWeight="400"
-                      text="Everything you see here, including the editor, itself is made of React components. Craft.js comes only with the building blocks for a page editor; it provides a drag-n-drop system and handles the way user components should be rendered, updated and moved, among other things. <br /> <br /> You control the way your editor looks and behave."
+                      text="Everything you see here, including the editor, itself is made of React components. WebStencils comes only with the building blocks for a page editor; it provides a drag-n-drop system and handles the way user components should be rendered, updated and moved, among other things. <br /> <br /> You control the way your editor looks and behave."
                     ></Text>
                   </Element>
                 </Element>

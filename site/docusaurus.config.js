@@ -11,7 +11,7 @@ module.exports = {
   baseUrl: '/',
   favicon: 'img/favicon.ico',
   organizationName: 'webstencils', // Usually your GitHub org/user name.
-  projectName: 'craft.js', // Usually your repo name.
+  projectName: 'core', // Usually your repo name.
   onBrokenLinks: 'warn',
   themeConfig: {
     prism: {
