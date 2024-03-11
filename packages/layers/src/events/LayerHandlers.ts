@@ -1,4 +1,4 @@
-import { NodeId, Node, DerivedCoreEventHandlers } from '@craftjs/core';
+import { NodeId, Node, DerivedCoreEventHandlers } from '@webstencils/core';
 
 import { LayerIndicator } from '../interfaces';
 

@@ -1,4 +1,4 @@
-import { NodeId, EventHandlerConnectors } from '@craftjs/core';
+import { NodeId, EventHandlerConnectors } from '@webstencils/core';
 import React from 'react';
 
 import { LayerHandlers } from '../events/LayerHandlers';

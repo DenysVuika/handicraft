@@ -1,5 +1,5 @@
-import { useNode, useEditor } from '@craftjs/core';
 import styled from '@emotion/styled';
+import { useNode, useEditor } from '@webstencils/core';
 import cx from 'classnames';
 import debounce from 'debounce';
 import { Resizable } from 're-resizable';

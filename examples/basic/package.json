@@ -3,8 +3,8 @@
   "version": "0.2.0",
   "private": true,
   "dependencies": {
-    "@craftjs/core": "workspace:*",
     "@material-ui/core": "4.12.4",
+    "@webstencils/core": "workspace:*",
     "clsx": "latest",
     "copy-to-clipboard": "3.2.0",
     "lzutf8": "0.5.5",

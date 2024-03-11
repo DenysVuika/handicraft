@@ -1,5 +1,5 @@
-import { useEditor } from '@craftjs/core';
 import styled from '@emotion/styled';
+import { useEditor } from '@webstencils/core';
 import React from 'react';
 
 export * from './ToolbarItem';

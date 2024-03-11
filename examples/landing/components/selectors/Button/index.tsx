@@ -1,5 +1,5 @@
-import { UserComponent, useNode } from '@craftjs/core';
 import styled from '@emotion/styled';
+import { UserComponent, useNode } from '@webstencils/core';
 import cx from 'classnames';
 
 import { ButtonSettings } from './ButtonSettings';

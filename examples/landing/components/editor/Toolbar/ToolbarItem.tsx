@@ -1,8 +1,8 @@
-import { useNode } from '@craftjs/core';
 import styled from '@emotion/styled';
 import Grid from '@mui/material/Grid';
 import RadioGroup from '@mui/material/RadioGroup';
 import Slider from '@mui/material/Slider';
+import { useNode } from '@webstencils/core';
 import React from 'react';
 
 import { ToolbarDropdown } from './ToolbarDropdown';

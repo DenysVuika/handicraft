@@ -1,10 +1,10 @@
-import { useEditor } from '@craftjs/core';
 import styled from '@emotion/styled';
 import EditIcon from '@mui/icons-material/Edit';
 import RedoIcon from '@mui/icons-material/Redo';
 import UndoIcon from '@mui/icons-material/Undo';
 import PreviewIcon from '@mui/icons-material/Visibility';
 import Tooltip from '@mui/material/Tooltip';
+import { useEditor } from '@webstencils/core';
 import cx from 'classnames';
 
 const HeaderDiv = styled.div`

@@ -3370,39 +3370,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@craftjs/core@workspace:*, @craftjs/core@workspace:packages/core":
-  version: 0.0.0-use.local
-  resolution: "@craftjs/core@workspace:packages/core"
-  dependencies:
-    "@types/lodash": ^4.14.195
-    "@types/react": 18.0.27
-    debounce: ^2.0.0
-    immer: ^9.0.6
-    lodash: ^4.17.21
-    nanoid: ^3.1.23
-    react: 18.2.0
-    shallowequal: ^1.1.0
-    tiny-invariant: ^1.0.6
-  peerDependencies:
-    react: ^16.8.0 || ^17 || ^18
-  languageName: unknown
-  linkType: soft
-
-"@craftjs/layers@workspace:*, @craftjs/layers@workspace:packages/layers":
-  version: 0.0.0-use.local
-  resolution: "@craftjs/layers@workspace:packages/layers"
-  dependencies:
-    "@babel/core": 7.7.4
-    "@svgr/rollup": 8.1.0
-    react-contenteditable: ^3.3.3
-    styled-components: 4.2.1
-  peerDependencies:
-    "@craftjs/core": ">=0.2.0"
-    react: ^16.8.0 || ^17 || ^18
-    styled-components: ">= 4"
-  languageName: unknown
-  linkType: soft
-
 "@docsearch/css@npm:3.3.3":
   version: 3.3.3
   resolution: "@docsearch/css@npm:3.3.3"
@@ -7295,6 +7262,39 @@ __metadata:
   checksum: d2fa6a4c427325ec81463e9c809aa6572af6d47f619f3091bf4c4a6fc34f1da3df7caddaac50b8e7a457f8784c62cd58c6311b6cb69b0162ccd8d4c072f79cf8
   languageName: node
   linkType: hard
+
+"@webstencils/core@workspace:*, @webstencils/core@workspace:packages/core":
+  version: 0.0.0-use.local
+  resolution: "@webstencils/core@workspace:packages/core"
+  dependencies:
+    "@types/lodash": ^4.14.195
+    "@types/react": 18.0.27
+    debounce: ^2.0.0
+    immer: ^9.0.6
+    lodash: ^4.17.21
+    nanoid: ^3.1.23
+    react: 18.2.0
+    shallowequal: ^1.1.0
+    tiny-invariant: ^1.0.6
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18
+  languageName: unknown
+  linkType: soft
+
+"@webstencils/layers@workspace:*, @webstencils/layers@workspace:packages/layers":
+  version: 0.0.0-use.local
+  resolution: "@webstencils/layers@workspace:packages/layers"
+  dependencies:
+    "@babel/core": 7.7.4
+    "@svgr/rollup": 8.1.0
+    react-contenteditable: ^3.3.3
+    styled-components: 4.2.1
+  peerDependencies:
+    "@webstencils/core": ">=0.2.0"
+    react: ^16.8.0 || ^17 || ^18
+    styled-components: ">= 4"
+  languageName: unknown
+  linkType: soft
 
 "@xtuc/ieee754@npm:^1.2.0":
   version: 1.2.0
@@ -11823,8 +11823,8 @@ clsx@latest:
   version: 0.0.0-use.local
   resolution: "example-basic@workspace:examples/basic"
   dependencies:
-    "@craftjs/core": "workspace:*"
     "@material-ui/core": 4.12.4
+    "@webstencils/core": "workspace:*"
     clsx: latest
     copy-to-clipboard: 3.2.0
     cross-env: ^7.0.3
@@ -11842,8 +11842,6 @@ clsx@latest:
   version: 0.0.0-use.local
   resolution: "example-landing@workspace:examples/landing"
   dependencies:
-    "@craftjs/core": "workspace:*"
-    "@craftjs/layers": "workspace:*"
     "@emotion/react": ^11.11.3
     "@emotion/styled": ^11.11.0
     "@mui/icons-material": ^5.15.10
@@ -11852,6 +11850,8 @@ clsx@latest:
     "@types/node": 12.12.5
     "@types/react": 18.0.27
     "@types/react-color": 3.0.1
+    "@webstencils/core": "workspace:*"
+    "@webstencils/layers": "workspace:*"
     classnames: ^2.5.1
     debounce: ^2.0.0
     next: 14.1.3

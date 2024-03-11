@@ -1,4 +1,4 @@
-import { Indicator, useEditor } from '@craftjs/core';
+import { Indicator, useEditor } from '@webstencils/core';
 import React from 'react';
 
 export type Placeholder = {

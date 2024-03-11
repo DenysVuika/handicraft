@@ -1,4 +1,4 @@
-import { ROOT_NODE } from '@craftjs/core';
+import { ROOT_NODE } from '@webstencils/core';
 import React from 'react';
 
 import { LayerOptions } from './interfaces';

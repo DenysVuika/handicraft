@@ -1,4 +1,4 @@
-# @craftjs/core
+# @webstencils/core
 
 ## 0.2.5
 

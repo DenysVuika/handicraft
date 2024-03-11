@@ -1,4 +1,4 @@
-import { SubscriberAndCallbacksFor } from '@craftjs/core';
+import { SubscriberAndCallbacksFor } from '@webstencils/core';
 import { createContext } from 'react';
 
 import { LayerMethods } from './actions';

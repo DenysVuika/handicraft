@@ -1,4 +1,4 @@
-import { NodeId, Indicator } from '@craftjs/core';
+import { NodeId, Indicator } from '@webstencils/core';
 import React from 'react';
 
 export type Layer = {

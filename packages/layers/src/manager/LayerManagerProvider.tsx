@@ -1,4 +1,4 @@
-import { useMethods } from '@craftjs/core';
+import { useMethods } from '@webstencils/core';
 import React from 'react';
 
 import { LayerMethods } from './actions';

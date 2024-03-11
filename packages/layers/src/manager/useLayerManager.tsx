@@ -1,4 +1,4 @@
-import { useCollector } from '@craftjs/core';
+import { useCollector } from '@webstencils/core';
 import { useContext, useMemo } from 'react';
 
 import { LayerManagerContext } from './context';

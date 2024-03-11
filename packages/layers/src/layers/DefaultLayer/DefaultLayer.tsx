@@ -1,4 +1,4 @@
-import { useEditor } from '@craftjs/core';
+import { useEditor } from '@webstencils/core';
 import React from 'react';
 import styled from 'styled-components';
 

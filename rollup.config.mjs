@@ -6,7 +6,12 @@ import typescript from 'rollup-plugin-typescript2';
 
 const shouldMinify = process.env.NODE_ENV === 'production';
 const bundle = ['tslib'];
-const external = ['react', 'react-dom', 'styled-components', '@craftjs/core'];
+const external = [
+  'react',
+  'react-dom',
+  'styled-components',
+  '@webstencils/core'
+];
 
 export default {
   input: './src/index.ts',

@@ -1,6 +1,6 @@
-import { Editor, Frame, Element } from '@craftjs/core';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Editor, Frame, Element } from '@webstencils/core';
 
 import { Viewport, RenderNode } from '../components/editor';
 import { Container, Text } from '../components/selectors';

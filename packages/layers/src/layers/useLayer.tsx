@@ -1,4 +1,4 @@
-import { useEditor, wrapConnectorHooks } from '@craftjs/core';
+import { useEditor, wrapConnectorHooks } from '@webstencils/core';
 import { useContext, useMemo } from 'react';
 
 import { LayerContext } from './LayerContext';

@@ -1,4 +1,4 @@
-# @craftjs/layers
+# @webstencils/layers
 
 A Photoshop-like layers panel for your page editor.
 
@@ -21,19 +21,19 @@ A Photoshop-like layers panel for your page editor.
 ## Usage
 
 ```bash
-yarn add @craftjs/layers styled-components
+yarn add @webstencils/layers styled-components
 ```
 
 ```jsx
 import React from "react";
-import {Editor} from "@craftjs/core"
-import {Layers} from "@craftjs/layers"
+import { Editor } from "@webstencils/core";
+import { Layers } from "@webstencils/layers";
 
 export default function App() {
   return (
     <div style={{margin: "0 auto", width: "800px"}}>
       <Typography variant="h5" align="center">A super simple page editor</Typography>
-      <Editor resolver={...}>
+      <Editor resolver={/*...*/}>
         <Layers />
       </Editor>
     </div>

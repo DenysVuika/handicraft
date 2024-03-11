@@ -1,10 +1,10 @@
-import { useEditor } from '@craftjs/core';
 import {
   Box,
   Typography,
   Grid,
   Button as MaterialButton
 } from '@material-ui/core';
+import { useEditor } from '@webstencils/core';
 import React from 'react';
 
 import { Button } from './user/Button';

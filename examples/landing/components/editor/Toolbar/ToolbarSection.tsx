@@ -1,4 +1,3 @@
-import { useNode } from '@craftjs/core';
 import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import MuiAccordionSummary, {
@@ -6,6 +5,7 @@ import MuiAccordionSummary, {
 } from '@mui/material/AccordionSummary';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
+import { useNode } from '@webstencils/core';
 
 // TODO: use standard Accordion styles
 
