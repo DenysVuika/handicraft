@@ -42,9 +42,8 @@ module.exports = {
             }
           ]
         },
-        { to: 'docs/sponsor', label: 'Sponsor', position: 'right' },
         {
-          href: 'https://github.com/DenysVuika/handicraft',
+          href: 'https://github.com/webstencils',
           label: 'GitHub',
           position: 'right'
         }
@@ -79,7 +78,7 @@ module.exports = {
           items: [
             {
               label: 'Github Repository',
-              href: 'https://github.com/DenysVuika/handicraft'
+              href: 'https://github.com/webstencils'
             },
             {
               label: 'NPM',

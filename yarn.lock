@@ -7290,7 +7290,7 @@ __metadata:
     react-contenteditable: ^3.3.3
     styled-components: 4.2.1
   peerDependencies:
-    "@webstencils/core": ">=0.2.0"
+    "@webstencils/core": ">=0.1.0"
     react: ^16.8.0 || ^17 || ^18
     styled-components: ">= 4"
   languageName: unknown
