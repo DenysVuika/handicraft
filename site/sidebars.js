@@ -7,7 +7,6 @@
 
 module.exports = {
   docs: {
-    // Migrating: ['migrating/migrating-0.1.x'],
     Introduction: ['overview', 'acknowledgements'],
     'Core Concepts': [
       'concepts/nodes',

@@ -14,8 +14,8 @@
 
 # Guides
 
-- [Basic Tutorial]()
-- [Save and Load]()
+- [Basic Tutorial](./guides/basic-tutorial.md)
+- [Save and Load](./guides/save-load.md)
 
 # API Reference
 
