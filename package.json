@@ -3,7 +3,7 @@
   "private": true,
   "author": "Denys Vuika <denys.vuika@gmail.com>",
   "scripts": {
-    "dev": "lerna run start --parallel --ignore docs",
+    "dev": "lerna run start --stream --scope=example-landing",
     "dev:yalc": "lerna run dev:yalc --parallel",
     "clean": "lerna run clean --stream",
     "build": "lerna run build --stream --ignore 'example-*'",
