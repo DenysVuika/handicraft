@@ -4,8 +4,7 @@ A Photoshop-like layers panel for your page editor.
 
 ![Demo](./docs/71734439-f2aada00-2e86-11ea-9d5f-c782ccbc8e54.gif)
 
-- [Documentation](https://craft.js.org/docs/additional/layers)
-- [Craft.js](https://craft.js.org)
+- [Documentation](https://denysvuika.github.io/handicraft/additional/layers)
 
 ## Usage
 
