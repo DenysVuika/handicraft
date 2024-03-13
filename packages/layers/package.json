@@ -46,6 +46,7 @@
   "nx": {
     "targets": {
       "build": {
+        "dependsOn": [{ "projects": "@webstencils/core", "target": "build", "params": "forward" }],
         "cache": true,
         "inputs": [
           "{projectRoot}/**/*.ts",
@@ -55,6 +56,6 @@
         "outputs": ["{projectRoot}/dist"]
       }
     },
-    "includedScripts": ["build", "start"]
+    "includedScripts": ["build", "start", "clean"]
   }
 }

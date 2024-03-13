@@ -61,6 +61,6 @@
         "outputs": ["{projectRoot}/dist"]
       }
     },
-    "includedScripts": ["build", "start"]
+    "includedScripts": ["build", "start", "clean"]
   }
 }
