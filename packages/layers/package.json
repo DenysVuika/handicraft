@@ -18,8 +18,8 @@
   "module": "./dist/esm/index.js",
   "types": "./dist/cjs/index.d.ts",
   "scripts": {
-    "start": "cross-env NODE_ENV=development ../../scripts/build.sh",
-    "build": "cross-env NODE_ENV=production ../../scripts/build.sh",
+    "start": "npx rollup -c rollup.config.mjs -w",
+    "build": "npx rollup -c rollup.config.mjs",
     "clean": "npx rimraf lib dist"
   },
   "repository": {

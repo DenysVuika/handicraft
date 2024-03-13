@@ -25,8 +25,8 @@
     "url": "git+https://github.com/DenysVuika/handicraft.git"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development ../../scripts/build.sh",
-    "build": "cross-env NODE_ENV=production ../../scripts/build.sh",
+    "start": "npx rollup -c rollup.config.mjs -w",
+    "build": "npx rollup -c rollup.config.mjs",
     "dev:yalc": "../../scripts/yalc.sh",
     "clean": "npx rimraf lib dist .rollup.cache"
   },

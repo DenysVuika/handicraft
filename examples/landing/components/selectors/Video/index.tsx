@@ -45,7 +45,7 @@ export const Video = (props: any) => {
 Video.craft = {
   displayName: 'Video',
   props: {
-    videoId: 'IwzUs1IMdyQ'
+    videoId: '1Z0iA9K1o8M'
   },
   related: {
     toolbar: VideoSettings
