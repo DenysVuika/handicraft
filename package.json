@@ -3,17 +3,14 @@
   "private": true,
   "author": "Denys Vuika <denys.vuika@gmail.com>",
   "scripts": {
-    "start": "lerna run start --stream --scope=example-landing",
+    "start": "nx start example-landing",
     "dev:yalc": "lerna run dev:yalc --parallel",
-    "clean": "lerna run clean --stream",
-    "build": "lerna run build --stream --ignore 'example-*'",
-    "build:all": "lerna run build --stream",
+    "clean": "nx run-many -t clean",
+    "build": "nx run-many -t build",
     "test": "jest",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "lint:debug": "DEBUG=eslint:cli-engine eslint . --ext .js,.jsx,.ts,.tsx",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "bump": "lerna version --no-push --no-git-tag-version --force-publish",
-    "publish": "run-s build lint test && lerna publish from-git --no-private --no-push",
     "prepare": "husky"
   },
   "devDependencies": {
