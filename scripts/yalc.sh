@@ -6,7 +6,6 @@ if [ -f ./rollup.config.mjs ]; then
 fi
 
 command="
-#  npx tsc --skipLibCheck --emitDeclarationOnly &
   npx rollup -c ${defaultRollupConfig};
   yalc push
 "
