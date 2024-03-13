@@ -27,7 +27,7 @@
   "scripts": {
     "start": "npx rollup -c rollup.config.mjs -w",
     "build": "npx rollup -c rollup.config.mjs",
-    "dev:yalc": "../../scripts/yalc.sh",
+    "yalc": "yalc push",
     "clean": "npx rimraf lib dist .rollup.cache"
   },
   "bugs": {
@@ -56,11 +56,29 @@
         "inputs": [
           "{projectRoot}/**/*.ts",
           "{projectRoot}/tsconfig.json",
-          { "externalDependencies": ["typescript"] }
+          {
+            "externalDependencies": [
+              "typescript"
+            ]
+          }
         ],
-        "outputs": ["{projectRoot}/dist"]
+        "outputs": [
+          "{projectRoot}/dist"
+        ]
+      },
+      "yalc": {
+        "dependsOn": [
+          {
+            "target": "build"
+          }
+        ]
       }
     },
-    "includedScripts": ["build", "start", "clean"]
+    "includedScripts": [
+      "build",
+      "start",
+      "clean",
+      "yalc"
+    ]
   }
 }

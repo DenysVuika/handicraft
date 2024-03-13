@@ -34,6 +34,11 @@
     "typescript": "4.9.5"
   },
   "nx": {
-    "includedScripts": ["start", "build", "clean", "export"]
+    "includedScripts": [
+      "start",
+      "build",
+      "clean",
+      "export"
+    ]
   }
 }
