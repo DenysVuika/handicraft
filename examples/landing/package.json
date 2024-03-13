@@ -37,8 +37,14 @@
     "targets": {
       "build": {
         "dependsOn": [
-          { "projects": "@webstencils/core", "target": "build" },
-          { "projects": "@webstencils/layers", "target": "build" }
+          {
+            "projects": "@webstencils/core",
+            "target": "build"
+          },
+          {
+            "projects": "@webstencils/layers",
+            "target": "build"
+          }
         ]
       }
     },

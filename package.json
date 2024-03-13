@@ -8,7 +8,7 @@
     "clean": "nx run-many -t clean",
     "build": "nx run-many -t build",
     "test": "jest",
-    "test:watch": "cross-env NODE_ENV=test jest --watchAll",
+    "test:watch": "NODE_ENV=test jest --watchAll",
     "lint:debug": "DEBUG=eslint:cli-engine eslint . --ext .js,.jsx,.ts,.tsx",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "prepare": "husky"
@@ -23,7 +23,6 @@
     "@types/react-dom": "^18.2.21",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
-    "cross-env": "^7.0.3",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-react-app": "7.0.1",
