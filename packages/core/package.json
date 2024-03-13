@@ -48,5 +48,19 @@
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17 || ^18"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "cache": true,
+        "inputs": [
+          "{projectRoot}/**/*.ts",
+          "{projectRoot}/tsconfig.json",
+          { "externalDependencies": ["typescript"] }
+        ],
+        "outputs": ["{projectRoot}/dist"]
+      }
+    },
+    "includedScripts": ["build", "start"]
   }
 }

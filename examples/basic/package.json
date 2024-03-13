@@ -23,5 +23,8 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3"
+  },
+  "nx": {
+    "includedScripts": ["start", "build", "clean", "export"]
   }
 }
