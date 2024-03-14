@@ -19,7 +19,7 @@ export function createNode(
   normalize?: (node: Node) => void
 ) {
   let actualType = newNode.data.type as any;
-  let id = newNode.id || getRandomNodeId();
+  const id = newNode.id || getRandomNodeId();
 
   const node: Node = {
     id,
@@ -53,7 +53,6 @@ export function createNode(
     dom: null
   };
 
-  // @ts-ignore
   if (node.data.type === Element || node.data.type === Canvas) {
     const mergedProps = {
       ...defaultElementProps,

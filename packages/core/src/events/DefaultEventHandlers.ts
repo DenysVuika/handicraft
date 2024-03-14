@@ -195,7 +195,9 @@ export class DefaultEventHandlers<O = {}> extends CoreEventHandlers<
       },
       drag: (el: HTMLElement, id: NodeId) => {
         if (!store.query.node(id).isDraggable()) {
-          return () => {};
+          return () => {
+            /* empty */
+          };
         }
 
         el.setAttribute('draggable', 'true');

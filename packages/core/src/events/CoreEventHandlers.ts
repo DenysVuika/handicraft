@@ -15,16 +15,28 @@ export class CoreEventHandlers<O = {}> extends EventHandlers<
 > {
   handlers() {
     return {
-      connect: (el: HTMLElement, id: NodeId) => {},
-      select: (el: HTMLElement, id: NodeId) => {},
-      hover: (el: HTMLElement, id: NodeId) => {},
-      drag: (el: HTMLElement, id: NodeId) => {},
-      drop: (el: HTMLElement, id: NodeId) => {},
+      connect: (el: HTMLElement, id: NodeId) => {
+        /* empty */
+      },
+      select: (el: HTMLElement, id: NodeId) => {
+        /* empty */
+      },
+      hover: (el: HTMLElement, id: NodeId) => {
+        /* empty */
+      },
+      drag: (el: HTMLElement, id: NodeId) => {
+        /* empty */
+      },
+      drop: (el: HTMLElement, id: NodeId) => {
+        /* empty */
+      },
       create: (
         el: HTMLElement,
         UserElement: React.ReactElement | (() => NodeTree | React.ReactElement),
         options?: Partial<CreateHandlerOptions>
-      ) => {}
+      ) => {
+        /* empty */
+      }
     };
   }
 }

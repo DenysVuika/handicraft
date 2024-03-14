@@ -10,7 +10,7 @@ import {
 import { EditorQueryMethods } from '../query';
 
 let mockedResolveComponent = jest.fn().mockImplementation(() => null);
-let mockedCreateNode = jest.fn().mockImplementation(() => null);
+const mockedCreateNode = jest.fn().mockImplementation(() => null);
 let mockedParsedNodeFromJsx = jest.fn().mockImplementation(() => null);
 let mockedDeserializeNode = jest.fn().mockImplementation(() => null);
 
@@ -39,7 +39,7 @@ describe('query', () => {
 
   describe('parseSerializedNode', () => {
     describe('toNode', () => {
-      let data = {
+      const data = {
         type: 'h2',
         props: { className: 'hello' },
         nodes: [],
@@ -82,7 +82,7 @@ describe('query', () => {
 
   describe('parseFreshNode', () => {
     describe('toNode', () => {
-      let data = {
+      const data = {
         type: 'h1'
       };
 

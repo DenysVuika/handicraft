@@ -9,10 +9,10 @@ import { getRandomId } from '../../utils/getRandomId';
  * This allows us to easily enable/disable and perform cleanups
  */
 export class ConnectorRegistry {
-  private isEnabled: boolean = true;
+  private isEnabled = true;
 
   private elementIdMap: WeakMap<HTMLElement, string> = new WeakMap();
-  private registry: Map<String, RegisteredConnector> = new Map();
+  private registry: Map<string, RegisteredConnector> = new Map();
 
   private getElementId(element: HTMLElement) {
     const existingId = this.elementIdMap.get(element);

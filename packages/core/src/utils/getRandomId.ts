@@ -9,4 +9,4 @@ import { nanoid } from 'nanoid';
  * @param size The number of characters that are generated for the ID. Defaults to `10`
  * @returns A random id
  */
-export const getRandomId = (size: number = 10) => nanoid(size);
+export const getRandomId = (size = 10) => nanoid(size);

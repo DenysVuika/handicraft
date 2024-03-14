@@ -5,19 +5,19 @@ import { History } from '../History';
 jest.mock('immer');
 
 describe('History Manager', () => {
-  let history,
-    dummyTimeline = [
-      {
-        patches: [{ op: 'add', path: '/node1', value: 32 }],
-        inversePatches: [],
-        state: { node1: 32 }
-      },
-      {
-        patches: [{ op: 'add', path: '/node2', value: 55 }],
-        inversePatches: [{ op: 'add', path: '/node1', value: 32 }],
-        state: { node1: 32, node2: 55 }
-      }
-    ];
+  let history;
+  const dummyTimeline = [
+    {
+      patches: [{ op: 'add', path: '/node1', value: 32 }],
+      inversePatches: [],
+      state: { node1: 32 }
+    },
+    {
+      patches: [{ op: 'add', path: '/node2', value: 55 }],
+      inversePatches: [{ op: 'add', path: '/node1', value: 32 }],
+      state: { node1: 32, node2: 55 }
+    }
+  ];
 
   describe('Adding patches to timeline', () => {
     beforeEach(() => {

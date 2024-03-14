@@ -162,7 +162,7 @@ export function EditorQueryMethods(state: EditorState) {
       toNodeTree(
         normalize?: (node: Node, jsx: React.ReactElement) => void
       ): NodeTree {
-        let node = parseNodeFromJSX(reactElement, (node, jsx) => {
+        const node = parseNodeFromJSX(reactElement, (node, jsx) => {
           const name = resolveComponent(state.options.resolver, node.data.type);
 
           node.data.displayName = node.data.displayName || name;

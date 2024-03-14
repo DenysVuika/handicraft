@@ -38,7 +38,9 @@ export const editorInitialState: EditorState = {
         removeHoverOnMouseleave: false,
         isMultiSelectEnabled: (e: MouseEvent) => !!e.metaKey
       }),
-    normalizeNodes: () => {}
+    normalizeNodes: () => {
+      /* empty */
+    }
   }
 };
 

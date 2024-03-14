@@ -6,14 +6,14 @@ import { Element } from '../Element';
 
 let parentNode;
 let existingLinkedNode;
-let newLinkedNode = createTestNode('newLinkedNode');
+const newLinkedNode = createTestNode('newLinkedNode');
 
-let toNodeTree = jest.fn().mockImplementation(() => ({
+const toNodeTree = jest.fn().mockImplementation(() => ({
   rootNodeId: newLinkedNode.id
 }));
 
-let addLinkedNodeFromTree = jest.fn();
-let parseReactElement = jest.fn().mockImplementation(() => ({
+const addLinkedNodeFromTree = jest.fn();
+const parseReactElement = jest.fn().mockImplementation(() => ({
   toNodeTree
 }));
 

@@ -194,7 +194,7 @@ describe('NodeHelpers', () => {
   describe('toNodeTree', () => {
     let tree;
     let testHelper;
-    let testDescendants = jest.fn().mockImplementation(() => []);
+    const testDescendants = jest.fn().mockImplementation(() => []);
     let descendantType;
     beforeEach(() => {
       testHelper = jest.fn().mockImplementation(function (...args) {

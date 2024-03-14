@@ -33,11 +33,7 @@ export class History {
     };
   }
 
-  throttleAdd(
-    patches: Patch[],
-    inversePatches: Patch[],
-    throttleRate: number = 500
-  ) {
+  throttleAdd(patches: Patch[], inversePatches: Patch[], throttleRate = 500) {
     if (patches.length === 0 && inversePatches.length === 0) {
       return;
     }

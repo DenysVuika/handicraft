@@ -41,7 +41,7 @@ export const Editor: React.FC<
         const isModifyingNodeData =
           path.length > 2 && path[0] === 'nodes' && path[2] === 'data';
 
-        let actionType = actionPerformed.type;
+        const actionType = actionPerformed.type;
 
         if (
           [HISTORY_ACTIONS.IGNORE, HISTORY_ACTIONS.THROTTLE].includes(
