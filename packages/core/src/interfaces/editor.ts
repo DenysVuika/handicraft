@@ -1,14 +1,13 @@
 import React from 'react';
 
-import { Placement } from './events';
-import { Nodes, NodeEventTypes, NodeId, Node } from './nodes';
-
 import { EditorQueryMethods } from '../editor/query';
 import { EditorStore, ActionMethodsWithConfig } from '../editor/store';
 import { useInternalEditorReturnType } from '../editor/useInternalEditor';
 import { CoreEventHandlers } from '../events';
 import { PatchListenerAction, QueryCallbacksFor } from '../utils/useMethods';
 import { Delete } from '../utils/utilityTypes';
+import { Nodes, NodeEventTypes, NodeId, Node } from './nodes';
+import { Placement } from './events';
 
 export type EditorOptions = {
   onRender: React.ComponentType<{ render: React.ReactElement }>;

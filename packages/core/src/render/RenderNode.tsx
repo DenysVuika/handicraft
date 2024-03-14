@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { DefaultRender } from './DefaultRender';
-
 import { useInternalEditor } from '../editor/useInternalEditor';
 import { useInternalNode } from '../nodes/useInternalNode';
+import { DefaultRender } from './DefaultRender';
 
 type RenderNodeToElementType = {
   render?: React.ReactElement;

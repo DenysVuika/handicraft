@@ -1,5 +1,3 @@
-import findPosition from './findPosition';
-
 import { ROOT_NODE } from '../constants';
 import { EditorStore } from '../editor/store';
 import {
@@ -13,6 +11,7 @@ import {
 } from '../interfaces';
 import { getDOMInfo } from '../utils/getDOMInfo';
 import { getNodesFromSelector } from '../utils/getNodesFromSelector';
+import findPosition from './findPosition';
 
 /**
  * Positioner is responsible for computing the drop Indicator during a sequence of drag-n-drop events

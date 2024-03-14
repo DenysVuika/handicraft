@@ -1,6 +1,3 @@
-import { ActionMethods } from './actions';
-import { EditorQueryMethods } from './query';
-
 import { DefaultEventHandlers } from '../events';
 import {
   EditorState,
@@ -13,6 +10,8 @@ import {
   SubscriberAndCallbacksFor,
   PatchListener
 } from '../utils/useMethods';
+import { EditorQueryMethods } from './query';
+import { ActionMethods } from './actions';
 
 export const editorInitialState: EditorState = {
   nodes: {},

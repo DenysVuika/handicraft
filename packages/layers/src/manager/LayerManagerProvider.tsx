@@ -1,12 +1,11 @@
 import { useMethods } from '@webstencils/core';
 import React from 'react';
 
-import { LayerMethods } from './actions';
-import { LayerManagerContext, LayerStore } from './context';
-
 import { LayerEventContextProvider } from '../events';
 import { LayerOptions } from '../interfaces';
 import { DefaultLayer } from '../layers';
+import { LayerManagerContext, LayerStore } from './context';
+import { LayerMethods } from './actions';
 
 export const LayerManagerProvider: React.FC<{
   options: Partial<LayerOptions>;

@@ -1,11 +1,10 @@
+import { EventHandlers } from '../EventHandlers';
+import { ConnectorsUsage } from '../interfaces';
 import {
   createTestDerivedHandlers,
   createTestHandlers,
   triggerMouseEvent
 } from './fixtures';
-
-import { EventHandlers } from '../EventHandlers';
-import { ConnectorsUsage } from '../interfaces';
 
 describe('DerivedEventHandlers', () => {
   let dom,

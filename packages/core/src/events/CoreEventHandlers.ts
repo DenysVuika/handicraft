@@ -1,10 +1,9 @@
 import React from 'react';
 
-import { DerivedEventHandlers } from './EventHandlers/DerivedEventHandlers';
-import { EventHandlers } from './EventHandlers/EventHandlers';
-
 import { EditorStore } from '../editor/store';
 import { NodeId, NodeTree } from '../interfaces/nodes';
+import { DerivedEventHandlers } from './EventHandlers/DerivedEventHandlers';
+import { EventHandlers } from './EventHandlers/EventHandlers';
 
 export interface CreateHandlerOptions {
   onCreate: (nodeTree: NodeTree) => void;

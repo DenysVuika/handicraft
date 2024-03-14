@@ -1,7 +1,6 @@
-import { createTestHandlers, triggerMouseEvent } from './fixtures';
-
 import { EventHandlers } from '../EventHandlers';
 import { ConnectorsUsage } from '../interfaces';
+import { createTestHandlers, triggerMouseEvent } from './fixtures';
 
 describe('EventHandlers', () => {
   let instance: EventHandlers, dom, handlers;

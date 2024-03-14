@@ -1,13 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import invariant from 'tiny-invariant';
 
-import { EditorContext } from './EditorContext';
-import { useEditorStore } from './store';
-
 import { ERROR_RESOLVER_NOT_AN_OBJECT } from '../constants';
 import { Events } from '../events';
 import { EditorOptions } from '../interfaces';
 import { HISTORY_ACTIONS } from '../utils/History';
+import { useEditorStore } from './store';
+import { EditorContext } from './EditorContext';
 
 /**
  * A React Component that provides the Editor context

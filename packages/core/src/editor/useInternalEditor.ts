@@ -1,10 +1,6 @@
 import React, { useContext, useEffect, useMemo } from 'react';
 import invariant from 'tiny-invariant';
 
-import { EditorContext } from './EditorContext';
-import { EditorQueryMethods } from './query';
-import { EditorStore } from './store';
-
 import { ERROR_USE_EDITOR_OUTSIDE_OF_EDITOR_CONTEXT } from '../constants';
 import { CoreEventHandlers } from '../events/CoreEventHandlers';
 import { useEventHandler } from '../events/EventContext';
@@ -13,6 +9,9 @@ import { wrapConnectorHooks } from '../events/EventHandlers/wrapConnectorHooks';
 import { EditorState } from '../interfaces';
 import { useCollector, useCollectorReturnType } from '../utils/useCollector';
 import { QueryCallbacksFor } from '../utils/useMethods';
+import { EditorStore } from './store';
+import { EditorQueryMethods } from './query';
+import { EditorContext } from './EditorContext';
 
 export type EditorCollector<C> = (
   state: EditorState,

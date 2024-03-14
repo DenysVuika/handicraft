@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 
+import { useInternalEditor } from '../editor/useInternalEditor';
+import { getDOMInfo } from '../utils/getDOMInfo';
 import { useEventHandler } from './EventContext';
 import { RenderIndicator } from './RenderIndicator';
 import movePlaceholder from './movePlaceholder';
-
-import { useInternalEditor } from '../editor/useInternalEditor';
-import { getDOMInfo } from '../utils/getDOMInfo';
 
 export const RenderEditorIndicator = () => {
   const { indicator, indicatorOptions, enabled } = useInternalEditor(

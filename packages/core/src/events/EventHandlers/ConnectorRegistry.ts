@@ -1,8 +1,7 @@
 import isEqual from 'shallowequal';
 
-import { ConnectorToRegister, RegisteredConnector } from './interfaces';
-
 import { getRandomId } from '../../utils/getRandomId';
+import { ConnectorToRegister, RegisteredConnector } from './interfaces';
 
 /**
  * Stores all connected DOM elements and their connectors here

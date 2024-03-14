@@ -1,9 +1,8 @@
 import React, { useContext, useMemo } from 'react';
 
+import { EditorContext } from '../editor/EditorContext';
 import { EventHandlerContext } from './EventContext';
 import { RenderEditorIndicator } from './RenderEditorIndicator';
-
-import { EditorContext } from '../editor/EditorContext';
 
 type EventsProps = {
   children?: React.ReactNode;

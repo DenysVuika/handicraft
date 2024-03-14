@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import invariant from 'tiny-invariant';
 
-import { NodeElement } from './NodeElement';
-import { useInternalNode } from './useInternalNode';
-
 import { ERROR_TOP_LEVEL_ELEMENT_NO_ID } from '../constants';
 import { useInternalEditor } from '../editor/useInternalEditor';
 import { NodeId } from '../interfaces';
 import { useEffectOnce } from '../utils/useEffectOnce';
+import { useInternalNode } from './useInternalNode';
+import { NodeElement } from './NodeElement';
 
 export const defaultElementProps = {
   is: 'div',

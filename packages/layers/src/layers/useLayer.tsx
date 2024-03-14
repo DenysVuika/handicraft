@@ -1,10 +1,9 @@
 import { useEditor, wrapConnectorHooks } from '@webstencils/core';
 import { useContext, useMemo } from 'react';
 
-import { LayerContext } from './LayerContext';
-
 import { Layer } from '../interfaces';
 import { useLayerManager } from '../manager';
+import { LayerContext } from './LayerContext';
 
 export function useLayer<S = null>(collect?: (layer: Layer) => S) {
   const {

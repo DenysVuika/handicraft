@@ -1,9 +1,8 @@
 import { useCollector } from '@webstencils/core';
 import { useContext, useMemo } from 'react';
 
-import { LayerManagerContext } from './context';
-
 import { LayerState } from '../interfaces';
+import { LayerManagerContext } from './context';
 
 export function useLayerManager<C>(collector?: (state: LayerState) => C) {
   const { store } = useContext(LayerManagerContext);

@@ -1,11 +1,10 @@
 import { useEventHandler } from '@webstencils/core';
 import React, { useMemo } from 'react';
 
+import { useLayerManager } from '../manager';
 import { LayerEventHandlerContext } from './LayerEventContext';
 import { LayerHandlers } from './LayerHandlers';
 import { RenderLayerIndicator } from './RenderLayerIndicator';
-
-import { useLayerManager } from '../manager';
 
 export const LayerEventContextProvider = ({ children }) => {
   const { store: layerStore } = useLayerManager();

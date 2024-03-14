@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { NodeProvider } from './NodeContext';
-
 import { NodeId } from '../interfaces';
 import { RenderNodeToElement } from '../render/RenderNode';
+import { NodeProvider } from './NodeContext';
 
 export type NodeElementProps = {
   id: NodeId;
