@@ -12,7 +12,7 @@ jest.mock('../../nodes/NodeElement', () => ({
 
 const mockEditor = useInternalEditor as jest.Mock;
 
-describe('<Frame />', () => {
+describe('Frame', () => {
   const data = {};
   const addNodeTree = jest.fn();
   const deserialize = jest.fn();

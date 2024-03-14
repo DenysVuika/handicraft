@@ -32,7 +32,7 @@ jest.mock('../SimpleElement', () => ({
   SimpleElement: () => null
 }));
 
-describe('<RenderNode />', () => {
+describe('RenderNode', () => {
   let component;
 
   beforeEach(() => {

@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import invariant from 'tiny-invariant';
 
 import { ERROR_TOP_LEVEL_ELEMENT_NO_ID } from '../constants';
 import { useInternalEditor } from '../editor/useInternalEditor';
-import { NodeId } from '../interfaces';
-import { useEffectOnce } from '../utils/useEffectOnce';
+import { Node, NodeId } from '../interfaces';
 import { useInternalNode } from './useInternalNode';
 import { NodeElement } from './NodeElement';
 
@@ -48,14 +47,14 @@ export function Element<T extends React.ElementType>({
 
   const [linkedNodeId, setLinkedNodeId] = useState<NodeId | null>(null);
 
-  useEffectOnce(() => {
+  useEffect(() => {
     invariant(!!id, ERROR_TOP_LEVEL_ELEMENT_NO_ID);
     const { id: nodeId, data } = node;
 
     if (inNodeContext) {
-      let linkedNodeId;
+      let linkedNodeId: NodeId;
 
-      const existingNode =
+      const existingNode: Node =
         data.linkedNodes &&
         data.linkedNodes[id] &&
         query.node(data.linkedNodes[id]).get();
@@ -79,7 +78,8 @@ export function Element<T extends React.ElementType>({
 
       setLinkedNodeId(linkedNodeId);
     }
-  });
+    /* eslint-disable-next-line react-hooks/exhaustive-deps */
+  }, []);
 
   return linkedNodeId ? <NodeElement id={linkedNodeId} /> : null;
 }
