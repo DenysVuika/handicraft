@@ -1,13 +1,7 @@
 import React from 'react';
 
 import { Node, FreshNode, UserComponentConfig } from '../interfaces';
-import {
-  defaultElementProps,
-  Element,
-  Canvas,
-  elementPropToNodeData,
-  deprecateCanvasComponent
-} from '../nodes';
+import { defaultElementProps, Element, elementPropToNodeData } from '../nodes';
 import { NodeProvider } from '../nodes/NodeContext';
 import { getRandomId as getRandomNodeId } from '../utils/getRandomId';
 
@@ -53,7 +47,7 @@ export function createNode(
     dom: null
   };
 
-  if (node.data.type === Element || node.data.type === Canvas) {
+  if (node.data.type === Element) {
     const mergedProps = {
       ...defaultElementProps,
       ...node.data.props
@@ -75,12 +69,6 @@ export function createNode(
     actualType = node.data.type;
     node.data.name = getNodeTypeName(actualType);
     node.data.displayName = getNodeTypeName(actualType);
-
-    const usingDeprecatedCanvas = node.data.type === Canvas;
-    if (usingDeprecatedCanvas) {
-      node.data.isCanvas = true;
-      deprecateCanvasComponent();
-    }
   }
 
   if (normalize) {

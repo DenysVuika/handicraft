@@ -23,9 +23,7 @@ jest.mock('../../nodes/useInternalNode', () => ({
     ...nodeContext
   })
 }));
-jest.mock('../../nodes/Canvas', () => ({
-  Canvas: () => null
-}));
+
 jest.mock('../../nodes/NodeElement', () => ({
   NodeElement: () => null
 }));

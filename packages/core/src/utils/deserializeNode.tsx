@@ -9,16 +9,13 @@ import {
   ReduceCompType,
   Resolver
 } from '../interfaces';
-import { Canvas } from '../nodes/Canvas';
 import { resolveComponent } from './resolveComponent';
 
 type DeserialisedType = JSX.Element & { name: string };
 
 const restoreType = (type: ReduceCompType, resolver: Resolver) =>
   typeof type === 'object' && type.resolvedName
-    ? type.resolvedName === 'Canvas'
-      ? Canvas
-      : resolver[type.resolvedName]
+    ? resolver[type.resolvedName]
     : typeof type === 'string'
       ? type
       : null;
