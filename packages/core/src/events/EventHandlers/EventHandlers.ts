@@ -64,7 +64,7 @@ export abstract class EventHandlers<O extends Record<string, any> = {}> {
     listener: CraftEventListener<K>,
     options?: boolean | AddEventListenerOptions
   ) {
-    const bindedListener = (e: CraftDOMEvent<HTMLElementEventMap[K]>) => {
+    const boundListener = (e: CraftDOMEvent<HTMLElementEventMap[K]>) => {
       if (!isEventBlockedByDescendant(e, eventName, el)) {
         e.craft.stopPropagation = () => {
           if (!e.craft.blockedEvents[eventName]) {
@@ -78,9 +78,9 @@ export abstract class EventHandlers<O extends Record<string, any> = {}> {
       }
     };
 
-    el.addEventListener(eventName, bindedListener, options);
+    el.addEventListener(eventName, boundListener, options);
 
-    return () => el.removeEventListener(eventName, bindedListener, options);
+    return () => el.removeEventListener(eventName, boundListener, options);
   }
 
   // Defines the connectors and their logic
@@ -93,8 +93,7 @@ export abstract class EventHandlers<O extends Record<string, any> = {}> {
     const handlers = this.handlers();
 
     // Track all active connector ids here
-    // This is so we can return a cleanup method below so the callee can programmatically cleanup all connectors
-
+    // This is, so we can return a cleanup method below so the callee can programmatically clean up all the connectors
     const activeConnectorIds: Set<string> = new Set();
 
     let canRegisterConnectors = false;
@@ -178,7 +177,7 @@ export abstract class EventHandlers<O extends Record<string, any> = {}> {
 
     const proxiedHandlers = new Proxy(handlers, {
       get: (target, key: any, receiver) => {
-        if (key in handlers === false) {
+        if (!(key in handlers)) {
           return Reflect.get(target, key, receiver);
         }
 
@@ -202,7 +201,7 @@ export abstract class EventHandlers<O extends Record<string, any> = {}> {
     };
   }
 
-  // This lets us to execute and cleanup sibling connectors
+  // This lets us execute and cleanup sibling connectors
   reflect(cb: (connectors: EventHandlerConnectors<this>) => void) {
     return this.createProxyHandlers(this, cb);
   }

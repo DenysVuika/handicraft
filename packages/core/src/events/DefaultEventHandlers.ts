@@ -20,8 +20,8 @@ export class DefaultEventHandlers<O = {}> extends CoreEventHandlers<
 > {
   /**
    * Note: Multiple drag shadows (ie: via multiselect in v0.2 and higher) do not look good on Linux Chromium due to way it renders drag shadows in general,
-   * so will have to fallback to the single shadow approach above for the time being
-   * see: https://bugs.chromium.org/p/chromium/issues/detail?id=550999
+   * so will have to fall back to the single shadow approach above for the time being
+   * https://bugs.chromium.org/p/chromium/issues/detail?id=550999
    */
   static forceSingleDragShadow = isChromium() && isLinux();
 
@@ -77,11 +77,9 @@ export class DefaultEventHandlers<O = {}> extends CoreEventHandlers<
                     const ancestors = query.node(selectedId).ancestors(true);
 
                     // Deselect ancestors/descendants
-                    if (descendants.includes(id) || ancestors.includes(id)) {
-                      return false;
-                    }
-
-                    return true;
+                    return !(
+                      descendants.includes(id) || ancestors.includes(id)
+                    );
                   }
                 );
               }

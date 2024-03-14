@@ -54,7 +54,7 @@ This is where the `<Element />` component becomes handy in manually defining Nod
 </Element>
 ```
 
-> The `is` prop specifies the type of User Element to create; it can be either a HTML tag or a User Component
+> The `is` prop specifies the type of User Element to create; it can be either an HTML tag or a User Component
 
 In the above example, using the `<Element />` component with the `canvas` prop, we've created a Canvas node of the type `div`. 
 Since our `div` element is now handled by a Canvas node, therefore it is now a droppable region. 

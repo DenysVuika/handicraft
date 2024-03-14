@@ -2,7 +2,8 @@
 
 Previously, we have looked at User Components and how to write them, but what about all the other components that are integral to our page editor like a Toolbar for users to edit components, or maybe a layers panel?
 
-The `useEditor` hook allows us to read and manipulate the entire editor's internal state. Essentially, this is similar to the `useNode` hook we have seen previously, except this deals with the entire editor rather than with a particular `Node`.
+The `useEditor` hook allows us to read and manipulate the entire editor's internal state.
+Essentially, this is similar to the `useNode` hook we have seen previously, except it deals with the entire editor rather than with a particular `Node`.
 
 ```jsx
 const { actions, connectors, ...collected } = useEditor((state) => {});

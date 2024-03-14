@@ -179,9 +179,11 @@ export const Topbar = () => {
 
 ### Load JSON on page load
 
-Of course, what if we wanted our editor to load a serialized output on page load? For this, we will need to take a step back and revisit the `<Frame />` component which we encountered when we first set up WebStencils. 
+Of course, what if we wanted our editor to load a serialized output on page load?
+For this, we will need to take a step back and revisit the `<Frame />` component which we encountered when we first set up WebStencils. 
 
-By default, it constructs the editor state based on what was initially rendered in its `children`. But, we could also specifiy the serialized JSON nodes to its `json` prop which would cause it to load the state from the JSON string instead. 
+By default, it constructs the editor state based on what was initially rendered in its `children`.
+But, we could also specify the serialized JSON nodes to its `json` prop which would cause it to load the state from the JSON string instead. 
 
 ```jsx
 import React, {useState, useEffect} from 'react';

@@ -12,7 +12,8 @@ const Text = ({text, fontSize}) => {
 }
 ```
 
-Now, let's actually get the component to work with the editor. The `useNode` hook provides us with several information and methods related to the corresponding `Node` that manages the component.
+Now, let's actually get the component to work with the editor.
+The `useNode` hook provides us with some information and methods related to the corresponding `Node` that manages the component.
 
 ```jsx
 const { 
@@ -38,7 +39,7 @@ Text.craft = {
 }
 ```
 
-We'll explore each of these values in the following sections.
+We are going to explore each of these values in the following sections.
 
 ## Connectors
 
@@ -263,7 +264,8 @@ const Hero = ({background}) => {
 
 > You must specify the `id` prop of `<Element />` when used inside a User Component
 
-In the above example, we used `<Element />` to create and configure a new Node inside our User Component. We call these Linked Nodes since they are linked to a parent Node via an arbitary `id`. In this case, the `Text` node is linked to the `Hero` node via its "title_text" id.
+In the above example, we used `<Element />` to create and configure a new Node inside our User Component.
+We call these Linked Nodes since they are linked to a parent Node via an arbitrary `id`. In this case, the `Text` node is linked to the `Hero` node via its "title_text" id.
 
 Similarly, we could also create a droppable region inside a User Component via a Canvas Node:
 

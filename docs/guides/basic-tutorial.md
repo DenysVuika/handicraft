@@ -35,7 +35,7 @@ yarn add @material-ui/core react-contenteditable material-ui-color-picker
 
 ### User Components
 
-Let's first create the User Components - the components that our end users will be able create/edit/move around. 
+Let's first create the User Components - the components that our end users will be able to create/edit/move around. 
 
 #### Text
 
@@ -366,7 +366,7 @@ Once you've applied these changes and refresh the page, you will notice that abs
 
 ### Enabling Drag and Drop
 
-Inside a User Component, we have access to the `useNode` hook which provides several information and methods related to the corresponding `Node`. 
+Inside a User Component, we have access to the `useNode` hook which provides some information and methods related to the corresponding `Node`. 
 
 The first thing we will need to do is to let Craft.js to manage the DOM of our component. The hook provides `connectors` which act as a bridge between the DOM and the events in Craft.js:
 
@@ -391,7 +391,7 @@ export const Text = ({text}) => {
 Let's break this down a little:
 
 - We passed the `connect` connector to the root element of our component; this tells Craft.js that this element represents the Text component. If the component's corresponding Node is a Canvas, then this also defines the area that is droppable.
-- Then, we also passed `drag` connector to the same root element; this adds the drag handlers to the DOM. If the component's Node is a child of a Canvas, then the user will be able to drag this element and it will move the entire Text component.
+- Then, we also passed `drag` connector to the same root element; this adds the drag handlers to the DOM. If the component's Node is a child of a Canvas, then the user will be able to drag this element, and it will move the entire Text component.
 
 We can also specify additional configuration to our component via the `craft` prop. Let's define drag-n-drop rules for our Text Component:
 
@@ -414,8 +414,8 @@ Nice, now let's enable drag-n-drop for the other User Components:
 export const Button = ({size, variant, color, children}) => {
   const { connectors: {connect, drag} } = useNode();
   return (
-    <MaterialButton ref={ ref => connect(drag(ref))} size={size} variant={variant} color={color} >
-      ...
+    <MaterialButton ref={ ref => connect(drag(ref))} size={size} variant={variant} color={color}>
+      {/*...*/}
     </MaterialButton>
   )
 }
@@ -427,7 +427,7 @@ export const Container = ({background, padding = 0, children}) => {
   const { connectors: {connect, drag} } = useNode();
   return (
     <Paper ref={ref=> connect(drag(ref))} style={{ background, padding: `${padding}px`}}>
-      ...
+      {/*...*/}
     </Paper>
   )
 }
@@ -440,7 +440,7 @@ export const Container = ({background, padding = 0, children}) => {
 export const Card = ({background, padding = 0}) => {
   return (
     <Container background={background} padding={padding}>
-      ...
+      {/*...*/}
     </Container>
   )
 }
@@ -560,7 +560,7 @@ Let's go back to our Toolbox component and modify it so that dragging those butt
 Just as `useNode` provides methods and information related to a specific `Node`, `useEditor` specifies methods and information related to the entire editor's state.
 
 The `useEditor` also provides `connectors`; the one we are interested in right now is `create` which attaches a drag handler to the 
-DOM specified in its first argument and creates the element specified in its second arguement.
+DOM specified in its first argument and creates the element specified in its second argument.
 
 ```jsx {20,23,26,29}
 // components/Toolbox.js
@@ -872,7 +872,7 @@ Card.craft = {
 
 Setting default props is not strictly necessary. However, it is helpful if we wish to access the component's props via its corresponding `Node`, like what we did in the `settings` related component above.
 
-For instance, if a Text component is rendered as `<Text text="Hi" />`, we would get a null value when we try to retrieve the `fontSize` prop via its `Node`. An easy way to solve this is to explicity define each User Component's `props`:
+For instance, if a Text component is rendered as `<Text text="Hi" />`, we would get a null value when we try to retrieve the `fontSize` prop via its `Node`. An easy way to solve this is to explicitly define each User Component's `props`:
 
 ```jsx
 // components/user/Text.js
@@ -998,7 +998,7 @@ export const SettingsPanel = () => {
 ```
 Now, we have to make our Delete button work. We can achieve this by using the `delete` action available from the `useEditor` hook.
 
-Also, it's important to note that not all nodes are deletable - if we try to delete an undeletable Node, it'll result in an error. Hence, it's good to make use of the [helper](/docs/api/helpers) methods which helps describe a Node. In our case, we would like to know if the currently selected Node is deletable before actually displaying the "Delete" button. We can access the helper methods via the `node` query in the `useEditor` hook.
+Also, it's important to note that not all nodes are deletable - if we try to delete an undeletable Node, it'll result in an error. Hence, it's good to make use of the [helper](../api/NodeHelpers.md) methods which helps describe a Node. In our case, we would like to know if the currently selected Node is deletable before actually displaying the "Delete" button. We can access the helper methods via the `node` query in the `useEditor` hook.
 
 ```jsx {13,27-37}
 // components/SettingsPanel.js

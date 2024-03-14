@@ -480,7 +480,7 @@ class Subscriber {
   /**
    * Creates a Subscriber
    * @param collector The method that returns an object of values to be collected
-   * @param onChange A callback method that is triggered when the collected values has changed
+   * @param onChange A callback method that is triggered when the collected values have changed
    * @param collectOnCreate If set to true, the collector/onChange will be called on instantiation
    */
   constructor(collector, onChange, collectOnCreate = false) {
