@@ -15,7 +15,11 @@ const Text = ({text, fontSize}) => {
 Now, let's actually get the component to work with the editor. The `useNode` hook provides us with several information and methods related to the corresponding `Node` that manages the component.
 
 ```jsx
-const { connectors: {connect, drag}, setProp, ...collected } = useNode((node) => {});
+const { 
+  connectors: { connect, drag }, 
+  actions: { setProp }, 
+  ...collected 
+} = useNode((node) => {});
 ```
 
 Additionally, we can pass configuration values via the static `craft` property:
@@ -106,14 +110,15 @@ For instance, let's say we would like to enable the content editable text from t
 
 ```jsx
 const Text = ({text, fontSize}) => {
-  // highlight-next-line
-  const { connectors: {connect, drag}, setProp, isClicked } = useNode((node) => ({
-    // highlight-next-line
+  const { 
+    connectors: { connect, drag }, 
+    actions: { setProp }, 
+    isClicked 
+  } = useNode((node) => ({
     isClicked: node.events.selected
   }));
 
   return (
-    // highlight-next-line
     <span ref={dom => connect(drag(dom))} style={{fontSize}} contentEditable={isClicked} onKeyUp={(e) => {
         setProp(props => {
           props.text = e.target.innerText;
@@ -170,7 +175,7 @@ Text.craft = {
 }
 
 const TextToolbarSettings = () => {
-  const { setProp, fontSize } = useNode((node) => ({
+  const { actions: { setProp }, fontSize } = useNode((node) => ({
     fontSize: node.data.props.fontSize
   }));
 

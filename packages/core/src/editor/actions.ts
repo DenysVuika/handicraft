@@ -21,7 +21,6 @@ import {
   NodeSelector,
   NodeSelectorType
 } from '../interfaces';
-import { deprecationWarning } from '../utils/deprecate';
 import { fromEntries } from '../utils/fromEntries';
 import { getNodesFromSelector } from '../utils/getNodesFromSelector';
 import { removeNodeFromEvents } from '../utils/removeNodeFromEvents';
@@ -174,31 +173,21 @@ const Methods = (
     /**
      * Add a new Node to the editor.
      *
-     * @param nodeToAdd
+     * @param node
      * @param parentId
      * @param index
      */
-    add(nodeToAdd: Node | Node[], parentId: NodeId, index?: number) {
-      // TODO: Deprecate adding array of Nodes to keep implementation simpler
-      let nodes = [nodeToAdd];
-      if (Array.isArray(nodeToAdd)) {
-        deprecationWarning('actions.add(node: Node[])', {
-          suggest: 'actions.add(node: Node)'
-        });
-        nodes = nodeToAdd;
-      }
-      nodes.forEach((node: Node) => {
-        addNodeTreeToParent(
-          {
-            nodes: {
-              [node.id]: node
-            },
-            rootNodeId: node.id
+    add(node: Node, parentId: NodeId, index?: number) {
+      addNodeTreeToParent(
+        {
+          nodes: {
+            [node.id]: node
           },
-          parentId,
-          { type: 'child', index }
-        );
-      });
+          rootNodeId: node.id
+        },
+        parentId,
+        { type: 'child', index }
+      );
     },
 
     /**

@@ -5,7 +5,7 @@
 A Hook that provides methods and state information related to the corresponding `Node` that manages the current component. 
 
 ```jsx
-const { connectors, setProp, ...collected } = useNode(collector);
+const { connectors, actions, ...collected } = useNode(collector);
 ```
 
 > Note: This hook can only be used within a User Component. 
@@ -38,7 +38,7 @@ const { connectors, setProp, ...collected } = useNode(collector);
 
 ```jsx
 import cx from "classnames";
-import {useNode} from "@webstencils/core";
+import { useNode } from "@webstencils/core";
 
 const Example = () => {
   const { isHovered, amIBeingDragged } = useNode((node) => ({

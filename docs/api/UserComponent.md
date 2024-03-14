@@ -24,7 +24,7 @@ Accepts a static `craft` property for configuring the User Component.
 
 ## Example
 
-```jsx
+```tsx
 type TextProps = {
   color: string,
   text: string
@@ -37,7 +37,8 @@ const TextComponent: UserComponent<TextProps> = ({color, text}) => {
 }
 
 const TextSettings = () => {
-  const {props, setProp} = useNode();
+  const { props, actions: { setProp } } = useNode();
+  
   return (
     <div>
       Text: <input type="text" value={props.text} onChange={e => setProp(props => props.text = e.target.value) }/>
