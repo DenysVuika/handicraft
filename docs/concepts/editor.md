@@ -106,7 +106,9 @@ const ShowMeMyDescendants = () => {
     const selectedNodeId = state.events.selected;
     let allDescendants = false;
 
-    if (selectedNodeId)  allDescendants = query.node(selectedNodeId).decendants();  
+    if (selectedNodeId) {
+      allDescendants = query.node(selectedNodeId).descendants();
+    }  
 
     return { allDescendants }
   }); 
