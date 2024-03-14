@@ -21,7 +21,22 @@
     "export": "next export",
     "clean": "npx rimraf lib .next out dist"
   },
-  "devDependencies": {
-    "cross-env": "^7.0.3"
+  "nx": {
+    "targets": {
+      "build": {
+        "dependsOn": [
+          {
+            "projects": "@webstencils/core",
+            "target": "build"
+          }
+        ]
+      }
+    },
+    "includedScripts": [
+      "start",
+      "build",
+      "clean",
+      "export"
+    ]
   }
 }

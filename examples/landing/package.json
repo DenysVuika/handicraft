@@ -32,5 +32,27 @@
     "@types/react": "18.0.27",
     "@types/react-color": "3.0.1",
     "typescript": "4.9.5"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "dependsOn": [
+          {
+            "projects": "@webstencils/core",
+            "target": "build"
+          },
+          {
+            "projects": "@webstencils/layers",
+            "target": "build"
+          }
+        ]
+      }
+    },
+    "includedScripts": [
+      "start",
+      "build",
+      "clean",
+      "export"
+    ]
   }
 }

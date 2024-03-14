@@ -121,7 +121,9 @@ describe('createNode', () => {
             text: '#000'
           },
           related: {
-            settings: () => {}
+            settings: () => {
+              /* empty */
+            }
           }
         };
       });

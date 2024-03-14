@@ -4,7 +4,7 @@ import { parseNodeFromJSX } from '../parseNodeFromJSX';
 
 const Component = ({ href }) => <a href={href}>Hi</a>;
 
-let mockedCreateNode = jest.fn();
+const mockedCreateNode = jest.fn();
 
 jest.mock('../createNode', () => ({
   __esModule: true,

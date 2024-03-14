@@ -1,8 +1,6 @@
 import React from 'react';
 import invariant from 'tiny-invariant';
 
-import { resolveComponent } from './resolveComponent';
-
 import { ERROR_DESERIALIZE_COMPONENT_NOT_IN_RESOLVER } from '../constants';
 import {
   NodeData,
@@ -12,6 +10,7 @@ import {
   Resolver
 } from '../interfaces';
 import { Canvas } from '../nodes/Canvas';
+import { resolveComponent } from './resolveComponent';
 
 type DeserialisedType = JSX.Element & { name: string };
 

@@ -5,9 +5,8 @@ import { useEditor } from '@webstencils/core';
 import { Layers } from '@webstencils/layers';
 import React, { useState } from 'react';
 
-import { SidebarItem } from './SidebarItem';
-
 import { Toolbar } from '../../Toolbar';
+import { SidebarItem } from './SidebarItem';
 
 export const SidebarDiv = styled.div<{ enabled: boolean }>`
   width: 280px;

@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react';
-
-import { createNode } from './createNode';
-
 import { Node } from '../interfaces';
+import { createNode } from './createNode';
 
 export function parseNodeFromJSX(
   jsx: React.ReactElement | string,
@@ -14,7 +12,7 @@ export function parseNodeFromJSX(
     element = React.createElement(Fragment, {}, element) as React.ReactElement;
   }
 
-  let actualType = element.type as any;
+  const actualType = element.type as any;
 
   return createNode(
     {

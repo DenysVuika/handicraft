@@ -1,18 +1,17 @@
 import isEqual from 'shallowequal';
 
-import { ConnectorToRegister, RegisteredConnector } from './interfaces';
-
 import { getRandomId } from '../../utils/getRandomId';
+import { ConnectorToRegister, RegisteredConnector } from './interfaces';
 
 /**
  * Stores all connected DOM elements and their connectors here
  * This allows us to easily enable/disable and perform cleanups
  */
 export class ConnectorRegistry {
-  private isEnabled: boolean = true;
+  private isEnabled = true;
 
   private elementIdMap: WeakMap<HTMLElement, string> = new WeakMap();
-  private registry: Map<String, RegisteredConnector> = new Map();
+  private registry: Map<string, RegisteredConnector> = new Map();
 
   private getElementId(element: HTMLElement) {
     const existingId = this.elementIdMap.get(element);

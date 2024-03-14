@@ -1,11 +1,10 @@
 import { useEditor, wrapConnectorHooks } from '@webstencils/core';
 import React, { useMemo, useContext, useRef, useEffect } from 'react';
 
-import { LayerContext, LayerContextType } from './LayerContext';
-import { LayerNode } from './LayerNode';
-
 import { useLayerEventHandler } from '../events/LayerEventContext';
 import { LayerManagerContext } from '../manager';
+import { LayerContext, LayerContextType } from './LayerContext';
+import { LayerNode } from './LayerNode';
 
 export const LayerContextProvider: React.FC<
   Omit<LayerContextType, 'connectors'>

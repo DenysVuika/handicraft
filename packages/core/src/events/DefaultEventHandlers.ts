@@ -1,12 +1,11 @@
 import isFunction from 'lodash/isFunction';
 import React from 'react';
 
+import { Indicator, NodeId, DragTarget, NodeTree } from '../interfaces';
+import { isChromium, isLinux } from '../utils/platform';
 import { CoreEventHandlers, CreateHandlerOptions } from './CoreEventHandlers';
 import { Positioner } from './Positioner';
 import { createShadow } from './createShadow';
-
-import { Indicator, NodeId, DragTarget, NodeTree } from '../interfaces';
-import { isChromium, isLinux } from '../utils/platform';
 
 export type DefaultEventHandlersOptions = {
   isMultiSelectEnabled: (e: MouseEvent) => boolean;
@@ -195,7 +194,9 @@ export class DefaultEventHandlers<O = {}> extends CoreEventHandlers<
       },
       drag: (el: HTMLElement, id: NodeId) => {
         if (!store.query.node(id).isDraggable()) {
-          return () => {};
+          return () => {
+            /* empty */
+          };
         }
 
         el.setAttribute('draggable', 'true');

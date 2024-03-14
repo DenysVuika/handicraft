@@ -1,12 +1,12 @@
 // https://github.com/pelotom/use-methods
 import produce, {
-  Patch,
-  produceWithPatches,
   enableMapSet,
-  enablePatches
+  enablePatches,
+  Patch,
+  produceWithPatches
 } from 'immer';
 import isEqualWith from 'lodash/isEqualWith';
-import { useMemo, useEffect, useRef, useCallback } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 
 import { History, HISTORY_ACTIONS } from './History';
 import { Delete } from './utilityTypes';
@@ -185,8 +185,8 @@ export function useMethods<
   const history = useMemo(() => new History(), []);
 
   let methodsFactory: Methods<S, R>;
-  let ignoreHistoryForActionsRef = useRef([]);
-  let normalizeHistoryRef = useRef<any>();
+  const ignoreHistoryForActionsRef = useRef([]);
+  const normalizeHistoryRef = useRef<any>();
 
   if (typeof methodsOrOptions === 'function') {
     methodsFactory = methodsOrOptions;
@@ -252,7 +252,7 @@ export function useMethods<
           { type: action.type, params: action.payload, patches },
           query,
           (cb) => {
-            let normalizedDraft = produceWithPatches(nextState, cb);
+            const normalizedDraft = produceWithPatches(nextState, cb);
             finalState = normalizedDraft[0];
 
             patches = [...patches, ...normalizedDraft[1]];
@@ -301,8 +301,7 @@ export function useMethods<
 
   const dispatch = useCallback(
     (action: any) => {
-      const newState = reducer(stateRef.current, action);
-      stateRef.current = newState;
+      stateRef.current = reducer(stateRef.current, action);
       watcher.notify();
     },
     [reducer, watcher]
@@ -460,7 +459,7 @@ class Watcher<S> {
     return this.unsubscribe.bind(this, subscriber);
   }
 
-  unsubscribe(subscriber) {
+  unsubscribe(subscriber: Subscriber) {
     if (this.subscribers.length) {
       const index = this.subscribers.indexOf(subscriber);
       if (index > -1) return this.subscribers.splice(index, 1);

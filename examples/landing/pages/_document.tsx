@@ -15,6 +15,7 @@ export default class MyDocument extends Document {
         styles: <>{initialProps.styles}</>
       };
     } finally {
+      /* empty */
     }
   }
 }

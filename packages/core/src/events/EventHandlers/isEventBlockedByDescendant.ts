@@ -12,7 +12,9 @@ export function isEventBlockedByDescendant<K extends keyof HTMLElementEventMap>(
   // Store initial Craft event value
   if (!e.craft) {
     e.craft = {
-      stopPropagation: () => {},
+      stopPropagation: () => {
+        /* empty */
+      },
       blockedEvents: {}
     };
   }

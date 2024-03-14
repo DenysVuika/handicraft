@@ -4,7 +4,7 @@ export type Connector = (el: HTMLElement, ...args: any) => any;
 
 export type ConnectorsRecord = Record<string, Connector>;
 
-export type ChainableConnector<T extends Connector, O extends any> = T extends (
+export type ChainableConnector<T extends Connector, O> = T extends (
   element: infer E,
   ...args: infer P
 ) => any

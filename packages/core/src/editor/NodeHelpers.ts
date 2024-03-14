@@ -68,7 +68,7 @@ export function NodeHelpers(state: EditorState, id: NodeId) {
       function appendParentNode(
         id: NodeId,
         ancestors: NodeId[] = [],
-        depth: number = 0
+        depth = 0
       ) {
         const node = state.nodes[id];
         if (!node) {
@@ -95,7 +95,7 @@ export function NodeHelpers(state: EditorState, id: NodeId) {
       function appendChildNode(
         id: NodeId,
         descendants: NodeId[] = [],
-        depth: number = 0
+        depth = 0
       ) {
         if (deep || (!deep && depth === 0)) {
           const node = state.nodes[id];

@@ -34,7 +34,7 @@ export const Frame: React.FC<React.PropsWithChildren<FrameProps>> = ({
 }) => {
   const { actions, query } = useInternalEditor();
 
-  if (!!json) {
+  if (!json) {
     deprecationWarning('<Frame json={...} />', {
       suggest: '<Frame data={...} />'
     });

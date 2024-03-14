@@ -2,9 +2,8 @@ import { useEditor } from '@webstencils/core';
 import React from 'react';
 import styled from 'styled-components';
 
-import { DefaultLayerHeader } from './DefaultLayerHeader';
-
 import { useLayer } from '../useLayer';
+import { DefaultLayerHeader } from './DefaultLayerHeader';
 
 const LayerNodeDiv = styled.div<{
   expanded: boolean;

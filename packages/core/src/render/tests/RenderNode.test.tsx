@@ -5,7 +5,7 @@ import React from 'react';
 import { NodeData } from '../../interfaces';
 import { RenderNodeToElement } from '../RenderNode';
 
-let nodeContext = {
+const nodeContext = {
   id: 1,
   connectors: { connect: identity, drag: identity }
 };

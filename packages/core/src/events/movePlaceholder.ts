@@ -4,14 +4,13 @@ export default function movePlaceholder(
   pos: DropPosition,
   canvasDOMInfo: DOMInfo, // which canvas is cursor at
   bestTargetDomInfo: DOMInfo | null, // closest element in canvas (null if canvas is empty)
-  thickness: number = 2
+  thickness = 2
 ) {
   let t = 0,
     l = 0,
     w = 0,
-    h = 0,
-    where = pos.where;
-
+    h = 0;
+  const where = pos.where;
   const elDim = bestTargetDomInfo;
 
   if (elDim) {

@@ -1,10 +1,9 @@
 import React, { useMemo } from 'react';
 
-import { SimpleElement } from './SimpleElement';
-
 import { NodeId } from '../interfaces';
 import { NodeElement } from '../nodes/NodeElement';
 import { useInternalNode } from '../nodes/useInternalNode';
+import { SimpleElement } from './SimpleElement';
 
 export const DefaultRender = () => {
   const { type, props, nodes, hydrationTimestamp } = useInternalNode(

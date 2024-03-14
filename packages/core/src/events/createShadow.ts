@@ -3,7 +3,7 @@
 export const createShadow = (
   e: DragEvent,
   shadowsToCreate: HTMLElement[],
-  forceSingleShadow: boolean = false
+  forceSingleShadow = false
 ) => {
   if (shadowsToCreate.length === 1 || forceSingleShadow) {
     const { width, height } = shadowsToCreate[0].getBoundingClientRect();

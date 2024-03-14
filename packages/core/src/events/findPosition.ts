@@ -6,7 +6,7 @@ export default function findPosition(
   posX: number,
   posY: number
 ) {
-  let result: DropPosition = {
+  const result: DropPosition = {
     parent,
     index: 0,
     where: 'before'

@@ -1,9 +1,6 @@
 import React from 'react';
 import invariant from 'tiny-invariant';
 
-import { EventHelpers } from './EventHelpers';
-import { NodeHelpers } from './NodeHelpers';
-
 import {
   ROOT_NODE,
   DEPRECATED_ROOT_NODE,
@@ -34,6 +31,8 @@ import { mergeTrees } from '../utils/mergeTrees';
 import { parseNodeFromJSX } from '../utils/parseNodeFromJSX';
 import { resolveComponent } from '../utils/resolveComponent';
 import { QueryCallbacksFor } from '../utils/useMethods';
+import { NodeHelpers } from './NodeHelpers';
+import { EventHelpers } from './EventHelpers';
 
 export function EditorQueryMethods(state: EditorState) {
   const options = state && state.options;
@@ -162,7 +161,7 @@ export function EditorQueryMethods(state: EditorState) {
       toNodeTree(
         normalize?: (node: Node, jsx: React.ReactElement) => void
       ): NodeTree {
-        let node = parseNodeFromJSX(reactElement, (node, jsx) => {
+        const node = parseNodeFromJSX(reactElement, (node, jsx) => {
           const name = resolveComponent(state.options.resolver, node.data.type);
 
           node.data.displayName = node.data.displayName || name;

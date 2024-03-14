@@ -2,9 +2,8 @@ import styled from '@emotion/styled';
 import { UserComponent, useNode } from '@webstencils/core';
 import cx from 'classnames';
 
-import { ButtonSettings } from './ButtonSettings';
-
 import { Text } from '../Text';
+import { ButtonSettings } from './ButtonSettings';
 
 type ButtonProps = {
   background?: Record<'r' | 'g' | 'b' | 'a', number>;

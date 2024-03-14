@@ -1,8 +1,7 @@
 import React from 'react';
 
-import { ContainerSettings } from './ContainerSettings';
-
 import { Resizer } from '../Resizer';
+import { ContainerSettings } from './ContainerSettings';
 
 export type ContainerProps = {
   background: Record<'r' | 'g' | 'b' | 'a', number>;

@@ -1,10 +1,9 @@
 import { useEditor, ROOT_NODE } from '@webstencils/core';
 import React, { useRef, useEffect, useLayoutEffect, useState } from 'react';
 
+import { useLayerManager } from '../manager/useLayerManager';
 import { LayerContextProvider } from './LayerContextProvider';
 import { useLayer } from './useLayer';
-
-import { useLayerManager } from '../manager/useLayerManager';
 
 export const LayerNode: React.FC = () => {
   const { id, depth, children, expanded } = useLayer((layer) => ({

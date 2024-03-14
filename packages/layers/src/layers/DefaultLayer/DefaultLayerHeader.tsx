@@ -2,12 +2,11 @@ import { useEditor } from '@webstencils/core';
 import React from 'react';
 import styled from 'styled-components';
 
+import { useLayer } from '../useLayer';
 import { EditableLayerName } from './EditableLayerName';
 import Arrow from './svg/arrow.svg';
 import Eye from './svg/eye.svg';
 import Linked from './svg/linked.svg';
-
-import { useLayer } from '../useLayer';
 
 const StyledDiv = styled.div<{ depth: number; selected: boolean }>`
   display: flex;

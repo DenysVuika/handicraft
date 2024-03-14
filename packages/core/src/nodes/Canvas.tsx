@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 
-import { Element, ElementProps } from './Element';
-
 import { deprecationWarning } from '../utils/deprecate';
+import { Element, ElementProps } from './Element';
 
 export type CanvasProps<T extends React.ElementType> = ElementProps<T>;
 

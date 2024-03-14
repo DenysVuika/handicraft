@@ -19,6 +19,7 @@ const Indicators = styled.div<{ bound?: 'row' | 'column' }>`
   width: 100%;
   height: 100%;
   pointer-events: none;
+
   span {
     position: absolute;
     width: 10px;
@@ -26,10 +27,11 @@ const Indicators = styled.div<{ bound?: 'row' | 'column' }>`
     background: #fff;
     border-radius: 100%;
     display: block;
-    box-shadow: 0px 0px 12px -1px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 12px -1px rgba(0, 0, 0, 0.25);
     z-index: 99999;
     pointer-events: none;
     border: 2px solid #36a9e0;
+
     &:nth-child(1) {
       ${(props) =>
         props.bound
@@ -49,11 +51,13 @@ const Indicators = styled.div<{ bound?: 'row' | 'column' }>`
               top:-5px;
             `}
     }
+
     &:nth-child(2) {
       right: -5px;
       top: -5px;
       display: ${(props) => (props.bound ? 'none' : 'block')};
     }
+
     &:nth-child(3) {
       ${(props) =>
         props.bound
@@ -73,6 +77,7 @@ const Indicators = styled.div<{ bound?: 'row' | 'column' }>`
               bottom:-5px;
             `}
     }
+
     &:nth-child(4) {
       bottom: -5px;
       right: -5px;
@@ -111,7 +116,7 @@ export const Resizer = ({ propKey, children, ...props }: any) => {
   });
 
   const resizable = useRef<Resizable>(null);
-  const isResizing = useRef<Boolean>(false);
+  const isResizing = useRef<boolean>(false);
   const editingDimensions = useRef<any>(null);
   const nodeDimensions = useRef(null);
   nodeDimensions.current = { width: nodeWidth, height: nodeHeight };

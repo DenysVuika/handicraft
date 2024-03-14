@@ -1,7 +1,5 @@
 import invariant from 'tiny-invariant';
 
-import { EditorQueryMethods } from './query';
-
 import {
   ROOT_NODE,
   DEPRECATED_ROOT_NODE,
@@ -29,6 +27,7 @@ import { getNodesFromSelector } from '../utils/getNodesFromSelector';
 import { removeNodeFromEvents } from '../utils/removeNodeFromEvents';
 import { CallbacksFor, QueryCallbacksFor } from '../utils/useMethods';
 import { Delete } from '../utils/utilityTypes';
+import { EditorQueryMethods } from './query';
 
 const Methods = (
   state: EditorState,
