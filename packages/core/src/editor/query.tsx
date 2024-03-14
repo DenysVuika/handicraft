@@ -20,7 +20,6 @@ import {
   NormalizeJsxNodeCallback
 } from '../interfaces';
 import { createNode } from '../utils/createNode';
-import { deprecationWarning } from '../utils/deprecate';
 import { deserializeNode } from '../utils/deserializeNode';
 import { fromEntries } from '../utils/fromEntries';
 import { getDOMInfo } from '../utils/getDOMInfo';
@@ -216,32 +215,6 @@ export function EditorQueryMethods(state: EditorState) {
           normalize(node);
         }
       });
-    },
-
-    createNode(reactElement: React.ReactElement, extras?: any) {
-      deprecationWarning(`query.createNode(${reactElement})`, {
-        suggest: `query.parseReactElement(${reactElement})`
-      });
-
-      const tree = this.parseReactElement(reactElement);
-      const node = tree.nodes[tree.rootNodeId];
-
-      if (!extras) {
-        return node;
-      }
-
-      if (extras.id) {
-        node.id = extras.id;
-      }
-
-      if (extras.data) {
-        node.data = {
-          ...node.data,
-          ...extras.data
-        };
-      }
-
-      return node;
     },
 
     getState() {
