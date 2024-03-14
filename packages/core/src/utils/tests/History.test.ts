@@ -57,7 +57,7 @@ describe('History Manager', () => {
       expect(applyPatches).toHaveBeenCalledWith(state, patches);
     });
 
-    it('should prevent redo if a change occured after undo', () => {
+    it('should prevent redo if a change occurred after undo', () => {
       history.undo(dummyTimeline[1].state);
       history.add(
         [{ op: 'add', path: '/node1', value: 1000 }],

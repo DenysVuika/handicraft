@@ -118,7 +118,7 @@ const Methods = (
       parentNode = state.nodes[targetNode.data.parent];
 
     if (targetNode.data.nodes) {
-      // we deep clone here because otherwise immer will mutate the node
+      // we deep-clone here because otherwise immer will mutate the node
       // object as we remove nodes
       [...targetNode.data.nodes].forEach((childId) => deleteNode(childId));
     }
@@ -369,7 +369,7 @@ const Methods = (
     },
 
     /**
-     * Given a `id`, it will set the `dom` porperty of that node.
+     * Given a `id`, it will set the `dom` property of that node.
      *
      * @param id of the node we want to set
      * @param dom

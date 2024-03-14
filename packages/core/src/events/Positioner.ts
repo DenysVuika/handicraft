@@ -117,29 +117,21 @@ export class Positioner {
   ) {
     const { top, bottom, left, right } = domInfo;
 
-    if (
+    return (
       top + Positioner.BORDER_OFFSET > y ||
       bottom - Positioner.BORDER_OFFSET < y ||
       left + Positioner.BORDER_OFFSET > x ||
       right - Positioner.BORDER_OFFSET < x
-    ) {
-      return true;
-    }
-
-    return false;
+    );
   }
 
   private isDiff(newPosition: DropPosition) {
-    if (
+    return !(
       this.currentIndicator &&
       this.currentIndicator.placement.parent.id === newPosition.parent.id &&
       this.currentIndicator.placement.index === newPosition.index &&
       this.currentIndicator.placement.where === newPosition.where
-    ) {
-      return false;
-    }
-
-    return true;
+    );
   }
 
   /**
@@ -180,7 +172,7 @@ export class Positioner {
    */
   private getCanvasAncestor(dropTargetId: NodeId) {
     // If the dropTargetId is the same as the previous one
-    // Return the canvas ancestor node that we found previuously
+    // Return the canvas ancestor node that we found previously
     if (
       dropTargetId === this.currentDropTargetId &&
       this.currentDropTargetCanvasAncestorId
@@ -213,7 +205,7 @@ export class Positioner {
 
   /**
    * Compute a new Indicator object based on the dropTarget and x,y coords
-   * Returns null if theres no change from the previous Indicator
+   * Returns null if there's no change from the previous Indicator
    */
   computeIndicator(dropTargetId: NodeId, x: number, y: number): Indicator {
     let newParentNode = this.getCanvasAncestor(dropTargetId);

@@ -1,5 +1,5 @@
 export const ROOT_NODE = 'ROOT';
-export const ERROR_NOPARENT = 'Parent id cannot be ommited';
+export const ERROR_NOPARENT = 'Parent id cannot be omitted';
 export const ERROR_DUPLICATE_NODEID =
   'Attempting to add a node with duplicated id';
 export const ERROR_INVALID_NODEID =

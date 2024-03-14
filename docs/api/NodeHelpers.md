@@ -233,7 +233,7 @@ const App  = () => {
 
 `Function`
 
-Check if a given Node is linked to the parent Node via an arbitary id
+Check if a given Node is linked to the parent Node via an arbitrary id
 
 #### Returns
 
