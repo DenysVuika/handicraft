@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Migrate example projects to latest MUI
 - Reduce development dependencies
 - Break dependency on Tailwind in samples
+- Change `parseFreshNode(node: FreshNode).toNode(normalize?)` to `parseFreshNode(node: FreshNode, normalize?: NormalizeNodeCallback) => Node`
 
 ### Fixed
 

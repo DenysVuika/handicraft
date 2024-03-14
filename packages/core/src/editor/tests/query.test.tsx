@@ -87,13 +87,11 @@ describe('query', () => {
       };
 
       beforeEach(() => {
-        query
-          .parseFreshNode({
-            data: {
-              type: 'h1'
-            }
-          })
-          .toNode();
+        query.parseFreshNode({
+          data: {
+            type: 'h1'
+          }
+        });
       });
 
       it('should call createNode', () => {

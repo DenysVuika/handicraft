@@ -2,7 +2,6 @@ import invariant from 'tiny-invariant';
 
 import {
   ROOT_NODE,
-  DEPRECATED_ROOT_NODE,
   ERROR_NOPARENT,
   ERROR_INVALID_NODEID,
   ERROR_NOT_IN_RESOLVER,
@@ -226,10 +225,6 @@ const Methods = (
 
       const nodePairs = Object.keys(dehydratedNodes).map((id) => {
         let nodeId = id;
-
-        if (id === DEPRECATED_ROOT_NODE) {
-          nodeId = ROOT_NODE;
-        }
 
         return [
           nodeId,

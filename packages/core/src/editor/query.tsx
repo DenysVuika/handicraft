@@ -1,11 +1,7 @@
 import React from 'react';
 import invariant from 'tiny-invariant';
 
-import {
-  ROOT_NODE,
-  DEPRECATED_ROOT_NODE,
-  ERROR_NOT_IN_RESOLVER
-} from '../constants';
+import { ERROR_NOT_IN_RESOLVER } from '../constants';
 import findPosition from '../events/findPosition';
 import {
   NodeId,
@@ -33,6 +29,8 @@ import { resolveComponent } from '../utils/resolveComponent';
 import { QueryCallbacksFor } from '../utils/useMethods';
 import { NodeHelpers } from './NodeHelpers';
 import { EventHelpers } from './EventHelpers';
+
+export type NormalizeNodeCallback = (node: Node) => void;
 
 export function EditorQueryMethods(state: EditorState) {
   const options = state && state.options;
@@ -202,33 +200,31 @@ export function EditorQueryMethods(state: EditorState) {
           });
         }
 
-        return _()
-          .parseFreshNode({
+        return _().parseFreshNode(
+          {
             ...(id ? { id } : {}),
             data
-          })
-          .toNode(!id && normalize);
+          },
+          !id && normalize
+        );
       }
     }),
 
-    parseFreshNode: (node: FreshNode) => ({
-      toNode(normalize?: (node: Node) => void): Node {
-        return createNode(node, (node) => {
-          if (node.data.parent === DEPRECATED_ROOT_NODE) {
-            node.data.parent = ROOT_NODE;
-          }
+    parseFreshNode: (
+      node: FreshNode,
+      normalize?: NormalizeNodeCallback
+    ): Node => {
+      return createNode(node, (node) => {
+        const name = resolveComponent(state.options.resolver, node.data.type);
+        invariant(name !== null, ERROR_NOT_IN_RESOLVER);
+        node.data.displayName = node.data.displayName || name;
+        node.data.name = name;
 
-          const name = resolveComponent(state.options.resolver, node.data.type);
-          invariant(name !== null, ERROR_NOT_IN_RESOLVER);
-          node.data.displayName = node.data.displayName || name;
-          node.data.name = name;
-
-          if (normalize) {
-            normalize(node);
-          }
-        });
-      }
-    }),
+        if (normalize) {
+          normalize(node);
+        }
+      });
+    },
 
     createNode(reactElement: React.ReactElement, extras?: any) {
       deprecationWarning(`query.createNode(${reactElement})`, {

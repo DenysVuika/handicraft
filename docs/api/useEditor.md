@@ -50,8 +50,7 @@ const { connectors, actions, query, ...collected } = useEditor(collector);
       - `toNodeTree` **(normalize?: (node: Node, jsx: React.ReactElement) => void) => NodeTree**: Parse a given React element into a NodeTree
     - `parseSerializedNode` **(node: SerializedNode) => Object**
       - `toNode` **(normalize?: (node: Node) => void) => Node**: Parse a serialized Node back into it's full Node form
-    - `parseFreshNode` **(node: FreshNode) => Object**
-      - `toNode` **(normalize?: (node: Node) => void) => Node**: Parse a fresh/new Node object into it's full Node form, ensuring all properties of a Node is correctly initialised. This is useful when you need to create a new Node. 
+    - `parseFreshNode` **(node: FreshNode, normalize?: NormalizeNodeCallback) => Node**: Parse a fresh/new Node object into it's full Node form, ensuring all properties of a Node is correctly initialised. This is useful when you need to create a new Node.
     - `history`
       - `canUndo` **() => boolean**: Returns true if undo is possible
       - `canRedo` **() => boolean**: Returns true if redo is possible
@@ -131,7 +130,7 @@ const Example = () => {
         };
         
         // Create a new valid Node object from the fresh Node
-        const node = query.parseFreshNode(freshNode).toNode();
+        const node = query.parseFreshNode(freshNode);
         actions.add(node, 'ROOT');
       }}>
         Add a new Node from a Node object
