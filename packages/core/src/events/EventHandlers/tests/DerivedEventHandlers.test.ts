@@ -7,16 +7,17 @@ import {
 } from './fixtures';
 
 describe('DerivedEventHandlers', () => {
-  let dom,
-    instance: EventHandlers,
-    handlers,
-    derivedInstance: EventHandlers,
-    derivedHandlers;
+  let dom: HTMLElement;
+  let instance: EventHandlers;
+  let handlers;
+  let derivedInstance: EventHandlers;
+  let derivedHandlers;
 
   let derivedConnectorsUsage: ConnectorsUsage<typeof derivedInstance>;
 
   beforeEach(() => {
     dom = document.createElement('a');
+
     const testEventHandler = createTestHandlers();
     instance = testEventHandler.instance;
     handlers = testEventHandler.handlers;

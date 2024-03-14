@@ -91,9 +91,6 @@ export type SerializedNode = Omit<
 
 export type SerializedNodes = Record<NodeId, SerializedNode>;
 
-// TODO: Deprecate in favor of SerializedNode
-export type SerializedNodeData = SerializedNode;
-
 export type Nodes = Record<NodeId, Node>;
 
 /**

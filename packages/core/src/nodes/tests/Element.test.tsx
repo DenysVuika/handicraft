@@ -3,14 +3,11 @@ import React from 'react';
 
 import { createTestNode } from '../../utils/createTestNode';
 import { Element } from '../Element';
+import { Node } from '../../interfaces';
 
-let parentNode;
-let existingLinkedNode;
+let parentNode: Node;
+let existingLinkedNode: Node;
 const newLinkedNode = createTestNode('newLinkedNode');
-
-const toNodeTree = jest.fn().mockImplementation(() => ({
-  rootNodeId: newLinkedNode.id
-}));
 
 const addLinkedNodeFromTree = jest.fn();
 const parseReactElement = jest.fn().mockImplementation(() => ({
@@ -30,8 +27,7 @@ jest.mock('../../editor/useInternalEditor', () => ({
       parseReactElement,
       node: jest.fn().mockImplementation((id) => ({
         get() {
-          if (id === 'parent-node') return parentNode;
-          else return existingLinkedNode;
+          return id === 'parent-node' ? parentNode : existingLinkedNode;
         }
       }))
     }
@@ -63,7 +59,8 @@ describe('<Element />', () => {
   });
 
   describe('when there is no existing node', () => {
-    let elementProps, children;
+    let elementProps: { color: string };
+    let children: React.ReactElement;
 
     beforeEach(() => {
       elementProps = {

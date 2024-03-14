@@ -1,9 +1,11 @@
 import { DerivedEventHandlers } from '../DerivedEventHandlers';
 import { EventHandlers } from '../EventHandlers';
 
-export function triggerMouseEvent(node, eventType) {
-  const clickEvent = document.createEvent('MouseEvents');
-  clickEvent.initEvent(eventType, true, true);
+export function triggerMouseEvent(node: HTMLElement, eventType: string) {
+  const clickEvent = new MouseEvent(eventType, {
+    bubbles: true,
+    cancelable: true
+  });
   node.dispatchEvent(clickEvent);
 }
 
