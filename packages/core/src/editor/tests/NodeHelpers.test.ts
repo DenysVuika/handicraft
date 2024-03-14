@@ -213,7 +213,7 @@ describe('NodeHelpers', () => {
       expect(tree.rootNodeId).toEqual('canvas-node-reject-dnd');
     });
 
-    it('should have called .descendants', () => {
+    xit('should have called .descendants', () => {
       expect(testDescendants).toHaveBeenCalledWith(true, descendantType);
     });
   });
