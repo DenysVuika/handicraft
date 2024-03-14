@@ -6,7 +6,7 @@ Frame defines the editable area in your page editor.
 It is rendered based on the editor's internal state (i.e. Nodes).
 
 ```tsx
-const { connectors, setProp, ...collected } = useNode(collector);
+const { connectors, actions, ...collected } = useNode(collector);
 ```
 
 ## Reference

@@ -1,17 +1,14 @@
 import React from 'react';
 import invariant from 'tiny-invariant';
 
-import {
-  ROOT_NODE,
-  DEPRECATED_ROOT_NODE,
-  ERROR_NOT_IN_RESOLVER
-} from '../constants';
+import { ERROR_NOT_IN_RESOLVER } from '../constants';
 import findPosition from '../events/findPosition';
 import {
   NodeId,
   EditorState,
   Indicator,
   Node,
+  NormalizeNodeCallback,
   EditorOptions,
   NodeEventTypes,
   NodeInfo,
@@ -19,10 +16,10 @@ import {
   NodeTree,
   SerializedNodes,
   SerializedNode,
-  FreshNode
+  FreshNode,
+  NormalizeJsxNodeCallback
 } from '../interfaces';
 import { createNode } from '../utils/createNode';
-import { deprecationWarning } from '../utils/deprecate';
 import { deserializeNode } from '../utils/deserializeNode';
 import { fromEntries } from '../utils/fromEntries';
 import { getDOMInfo } from '../utils/getDOMInfo';
@@ -157,104 +154,67 @@ export function EditorQueryMethods(state: EditorState) {
       return JSON.stringify(this.getSerializedNodes());
     },
 
-    parseReactElement: (reactElement: React.ReactElement) => ({
-      toNodeTree(
-        normalize?: (node: Node, jsx: React.ReactElement) => void
-      ): NodeTree {
-        const node = parseNodeFromJSX(reactElement, (node, jsx) => {
-          const name = resolveComponent(state.options.resolver, node.data.type);
+    parseReactElement: (
+      reactElement: React.ReactElement,
+      normalize?: NormalizeJsxNodeCallback
+    ): NodeTree => {
+      const node = parseNodeFromJSX(reactElement, (node, jsx) => {
+        const name = resolveComponent(state.options.resolver, node.data.type);
 
-          node.data.displayName = node.data.displayName || name;
-          node.data.name = name;
+        node.data.displayName = node.data.displayName || name;
+        node.data.name = name;
 
-          if (normalize) {
-            normalize(node, jsx);
-          }
-        });
-
-        let childrenNodes: NodeTree[] = [];
-
-        if (reactElement.props && reactElement.props.children) {
-          childrenNodes = React.Children.toArray(
-            reactElement.props.children
-          ).reduce<NodeTree[]>((accum, child: any) => {
-            if (React.isValidElement(child)) {
-              accum.push(_().parseReactElement(child).toNodeTree(normalize));
-            }
-            return accum;
-          }, []);
+        if (normalize) {
+          normalize(node, jsx);
         }
-
-        return mergeTrees(node, childrenNodes);
-      }
-    }),
-
-    parseSerializedNode: (serializedNode: SerializedNode) => ({
-      toNode(normalize?: (node: Node) => void): Node {
-        const data = deserializeNode(serializedNode, state.options.resolver);
-        invariant(data.type, ERROR_NOT_IN_RESOLVER);
-
-        const id = typeof normalize === 'string' && normalize;
-
-        if (id) {
-          deprecationWarning(`query.parseSerializedNode(...).toNode(id)`, {
-            suggest: `query.parseSerializedNode(...).toNode(node => node.id = id)`
-          });
-        }
-
-        return _()
-          .parseFreshNode({
-            ...(id ? { id } : {}),
-            data
-          })
-          .toNode(!id && normalize);
-      }
-    }),
-
-    parseFreshNode: (node: FreshNode) => ({
-      toNode(normalize?: (node: Node) => void): Node {
-        return createNode(node, (node) => {
-          if (node.data.parent === DEPRECATED_ROOT_NODE) {
-            node.data.parent = ROOT_NODE;
-          }
-
-          const name = resolveComponent(state.options.resolver, node.data.type);
-          invariant(name !== null, ERROR_NOT_IN_RESOLVER);
-          node.data.displayName = node.data.displayName || name;
-          node.data.name = name;
-
-          if (normalize) {
-            normalize(node);
-          }
-        });
-      }
-    }),
-
-    createNode(reactElement: React.ReactElement, extras?: any) {
-      deprecationWarning(`query.createNode(${reactElement})`, {
-        suggest: `query.parseReactElement(${reactElement}).toNodeTree()`
       });
 
-      const tree = this.parseReactElement(reactElement).toNodeTree();
+      let childrenNodes: NodeTree[] = [];
 
-      const node = tree.nodes[tree.rootNodeId];
-
-      if (!extras) {
-        return node;
+      if (reactElement.props && reactElement.props.children) {
+        childrenNodes = React.Children.toArray(
+          reactElement.props.children
+        ).reduce<NodeTree[]>((accum, child: any) => {
+          if (React.isValidElement(child)) {
+            accum.push(_().parseReactElement(child, normalize));
+          }
+          return accum;
+        }, []);
       }
 
-      if (extras.id) {
-        node.id = extras.id;
-      }
+      return mergeTrees(node, childrenNodes);
+    },
 
-      if (extras.data) {
-        node.data = {
-          ...node.data,
-          ...extras.data
-        };
-      }
+    parseSerializedNode: (
+      serializedNode: SerializedNode,
+      normalize?: NormalizeNodeCallback
+    ): Node => {
+      const data = deserializeNode(serializedNode, state.options.resolver);
+      invariant(data.type, ERROR_NOT_IN_RESOLVER);
 
-      return node;
+      return _().parseFreshNode(
+        {
+          data
+        },
+        normalize
+      );
+    },
+
+    parseFreshNode: (
+      node: FreshNode,
+      normalize?: NormalizeNodeCallback
+    ): Node => {
+      return createNode(node, (node) => {
+        const name = resolveComponent(state.options.resolver, node.data.type);
+        invariant(name !== null, ERROR_NOT_IN_RESOLVER);
+
+        node.data.displayName = node.data.displayName || name;
+        node.data.name = name;
+
+        if (normalize) {
+          normalize(node);
+        }
+      });
     },
 
     getState() {

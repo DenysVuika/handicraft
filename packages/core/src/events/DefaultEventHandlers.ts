@@ -286,16 +286,16 @@ export class DefaultEventHandlers<O = {}> extends CoreEventHandlers<
           'dragstart',
           (e) => {
             e.craft.stopPropagation();
-            let tree;
+            let tree: NodeTree;
             if (typeof userElement === 'function') {
               const result = userElement();
               if (React.isValidElement(result)) {
-                tree = store.query.parseReactElement(result).toNodeTree();
+                tree = store.query.parseReactElement(result);
               } else {
                 tree = result;
               }
             } else {
-              tree = store.query.parseReactElement(userElement).toNodeTree();
+              tree = store.query.parseReactElement(userElement);
             }
 
             const dom = e.currentTarget as HTMLElement;

@@ -52,7 +52,7 @@ export default {
         ecma: 5,
         warnings: true,
         mangle: {
-          reserved: ['Canvas']
+          // reserved: ['Canvas']
         }
       })
   ]

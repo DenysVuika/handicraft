@@ -88,9 +88,10 @@ describe('actions.add', () => {
       }
     });
 
-    const newState = Actions(state)((actions) =>
-      actions.add([primaryButton, secondaryButton], rootNode.id)
-    );
+    const newState = Actions(state)((actions) => {
+      actions.add(primaryButton, rootNode.id);
+      actions.add(secondaryButton, rootNode.id);
+    });
 
     rootNode.data.nodes = [primaryButton, secondaryButton];
 

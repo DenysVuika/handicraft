@@ -164,7 +164,7 @@ const App = () => {
   
   return (
     <Editor>
-      <Frame json={jsonString}>
+      <Frame data={jsonString}>
         {/*...*/}
       </Frame>
     </Editor>

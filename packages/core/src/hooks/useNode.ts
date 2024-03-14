@@ -1,6 +1,5 @@
 import { Node } from '../interfaces';
 import { useInternalNode } from '../nodes/useInternalNode';
-import { deprecationWarning } from '../utils/deprecate';
 
 /**
  * A Hook to that provides methods and state information related to the corresponding Node that manages the current component.
@@ -15,15 +14,6 @@ export function useNode<S = null>(collect?: (node: Node) => S) {
     actions,
     id,
     related,
-    setProp: (
-      cb: (props: Record<string, any>) => void,
-      throttleRate?: number
-    ) => {
-      deprecationWarning('useNode().setProp()', {
-        suggest: 'useNode().actions.setProp()'
-      });
-      return actions.setProp(cb, throttleRate);
-    },
     inNodeContext,
     connectors
   };

@@ -21,7 +21,7 @@ Custom2VideoDrop.craft = {
     canMoveIn: (nodes, self, helper) => {
       return (
         nodes.every((node) => node.data.type === Video) &&
-        helper(self.id).decendants().length === 0
+        helper(self.id).descendants().length === 0
       );
     }
   }

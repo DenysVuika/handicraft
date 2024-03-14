@@ -13,8 +13,7 @@ import {
   ERROR_CANNOT_DRAG,
   ERROR_INVALID_NODE_ID
 } from '../constants';
-import { EditorState, NodeId, NodeSelector } from '../interfaces';
-import { deprecationWarning } from '../utils/deprecate';
+import { EditorState, Node, NodeId, NodeSelector } from '../interfaces';
 import { getNodesFromSelector } from '../utils/getNodesFromSelector';
 import { serializeNode } from '../utils/serializeNode';
 
@@ -23,251 +22,236 @@ export function NodeHelpers(state: EditorState, id: NodeId) {
 
   const node = state.nodes[id];
 
-  const nodeHelpers = (id) => NodeHelpers(state, id);
+  const nodeHelpers = (id: NodeId) => NodeHelpers(state, id);
+  const isCanvas = () => !!node.data.isCanvas;
+  const isRoot = () => node.id === ROOT_NODE;
 
-  return {
-    isCanvas() {
-      return !!node.data.isCanvas;
-    },
-    isRoot() {
-      return node.id === ROOT_NODE;
-    },
-    isLinkedNode() {
-      return (
-        node.data.parent &&
-        nodeHelpers(node.data.parent).linkedNodes().includes(node.id)
-      );
-    },
-    isTopLevelNode() {
-      return this.isRoot() || this.isLinkedNode();
-    },
-    isDeletable() {
-      return !this.isTopLevelNode();
-    },
-    isParentOfTopLevelNodes: () =>
-      node.data.linkedNodes && Object.keys(node.data.linkedNodes).length > 0,
-    isParentOfTopLevelCanvas() {
-      deprecationWarning('query.node(id).isParentOfTopLevelCanvas', {
-        suggest: 'query.node(id).isParentOfTopLevelNodes'
-      });
-      return this.isParentOfTopLevelNodes();
-    },
-    isSelected() {
-      return state.events.selected.has(id);
-    },
-    isHovered() {
-      return state.events.hovered.has(id);
-    },
-    isDragged() {
-      return state.events.dragged.has(id);
-    },
-    get() {
-      return node;
-    },
-    ancestors(deep = false): NodeId[] {
-      function appendParentNode(
-        id: NodeId,
-        ancestors: NodeId[] = [],
-        depth = 0
-      ) {
-        const node = state.nodes[id];
-        if (!node) {
-          return ancestors;
-        }
+  const isLinkedNode = () => {
+    return (
+      node.data.parent &&
+      nodeHelpers(node.data.parent).linkedNodes().includes(node.id)
+    );
+  };
 
-        ancestors.push(id);
+  const isTopLevelNode = (): boolean => isRoot() || isLinkedNode();
+  const isDeletable = (): boolean => !isTopLevelNode();
+  const isParentOfTopLevelNodes = (): boolean =>
+    node.data.linkedNodes && Object.keys(node.data.linkedNodes).length > 0;
+  const isSelected = (): boolean => state.events.selected.has(id);
+  const isHovered = (): boolean => state.events.hovered.has(id);
+  const isDragged = (): boolean => state.events.dragged.has(id);
+  const get = (): Node => node;
 
-        if (!node.data.parent) {
-          return ancestors;
-        }
-
-        if (deep || (!deep && depth === 0)) {
-          ancestors = appendParentNode(node.data.parent, ancestors, depth + 1);
-        }
+  const ancestors = (deep = false): NodeId[] => {
+    function appendParentNode(id: NodeId, ancestors: NodeId[] = [], depth = 0) {
+      const node = state.nodes[id];
+      if (!node) {
         return ancestors;
       }
-      return appendParentNode(node.data.parent);
-    },
-    descendants(
-      deep = false,
-      includeOnly?: 'linkedNodes' | 'childNodes'
-    ): NodeId[] {
-      function appendChildNode(
-        id: NodeId,
-        descendants: NodeId[] = [],
-        depth = 0
-      ) {
-        if (deep || (!deep && depth === 0)) {
-          const node = state.nodes[id];
 
-          if (!node) {
-            return descendants;
-          }
+      ancestors.push(id);
 
-          if (includeOnly !== 'childNodes') {
-            // Include linkedNodes if any
-            const linkedNodes = nodeHelpers(id).linkedNodes();
+      if (!node.data.parent) {
+        return ancestors;
+      }
 
-            linkedNodes.forEach((nodeId) => {
-              descendants.push(nodeId);
-              descendants = appendChildNode(nodeId, descendants, depth + 1);
-            });
-          }
+      if (deep || (!deep && depth === 0)) {
+        ancestors = appendParentNode(node.data.parent, ancestors, depth + 1);
+      }
+      return ancestors;
+    }
+    return appendParentNode(node.data.parent);
+  };
 
-          if (includeOnly !== 'linkedNodes') {
-            const childNodes = nodeHelpers(id).childNodes();
+  const descendants = (
+    deep = false,
+    includeOnly?: 'linkedNodes' | 'childNodes'
+  ): NodeId[] => {
+    function appendChildNode(
+      id: NodeId,
+      descendants: NodeId[] = [],
+      depth = 0
+    ) {
+      if (deep || (!deep && depth === 0)) {
+        const node = state.nodes[id];
 
-            childNodes.forEach((nodeId) => {
-              descendants.push(nodeId);
-              descendants = appendChildNode(nodeId, descendants, depth + 1);
-            });
-          }
-
+        if (!node) {
           return descendants;
         }
+
+        if (includeOnly !== 'childNodes') {
+          // Include linkedNodes if any
+          const linkedNodes = nodeHelpers(id).linkedNodes();
+
+          linkedNodes.forEach((nodeId) => {
+            descendants.push(nodeId);
+            descendants = appendChildNode(nodeId, descendants, depth + 1);
+          });
+        }
+
+        if (includeOnly !== 'linkedNodes') {
+          const childNodes = nodeHelpers(id).childNodes();
+
+          childNodes.forEach((nodeId) => {
+            descendants.push(nodeId);
+            descendants = appendChildNode(nodeId, descendants, depth + 1);
+          });
+        }
+
         return descendants;
       }
-      return appendChildNode(id);
-    },
-    linkedNodes() {
-      return Object.values(node.data.linkedNodes || {});
-    },
-    childNodes() {
-      return node.data.nodes || [];
-    },
-    isDraggable(onError?: (err: string) => void) {
-      try {
-        const targetNode = node;
-        invariant(!this.isTopLevelNode(), ERROR_MOVE_TOP_LEVEL_NODE);
-        invariant(
-          NodeHelpers(state, targetNode.data.parent).isCanvas(),
-          ERROR_MOVE_NONCANVAS_CHILD
-        );
-        invariant(
-          targetNode.rules.canDrag(targetNode, nodeHelpers),
-          ERROR_CANNOT_DRAG
-        );
-        return true;
-      } catch (err) {
-        if (onError) {
-          onError(err);
-        }
-        return false;
+      return descendants;
+    }
+    return appendChildNode(id);
+  };
+
+  const linkedNodes = () => Object.values(node.data.linkedNodes || {});
+  const childNodes = () => node.data.nodes || [];
+
+  const isDraggable = (onError?: (err: string) => void): boolean => {
+    try {
+      const targetNode = node;
+      invariant(!isTopLevelNode(), ERROR_MOVE_TOP_LEVEL_NODE);
+      invariant(
+        NodeHelpers(state, targetNode.data.parent).isCanvas(),
+        ERROR_MOVE_NONCANVAS_CHILD
+      );
+      invariant(
+        targetNode.rules.canDrag(targetNode, nodeHelpers),
+        ERROR_CANNOT_DRAG
+      );
+      return true;
+    } catch (err) {
+      if (onError) {
+        onError(err);
       }
-    },
-    isDroppable(selector: NodeSelector, onError?: (err: string) => void) {
-      const targets = getNodesFromSelector(state.nodes, selector);
+      return false;
+    }
+  };
 
-      const newParentNode = node;
+  const isDroppable = (
+    selector: NodeSelector,
+    onError?: (err: string) => void
+  ): boolean => {
+    const targets = getNodesFromSelector(state.nodes, selector);
 
-      try {
-        invariant(this.isCanvas(), ERROR_MOVE_TO_NONCANVAS_PARENT);
-        invariant(
-          newParentNode.rules.canMoveIn(
-            targets.map((selector) => selector.node),
-            newParentNode,
-            nodeHelpers
-          ),
-          ERROR_MOVE_INCOMING_PARENT
-        );
+    const newParentNode = node;
 
-        const parentNodes = {};
-
-        targets.forEach(({ node: targetNode, exists }) => {
-          invariant(
-            targetNode.rules.canDrop(newParentNode, targetNode, nodeHelpers),
-            ERROR_MOVE_CANNOT_DROP
-          );
-
-          // Ignore other checking if the Node is new
-          if (!exists) {
-            return;
-          }
-
-          invariant(
-            !nodeHelpers(targetNode.id).isTopLevelNode(),
-            ERROR_MOVE_TOP_LEVEL_NODE
-          );
-
-          const targetDeepNodes = nodeHelpers(targetNode.id).descendants(true);
-
-          invariant(
-            !targetDeepNodes.includes(newParentNode.id) &&
-              newParentNode.id !== targetNode.id,
-            ERROR_MOVE_TO_DESCENDANT
-          );
-
-          const currentParentNode =
-            targetNode.data.parent && state.nodes[targetNode.data.parent];
-
-          invariant(
-            currentParentNode.data.isCanvas,
-            ERROR_MOVE_NONCANVAS_CHILD
-          );
-
-          invariant(
-            currentParentNode ||
-              (!currentParentNode && !state.nodes[targetNode.id]),
-            ERROR_DUPLICATE_NODEID
-          );
-
-          if (currentParentNode.id !== newParentNode.id) {
-            if (!parentNodes[currentParentNode.id]) {
-              parentNodes[currentParentNode.id] = [];
-            }
-
-            parentNodes[currentParentNode.id].push(targetNode);
-          }
-        });
-
-        Object.keys(parentNodes).forEach((parentNodeId) => {
-          const childNodes = parentNodes[parentNodeId];
-          const parentNode = state.nodes[parentNodeId];
-
-          invariant(
-            parentNode.rules.canMoveOut(childNodes, parentNode, nodeHelpers),
-            ERROR_MOVE_OUTGOING_PARENT
-          );
-        });
-
-        return true;
-      } catch (err) {
-        if (onError) {
-          onError(err);
-        }
-        return false;
-      }
-    },
-    toSerializedNode() {
-      return serializeNode(node.data, state.options.resolver);
-    },
-    toNodeTree(includeOnly?: 'linkedNodes' | 'childNodes') {
-      const nodes = [id, ...this.descendants(true, includeOnly)].reduce(
-        (accum, descendantId) => {
-          accum[descendantId] = nodeHelpers(descendantId).get();
-          return accum;
-        },
-        {}
+    try {
+      invariant(isCanvas(), ERROR_MOVE_TO_NONCANVAS_PARENT);
+      invariant(
+        newParentNode.rules.canMoveIn(
+          targets.map((selector) => selector.node),
+          newParentNode,
+          nodeHelpers
+        ),
+        ERROR_MOVE_INCOMING_PARENT
       );
 
-      return {
-        rootNodeId: id,
-        nodes
-      };
-    },
+      const parentNodes = {};
 
-    /**
-     Deprecated NodeHelpers
-     **/
+      targets.forEach(({ node: targetNode, exists }) => {
+        invariant(
+          targetNode.rules.canDrop(newParentNode, targetNode, nodeHelpers),
+          ERROR_MOVE_CANNOT_DROP
+        );
 
-    decendants(deep = false) {
-      deprecationWarning('query.node(id).decendants', {
-        suggest: 'query.node(id).descendants'
+        // Ignore other checking if the Node is new
+        if (!exists) {
+          return;
+        }
+
+        invariant(
+          !nodeHelpers(targetNode.id).isTopLevelNode(),
+          ERROR_MOVE_TOP_LEVEL_NODE
+        );
+
+        const targetDeepNodes = nodeHelpers(targetNode.id).descendants(true);
+
+        invariant(
+          !targetDeepNodes.includes(newParentNode.id) &&
+            newParentNode.id !== targetNode.id,
+          ERROR_MOVE_TO_DESCENDANT
+        );
+
+        const currentParentNode =
+          targetNode.data.parent && state.nodes[targetNode.data.parent];
+
+        invariant(currentParentNode.data.isCanvas, ERROR_MOVE_NONCANVAS_CHILD);
+
+        invariant(
+          currentParentNode ||
+            (!currentParentNode && !state.nodes[targetNode.id]),
+          ERROR_DUPLICATE_NODEID
+        );
+
+        if (currentParentNode.id !== newParentNode.id) {
+          if (!parentNodes[currentParentNode.id]) {
+            parentNodes[currentParentNode.id] = [];
+          }
+
+          parentNodes[currentParentNode.id].push(targetNode);
+        }
       });
-      return this.descendants(deep);
-    },
-    isTopLevelCanvas() {
-      return !this.isRoot() && !node.data.parent;
+
+      Object.keys(parentNodes).forEach((parentNodeId) => {
+        const childNodes = parentNodes[parentNodeId];
+        const parentNode = state.nodes[parentNodeId];
+
+        invariant(
+          parentNode.rules.canMoveOut(childNodes, parentNode, nodeHelpers),
+          ERROR_MOVE_OUTGOING_PARENT
+        );
+      });
+
+      return true;
+    } catch (err) {
+      if (onError) {
+        onError(err);
+      }
+      return false;
     }
+  };
+
+  const toSerializedNode = () =>
+    serializeNode(node.data, state.options.resolver);
+
+  const toNodeTree = (includeOnly?: 'linkedNodes' | 'childNodes') => {
+    const nodes = [id, ...descendants(true, includeOnly)].reduce(
+      (accum, descendantId) => {
+        accum[descendantId] = nodeHelpers(descendantId).get();
+        return accum;
+      },
+      {}
+    );
+
+    return {
+      rootNodeId: id,
+      nodes
+    };
+  };
+
+  const isTopLevelCanvas = (): boolean => !isRoot() && !node.data.parent;
+
+  return {
+    isCanvas,
+    isRoot,
+    isLinkedNode,
+    isTopLevelNode,
+    isDeletable,
+    isParentOfTopLevelNodes,
+    isSelected,
+    isHovered,
+    isDragged,
+    get,
+    ancestors,
+    descendants,
+    linkedNodes,
+    childNodes,
+    isDraggable,
+    isDroppable,
+    toSerializedNode,
+    toNodeTree,
+    isTopLevelCanvas
   };
 }

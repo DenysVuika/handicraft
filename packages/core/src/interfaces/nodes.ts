@@ -35,6 +35,12 @@ export type Node = {
   _hydrationTimestamp: number;
 };
 
+export type NormalizeNodeCallback = (node: Node) => void;
+export type NormalizeJsxNodeCallback = (
+  node: Node,
+  jsx: React.ReactElement
+) => void;
+
 export type NodeHelpersType = QueryCallbacksFor<
   typeof EditorQueryMethods
 >['node'];
