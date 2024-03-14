@@ -59,11 +59,11 @@ describe('query', () => {
           );
           return deserializeNode(...args);
         });
-        query.parseSerializedNode(data).toNode();
+        query.parseSerializedNode(data);
       });
 
       it('should call deserializeNode', () => {
-        expect(mockedDeserializeNode).toBeCalledWith(
+        expect(mockedDeserializeNode).toHaveBeenCalledWith(
           data,
           state.options.resolver
         );
@@ -112,7 +112,7 @@ describe('query', () => {
 
     describe('when we cant resolve a name', () => {
       it('should throw an error', () => {
-        expect(() => query.parseReactElement(node).toNodeTree()).toThrow();
+        expect(() => query.parseReactElement(node)).toThrow();
       });
     });
 
@@ -123,7 +123,7 @@ describe('query', () => {
           return { ...rootNode.data, type: 'div' };
         });
 
-        tree = query.parseReactElement(node).toNodeTree();
+        tree = query.parseReactElement(node);
       });
 
       it('should have changed the displayName and name of the node', () => {
@@ -136,7 +136,7 @@ describe('query', () => {
           mockedParsedNodeFromJsx = jest
             .fn()
             .mockImplementation(() => rootNode);
-          tree = query.parseReactElement(node).toNodeTree();
+          tree = query.parseReactElement(node);
         });
 
         it('should have called parseNodeFromJSX once', () => {
@@ -166,7 +166,7 @@ describe('query', () => {
             .mockImplementationOnce(() => card)
             .mockImplementationOnce(() => primaryButton)
             .mockImplementationOnce(() => secondaryButton);
-          tree = query.parseReactElement(node).toNodeTree();
+          tree = query.parseReactElement(node);
         });
         it('should have called parseNodeFromReactNode 4 times', () => {
           expect(mockedParsedNodeFromJsx).toHaveBeenCalledTimes(4);

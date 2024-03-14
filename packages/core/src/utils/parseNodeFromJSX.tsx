@@ -1,18 +1,18 @@
 import React, { Fragment } from 'react';
-import { Node } from '../interfaces';
+import { Node, NormalizeJsxNodeCallback } from '../interfaces';
 import { createNode } from './createNode';
 
 export function parseNodeFromJSX(
   jsx: React.ReactElement | string,
-  normalize?: (node: Node, jsx: React.ReactElement) => void
-) {
+  normalize?: NormalizeJsxNodeCallback
+): Node {
   let element = jsx as React.ReactElement;
 
   if (typeof element === 'string') {
     element = React.createElement(Fragment, {}, element) as React.ReactElement;
   }
 
-  const actualType = element.type as any;
+  const actualType = element.type;
 
   return createNode(
     {

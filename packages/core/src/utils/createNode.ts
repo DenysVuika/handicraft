@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { Node, FreshNode, UserComponentConfig } from '../interfaces';
+import {
+  Node,
+  FreshNode,
+  UserComponentConfig,
+  NormalizeNodeCallback
+} from '../interfaces';
 import { defaultElementProps, Element, elementPropToNodeData } from '../nodes';
 import { NodeProvider } from '../nodes/NodeContext';
 import { getRandomId as getRandomNodeId } from '../utils/getRandomId';
@@ -10,7 +15,7 @@ const getNodeTypeName = (type: string | { name: string }) =>
 
 export function createNode(
   newNode: FreshNode,
-  normalize?: (node: Node) => void
+  normalize?: NormalizeNodeCallback
 ) {
   let actualType = newNode.data.type as any;
   const id = newNode.id || getRandomNodeId();

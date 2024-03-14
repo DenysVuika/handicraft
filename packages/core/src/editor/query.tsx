@@ -8,6 +8,7 @@ import {
   EditorState,
   Indicator,
   Node,
+  NormalizeNodeCallback,
   EditorOptions,
   NodeEventTypes,
   NodeInfo,
@@ -15,7 +16,8 @@ import {
   NodeTree,
   SerializedNodes,
   SerializedNode,
-  FreshNode
+  FreshNode,
+  NormalizeJsxNodeCallback
 } from '../interfaces';
 import { createNode } from '../utils/createNode';
 import { deprecationWarning } from '../utils/deprecate';
@@ -29,8 +31,6 @@ import { resolveComponent } from '../utils/resolveComponent';
 import { QueryCallbacksFor } from '../utils/useMethods';
 import { NodeHelpers } from './NodeHelpers';
 import { EventHelpers } from './EventHelpers';
-
-export type NormalizeNodeCallback = (node: Node) => void;
 
 export function EditorQueryMethods(state: EditorState) {
   const options = state && state.options;
@@ -155,60 +155,51 @@ export function EditorQueryMethods(state: EditorState) {
       return JSON.stringify(this.getSerializedNodes());
     },
 
-    parseReactElement: (reactElement: React.ReactElement) => ({
-      toNodeTree(
-        normalize?: (node: Node, jsx: React.ReactElement) => void
-      ): NodeTree {
-        const node = parseNodeFromJSX(reactElement, (node, jsx) => {
-          const name = resolveComponent(state.options.resolver, node.data.type);
+    parseReactElement: (
+      reactElement: React.ReactElement,
+      normalize?: NormalizeJsxNodeCallback
+    ): NodeTree => {
+      const node = parseNodeFromJSX(reactElement, (node, jsx) => {
+        const name = resolveComponent(state.options.resolver, node.data.type);
 
-          node.data.displayName = node.data.displayName || name;
-          node.data.name = name;
+        node.data.displayName = node.data.displayName || name;
+        node.data.name = name;
 
-          if (normalize) {
-            normalize(node, jsx);
+        if (normalize) {
+          normalize(node, jsx);
+        }
+      });
+
+      let childrenNodes: NodeTree[] = [];
+
+      if (reactElement.props && reactElement.props.children) {
+        childrenNodes = React.Children.toArray(
+          reactElement.props.children
+        ).reduce<NodeTree[]>((accum, child: any) => {
+          if (React.isValidElement(child)) {
+            accum.push(_().parseReactElement(child, normalize));
           }
-        });
-
-        let childrenNodes: NodeTree[] = [];
-
-        if (reactElement.props && reactElement.props.children) {
-          childrenNodes = React.Children.toArray(
-            reactElement.props.children
-          ).reduce<NodeTree[]>((accum, child: any) => {
-            if (React.isValidElement(child)) {
-              accum.push(_().parseReactElement(child).toNodeTree(normalize));
-            }
-            return accum;
-          }, []);
-        }
-
-        return mergeTrees(node, childrenNodes);
+          return accum;
+        }, []);
       }
-    }),
 
-    parseSerializedNode: (serializedNode: SerializedNode) => ({
-      toNode(normalize?: (node: Node) => void): Node {
-        const data = deserializeNode(serializedNode, state.options.resolver);
-        invariant(data.type, ERROR_NOT_IN_RESOLVER);
+      return mergeTrees(node, childrenNodes);
+    },
 
-        const id = typeof normalize === 'string' && normalize;
+    parseSerializedNode: (
+      serializedNode: SerializedNode,
+      normalize?: NormalizeNodeCallback
+    ): Node => {
+      const data = deserializeNode(serializedNode, state.options.resolver);
+      invariant(data.type, ERROR_NOT_IN_RESOLVER);
 
-        if (id) {
-          deprecationWarning(`query.parseSerializedNode(...).toNode(id)`, {
-            suggest: `query.parseSerializedNode(...).toNode(node => node.id = id)`
-          });
-        }
-
-        return _().parseFreshNode(
-          {
-            ...(id ? { id } : {}),
-            data
-          },
-          !id && normalize
-        );
-      }
-    }),
+      return _().parseFreshNode(
+        {
+          data
+        },
+        normalize
+      );
+    },
 
     parseFreshNode: (
       node: FreshNode,
@@ -217,6 +208,7 @@ export function EditorQueryMethods(state: EditorState) {
       return createNode(node, (node) => {
         const name = resolveComponent(state.options.resolver, node.data.type);
         invariant(name !== null, ERROR_NOT_IN_RESOLVER);
+
         node.data.displayName = node.data.displayName || name;
         node.data.name = name;
 
@@ -228,11 +220,10 @@ export function EditorQueryMethods(state: EditorState) {
 
     createNode(reactElement: React.ReactElement, extras?: any) {
       deprecationWarning(`query.createNode(${reactElement})`, {
-        suggest: `query.parseReactElement(${reactElement}).toNodeTree()`
+        suggest: `query.parseReactElement(${reactElement})`
       });
 
-      const tree = this.parseReactElement(reactElement).toNodeTree();
-
+      const tree = this.parseReactElement(reactElement);
       const node = tree.nodes[tree.rootNodeId];
 
       if (!extras) {

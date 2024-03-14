@@ -18,7 +18,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Migrate example projects to latest MUI
 - Reduce development dependencies
 - Break dependency on Tailwind in samples
-- Change `parseFreshNode(node: FreshNode).toNode(normalize?)` to `parseFreshNode(node: FreshNode, normalize?: NormalizeNodeCallback) => Node`
+- API improvements
+  - Change `query.parseFreshNode(node: FreshNode).toNode(normalize?)` to `query.parseFreshNode(node: FreshNode, normalize?: NormalizeNodeCallback) => Node`
+  - Change `query.parseSerializedNode(node: SerializedNode).toNode(normalize?)` to `query.parseSerializedNode(node: SerializedNode, normalize?: NormalizeNodeCallback) => Node`
+  - Change `query.parseReactElement(element: React.ReactElement).toNodeTree(normalize?)` to `query.parseReactElement(element: React.ReactElement, normalize?: NormalizeJsxNodeCallback) => NodeTree`
 
 ### Fixed
 

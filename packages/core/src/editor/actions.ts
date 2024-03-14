@@ -228,9 +228,10 @@ const Methods = (
 
         return [
           nodeId,
-          query
-            .parseSerializedNode(dehydratedNodes[id])
-            .toNode((node) => (node.id = nodeId))
+          query.parseSerializedNode(
+            dehydratedNodes[id],
+            (node) => (node.id = nodeId)
+          )
         ];
       });
 

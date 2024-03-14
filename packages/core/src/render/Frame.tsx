@@ -57,7 +57,7 @@ export const Frame: React.FC<React.PropsWithChildren<FrameProps>> = ({
 
     const rootNode = React.Children.only(initialChildren) as React.ReactElement;
 
-    const node = query.parseReactElement(rootNode).toNodeTree((node, jsx) => {
+    const node = query.parseReactElement(rootNode, (node, jsx) => {
       if (jsx === rootNode) {
         node.id = ROOT_NODE;
       }

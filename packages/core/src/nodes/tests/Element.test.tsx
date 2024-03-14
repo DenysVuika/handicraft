@@ -14,7 +14,7 @@ const toNodeTree = jest.fn().mockImplementation(() => ({
 
 const addLinkedNodeFromTree = jest.fn();
 const parseReactElement = jest.fn().mockImplementation(() => ({
-  toNodeTree
+  rootNodeId: newLinkedNode.id
 }));
 
 jest.mock('../../editor/useInternalEditor', () => ({

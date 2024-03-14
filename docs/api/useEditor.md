@@ -46,10 +46,8 @@ const { connectors, actions, query, ...collected } = useEditor(collector);
     - `getOptions` **() => Object**: Get the options specified in the &lt;Editor /&gt; component
     - `getDropPlaceholder` **(sourceNodeId: NodeId, targetNodeId: NodeId, pos: {x: number, y: number}, nodesToDOM?: (node: Node) => HTMLElement = node => node.dom)**: Given the target Node and mouse coordinates on the screen, determine the best possible location to drop the source Node. By default, the Node's DOM property is taken into consideration. 
     - `node` **(id: NodeId) => NodeHelpers**: Returns an object containing helper methods to describe the specified Node. Click [here](./NodeHelpers.md) for more information.
-    - `parseReactElement` **(element: React.ReactElement) => Object**
-      - `toNodeTree` **(normalize?: (node: Node, jsx: React.ReactElement) => void) => NodeTree**: Parse a given React element into a NodeTree
-    - `parseSerializedNode` **(node: SerializedNode) => Object**
-      - `toNode` **(normalize?: (node: Node) => void) => Node**: Parse a serialized Node back into it's full Node form
+    - `parseReactElement` **(element: React.ReactElement, normalize?: NormalizeJsxNodeCallback) => NodeTree**: Parse a given React element into a NodeTree
+    - `parseSerializedNode` **(node: SerializedNode, normalize?: NormalizeNodeCallback) => Node**: Parse a serialized Node back into it's full Node form
     - `parseFreshNode` **(node: FreshNode, normalize?: NormalizeNodeCallback) => Node**: Parse a fresh/new Node object into it's full Node form, ensuring all properties of a Node is correctly initialised. This is useful when you need to create a new Node.
     - `history`
       - `canUndo` **() => boolean**: Returns true if undo is possible
@@ -114,7 +112,7 @@ const Example = () => {
   return (
     <div>
       <a onClick={() => {
-        const nodeTree = query.parseReactElement(<h2>Hi</h2>).toNodeTree();
+        const nodeTree = query.parseReactElement(<h2>Hi</h2>);
         actions.addNodeTree(nodeTree);
       }}>
         Add a new Node from a React Element
