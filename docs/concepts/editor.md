@@ -9,7 +9,7 @@ Essentially, this is similar to the `useNode` hook we have seen previously, exce
 const { actions, connectors, ...collected } = useEditor((state) => {});
 ```
 
-Note: Unlike `useNode` which can be only used inside User Components, `useEditor` can be used anywhere within the Craft context, including User Components.
+Note: Unlike `useNode` which can be only used inside User Components, `useEditor` can be used anywhere within the WebStencils context, including User Components.
 
 ## Getting state information
 

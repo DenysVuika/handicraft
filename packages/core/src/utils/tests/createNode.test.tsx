@@ -84,7 +84,7 @@ describe('createNode', () => {
             parent: 'ROOT',
             props: {
               is: 'a',
-              href: 'craft.js.org',
+              href: 'webstencils.app',
               style: { color: '#fff' }
             }
           }
