@@ -20,7 +20,7 @@ describe('NodeHelpers', () => {
   });
 
   it('should throw error if invalid value supplied as NodeId', () => {
-    expect(() => helper({})).toThrowError();
+    expect(() => helper({})).toThrow();
   });
 
   describe('isRoot', () => {
@@ -188,14 +188,16 @@ describe('NodeHelpers', () => {
   describe('toSerializedNode', () => {
     it('should call serializeNode', () => {
       helper('canvas-node').toSerializedNode();
-      expect(serializeNode).toBeCalledTimes(1);
+      expect(serializeNode).toHaveBeenCalledTimes(1);
     });
   });
+
   describe('toNodeTree', () => {
     let tree;
     let testHelper;
     const testDescendants = jest.fn().mockImplementation(() => []);
     let descendantType;
+
     beforeEach(() => {
       testHelper = jest.fn().mockImplementation(function (...args) {
         return {
@@ -210,6 +212,7 @@ describe('NodeHelpers', () => {
     it('should have correct rootNodeId', () => {
       expect(tree.rootNodeId).toEqual('canvas-node-reject-dnd');
     });
+
     it('should have called .descendants', () => {
       expect(testDescendants).toHaveBeenCalledWith(true, descendantType);
     });

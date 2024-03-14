@@ -4,7 +4,6 @@ import { ROOT_NODE } from '../constants';
 import { useInternalEditor } from '../editor/useInternalEditor';
 import { SerializedNodes } from '../interfaces';
 import { NodeElement } from '../nodes/NodeElement';
-import { deprecationWarning } from '../utils/deprecate';
 
 export type FrameProps = {
   json?: string;
@@ -29,20 +28,13 @@ const RenderRootNode = () => {
  */
 export const Frame: React.FC<React.PropsWithChildren<FrameProps>> = ({
   children,
-  json,
   data
 }) => {
   const { actions, query } = useInternalEditor();
 
-  if (!json) {
-    deprecationWarning('<Frame json={...} />', {
-      suggest: '<Frame data={...} />'
-    });
-  }
-
   const initialState = useRef({
     initialChildren: children,
-    initialData: data || json
+    initialData: data
   });
 
   const isInitialChildrenLoadedRef = useRef(false);
