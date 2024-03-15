@@ -6,10 +6,14 @@
   "homepage": "https://github.com/DenysVuika/handicraft",
   "private": true,
   "dependencies": {
-    "@mui/icons-material": "^5.15.11",
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.10",
     "@mui/material": "^5.15.10",
     "@webstencils/core": "workspace:*",
     "@webstencils/layers": "workspace:*",
+    "classnames": "^2.5.1",
+    "debounce": "^2.0.0",
     "re-resizable": "^6.9.11",
     "react": "18.2.0",
     "react-color": "^2.19.3",
@@ -17,5 +21,11 @@
     "react-dom": "18.2.0",
     "react-rnd": "^10.4.1",
     "react-youtube": "^10.1.0"
+  },
+  "devDependencies": {
+    "@types/classnames": "2.2.9",
+    "@types/node": "12.12.5",
+    "@types/react": "18.0.27",
+    "@types/react-color": "3.0.1"
   }
 }
