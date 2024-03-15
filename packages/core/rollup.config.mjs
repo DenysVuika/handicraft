@@ -2,5 +2,5 @@ import config from '../../rollup.config.mjs';
 
 export default {
   ...config,
-  input: './src/index.tsx',
+  input: './src/index.ts'
 };
