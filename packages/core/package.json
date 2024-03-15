@@ -17,16 +17,14 @@
   "author": "Denys Vuika <denys.vuika@gmail.com>",
   "license": "Apache-2.0",
   "homepage": "https://github.com/DenysVuika/handicraft",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/cjs/index.d.ts",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./index.cjs.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DenysVuika/handicraft.git"
   },
   "scripts": {
-    "start": "npx rollup -c rollup.config.mjs -w",
-    "build": "npx rollup -c rollup.config.mjs",
     "yalc": "yalc push",
     "clean": "npx rimraf lib dist .rollup.cache"
   },
@@ -52,19 +50,29 @@
   "nx": {
     "targets": {
       "build": {
-        "cache": true,
-        "inputs": [
-          "{projectRoot}/**/*.ts",
-          "{projectRoot}/tsconfig.json",
-          {
-            "externalDependencies": [
-              "typescript"
-            ]
-          }
-        ],
-        "outputs": [
-          "{projectRoot}/dist"
-        ]
+        "executor": "@nx/rollup:rollup",
+        "options": {
+          "format": [
+            "esm",
+            "cjs"
+          ],
+          "tsConfig": "packages/core/tsconfig.json",
+          "outputPath": "packages/core/dist",
+          "main": "packages/core/src/index.ts",
+          "generateExportsField": true,
+          "project": "packages/core/package.json",
+          "assets": [
+            "packages/core/README.md",
+            "packages/core/LICENSE"
+          ],
+          "external": [
+            "react",
+            "react-dom",
+            "styled-components"
+          ],
+          "compiler": "tsc",
+          "allowJs": true
+        }
       },
       "yalc": {
         "dependsOn": [

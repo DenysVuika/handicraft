@@ -7,7 +7,6 @@ export * from './events';
 export * from './constants';
 
 export * from './utils/createNode';
-export * from './utils/deprecate';
 export * from './utils/deserializeNode';
 export * from './utils/fromEntries';
 export * from './utils/getDOMInfo';
