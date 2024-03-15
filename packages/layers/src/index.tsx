@@ -11,7 +11,7 @@ export {
   EditableLayerName
 } from './layers';
 
-export const Layers: React.FC<Partial<LayerOptions>> = ({ ...options }) => {
+export const Layers = ({ ...options }: Partial<LayerOptions>) => {
   return (
     <LayerManagerProvider options={options}>
       <LayerContextProvider id={ROOT_NODE} depth={0} />
