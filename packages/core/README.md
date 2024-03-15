@@ -8,7 +8,7 @@ React framework for building low-code application designers and page builders.
 
 ## Examples
 
-- [Landing](https://github.com/DenysVuika/handicraft/tree/main/examples/landing)
+- [Designer](https://github.com/DenysVuika/handicraft/tree/main/examples/designer)
 - [Basic](https://github.com/DenysVuika/handicraft/tree/main/examples/basic)
 
 ## Additional Packages

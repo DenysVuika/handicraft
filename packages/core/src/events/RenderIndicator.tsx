@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 
-export const RenderIndicator: React.FC<any> = ({ style, parentDom }) => {
+export const RenderIndicator = ({ style, parentDom }: any): any => {
   const indicator = (
     <div
       style={{
@@ -18,7 +18,7 @@ export const RenderIndicator: React.FC<any> = ({ style, parentDom }) => {
   );
 
   if (parentDom && parentDom.ownerDocument !== document) {
-    return ReactDOM.createPortal(indicator, parentDom.ownerDocument.body);
+    return createPortal(indicator, parentDom.ownerDocument.body);
   }
 
   return indicator;

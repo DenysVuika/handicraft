@@ -2,6 +2,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Editor, Frame, Element } from '@webstencils/core';
 
+import '../styles/app.css';
+
 import { Viewport, RenderNode } from '../components/editor';
 import { Container, Text } from '../components/selectors';
 import { Button } from '../components/selectors/Button';
