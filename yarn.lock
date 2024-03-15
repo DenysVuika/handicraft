@@ -7219,32 +7219,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"designer@workspace:examples/designer":
-  version: 0.0.0-use.local
-  resolution: "designer@workspace:examples/designer"
-  dependencies:
-    "@emotion/react": "npm:^11.11.3"
-    "@emotion/styled": "npm:^11.11.0"
-    "@mui/icons-material": "npm:^5.15.10"
-    "@mui/material": "npm:^5.15.10"
-    "@types/classnames": "npm:2.2.9"
-    "@types/node": "npm:12.12.5"
-    "@types/react": "npm:18.0.27"
-    "@types/react-color": "npm:3.0.1"
-    "@webstencils/core": "workspace:*"
-    "@webstencils/layers": "workspace:*"
-    classnames: "npm:^2.5.1"
-    debounce: "npm:^2.0.0"
-    re-resizable: "npm:^6.9.11"
-    react: "npm:18.2.0"
-    react-color: "npm:^2.19.3"
-    react-contenteditable: "npm:^3.3.7"
-    react-dom: "npm:18.2.0"
-    react-rnd: "npm:^10.4.1"
-    react-youtube: "npm:^10.1.0"
-  languageName: unknown
-  linkType: soft
-
 "detect-newline@npm:^3.0.0":
   version: 3.1.0
   resolution: "detect-newline@npm:3.1.0"
@@ -8162,6 +8136,32 @@ __metadata:
     react: "npm:18.2.0"
     react-contenteditable: "npm:3.3.7"
     react-dom: "npm:18.2.0"
+  languageName: unknown
+  linkType: soft
+
+"example-designer@workspace:examples/designer":
+  version: 0.0.0-use.local
+  resolution: "example-designer@workspace:examples/designer"
+  dependencies:
+    "@emotion/react": "npm:^11.11.3"
+    "@emotion/styled": "npm:^11.11.0"
+    "@mui/icons-material": "npm:^5.15.10"
+    "@mui/material": "npm:^5.15.10"
+    "@types/classnames": "npm:2.2.9"
+    "@types/node": "npm:12.12.5"
+    "@types/react": "npm:18.0.27"
+    "@types/react-color": "npm:3.0.1"
+    "@webstencils/core": "workspace:*"
+    "@webstencils/layers": "workspace:*"
+    classnames: "npm:^2.5.1"
+    debounce: "npm:^2.0.0"
+    re-resizable: "npm:^6.9.11"
+    react: "npm:18.2.0"
+    react-color: "npm:^2.19.3"
+    react-contenteditable: "npm:^3.3.7"
+    react-dom: "npm:18.2.0"
+    react-rnd: "npm:^10.4.1"
+    react-youtube: "npm:^10.1.0"
   languageName: unknown
   linkType: soft
 
