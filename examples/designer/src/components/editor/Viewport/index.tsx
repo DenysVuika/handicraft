@@ -23,14 +23,6 @@ export const Viewport: React.FC<{ children?: React.ReactNode }> = ({
     }
 
     window.requestAnimationFrame(() => {
-      // Notify doc site
-      window.parent.postMessage(
-        {
-          LANDING_PAGE_LOADED: true
-        },
-        '*'
-      );
-
       setTimeout(() => {
         setOptions((options) => {
           options.enabled = true;

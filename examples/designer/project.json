@@ -1,5 +1,5 @@
 {
-  "name": "designer",
+  "name": "example-designer",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "examples/designer/src",
   "projectType": "application",
