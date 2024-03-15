@@ -57,9 +57,11 @@ const App = () => {
 
 ### Control how your components are edited
 
-An obvious requirement for page editors is that they need to allow users to edit components. With Craft.js, you control the process of which these components should be edited.
+An obvious requirement for page editors is that they need to allow users to edit components.
+With WebStencils, you control the process of which these components should be edited.
 
-In the following example, when the user clicks on a component, we'll display a modal that requires the user to input a value for the `text` prop. As the input value changes, the component will be re-rendered with updated prop.
+In the following example, when the user clicks on a component, we'll display a modal that requires the user to input a value for the `text` prop.
+As the input value changes, the component will be re-rendered with updated prop.
 
 ```jsx
 import { useNode } from "@webstencils/core";
