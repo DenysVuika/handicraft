@@ -19,14 +19,13 @@
   "homepage": "https://github.com/DenysVuika/handicraft",
   "main": "./dist/index.cjs.js",
   "module": "./dist/index.esm.js",
-  "types": "./index.cjs.d.ts",
+  "types": "./dist/index.cjs.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DenysVuika/handicraft.git"
   },
   "scripts": {
-    "yalc": "yalc push",
-    "clean": "npx rimraf lib dist .rollup.cache"
+    "yalc": "yalc push"
   },
   "bugs": {
     "url": "https://github.com/DenysVuika/handicraft/issues"
@@ -84,8 +83,6 @@
     },
     "includedScripts": [
       "build",
-      "start",
-      "clean",
       "yalc"
     ]
   }
