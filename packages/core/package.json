@@ -57,9 +57,10 @@
           ],
           "tsConfig": "packages/core/tsconfig.json",
           "outputPath": "packages/core/dist",
-          "main": "packages/core/src/index.ts",
+          "entryFile": "packages/core/src/index.ts",
           "generateExportsField": true,
           "project": "packages/core/package.json",
+          "rollupConfig": "@nx/react/plugins/bundle-rollup",
           "assets": [
             "packages/core/README.md",
             "packages/core/LICENSE"
@@ -67,9 +68,10 @@
           "external": [
             "react",
             "react-dom",
+            "react/jsx-runtime",
             "styled-components"
           ],
-          "compiler": "tsc",
+          "compiler": "swc",
           "allowJs": true
         }
       },

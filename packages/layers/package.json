@@ -17,8 +17,6 @@
   "module": "./dist/esm/index.js",
   "types": "./dist/cjs/index.d.ts",
   "scripts": {
-    "start": "npx rollup -c rollup.config.mjs -w",
-    "build": "npx rollup -c rollup.config.mjs",
     "yalc": "yalc push",
     "clean": "npx rimraf lib dist"
   },
@@ -46,6 +44,7 @@
   "nx": {
     "targets": {
       "build": {
+        "executor": "@nx/rollup:rollup",
         "dependsOn": [
           {
             "projects": "@webstencils/core",
@@ -53,19 +52,30 @@
             "params": "forward"
           }
         ],
-        "cache": true,
-        "inputs": [
-          "{projectRoot}/**/*.ts",
-          "{projectRoot}/tsconfig.json",
-          {
-            "externalDependencies": [
-              "typescript"
-            ]
-          }
-        ],
-        "outputs": [
-          "{projectRoot}/dist"
-        ]
+        "options": {
+          "format": [
+            "esm",
+            "cjs"
+          ],
+          "tsConfig": "packages/layers/tsconfig.json",
+          "outputPath": "packages/layers/dist",
+          "entryFile": "packages/layers/src/index.tsx",
+          "generateExportsField": true,
+          "project": "packages/layers/package.json",
+          "rollupConfig": "@nx/react/plugins/bundle-rollup",
+          "assets": [
+            "packages/layers/README.md",
+            "packages/layers/LICENSE"
+          ],
+          "external": [
+            "react",
+            "react-dom",
+            "react/jsx-runtime",
+            "styled-components"
+          ],
+          "compiler": "swc",
+          "allowJs": true
+        }
       },
       "yalc": {
         "dependsOn": [
@@ -77,8 +87,6 @@
     },
     "includedScripts": [
       "build",
-      "start",
-      "clean",
       "yalc"
     ]
   }
