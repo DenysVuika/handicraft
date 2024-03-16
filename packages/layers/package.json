@@ -31,17 +31,13 @@
   },
   "homepage": "https://github.com/webstencils/core/",
   "dependencies": {
-    "react-contenteditable": "^3.3.3"
-  },
-  "devDependencies": {
-    "@babel/core": "7.7.4",
-    "@svgr/rollup": "8.1.0",
-    "styled-components": "4.2.1"
+    "@mui/icons-material": "^5.15.13",
+    "react-contenteditable": "^3.3.3",
+    "styled-components": ">= 4"
   },
   "peerDependencies": {
     "@webstencils/core": ">=0.1.0",
-    "react": "^16.8.0 || ^17 || ^18",
-    "styled-components": ">= 4"
+    "react": "^16.8.0 || ^17 || ^18"
   },
   "nx": {
     "targets": {
