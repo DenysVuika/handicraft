@@ -3,7 +3,7 @@ import React from 'react';
 
 import { LayerEventContextProvider } from '../events';
 import { LayerOptions } from '../interfaces';
-import { DefaultLayer } from '../layers';
+import { DefaultLayer } from '../layers/DefaultLayer';
 import { LayerManagerContext, LayerStore } from './context';
 import { LayerMethods } from './actions';
 
