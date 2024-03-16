@@ -1,4 +1,4 @@
-import { Element, useNode } from '@webstencils/core';
+import { Element, useNode, Node } from '@webstencils/core';
 import React from 'react';
 
 import { Button } from './Button';
@@ -34,7 +34,7 @@ export const CardTop = ({ children, ...props }) => {
 
 CardTop.craft = {
   rules: {
-    canMoveIn: (incomingNodes) =>
+    canMoveIn: (incomingNodes: Node[]) =>
       incomingNodes.every((incomingNode) => incomingNode.data.type === Text)
   }
 };
@@ -52,7 +52,7 @@ export const CardBottom = ({ children, ...props }) => {
 
 CardBottom.craft = {
   rules: {
-    canMoveIn: (incomingNodes) =>
+    canMoveIn: (incomingNodes: Node[]) =>
       incomingNodes.every((incomingNode) => incomingNode.data.type === Button)
   }
 };
