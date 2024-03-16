@@ -1,7 +1,8 @@
-import { Typography, Paper, Grid, makeStyles } from '@material-ui/core';
-import { Editor, Frame, Element } from '@webstencils/core';
 import React from 'react';
-
+import { Editor, Frame, Element } from '@webstencils/core';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
 import { SettingsPanel } from '../components/SettingsPanel';
 import { Toolbox } from '../components/Toolbox';
 import { Topbar } from '../components/Topbar';
@@ -10,15 +11,7 @@ import { Card, CardBottom, CardTop } from '../components/user/Card';
 import { Container } from '../components/user/Container';
 import { Text } from '../components/user/Text';
 
-const useStyles = makeStyles(() => ({
-  root: {
-    padding: 0,
-    background: 'rgb(252, 253, 253)'
-  }
-}));
 export default function App() {
-  const classes = useStyles();
-
   return (
     <div style={{ margin: '0 auto', width: '800px' }}>
       <Typography style={{ margin: '20px 0' }} variant="h5" align="center">
@@ -65,7 +58,14 @@ export default function App() {
             </Frame>
           </Grid>
           <Grid item xs={4}>
-            <Paper className={classes.root}>
+            <Paper
+              sx={{
+                '&.MuiPaper-root': {
+                  padding: '10px',
+                  background: 'rgb(252, 253, 253)'
+                }
+              }}
+            >
               <Toolbox />
               <SettingsPanel />
             </Paper>

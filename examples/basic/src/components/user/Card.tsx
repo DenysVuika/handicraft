@@ -1,6 +1,5 @@
-import { Element, useNode, Node } from '@webstencils/core';
 import React from 'react';
-
+import { Element, useNode, Node } from '@webstencils/core';
 import { Button } from './Button';
 import {
   Container,
@@ -9,7 +8,7 @@ import {
 } from './Container';
 import { Text } from './Text';
 
-export const CardTop = ({ children, ...props }) => {
+export const CardTop = ({ children, ...props }: any) => {
   const {
     connectors: { connect }
   } = useNode();
@@ -39,7 +38,7 @@ CardTop.craft = {
   }
 };
 
-export const CardBottom = ({ children, ...props }) => {
+export const CardBottom = ({ children, ...props }: any) => {
   const {
     connectors: { connect }
   } = useNode();
@@ -57,7 +56,7 @@ CardBottom.craft = {
   }
 };
 
-export const Card = ({ background, padding = 20, ...props }) => {
+export const Card = ({ background, padding = 20, ...props }: any) => {
   return (
     <Container {...props} background={background} padding={padding}>
       <Element canvas id="text" is={CardTop} data-cy="card-top">

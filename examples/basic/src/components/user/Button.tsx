@@ -1,21 +1,19 @@
-import {
-  Button as MaterialButton,
-  FormControl,
-  FormLabel,
-  RadioGroup,
-  Radio,
-  FormControlLabel
-} from '@material-ui/core';
-import { useNode } from '@webstencils/core';
 import React from 'react';
+import { useNode } from '@webstencils/core';
+import MaterialButton from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Radio from '@mui/material/Radio';
 
-export const Button = ({ size, variant, color, text, ...props }) => {
+export const Button = ({ size, variant, color, text, ...props }: any) => {
   const {
     connectors: { connect, drag }
   } = useNode();
   return (
     <MaterialButton
-      ref={(ref) => connect(drag(ref))}
+      ref={(ref: any) => connect(drag(ref))}
       style={{ margin: '5px' }}
       size={size}
       variant={variant}
@@ -41,7 +39,9 @@ export const ButtonSettings = () => {
         <FormLabel component="legend">Size</FormLabel>
         <RadioGroup
           defaultValue={props.size}
-          onChange={(e) => setProp((props) => (props.size = e.target.value))}
+          onChange={(e) =>
+            setProp((props: any) => (props.size = e.target.value))
+          }
         >
           <FormControlLabel
             label="Small"
@@ -64,7 +64,9 @@ export const ButtonSettings = () => {
         <FormLabel component="legend">Variant</FormLabel>
         <RadioGroup
           defaultValue={props.variant}
-          onChange={(e) => setProp((props) => (props.variant = e.target.value))}
+          onChange={(e) =>
+            setProp((props: any) => (props.variant = e.target.value))
+          }
         >
           <FormControlLabel
             label="Text"
@@ -87,11 +89,13 @@ export const ButtonSettings = () => {
         <FormLabel component="legend">Color</FormLabel>
         <RadioGroup
           defaultValue={props.color}
-          onChange={(e) => setProp((props) => (props.color = e.target.value))}
+          onChange={(e) =>
+            setProp((props: any) => (props.color = e.target.value))
+          }
         >
           <FormControlLabel
             label="Default"
-            value="default"
+            value="inherit"
             control={<Radio size="small" color="default" />}
           />
           <FormControlLabel

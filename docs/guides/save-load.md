@@ -20,11 +20,24 @@ yarn add lzutf8 copy-to-clipboard
 
 We'll use `lzutf8` to compress our serialised JSON Nodes, and additionally transform it into base64.
 
-```jsx {24-36}
-import React, { useState } from "react";
-import { Box, FormControlLabel, Switch, Grid, Button as MaterialButton, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField, Snackbar } from "@material-ui/core";
-import { useEditor } from "@webstencils/core";
-import lz from "lzutf8";
+```jsx
+import React, { useState } from 'react';
+
+import Box from '@mui/material/Box';
+import MaterialButton from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogActions from '@mui/material/DialogActions';
+import TextField from '@mui/material/TextField';
+import Snackbar from '@mui/material/Snackbar';
+
+import { useEditor } from '@webstencils/core';
+import lz from 'lzutf8';
 import copy from 'copy-to-clipboard';
 
 export const Topbar = () => {
@@ -32,7 +45,8 @@ export const Topbar = () => {
     enabled: state.options.enabled
   }));
 
-const [snackbarMessage, setSnackbarMessage] = useState();
+  const [snackbarMessage, setSnackbarMessage] = useState();
+  
   return (
     <Box px={1} py={1} mt={3} mb={1} bgcolor="#cbe8e7">
       <Grid container alignItems="center">
@@ -75,15 +89,30 @@ When you click on the button now, it should copy the compressed base64 string to
 
 ## Load state
 
-Now let's implement the Load State button in our Topbar component. We will display a Dialog box when the button is clicked, and our users will be able to paste the compressed base64 string there. 
+Now let's implement the Load State button in our Topbar component.
+We will display a Dialog box when the button is clicked, and our users will be able to paste the compressed base64 string there. 
 
-Then, we will need to work in reverse to obtain the original JSON provided by our editor. Finally, we'll call the `deserialize` action which will result in the editor replacing all the current Nodes in the editor with the deserialized output.
+Then, we will need to work in reverse to obtain the original JSON provided by our editor.
+Finally, we'll call the `deserialize` action which will result in the editor replacing all the current Nodes in the editor with the deserialized output.
 
-```jsx {12-14,40-83}
-import React, { useState } from "react";
-import { Box, FormControlLabel, Switch, Grid, Button as MaterialButton, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, TextField, Snackbar } from "@material-ui/core";
-import { useEditor } from "@webstencils/core";
-import lz from "lzutf8";
+```jsx
+import React, { useState } from 'react';
+
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import MaterialButton from '@mui/material/Button';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogActions from '@mui/material/DialogActions';
+import TextField from '@mui/material/TextField';
+import Snackbar from '@mui/material/Snackbar';
+
+import { useEditor } from '@webstencils/core';
+import lz from 'lzutf8';
 import copy from 'copy-to-clipboard';
 
 export const Topbar = () => {
@@ -186,16 +215,21 @@ By default, it constructs the editor state based on what was initially rendered 
 But, we could also specify the serialized JSON nodes to its `json` prop which would cause it to load the state from the JSON string instead. 
 
 ```jsx
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import "../styles/main.css";
-import {Typography, Button as MaterialButton, Paper, Grid, makeStyles} from '@material-ui/core';
-import {Toolbox} from '../components/Toolbox';
-import {Container} from '../components/user/Container';
-import {Button} from '../components/user/Button';
-import {Card, CardBottom, CardTop} from '../components/user/Card';
-import {Text} from '../components/user/Text';
-import {SettingsPanel} from '../components/SettingsPanel';
-import {Editor, Frame, Element} from "@webstencils/core";
+
+import Typography from '@mui/material/Typography';
+import MaterialButton from '@mui/material/Button';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+
+import { Toolbox } from '../components/Toolbox';
+import { Container } from '../components/user/Container';
+import { Button } from '../components/user/Button';
+import { Card, CardBottom, CardTop } from '../components/user/Card';
+import { Text } from '../components/user/Text';
+import { SettingsPanel } from '../components/SettingsPanel';
+import { Editor, Frame, Element } from "@webstencils/core";
 import { Topbar } from '../components/Topbar';
 
 export default function App() {

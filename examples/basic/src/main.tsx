@@ -2,7 +2,7 @@ import React, { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { CssBaseline } from '@mui/material';
 
 import './styles/main.css';
 import App from './app/app';

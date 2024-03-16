@@ -1,9 +1,11 @@
-import { Slider, FormControl, FormLabel } from '@material-ui/core';
 import { useNode } from '@webstencils/core';
 import React, { useState, useEffect } from 'react';
 import ContentEditable from 'react-contenteditable';
+import FormLabel from '@mui/material/FormLabel';
+import Slider from '@mui/material/Slider';
+import FormControl from '@mui/material/FormControl';
 
-export const Text = ({ text, fontSize, textAlign, ...props }) => {
+export const Text = ({ text, fontSize, textAlign, ...props }: any) => {
   const {
     connectors: { connect, drag },
     selected,
@@ -26,7 +28,7 @@ export const Text = ({ text, fontSize, textAlign, ...props }) => {
   return (
     <div
       {...props}
-      ref={(ref) => connect(drag(ref))}
+      ref={(ref: any) => connect(drag(ref))}
       onClick={() => selected && setEditable(true)}
     >
       <ContentEditable
@@ -34,7 +36,7 @@ export const Text = ({ text, fontSize, textAlign, ...props }) => {
         disabled={!editable}
         onChange={(e) =>
           setProp(
-            (props) =>
+            (props: any) =>
               (props.text = e.target.value.replace(/<\/?[^>]+(>|$)/g, '')),
             500
           )
@@ -64,7 +66,7 @@ const TextSettings = () => {
         min={1}
         max={50}
         onChange={(_, value) => {
-          setProp((props) => (props.fontSize = value), 1000);
+          setProp((props: any) => (props.fontSize = value), 1000);
         }}
       />
     </FormControl>
