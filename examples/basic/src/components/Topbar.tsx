@@ -1,20 +1,20 @@
-import {
-  Box,
-  FormControlLabel,
-  Switch,
-  Grid,
-  Button as MaterialButton,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  TextField,
-  Snackbar
-} from '@material-ui/core';
+import React, { useState } from 'react';
+
+import Box from '@mui/material/Box';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
+import MaterialButton from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import TextField from '@mui/material/TextField';
+import Snackbar from '@mui/material/Snackbar';
+
 import { useEditor } from '@webstencils/core';
 import copy from 'copy-to-clipboard';
 import lz from 'lzutf8';
-import React, { useState } from 'react';
 
 export const Topbar = () => {
   const { actions, query, enabled, canUndo, canRedo } = useEditor(
@@ -26,9 +26,9 @@ export const Topbar = () => {
   );
 
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState();
+  const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
 
-  const [stateToLoad, setStateToLoad] = useState(null);
+  const [stateToLoad, setStateToLoad] = useState<string | null>(null);
 
   return (
     <Box px={1} py={1} mt={3} mb={1} bgcolor="#cbe8e7">
@@ -120,9 +120,11 @@ export const Topbar = () => {
               <MaterialButton
                 onClick={() => {
                   setDialogOpen(false);
-                  const json = lz.decompress(lz.decodeBase64(stateToLoad));
-                  actions.deserialize(json);
-                  setSnackbarMessage('State loaded');
+                  if (typeof stateToLoad === 'string') {
+                    const json = lz.decompress(lz.decodeBase64(stateToLoad));
+                    actions.deserialize(json);
+                    setSnackbarMessage('State loaded');
+                  }
                 }}
                 color="primary"
                 autoFocus

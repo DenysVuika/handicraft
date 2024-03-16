@@ -1,11 +1,9 @@
-import {
-  Box,
-  Typography,
-  Grid,
-  Button as MaterialButton
-} from '@material-ui/core';
-import { useEditor, Element } from '@webstencils/core';
 import React from 'react';
+import { useEditor, Element } from '@webstencils/core';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import MaterialButton from '@mui/material/Button';
 
 import { Button } from './user/Button';
 import { Card } from './user/Card';
@@ -29,7 +27,7 @@ export const Toolbox = () => {
         </Box>
         <Grid container direction="column" item>
           <MaterialButton
-            ref={(ref) =>
+            ref={(ref: any) =>
               connectors.create(ref, <Button text="Click me" size="small" />)
             }
             variant="contained"
@@ -40,7 +38,7 @@ export const Toolbox = () => {
         </Grid>
         <Grid container direction="column" item>
           <MaterialButton
-            ref={(ref) => connectors.create(ref, <Text text="Hi world" />)}
+            ref={(ref: any) => connectors.create(ref, <Text text="Hi world" />)}
             variant="contained"
             data-cy="toolbox-text"
           >
@@ -49,7 +47,7 @@ export const Toolbox = () => {
         </Grid>
         <Grid container direction="column" item>
           <MaterialButton
-            ref={(ref) =>
+            ref={(ref: any) =>
               connectors.create(
                 ref,
                 <Element canvas is={Container} padding={20} />
@@ -63,7 +61,7 @@ export const Toolbox = () => {
         </Grid>
         <Grid container direction="column" item>
           <MaterialButton
-            ref={(ref) => connectors.create(ref, <Card />)}
+            ref={(ref: any) => connectors.create(ref, <Card />)}
             variant="contained"
             data-cy="toolbox-card"
           >

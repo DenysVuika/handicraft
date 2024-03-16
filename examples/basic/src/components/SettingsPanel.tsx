@@ -1,10 +1,8 @@
-import {
-  Box,
-  Chip,
-  Grid,
-  Typography,
-  Button as MaterialButton
-} from '@material-ui/core';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import MaterialButton from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
 import { useEditor } from '@webstencils/core';
 import React from 'react';
 
@@ -56,7 +54,7 @@ export const SettingsPanel = () => {
         {selected.isDeletable ? (
           <MaterialButton
             variant="contained"
-            color="default"
+            color="primary"
             onClick={() => {
               actions.delete(selected.id);
             }}

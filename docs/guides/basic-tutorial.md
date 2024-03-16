@@ -30,7 +30,7 @@ We'll add the page editor functionalities later.
 To make our lives easier, we'll use some external packages for designing our user interfaces.
 
 ```bash
-yarn add @material-ui/core react-contenteditable material-ui-color-picker
+yarn add @mui/material @emotion/react @emotion/styled react-contenteditable mui-color-input
 ```
 
 ### User Components
@@ -40,8 +40,9 @@ Let's first create the User Components - the components that our end users will 
 #### Text
 
 ```jsx
-// components/user/Text.js
-import React from "react";
+// components/user/Text.tsx
+
+import React from 'react';
 
 export const Text = ({text, fontSize}) => {
   return (
@@ -55,9 +56,10 @@ export const Text = ({text, fontSize}) => {
 #### Button
 
 ```jsx
-// components/user/Button.js
-import React  from "react";
-import { Button as MaterialButton } from "@material-ui/core";
+// components/user/Button.tsx
+
+import React  from 'react';
+import MaterialButton from '@mui/material/Button';
 
 export const Button = ({size, variant, color, children}) => {
   return (
@@ -73,9 +75,10 @@ export const Button = ({size, variant, color, children}) => {
 We will also create a Container component to allow our users to change its background colour and padding.
 
 ```jsx
-// components/user/Container.js
-import React from "react";
-import { Paper } from "@material-ui/core";
+// components/user/Container.tsx
+
+import React from 'react';
+import Paper from '@mui/material/Paper';
 
 export const Container = ({background, padding = 0, children}) => {
   return (
@@ -91,11 +94,12 @@ export const Container = ({background, padding = 0, children}) => {
 Now, let's create another user component that will be more advanced. It will be composed of the Container component we made earlier, and it will contain two droppable regions; one for text and another for buttons.
 
 ```jsx
-// components/user/Card.js
-import React  from "react";
-import { Text } from "./Text";
-import { Button } from "./Button";
-import { Container } from "./Container";
+// components/user/Card.tsx
+
+import React  from 'react';
+import { Text } from './Text';
+import { Button } from './Button';
+import { Container } from './Container';
 
 export const Card = ({background, padding = 20}) => {
   return (
@@ -119,9 +123,13 @@ export const Card = ({background, padding = 20}) => {
 Let's build a "toolbox" which our users will be able to drag and drop to create new instances of those User Components we just defined.
 
 ```jsx
-// components/Toolbox.js
-import React from "react";
-import { Box, Typography, Grid, Button as MaterialButton } from "@material-ui/core";
+// components/Toolbox.tsx
+
+import React from 'react';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import MaterialButton from '@mui/material/Button';
 
 export const Toolbox = () => {
   return (
@@ -155,9 +163,17 @@ We also want to create a section here where we can display a bunch of settings w
 For now, let's just put in some dummy text fields. We'll revisit this in the later sections.
 
 ```jsx
-// components/SettingsPanel.js
+// components/SettingsPanel.tsx
+
 import React from 'react';
-import { Box, Chip, Grid, Typography, Button as MaterialButton, FormControl, FormLabel, Slider } from "@material-ui/core";
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import MaterialButton from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import Slider from '@mui/material/Slider';
 
 export const SettingsPanel = () => {  
   return  (    
@@ -198,9 +214,14 @@ export const SettingsPanel = () => {
 Let's design a section that is going to contain a switch for users to disable the editor's functionality and also a button that is simply going to display the serialized output in the browser's console.
 
 ```jsx
-// components/Topbar.js
-import React from "react";
-import { Box, FormControlLabel, Switch, Grid, Button as MaterialButton } from "@material-ui/core";
+// components/Topbar.tsx
+
+import React from 'react';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import MaterialButton from '@mui/material/Button';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 
 export const Topbar = () => {
   return (
@@ -226,10 +247,12 @@ export const Topbar = () => {
 Now, let's put together our entire React application. 
 
 ```jsx
-// pages/index.js
+// pages/index.tsx
 
 import React from 'react';
-import {Typography, Paper, Grid} from '@material-ui/core';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
 
 import { Toolbox } from '../components/Toolbox';
 import { SettingsPanel } from '../components/SettingsPanel';
@@ -275,9 +298,12 @@ Up to this point, we have made a user interface for our page editor. Now, let's 
 - Then wrap the editable area with `<Frame />` which passes the rendering process to WebStencils.
 
 ```jsx {19,22,31,40}
-// pages/index.js
+// pages/index.tsx
+
 import React from 'react';
-import {Typography, Paper, Grid} from '@material-ui/core';
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
 
 import { Toolbox } from '../components/Toolbox';
 import { SettingsPanel } from '../components/SettingsPanel';
@@ -287,7 +313,7 @@ import { Button } from '../components/user/Button';
 import { Card } from '../components/user/Card';
 import { Text } from '../components/user/Text';
 
-import {Editor, Frame, Element} from "@webstencils/core";
+import { Editor, Frame, Element } from "@webstencils/core";
 
 export default function App() {
   return (
@@ -372,10 +398,10 @@ The first thing we will need to do is to let WebStencils to manage the DOM of ou
 The hook provides `connectors` which act as a bridge between the DOM and the events in WebStencils:
 
 ```jsx {4,7,10}
-// components/user/Text.js
-import React from "react";
-import { Typography } from "@material-ui/core";
-import { useNode } from "@webstencils/core";
+// components/user/Text.tsx
+import React from 'react';
+import Typography from '@mui/material/Typography';
+import { useNode } from '@webstencils/core';
 
 export const Text = ({text}) => {
   const { connectors: {connect, drag} } = useNode();
@@ -412,7 +438,8 @@ Our Text component can now only be dragged if the `text` prop is not set to "Dra
 Nice, now let's enable drag-n-drop for the other User Components:
 
 ```jsx {3,5}
-// components/user/Button.js
+// components/user/Button.tsx
+
 export const Button = ({size, variant, color, children}) => {
   const { connectors: {connect, drag} } = useNode();
   return (
@@ -424,7 +451,8 @@ export const Button = ({size, variant, color, children}) => {
 ```
 
 ```jsx {3,5}
-// components/user/Container.js
+// components/user/Container.tsx
+
 export const Container = ({background, padding = 0, children}) => {
   const { connectors: {connect, drag} } = useNode();
   return (
@@ -436,7 +464,7 @@ export const Container = ({background, padding = 0, children}) => {
 ```
 
 ```jsx
-// components/user/Card.js (No changes)
+// components/user/Card.tsx (No changes)
 
 // It's not necessary to add connectors for our Card component since it's a composition of our Container component - which already has connectors applied.
 export const Card = ({background, padding = 0}) => {
@@ -459,7 +487,8 @@ Of course, our Card component is supposed to have 2 droppable regions, which mea
 But hold up, how do we even create a Node inside a User Component?  Remember the `<Element />` component that was used to define Nodes earlier in our application? Well it can be used here as well.
 
 ```jsx {2,7,10,11,13}
-// components/user/Card.js
+// components/user/Card.tsx
+
 import {useNode, Element} from "@webstencils/core";
 
 export const Card = ({bg, padding}) => {
@@ -484,8 +513,9 @@ You might be wondering how do we set drag/drop rules for the new droppable regio
 Hence, we can specify and create a new User Component and define rules via the `craft` prop just like what we have done previously.
 
 ```jsx 
-// components/user/Card.js
-import React  from "react";
+// components/user/Card.tsx
+
+import React  from 'react';
 import Text from "./Text";
 import Button from "./Button";
 import { Element, useNode } from "@webstencils/core";
@@ -565,14 +595,18 @@ The `useEditor` also provides `connectors`; the one we are interested in right n
 DOM specified in its first argument and creates the element specified in its second argument.
 
 ```jsx {20,23,26,29}
-// components/Toolbox.js
-import React from "react";
-import { Box, Typography, Grid, Button as MaterialButton } from "@material-ui/core";
-import { Element, useEditor } from "@webstencils/core";
-import { Container } from "./user/Container";
-import { Card } from "./user/Card";
-import { Button } from "./user/Button";
-import { Text } from "./user/Text";
+// components/Toolbox.tsx
+
+import React from 'react';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import MaterialButton from '@mui/material/Button';
+import { Element, useEditor } from '@webstencils/core';
+import { Container } from './user/Container';
+import { Card } from './user/Card';
+import { Button } from './user/Button';
+import { Text } from './user/Text';
 
 export const Toolbox = () => {
   const { connectors, query } = useEditor();
@@ -614,8 +648,8 @@ The `useNode` hook provides us with the method `setProp` which can be used to ma
 For simplicity's sake, we will be using `react-contenteditable`
 
 ```jsx {11-20}
-import React, {useCallback} from "react";
-import ContentEditable from 'react-contenteditable'
+import React, {useCallback} from 'react';
+import ContentEditable from 'react-contenteditable';
 
 export const Text = ({text, fontSize}) => {
   const { connectors: {connect, drag}, actions: {setProp} } = useNode();
@@ -644,7 +678,8 @@ But let's only enable content editable only when the component is clicked when i
 The `useNode` hook accepts a collector function which can be used to retrieve state information related to the corresponding `Node`:
 
 ```jsx {4-5,8,10,18}
-// components/user/Text.js
+// components/user/Text.tsx
+
 export const Text = ({text, fontSize}) => {
   const { connectors: {connect, drag}, hasSelectedNode, hasDraggedNode, actions: {setProp} } = useNode((state) => ({
     hasSelectedNode: state.events.selected.size > 0,
@@ -676,8 +711,11 @@ This should give you an idea of the possibilities of implementing powerful visua
 While we are at it, let's also add a slider for users to edit the `fontSize`
 
 ```jsx
-// components/user/Text.js
-import {Slider, FormControl, FormLabel} from "@material-ui/core";
+// components/user/Text.tsx
+
+import Slider from '@mui/material/Slider';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
 
 export const Text= ({text, fontSize, textAlign}) => {
   const { connectors: {connect, drag}, hasSelectedNode, hasDraggedNode, actions: {setProp} } = useNode((state) => ({
@@ -725,7 +763,8 @@ it can make use of the `useNode` hook. Additionally, a Related Component is regi
 which means we can access and render this component anywhere within the editor. 
 
 ```jsx
-// components/user/Text.js
+// components/user/Text.tsx
+
 export const Text = ({text, fontSize}) => {
   const { connectors: {connect, drag}, isActive, actions: {setProp} } = useNode((node) => ({
     isActive: node.events.selected
@@ -774,10 +813,17 @@ Text.craft = {
 Before we move on to the Settings Panel, let's quickly do the same for the other User Components:
 
 ```jsx
-// components/user/Button.js
-import {Button as MaterialButton, Grid, FormControl, FormLabel, RadioGroup,Radio, FormControlLabel} from "@material-ui/core";
-export const Button = () => {}
+// components/user/Button.tsx
 
+import MaterialButton from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import RadioGroup from '@mui/material/RadioGroup';
+import Radio from '@mui/material/Radio';
+
+export const Button = () => {/*...*/};
 
 const ButtonSettings = () => {
   const { actions: {setProp}, props } = useNode((node) => ({
@@ -822,11 +868,15 @@ Button.craft = {
 ```
 
 ```jsx
-// components/user/Container.js
-import {FormControl, FormLabel, Slider} from "@material-ui/core";
-import ColorPicker from 'material-ui-color-picker'
+// components/user/Container.tsx
 
-export const Container = () => {/*...*/}
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import Slider from '@mui/material/Slider';
+
+import { MuiColorInput as ColorPicker } from 'mui-color-input';
+
+export const Container = () => {/*...*/};
 
 export const ContainerSettings = () => {
   const { background, padding, actions: {setProp} } = useNode(node => ({
@@ -857,10 +907,11 @@ Container.craft = {
 ```
 
 ```jsx
-// components/user/Card.js
-import { ContainerSettings } from "./Container";
+// components/user/Card.tsx
 
-export const Card = ({ background, padding = 20 }) => { /*...*/ }
+import { ContainerSettings } from './Container';
+
+export const Card = ({ background, padding = 20 }) => { /*...*/ };
 
 Card.craft = {
   related: {
@@ -877,8 +928,9 @@ Setting default props is not strictly necessary. However, it is helpful if we wi
 For instance, if a Text component is rendered as `<Text text="Hi" />`, we would get a null value when we try to retrieve the `fontSize` prop via its `Node`. An easy way to solve this is to explicitly define each User Component's `props`:
 
 ```jsx
-// components/user/Text.js
-export const Text = ({text, fontSize}) => {}
+// components/user/Text.tsx
+
+export const Text = ({text, fontSize}) => {/*...*/};
 
 Text.craft = {
   props: {
@@ -891,8 +943,9 @@ Text.craft = {
 ```
 
 ```jsx
-// components/user/Button.js
-export const Button = ({size, variant, color, text}) => {}
+// components/user/Button.tsx
+
+export const Button = ({size, variant, color, text}) => {/*...*/};
 
 Button.craft = {
   props: { 
@@ -906,8 +959,9 @@ Button.craft = {
 ```
 
 ```jsx
-// components/user/Container.js
-export const Container = ({background, padding}) => {}
+// components/user/Container.tsx
+
+export const Container = ({background, padding}) => {/*...*/};
 
 // We export this because we'll be using this in the Card component as well
 export const ContainerDefaultProps = {
@@ -918,27 +972,30 @@ export const ContainerDefaultProps = {
 Container.craft = {
   props: ContainerDefaultProps,
   related: {...}
-}
+};
 ```
 
 ```jsx
-// components/user/Card.js
-import {ContainerDefaultProps} from "./Container";
+// components/user/Card.tsx
 
-export const Card = ({background, padding}) => {}
+import {ContainerDefaultProps} from './Container';
+
+export const Card = ({background, padding}) => {/*...*/};
 
 Card.craft = {
   props: ContainerDefaultProps,
   related: {...}
-}
+};
 ```
 
 ### Settings Panel
+
 We need to get the currently selected component which can be obtained from the editor's internal state. Similar to `useNode`, a collector function can be specified to `useEditor`. The difference is here, we'll be dealing with the editor's internal state rather than with a specific `Node`:
 
 ```jsx
 const { currentlySelectedId } = useEditor((state) => {
   const [currentlySelectedId] = state.events.selected;
+  
   return {
     currentlySelectedId
   }
@@ -950,9 +1007,14 @@ const { currentlySelectedId } = useEditor((state) => {
 Now, let's replace the placeholder text fields in our Settings Panel with the `settings` Related Component:
 
 ```jsx {4,7-22,24,35-37}
-// components/SettingsPanel.js
+// components/SettingsPanel.tsx
 
-import { Box, Chip, Grid, Typography, Button as MaterialButton } from "@material-ui/core";
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+import Chip from '@mui/material/Chip';
+import MaterialButton from '@mui/material/Button';
+
 import { useEditor } from "@webstencils/core";
 
 export const SettingsPanel = () => {
@@ -1003,7 +1065,7 @@ Now, we have to make our Delete button work. We can achieve this by using the `d
 Also, it's important to note that not all nodes are deletable - if we try to delete an undeletable Node, it'll result in an error. Hence, it's good to make use of the [helper](../api/NodeHelpers.md) methods which helps describe a Node. In our case, we would like to know if the currently selected Node is deletable before actually displaying the "Delete" button. We can access the helper methods via the `node` query in the `useEditor` hook.
 
 ```jsx {13,27-37}
-// components/SettingsPanel.js
+// components/SettingsPanel.tsx
 
 export const SettingsPanel = () => {
   const { actions, selected } = useEditor((state, query) => {
@@ -1059,9 +1121,15 @@ Lastly, the `useEditor` hook also provides `query` methods which provide informa
 In our case,  we would like to get the current state of all the `Nodes` in a serialized form; we can do this by calling the `serialize` query method. 
 
 ```jsx {4,7-9,16,25-27}
-// components/Topbar.js
-import React from "react";
-import { Box, FormControlLabel, Switch, Grid, Button as MaterialButton } from "@material-ui/core";
+// components/Topbar.tsx
+
+import React from 'react';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import MaterialButton from '@mui/material/Button';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
+
 import { useEditor } from "@webstencils/core";
 
 export const Topbar = () => {

@@ -1,17 +1,19 @@
-import { Slider } from '@material-ui/core';
-import { Paper, FormControl, FormLabel } from '@material-ui/core';
-import { useNode } from '@webstencils/core';
-import ColorPicker from 'material-ui-color-picker';
 import React from 'react';
+import Slider from '@mui/material/Slider';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import { useNode } from '@webstencils/core';
+import Paper from '@mui/material/Paper';
+import { MuiColorInput as ColorPicker } from 'mui-color-input';
 
-export const Container = ({ background, padding, children, ...props }) => {
+export const Container = ({ background, padding, children, ...props }: any) => {
   const {
     connectors: { connect, drag }
   } = useNode();
   return (
     <Paper
       {...props}
-      ref={(ref) => connect(drag(ref))}
+      ref={(ref: any) => connect(drag(ref))}
       style={{ margin: '5px 0', background, padding: `${padding}px` }}
     >
       {children}
@@ -36,8 +38,8 @@ export const ContainerSettings = () => {
         <ColorPicker
           name="background-color"
           value={background}
-          onChange={(color) => {
-            setProp((props) => (props.background = color), 500);
+          onChange={(color: any) => {
+            setProp((props: any) => (props.background = color), 500);
           }}
         />
       </FormControl>
@@ -46,7 +48,7 @@ export const ContainerSettings = () => {
         <Slider
           defaultValue={padding}
           onChange={(_, value) =>
-            setProp((props) => (props.padding = value), 500)
+            setProp((props: any) => (props.padding = value), 500)
           }
         />
       </FormControl>
