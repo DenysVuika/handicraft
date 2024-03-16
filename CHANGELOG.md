@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Change `query.parseSerializedNode(node: SerializedNode).toNode(normalize?)` to `query.parseSerializedNode(node: SerializedNode, normalize?: NormalizeNodeCallback) => Node`
   - Change `query.parseReactElement(element: React.ReactElement).toNodeTree(normalize?)` to `query.parseReactElement(element: React.ReactElement, normalize?: NormalizeJsxNodeCallback) => NodeTree`
 - New `Designer` (vite) demo project to replace the old `landing` (next.js)
+- Reworked `Basic` demo, upgrade to latest MUI
 
 ### Fixed
 
