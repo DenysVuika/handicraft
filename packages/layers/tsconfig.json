@@ -4,5 +4,5 @@
     "baseUrl": "./src",
     "outDir": "./dist"
   },
-  "include": ["src/index.tsx", "svg.d.ts"]
+  "include": ["src/index.tsx"]
 }
