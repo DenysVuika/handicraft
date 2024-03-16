@@ -8110,9 +8110,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"example-basic@workspace:examples/basic":
+"example-basic-old@workspace:examples/_basic":
   version: 0.0.0-use.local
-  resolution: "example-basic@workspace:examples/basic"
+  resolution: "example-basic-old@workspace:examples/_basic"
   dependencies:
     "@material-ui/core": "npm:4.12.4"
     "@webstencils/core": "workspace:*"
@@ -8151,6 +8151,23 @@ __metadata:
     react-dom: "npm:18.2.0"
     react-rnd: "npm:^10.4.1"
     react-youtube: "npm:^10.1.0"
+  languageName: unknown
+  linkType: soft
+
+"examples-basic@workspace:examples/basic":
+  version: 0.0.0-use.local
+  resolution: "examples-basic@workspace:examples/basic"
+  dependencies:
+    "@material-ui/core": "npm:4.12.4"
+    "@mui/material": "npm:^5.15.10"
+    "@webstencils/core": "workspace:*"
+    clsx: "npm:latest"
+    copy-to-clipboard: "npm:3.2.0"
+    lzutf8: "npm:0.5.5"
+    material-ui-color-picker: "npm:3.2.0"
+    react: "npm:18.2.0"
+    react-contenteditable: "npm:3.3.7"
+    react-dom: "npm:18.2.0"
   languageName: unknown
   linkType: soft
 
