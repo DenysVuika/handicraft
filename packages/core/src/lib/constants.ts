@@ -35,6 +35,4 @@ More info: https://denysvuika.github.io/handicraft/api/Editor#props`;
 export const ERROR_USE_EDITOR_OUTSIDE_OF_EDITOR_CONTEXT = `You can only use useEditor in the context of <Editor />.
 
 Please only use useEditor in components that are children of the <Editor /> component.`;
-export const ERROR_USE_NODE_OUTSIDE_OF_EDITOR_CONTEXT = `You can only use useNode in the context of <Editor />.
-
-Please only use useNode in components that are children of the <Editor /> component.`;
+export const ERROR_USE_NODE_OUTSIDE_OF_EDITOR_CONTEXT = `You can only use useNode in the context of <Editor />. Please only use useNode in components that are children of the <Editor /> component.`;
