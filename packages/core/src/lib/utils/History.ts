@@ -97,7 +97,7 @@ export class History {
     return this.pointer < this.timeline.length - 1;
   }
 
-  undo(state) {
+  undo(state: any) {
     if (!this.canUndo()) {
       return;
     }
@@ -107,7 +107,7 @@ export class History {
     return applyPatches(state, inversePatches);
   }
 
-  redo(state) {
+  redo(state: any) {
     if (!this.canRedo()) {
       return;
     }

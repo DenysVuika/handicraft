@@ -1,19 +1,21 @@
 import React, { Fragment } from 'react';
+import { describe, vi } from 'vitest';
+import { parseNodeFromJSX } from './parseNodeFromJSX';
 
-import { parseNodeFromJSX } from '../parseNodeFromJSX';
+const mockedCreateNode = vi.fn();
 
-const Component = ({ href }) => <a href={href}>Hi</a>;
+vi.mock('./createNode', async (importOriginal) => {
+  const mod = await importOriginal<typeof import('./createNode')>();
 
-const mockedCreateNode = jest.fn();
+  return {
+    ...mod,
+    createNode: vi
+      .fn()
+      .mockImplementation((...args) => mockedCreateNode(...args))
+  };
+});
 
-jest.mock('../createNode', () => ({
-  __esModule: true,
-  createNode: jest
-    .fn()
-    .mockImplementation((...args) => mockedCreateNode(...args))
-}));
-
-describe('parseNodeFromJSX', () => {
+describe.only('parseNodeFromJSX', () => {
   const props = { href: 'href' };
 
   describe('Returns correct type and props', () => {
@@ -31,7 +33,10 @@ describe('parseNodeFromJSX', () => {
         expect.any(Function)
       );
     });
+
     it('should be able to parse a component correctly', () => {
+      const Component = ({ href }: { href: string }) => <a href={href}>Hi</a>;
+
       parseNodeFromJSX(<Component {...props} />);
 
       expect(mockedCreateNode).toBeCalledWith(
@@ -44,6 +49,7 @@ describe('parseNodeFromJSX', () => {
         expect.any(Function)
       );
     });
+
     it('should transform text with `div` correctly', () => {
       parseNodeFromJSX('div');
 
@@ -57,6 +63,7 @@ describe('parseNodeFromJSX', () => {
         expect.any(Function)
       );
     });
+
     it('should be able to parse plain text correctly', () => {
       const text = 'hello there';
       parseNodeFromJSX(text);

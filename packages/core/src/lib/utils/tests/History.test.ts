@@ -1,11 +1,12 @@
+import { describe, vi } from 'vitest';
 import { applyPatches } from 'immer';
-
 import { History } from '../History';
 
-jest.mock('immer');
+vi.mock('immer');
 
 describe('History Manager', () => {
-  let history;
+  let history: any;
+
   const dummyTimeline = [
     {
       patches: [{ op: 'add', path: '/node1', value: 32 }],
