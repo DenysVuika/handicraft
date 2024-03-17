@@ -7,8 +7,7 @@
     "yalc": "nx run-many -t yalc",
     "clean": "nx run-many -t clean",
     "build": "nx run-many -t build",
-    "test": "jest",
-    "test:watch": "NODE_ENV=test jest --watchAll",
+    "test": "nx run-many -t test",
     "lint": "nx run-many -t lint",
     "prepare": "husky"
   },
