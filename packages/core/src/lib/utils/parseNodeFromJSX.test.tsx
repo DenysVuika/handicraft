@@ -15,7 +15,7 @@ vi.mock('./createNode', async (importOriginal) => {
   };
 });
 
-describe.only('parseNodeFromJSX', () => {
+describe('parseNodeFromJSX', () => {
   const props = { href: 'href' };
 
   describe('Returns correct type and props', () => {
