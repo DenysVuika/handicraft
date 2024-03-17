@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import { DerivedEventHandlers } from '../DerivedEventHandlers';
 import { EventHandlers } from '../EventHandlers';
 
@@ -10,7 +11,7 @@ export function triggerMouseEvent(node: HTMLElement, eventType: string) {
 }
 
 export const createTestHandlers = (): any => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 
   const testHandlers = [
     'connect',
@@ -19,19 +20,19 @@ export const createTestHandlers = (): any => {
     'drag',
     'drop',
     'create'
-  ].reduce((accum, key) => {
-    const cleanup = jest.fn();
-    const init = jest.fn().mockImplementation(() => {
+  ].reduce((accum: any, key) => {
+    const cleanup = vi.fn();
+    const init = vi.fn().mockImplementation(() => {
       return cleanup;
     });
     accum[key] = {
       init,
       cleanup,
       events: {
-        mousedown: jest.fn().mockImplementation((e) => {
+        mousedown: vi.fn().mockImplementation((e) => {
           e.craft.stopPropagation();
         }),
-        mouseover: jest.fn()
+        mouseover: vi.fn()
       }
     };
 
@@ -40,8 +41,8 @@ export const createTestHandlers = (): any => {
 
   class CoreHandlers extends EventHandlers {
     handlers() {
-      return Object.keys(testHandlers).reduce((accum, key) => {
-        accum[key] = (el, ...args) => {
+      return Object.keys(testHandlers).reduce((accum: any, key) => {
+        accum[key] = (el: any, ...args: any[]) => {
           const cleanup = testHandlers[key].init(el, ...args);
           const listenersToRemove = Object.keys(testHandlers[key].events).map(
             (eventName: any) => {
@@ -73,17 +74,17 @@ export const createTestHandlers = (): any => {
 };
 
 export const createTestDerivedHandlers = (core: any): any => {
-  jest.clearAllMocks();
+  vi.clearAllMocks();
 
-  const testHandlers = ['connect', 'drag'].reduce((accum, key) => {
-    const cleanup = jest.fn();
-    const init = jest.fn().mockImplementation(() => cleanup);
+  const testHandlers = ['connect', 'drag'].reduce((accum: any, key) => {
+    const cleanup = vi.fn();
+    const init = vi.fn().mockImplementation(() => cleanup);
     accum[key] = {
       init,
       cleanup,
       events: {
-        mousedown: jest.fn(),
-        mouseover: jest.fn()
+        mousedown: vi.fn(),
+        mouseover: vi.fn()
       }
     };
 
@@ -92,8 +93,8 @@ export const createTestDerivedHandlers = (core: any): any => {
 
   class TestDerivedHandlers extends DerivedEventHandlers<any> {
     handlers() {
-      return Object.keys(testHandlers).reduce((accum, key) => {
-        accum[key] = (el, ...args) => {
+      return Object.keys(testHandlers).reduce((accum: any, key) => {
+        accum[key] = (el: any, ...args: any[]) => {
           const cleanup = testHandlers[key].init(el, ...args);
           const listenersToRemove = Object.keys(testHandlers[key].events).map(
             (eventName: any) => {

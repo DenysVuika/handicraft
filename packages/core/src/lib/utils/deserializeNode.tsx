@@ -11,7 +11,7 @@ import {
 } from '../interfaces';
 import { resolveComponent } from './resolveComponent';
 
-type DeserialisedType = JSX.Element & { name: string };
+type DeserialisedType = React.ReactElement & { name: string };
 
 const restoreType = (type: ReduceCompType, resolver: Resolver) =>
   typeof type === 'object' && type.resolvedName

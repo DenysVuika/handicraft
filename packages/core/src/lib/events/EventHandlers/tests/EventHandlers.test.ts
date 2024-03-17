@@ -1,9 +1,12 @@
+import { describe, vi } from 'vitest';
 import { EventHandlers } from '../EventHandlers';
 import { ConnectorsUsage } from '../interfaces';
 import { createTestHandlers, triggerMouseEvent } from './fixtures';
 
 describe('EventHandlers', () => {
-  let instance: EventHandlers, dom, handlers;
+  let instance: EventHandlers;
+  let dom: HTMLElement;
+  let handlers: any;
   let connectorsUsage: ConnectorsUsage<typeof instance>;
 
   beforeEach(() => {
@@ -46,14 +49,16 @@ describe('EventHandlers', () => {
       });
 
       describe('stopPropagation', () => {
-        let childDom;
+        let childDom: HTMLDivElement;
+
         beforeEach(() => {
-          jest.clearAllMocks();
+          vi.clearAllMocks();
           childDom = document.createElement('div');
           dom.appendChild(childDom);
           connectorsUsage.connectors.select(childDom);
           triggerMouseEvent(childDom, 'mousedown');
         });
+
         it('should stopPropagation on parent DOM element', () => {
           expect(handlers.select.events.mousedown).toHaveBeenCalledTimes(1);
           expect(
@@ -64,7 +69,7 @@ describe('EventHandlers', () => {
 
       describe('re-attaching on same DOM element', () => {
         beforeEach(() => {
-          jest.clearAllMocks();
+          vi.clearAllMocks();
         });
         it('should do nothing if opts did not change', () => {
           connectorsUsage.connectors.select(dom);
@@ -89,7 +94,7 @@ describe('EventHandlers', () => {
       Object.keys(connectorsUsage.connectors).forEach((key) => {
         connectorsUsage.connectors[key](dom);
       });
-      jest.clearAllMocks();
+      vi.clearAllMocks();
       instance.disable();
     });
 
@@ -117,7 +122,7 @@ describe('EventHandlers', () => {
       });
 
       instance.disable();
-      jest.clearAllMocks();
+      vi.clearAllMocks();
       instance.enable();
     });
 
