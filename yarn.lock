@@ -4533,12 +4533,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@webstencils/layers@workspace:packages/layers"
   dependencies:
+    "@emotion/react": "npm:^11.11.3"
+    "@emotion/styled": "npm:^11.11.0"
     "@mui/icons-material": "npm:^5.15.13"
+    "@mui/material": "npm:^5.15.13"
     react-contenteditable: "npm:^3.3.3"
     styled-components: "npm:>= 4"
   peerDependencies:
     "@webstencils/core": ">=0.1.0"
     react: ^16.8.0 || ^17 || ^18
+    react-dom: ^16.8.0 || ^17 || ^18
   languageName: unknown
   linkType: soft
 
@@ -6996,6 +7000,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "examples-basic@workspace:examples/basic"
   dependencies:
+    "@emotion/react": "npm:^11.11.3"
+    "@emotion/styled": "npm:^11.11.0"
     "@mui/material": "npm:^5.15.10"
     "@types/react-color": "npm:^3.0.11"
     "@webstencils/core": "workspace:*"
