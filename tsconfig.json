@@ -6,10 +6,10 @@
     "allowJs": true,
     "esModuleInterop": true,
     "paths": {
-      "@webstencils/core": ["packages/core/src/index"],
-      "@webstencils/*": ["packages/core/src/*"],
-      "@webstencils/layers": ["packages/layers/src/index"]
+      "@webstencils/core": ["./packages/core/src/index"],
+      "@webstencils/*": ["./packages/core/src/*"],
+      "@webstencils/layers": ["./packages/layers/src/index"]
     }
   },
-  "exclude": ["**/node_modules/**", "cypress"]
+  "exclude": ["**/node_modules/**"]
 }

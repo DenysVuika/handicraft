@@ -1,5 +1,6 @@
 {
   "name": "@webstencils/layers",
+  "version": "0.0.1",
   "description": "A Photoshop-like layers panel for your page editor",
   "keywords": [
     "wysiwyg",
@@ -10,17 +11,16 @@
     "web-builder",
     "react"
   ],
-  "version": "0.1.0",
   "author": "Denys Vuika <denys.vuika@gmail.com>",
   "license": "Apache-2.0",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/cjs/index.d.ts",
-  "scripts": {
-    "start": "npx rollup -c rollup.config.mjs -w",
-    "build": "npx rollup -c rollup.config.mjs",
-    "yalc": "yalc push",
-    "clean": "npx rimraf lib dist"
+  "private": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,9 @@
     "url": "https://github.com/webstencils/core/issues"
   },
   "homepage": "https://github.com/webstencils/core/",
+  "scripts": {
+    "yalc": "yalc push"
+  },
   "dependencies": {
     "@mui/icons-material": "^5.15.13",
     "react-contenteditable": "^3.3.3",
@@ -38,44 +41,5 @@
   "peerDependencies": {
     "@webstencils/core": ">=0.1.0",
     "react": "^16.8.0 || ^17 || ^18"
-  },
-  "nx": {
-    "targets": {
-      "build": {
-        "dependsOn": [
-          {
-            "projects": "@webstencils/core",
-            "target": "build",
-            "params": "forward"
-          }
-        ],
-        "cache": true,
-        "inputs": [
-          "{projectRoot}/**/*.ts",
-          "{projectRoot}/tsconfig.json",
-          {
-            "externalDependencies": [
-              "typescript"
-            ]
-          }
-        ],
-        "outputs": [
-          "{projectRoot}/dist"
-        ]
-      },
-      "yalc": {
-        "dependsOn": [
-          {
-            "target": "build"
-          }
-        ]
-      }
-    },
-    "includedScripts": [
-      "build",
-      "start",
-      "clean",
-      "yalc"
-    ]
   }
 }
