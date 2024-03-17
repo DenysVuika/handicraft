@@ -1,36 +1,42 @@
 import React from 'react';
-
+import { describe, vi } from 'vitest';
 import {
   rootNode,
   card,
   primaryButton,
   secondaryButton,
   documentWithCardState
-} from '../../tests/fixtures';
-import { EditorQueryMethods } from '../query';
+} from '../tests/fixtures';
+import { EditorQueryMethods } from './query';
 
-let mockedResolveComponent = jest.fn().mockImplementation(() => null);
-const mockedCreateNode = jest.fn().mockImplementation(() => null);
-let mockedParsedNodeFromJsx = jest.fn().mockImplementation(() => null);
-let mockedDeserializeNode = jest.fn().mockImplementation(() => null);
+let mockedResolveComponent = vi.fn().mockImplementation(() => null);
+const mockedCreateNode = vi.fn().mockImplementation(() => null);
+let mockedParsedNodeFromJsx = vi.fn().mockImplementation(() => null);
+let mockedDeserializeNode = vi.fn().mockImplementation((data) => data);
 
-jest.mock('../../utils/resolveComponent', () => ({
-  resolveComponent: (...args) => mockedResolveComponent(...args)
+vi.mock('tiny-invariant', () => {
+  return {
+    default: vi.fn() //.mockImplementation(() => null)
+  };
+});
+
+vi.mock('../utils/resolveComponent', () => ({
+  resolveComponent: (...args: any[]) => mockedResolveComponent(...args)
 }));
-jest.mock('../../utils/createNode', () => ({
-  createNode: (...args) => mockedCreateNode(...args)
+vi.mock('../utils/createNode', () => ({
+  createNode: (...args: any[]) => mockedCreateNode(...args)
 }));
-jest.mock('../../utils/parseNodeFromJSX', () => ({
-  parseNodeFromJSX: (...args) => mockedParsedNodeFromJsx(...args)
+vi.mock('../utils/parseNodeFromJSX', () => ({
+  parseNodeFromJSX: (...args: any[]) => mockedParsedNodeFromJsx(...args)
 }));
-jest.mock('../../utils/deserializeNode', () => ({
-  deserializeNode: (...args) => mockedDeserializeNode(...args)
+vi.mock('../utils/deserializeNode', () => ({
+  deserializeNode: (...args: any[]) => mockedDeserializeNode(...args)
 }));
 
 describe('query', () => {
   const resolver = { H1: () => null };
-  let query;
-  let state;
+  let query: any;
+  let state: any;
 
   beforeEach(() => {
     state = { options: { resolver } };
@@ -52,17 +58,9 @@ describe('query', () => {
         hidden: false
       };
 
-      beforeEach(() => {
-        mockedDeserializeNode = jest.fn().mockImplementation((...args) => {
-          const { deserializeNode } = jest.requireActual(
-            '../../utils/deserializeNode'
-          );
-          return deserializeNode(...args);
-        });
-        query.parseSerializedNode(data);
-      });
-
       it('should call deserializeNode', () => {
+        query.parseSerializedNode(data);
+
         expect(mockedDeserializeNode).toHaveBeenCalledWith(
           data,
           state.options.resolver
@@ -70,6 +68,8 @@ describe('query', () => {
       });
 
       it('should call parseNodeFromJSX', () => {
+        query.parseSerializedNode(data);
+
         expect(mockedCreateNode).toHaveBeenCalledWith(
           {
             data
@@ -106,7 +106,7 @@ describe('query', () => {
   });
 
   describe('parseReactElement', () => {
-    let tree;
+    let tree: any;
     const node = <h1>Hello</h1>;
     const name = 'Document';
 
@@ -118,8 +118,8 @@ describe('query', () => {
 
     describe('when we can resolve the type', () => {
       beforeEach(() => {
-        mockedResolveComponent = jest.fn().mockImplementation(() => name);
-        mockedParsedNodeFromJsx = jest.fn().mockImplementation(() => {
+        mockedResolveComponent = vi.fn().mockImplementation(() => name);
+        mockedParsedNodeFromJsx = vi.fn().mockImplementation(() => {
           return { ...rootNode.data, type: 'div' };
         });
 
@@ -133,9 +133,7 @@ describe('query', () => {
       describe('when there is a single node with no children', () => {
         const node = <button />;
         beforeEach(() => {
-          mockedParsedNodeFromJsx = jest
-            .fn()
-            .mockImplementation(() => rootNode);
+          mockedParsedNodeFromJsx = vi.fn().mockImplementation(() => rootNode);
           tree = query.parseReactElement(node);
         });
 
@@ -160,7 +158,7 @@ describe('query', () => {
           </div>
         );
         beforeEach(() => {
-          mockedParsedNodeFromJsx = jest
+          mockedParsedNodeFromJsx = vi
             .fn()
             .mockImplementationOnce(() => rootNode)
             .mockImplementationOnce(() => card)
