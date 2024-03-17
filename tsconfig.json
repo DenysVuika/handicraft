@@ -4,12 +4,7 @@
     "baseUrl": ".",
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
-    "esModuleInterop": true,
-    "paths": {
-      "@webstencils/core": ["./packages/core/src/index"],
-      "@webstencils/*": ["./packages/core/src/*"],
-      "@webstencils/layers": ["./packages/layers/src/index"]
-    }
+    "esModuleInterop": true
   },
   "exclude": ["**/node_modules/**"]
 }

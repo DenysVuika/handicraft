@@ -14,8 +14,7 @@
     "declaration": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@webstencils/core": ["./packages/core/src/index"],
-      "@webstencils/*": ["./packages/core/src/*"],
+      "@webstencils/core": ["./packages/core/src/index.ts"],
       "@webstencils/layers": ["./packages/layers/src/index"]
     }
   },

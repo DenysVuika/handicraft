@@ -1,8 +1,7 @@
-.rollup.cache
-
-!dist
-!lib
-
+node_modules
 src
-rollup.config.js
-tsconfig.json
+.eslintignore
+.eslintrc.json
+project.json
+tsconfig*.json
+vite.config.ts
