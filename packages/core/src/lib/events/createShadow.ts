@@ -18,7 +18,7 @@ export const createShadow = (
     shadow.classList.add('drag-shadow');
 
     document.body.appendChild(shadow);
-    e.dataTransfer.setDragImage(shadow, 0, 0);
+    e.dataTransfer?.setDragImage(shadow, 0, 0);
 
     return shadow;
   }
@@ -51,7 +51,7 @@ export const createShadow = (
   });
 
   document.body.appendChild(container);
-  e.dataTransfer.setDragImage(container, e.clientX, e.clientY);
+  e.dataTransfer?.setDragImage(container, e.clientX, e.clientY);
 
   return container;
 };

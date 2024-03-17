@@ -25,10 +25,10 @@ export class DefaultEventHandlers<O = {}> extends CoreEventHandlers<
    */
   static forceSingleDragShadow = isChromium() && isLinux();
 
-  draggedElementShadow: HTMLElement;
-  dragTarget: DragTarget;
+  draggedElementShadow: HTMLElement | null = null;
+  dragTarget: DragTarget | null = null;
   positioner: Positioner | null = null;
-  currentSelectedElementIds = [];
+  currentSelectedElementIds: NodeId[] = [];
 
   onDisable() {
     this.options.store.actions.clearEvents();
@@ -54,7 +54,7 @@ export class DefaultEventHandlers<O = {}> extends CoreEventHandlers<
           (e) => {
             e.craft.stopPropagation();
 
-            let newSelectedElementIds = [];
+            let newSelectedElementIds: NodeId[] = [];
 
             if (id) {
               const { query } = store;
@@ -97,7 +97,7 @@ export class DefaultEventHandlers<O = {}> extends CoreEventHandlers<
           e.craft.stopPropagation();
 
           const { query } = store;
-          const selectedElementIds = query.getEvent('selected').all();
+          const selectedElementIds: NodeId[] = query.getEvent('selected').all();
 
           const isMultiSelect = this.options.isMultiSelectEnabled(e);
           const isNodeAlreadySelected =
@@ -224,7 +224,7 @@ export class DefaultEventHandlers<O = {}> extends CoreEventHandlers<
 
             actions.setNodeEvent('dragged', selectedElementIds);
 
-            const selectedDOMs = selectedElementIds.map(
+            const selectedDOMs: any[] = selectedElementIds.map(
               (id) => query.node(id).get().dom
             );
 
@@ -363,7 +363,7 @@ export class DefaultEventHandlers<O = {}> extends CoreEventHandlers<
     }
 
     if (draggedElementShadow) {
-      draggedElementShadow.parentNode.removeChild(draggedElementShadow);
+      draggedElementShadow.parentNode?.removeChild(draggedElementShadow);
       this.draggedElementShadow = null;
     }
 

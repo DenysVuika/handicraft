@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { PropsWithChildren, createContext } from 'react';
 import { NodeId } from '../interfaces';
 
 export type NodeContextType = {
@@ -7,13 +6,15 @@ export type NodeContextType = {
   related?: boolean;
 };
 
-export const NodeContext = React.createContext<NodeContextType>(null);
+export const NodeContext = createContext<NodeContextType | null>(null);
 
 export type NodeProviderProps = Omit<NodeContextType, 'connectors'>;
 
-export const NodeProvider: React.FC<
-  React.PropsWithChildren<NodeProviderProps>
-> = ({ id, related = false, children }) => {
+export const NodeProvider = ({
+  id,
+  related = false,
+  children
+}: PropsWithChildren<NodeProviderProps>) => {
   return (
     <NodeContext.Provider value={{ id, related }}>
       {children}

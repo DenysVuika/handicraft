@@ -325,7 +325,7 @@ const Methods = (
 
     setNodeEvent(
       eventType: NodeEventTypes,
-      nodeIdSelector: NodeSelector<NodeSelectorType.Id>
+      nodeIdSelector: NodeSelector<NodeSelectorType.Id> | null
     ) {
       state.events[eventType].forEach((id) => {
         if (state.nodes[id]) {
