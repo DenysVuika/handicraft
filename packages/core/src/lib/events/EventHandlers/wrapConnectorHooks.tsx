@@ -77,7 +77,7 @@ export function wrapHookToRecognizeElement(
 export function wrapConnectorHooks<H extends ConnectorsRecord>(
   connectors: H
 ): ChainableConnectors<H, ReactElement | HTMLElement> {
-  return Object.keys(connectors).reduce((accum, key) => {
+  return Object.keys(connectors).reduce((accum: any, key) => {
     accum[key] = wrapHookToRecognizeElement((...args) => {
       return connectors[key](...args);
     });

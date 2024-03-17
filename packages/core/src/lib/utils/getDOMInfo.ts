@@ -81,6 +81,6 @@ export const getDOMInfo = (el: HTMLElement) => {
     outerHeight: Math.round(height + margin.top + margin.bottom),
     margin,
     padding,
-    inFlow: el.parentElement && !!styleInFlow(el.parentElement)
+    inFlow: !!el.parentElement && !!styleInFlow(el.parentElement)
   };
 };

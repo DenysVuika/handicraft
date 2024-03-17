@@ -47,7 +47,7 @@ export function EditorQueryMethods(state: EditorState) {
       source: NodeSelector,
       target: NodeId,
       pos: { x: number; y: number },
-      nodesToDOM: (node: Node) => HTMLElement = (node) =>
+      nodesToDOM: (node: Node) => HTMLElement | null = (node) =>
         state.nodes[node.id].dom
     ) => {
       const targetNode = state.nodes[target],
@@ -55,14 +55,16 @@ export function EditorQueryMethods(state: EditorState) {
 
       const targetParent = isTargetCanvas
         ? targetNode
-        : state.nodes[targetNode.data.parent];
+        : targetNode.data.parent
+          ? state.nodes[targetNode.data.parent]
+          : null;
 
       if (!targetParent) return;
 
       const targetParentNodes = targetParent.data.nodes || [];
 
       const dimensionsInContainer = targetParentNodes
-        ? targetParentNodes.reduce((result, id: NodeId) => {
+        ? targetParentNodes.reduce((result: NodeInfo[], id: NodeId) => {
             const dom = nodesToDOM(state.nodes[id]);
             if (dom) {
               const info: NodeInfo = {
@@ -82,7 +84,7 @@ export function EditorQueryMethods(state: EditorState) {
         pos.x,
         pos.y
       );
-      const currentNode =
+      const currentNode: any =
         targetParentNodes.length &&
         state.nodes[targetParentNodes[dropAction.index]];
 
