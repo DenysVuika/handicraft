@@ -3,8 +3,8 @@ import { render } from '@testing-library/react';
 import { describe, vi } from 'vitest';
 import identity from 'lodash/identity';
 
-import { NodeData } from '../../interfaces';
-import { RenderNodeToElement } from '../RenderNode';
+import { NodeData } from '../interfaces';
+import { RenderNodeToElement } from './RenderNode';
 
 const nodeContext = {
   id: 1,
@@ -14,22 +14,22 @@ const nodeContext = {
 let node: Partial<NodeData> = {};
 let onRender = vi.fn();
 
-vi.mock('../../editor/useInternalEditor', () => ({
+vi.mock('../editor/useInternalEditor', () => ({
   useInternalEditor: () => ({ onRender })
 }));
 
-vi.mock('../../nodes/useInternalNode', () => ({
+vi.mock('../nodes/useInternalNode', () => ({
   useInternalNode: () => ({
     ...node,
     ...nodeContext
   })
 }));
 
-vi.mock('../../nodes/NodeElement', () => ({
+vi.mock('../nodes/NodeElement', () => ({
   NodeElement: () => null
 }));
 
-vi.mock('../SimpleElement', () => ({
+vi.mock('./SimpleElement', () => ({
   SimpleElement: () => null
 }));
 
