@@ -1,6 +1,7 @@
-import { render } from '@testing-library/react';
-import identity from 'lodash/identity';
 import React from 'react';
+import { render } from '@testing-library/react';
+import { describe, vi } from 'vitest';
+import identity from 'lodash/identity';
 
 import { NodeData } from '../../interfaces';
 import { RenderNodeToElement } from '../RenderNode';
@@ -11,37 +12,37 @@ const nodeContext = {
 };
 
 let node: Partial<NodeData> = {};
-let onRender = jest.fn();
+let onRender = vi.fn();
 
-jest.mock('../../editor/useInternalEditor', () => ({
+vi.mock('../../editor/useInternalEditor', () => ({
   useInternalEditor: () => ({ onRender })
 }));
 
-jest.mock('../../nodes/useInternalNode', () => ({
+vi.mock('../../nodes/useInternalNode', () => ({
   useInternalNode: () => ({
     ...node,
     ...nodeContext
   })
 }));
 
-jest.mock('../../nodes/NodeElement', () => ({
+vi.mock('../../nodes/NodeElement', () => ({
   NodeElement: () => null
 }));
 
-jest.mock('../SimpleElement', () => ({
+vi.mock('../SimpleElement', () => ({
   SimpleElement: () => null
 }));
 
 describe('RenderNode', () => {
-  let component;
+  let component: any;
 
   beforeEach(() => {
-    onRender = jest.fn().mockImplementation(({ render }) => render);
+    onRender = vi.fn().mockImplementation(({ render }) => render);
   });
 
   describe('When the node is hidden', () => {
     beforeEach(() => {
-      node = { hidden: true, type: jest.fn() };
+      node = { hidden: true, type: vi.fn() as any };
       component = render(<RenderNodeToElement />);
     });
     it('should not have called onRender', () => {
@@ -83,7 +84,7 @@ describe('RenderNode', () => {
   });
 
   describe('When the node has type and contains nodes', () => {
-    const type = ({ children }) => (
+    const type = ({ children }: any) => (
       <p>
         <button data-testid="test-button" />
         {children}
