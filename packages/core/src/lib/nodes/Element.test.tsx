@@ -1,31 +1,32 @@
 import { render } from '@testing-library/react';
 import React from 'react';
+import { describe, vi } from 'vitest';
 
-import { createTestNode } from '../../utils/createTestNode';
-import { Element } from '../Element';
-import { Node } from '../../interfaces';
+import { createTestNode } from '../utils/createTestNode';
+import { Node } from '../interfaces';
+import { Element } from './Element';
 
 let parentNode: Node;
 let existingLinkedNode: Node;
 const newLinkedNode = createTestNode('newLinkedNode');
 
-const addLinkedNodeFromTree = jest.fn();
-const parseReactElement = jest.fn().mockImplementation(() => ({
+const addLinkedNodeFromTree = vi.fn();
+const parseReactElement = vi.fn().mockImplementation(() => ({
   rootNodeId: newLinkedNode.id
 }));
 
-jest.mock('../../editor/useInternalEditor', () => ({
+vi.mock('../editor/useInternalEditor', () => ({
   useInternalEditor: () => ({
     actions: {
       history: {
-        ignore: jest.fn().mockImplementation(() => ({
+        ignore: vi.fn().mockImplementation(() => ({
           addLinkedNodeFromTree
         }))
       }
     },
     query: {
       parseReactElement,
-      node: jest.fn().mockImplementation((id) => ({
+      node: vi.fn().mockImplementation((id) => ({
         get() {
           return id === 'parent-node' ? parentNode : existingLinkedNode;
         }
@@ -34,17 +35,17 @@ jest.mock('../../editor/useInternalEditor', () => ({
   })
 }));
 
-jest.mock('../useInternalNode', () => ({
+vi.mock('./useInternalNode', () => ({
   useInternalNode: () => ({
     node: parentNode,
     inNodeContext: true
   })
 }));
 
-const NodeElementTest = jest.fn().mockImplementation(() => null);
+const NodeElementTest = vi.fn().mockImplementation(() => null);
 
-jest.mock('../NodeElement', () => ({
-  NodeElement: jest.fn().mockImplementation((props) => NodeElementTest(props))
+vi.mock('./NodeElement', () => ({
+  NodeElement: vi.fn().mockImplementation((props) => NodeElementTest(props))
 }));
 
 describe('<Element />', () => {
