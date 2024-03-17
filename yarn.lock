@@ -5365,19 +5365,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@webstencils/layers-old@workspace:packages/_layers":
-  version: 0.0.0-use.local
-  resolution: "@webstencils/layers-old@workspace:packages/_layers"
-  dependencies:
-    "@mui/icons-material": "npm:^5.15.13"
-    react-contenteditable: "npm:^3.3.3"
-    styled-components: "npm:>= 4"
-  peerDependencies:
-    "@webstencils/core": ">=0.1.0"
-    react: ^16.8.0 || ^17 || ^18
-  languageName: unknown
-  linkType: soft
-
 "@webstencils/layers@workspace:*, @webstencils/layers@workspace:packages/layers":
   version: 0.0.0-use.local
   resolution: "@webstencils/layers@workspace:packages/layers"
