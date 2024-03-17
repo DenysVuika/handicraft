@@ -1,35 +1,36 @@
 import { render } from '@testing-library/react';
 import React from 'react';
+import { describe, vi, Mock } from 'vitest';
 
 import { useInternalEditor } from '../../editor/useInternalEditor';
 import { Frame } from '../Frame';
 
-jest.mock('tiny-invariant');
-jest.mock('../../editor/useInternalEditor');
-jest.mock('../../nodes/NodeElement', () => ({
+vi.mock('tiny-invariant');
+vi.mock('../../editor/useInternalEditor');
+vi.mock('../../nodes/NodeElement', () => ({
   NodeElement: () => null
 }));
 
-const mockEditor = useInternalEditor as jest.Mock;
+const mockEditor = useInternalEditor as Mock;
 
 describe('Frame', () => {
   const data = {};
-  const addNodeTree = jest.fn();
-  const deserialize = jest.fn();
+  const addNodeTree = vi.fn();
+  const deserialize = vi.fn();
 
-  let actions;
-  let query;
+  let actions: any;
+  let query: any;
 
   beforeEach(() => {
     actions = {
       history: {
-        ignore: jest.fn().mockImplementation(() => ({
+        ignore: vi.fn().mockImplementation(() => ({
           addNodeTree,
           deserialize
         }))
       }
     };
-    query = { createNode: jest.fn(), parseTreeFromReactNode: jest.fn() };
+    query = { createNode: vi.fn(), parseTreeFromReactNode: vi.fn() };
     mockEditor.mockImplementation(() => ({ actions, query }));
   });
 
