@@ -4,4 +4,4 @@ export {
   DefaultLayerHeader,
   EditableLayerName,
   Layers
-} from './lib/layers';
+} from './layers';
