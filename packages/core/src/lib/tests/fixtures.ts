@@ -74,7 +74,7 @@ export const documentWithCardState = {
 };
 
 // TODO: Find a better way to create test child nodes
-export const documentWithVariousNodes = {
+export const documentWithVariousNodes: any = {
   ...documentWithCardState,
   nodes: {
     ...documentWithCardState.nodes,

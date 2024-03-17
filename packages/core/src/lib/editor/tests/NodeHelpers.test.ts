@@ -1,3 +1,4 @@
+import { describe, vi } from 'vitest';
 import {
   card,
   documentWithVariousNodes,
@@ -8,15 +9,15 @@ import {
 import { serializeNode } from '../../utils/serializeNode';
 import { NodeHelpers } from '../NodeHelpers';
 
-let helper;
+let helper: any;
 
-jest.mock('../../utils/serializeNode', () => ({
-  serializeNode: jest.fn()
+vi.mock('../../utils/serializeNode', () => ({
+  serializeNode: vi.fn()
 }));
 
 describe('NodeHelpers', () => {
   beforeEach(() => {
-    helper = (id) => NodeHelpers(documentWithVariousNodes as any, id);
+    helper = (id: any) => NodeHelpers(documentWithVariousNodes as any, id);
   });
 
   it('should throw error if invalid value supplied as NodeId', () => {
@@ -193,13 +194,13 @@ describe('NodeHelpers', () => {
   });
 
   describe('toNodeTree', () => {
-    let tree;
+    let tree: any;
     let testHelper;
-    const testDescendants = jest.fn().mockImplementation(() => []);
-    let descendantType;
+    const testDescendants = vi.fn().mockImplementation(() => []);
+    let descendantType: any;
 
     beforeEach(() => {
-      testHelper = jest.fn().mockImplementation(function (...args) {
+      testHelper = vi.fn().mockImplementation((...args) => {
         return {
           ...helper(...args),
           descendants: testDescendants
@@ -213,7 +214,7 @@ describe('NodeHelpers', () => {
       expect(tree.rootNodeId).toEqual('canvas-node-reject-dnd');
     });
 
-    xit('should have called .descendants', () => {
+    it.skip('should have called .descendants', () => {
       expect(testDescendants).toHaveBeenCalledWith(true, descendantType);
     });
   });
