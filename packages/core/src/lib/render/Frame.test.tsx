@@ -2,12 +2,12 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import { describe, vi, Mock } from 'vitest';
 
-import { useInternalEditor } from '../../editor/useInternalEditor';
-import { Frame } from '../Frame';
+import { useInternalEditor } from '../editor/useInternalEditor';
+import { Frame } from './Frame';
 
 vi.mock('tiny-invariant');
-vi.mock('../../editor/useInternalEditor');
-vi.mock('../../nodes/NodeElement', () => ({
+vi.mock('../editor/useInternalEditor');
+vi.mock('../nodes/NodeElement', () => ({
   NodeElement: () => null
 }));
 
