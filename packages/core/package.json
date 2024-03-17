@@ -17,21 +17,23 @@
   "author": "Denys Vuika <denys.vuika@gmail.com>",
   "license": "Apache-2.0",
   "homepage": "https://github.com/DenysVuika/handicraft",
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/cjs/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DenysVuika/handicraft.git"
   },
-  "scripts": {
-    "start": "npx rollup -c rollup.config.mjs -w",
-    "build": "npx rollup -c rollup.config.mjs",
-    "yalc": "yalc push",
-    "clean": "npx rimraf lib dist .rollup.cache"
-  },
   "bugs": {
     "url": "https://github.com/DenysVuika/handicraft/issues"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "yalc": "yalc push"
   },
   "dependencies": {
     "debounce": "^2.0.0",
@@ -48,37 +50,5 @@
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17 || ^18"
-  },
-  "nx": {
-    "targets": {
-      "build": {
-        "cache": true,
-        "inputs": [
-          "{projectRoot}/**/*.ts",
-          "{projectRoot}/tsconfig.json",
-          {
-            "externalDependencies": [
-              "typescript"
-            ]
-          }
-        ],
-        "outputs": [
-          "{projectRoot}/dist"
-        ]
-      },
-      "yalc": {
-        "dependsOn": [
-          {
-            "target": "build"
-          }
-        ]
-      }
-    },
-    "includedScripts": [
-      "build",
-      "start",
-      "clean",
-      "yalc"
-    ]
   }
 }

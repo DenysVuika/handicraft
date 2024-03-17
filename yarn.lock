@@ -2041,7 +2041,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/babel-plugin@npm:^11.11.0":
+"@emotion/babel-plugin@npm:11.11.0, @emotion/babel-plugin@npm:^11.11.0":
   version: 11.11.0
   resolution: "@emotion/babel-plugin@npm:11.11.0"
   dependencies:
@@ -5346,6 +5346,24 @@ __metadata:
   checksum: 10/2261705e2edc10376f2524a4bf6616688680094d94fff683681a1ef8d3d59271dee2d80893efad8e6437bbdb00390e2edd754d94cf42100db86f2cfd9c44826f
   languageName: node
   linkType: hard
+
+"@webstencils/core-old@workspace:packages/_core":
+  version: 0.0.0-use.local
+  resolution: "@webstencils/core-old@workspace:packages/_core"
+  dependencies:
+    "@types/lodash": "npm:^4.14.195"
+    "@types/react": "npm:^18.2.66"
+    debounce: "npm:^2.0.0"
+    immer: "npm:^9.0.6"
+    lodash: "npm:^4.17.21"
+    nanoid: "npm:^3.1.23"
+    react: "npm:18.2.0"
+    shallowequal: "npm:^1.1.0"
+    tiny-invariant: "npm:^1.0.6"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18
+  languageName: unknown
+  linkType: soft
 
 "@webstencils/core@workspace:*, @webstencils/core@workspace:packages/core":
   version: 0.0.0-use.local
@@ -13293,6 +13311,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
+    "@emotion/babel-plugin": "npm:11.11.0"
     "@emotion/react": "npm:11.11.1"
     "@emotion/styled": "npm:11.11.0"
     "@nx/eslint": "npm:18.0.8"

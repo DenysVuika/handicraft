@@ -13,6 +13,7 @@
     "prepare": "husky"
   },
   "devDependencies": {
+    "@emotion/babel-plugin": "11.11.0",
     "@nx/eslint": "18.0.8",
     "@nx/eslint-plugin": "18.0.8",
     "@nx/jest": "18.0.8",
