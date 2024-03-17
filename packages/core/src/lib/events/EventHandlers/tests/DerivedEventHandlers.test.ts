@@ -1,3 +1,4 @@
+import { describe, vi } from 'vitest';
 import { EventHandlers } from '../EventHandlers';
 import { ConnectorsUsage } from '../interfaces';
 import {
@@ -9,9 +10,9 @@ import {
 describe('DerivedEventHandlers', () => {
   let dom: HTMLElement;
   let instance: EventHandlers;
-  let handlers;
+  let handlers: any;
   let derivedInstance: EventHandlers;
-  let derivedHandlers;
+  let derivedHandlers: any;
 
   let derivedConnectorsUsage: ConnectorsUsage<typeof derivedInstance>;
 
@@ -30,22 +31,25 @@ describe('DerivedEventHandlers', () => {
   });
   describe('attaching the connector', () => {
     beforeEach(() => {
-      jest.clearAllMocks();
+      vi.clearAllMocks();
       Object.keys(derivedConnectorsUsage.connectors).forEach((key) => {
         derivedConnectorsUsage.connectors[key](dom);
       });
     });
+
     it('should be able to attach connector', () => {
       const chainedValue = derivedConnectorsUsage.connectors.connect(dom);
       expect(chainedValue).toEqual(dom);
       expect(derivedHandlers.connect.init).toHaveBeenCalled();
     });
+
     it('should execute derived and parent connector init methods', () => {
       Object.keys(derivedConnectorsUsage.connectors).forEach((key) => {
         expect(handlers[key].init).toHaveBeenCalled();
         expect(derivedHandlers[key].init).toHaveBeenCalled();
       });
     });
+
     it('should have attached derived and parent event listeners', () => {
       Object.keys(derivedConnectorsUsage.connectors).forEach((key) => {
         triggerMouseEvent(dom, 'mousedown');
@@ -58,6 +62,7 @@ describe('DerivedEventHandlers', () => {
       });
     });
   });
+
   describe('disabling the parent EventHandler instance', () => {
     dom = document.createElement('a');
     beforeEach(() => {
@@ -65,7 +70,7 @@ describe('DerivedEventHandlers', () => {
         derivedConnectorsUsage.connectors[key](dom);
       });
 
-      jest.clearAllMocks();
+      vi.clearAllMocks();
       instance.disable();
     });
 
@@ -78,6 +83,7 @@ describe('DerivedEventHandlers', () => {
         expect(handlers[key].init).toHaveBeenCalledTimes(0);
       });
     });
+
     it('should have detached event listeners', () => {
       Object.keys(derivedConnectorsUsage.connectors).forEach((key) => {
         triggerMouseEvent(dom, 'mousedown');
