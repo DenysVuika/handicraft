@@ -14,7 +14,7 @@
   "devDependencies": {
     "@nx/eslint": "18.0.8",
     "@nx/eslint-plugin": "18.0.8",
-    "@nx/js": "18.0.8",
+    "@nx/js": "19.0.2",
     "@nx/react": "18.0.8",
     "@nx/vite": "18.0.8",
     "@nx/web": "18.0.8",
